@@ -9,7 +9,7 @@ class kategori extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if (!$this->session->userdata('username')) {
+        if (!$this->session->userdata('admin_data')) {
             // Redirect ke halaman login jika tidak login
             redirect('c_authadmin/index');
         }

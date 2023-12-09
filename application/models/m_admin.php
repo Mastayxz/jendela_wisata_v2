@@ -13,7 +13,7 @@ class m_admin extends CI_Model
     public function getadmin()
     {
         $result = $this->db->get('admin');
-        return $result;
+        return $result->result();
     }
     public function insertadmin()
     {
@@ -54,12 +54,12 @@ class m_admin extends CI_Model
 
     public function searchAdmin($keyword)
     {
-        $this->db->like('LOWER(email)', strtolower($keyword), false);
-        // $this->db->or_like('LOWER(username)', strtolower($keyword), false);
-        // $this->db->or_like('LOWER(nama_admin)', strtolower($keyword), false);
+        $this->db->like('LOWER(username)', $keyword, false);
+        $this->db->or_like('LOWER(nama_admin)', strtolower($keyword), false);
+        $this->db->or_like('LOWER(email)', strtolower($keyword), false);
 
         $query = $this->db->get('admin');
-        return $query->result_array();
+        return $query->result();
     }
 }
 

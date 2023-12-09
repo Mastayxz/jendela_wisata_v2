@@ -65,7 +65,7 @@
         // Event untuk memproses pencarian secara dinamis
         $('#table_search').on('input', function() {
             var keyword = $(this).val();
-            if (keyword.length >= 3 || keyword.length === 0) {
+            if (keyword.length >= 1 || keyword.length === 0) {
                 $.ajax({
                     url: "<?= base_url('admin/admin/searchAdmin') ?>",
                     type: "POST",

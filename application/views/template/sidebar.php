@@ -45,13 +45,13 @@
               </li>
               <li class="nav-item">
                 <a href="<?= base_url('admin/kategori'); ?>" class="nav-link">
-                  <i class="fa fa-hotel nav-icon"></i>
+                  <i class="fa fa-leaf nav-icon"></i>
                   <p>Kategori</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?= base_url('admin/jenis_akomodasi'); ?>" class="nav-link">
-                  <i class="fa fa-hotel nav-icon"></i>
+                  <i class="fa fa-bars nav-icon"></i>
                   <p>Jenis Akomodasi</p>
                 </a>
               </li>
