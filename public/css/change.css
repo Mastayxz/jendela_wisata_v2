@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Gudea&family=Lato:wght@100;400&family=Lexend:wght@100;400&family=Poppins:wght@100&family=Raleway:wght@100;300;400;600&family=Rufina&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gudea&family=Lato:wght@100;400&family=Lexend:wght@100;400&family=Poppins:wght@100&family=Raleway:ital,wght@0,100;0,300;0,400;0,600;1,400&family=Rufina&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gudea&family=Lato:wght@100;400&family=Lexend:wght@100;400&family=Poppins:wght@100&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,600;1,400&family=Rufina&display=swap');
+
+body {
+    font-size: 16px;
+    
+  }
+
+  .wrapper img {
+    width: 100%;
+    height: auto;
+  }
+
+
+/* tampilan for dekstop */
+@media only screen 
+  and (min-width: 768px){
+
+      .frame{
+          position: absolute;
+          background-color: white;
+          width: 712px;
+          height: 803px;
+          z-index: 1;
+          top: 0;
+          border-radius: 0px 122.55px 0px 80.25px;
+          box-shadow: 9px 9px 14.6px 0px rgba(0, 0, 0, 0.16);
+          margin-left: 602px;
+          margin-top: 58px   ;
+      }
+      .frame-1 h1{
+          font-family: 'Rufina';
+          color: #000;
+          font-size: 40px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          letter-spacing: 20.10px;
+          margin-left: 40px;
+          margin-top: 84px;
+          text-align: center;
+      }
+      .frame-1 hr{
+          width: 291px;
+          height: 2px;
+          margin-top: 10px;
+          margin-left: 208px;
+          background: #000;
+          
+       }
+       .frame-1 h3{
+          font-family: 'Raleway';
+          letter-spacing: 5.52px;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 200;
+          margin-left: 230px;
+       }
+       .frame-1 h5{
+          font-family: 'Raleway';
+          letter-spacing: 5.52px;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 200;
+         text-align: center;
+       }
+       .frame-2{
+          margin-top: 20px;
+          margin-left: 159px;
+         
+       }
+       .form-floating{
+          width: 391px;
+          height: 53px;
+          flex-shrink: 0;
+          margin-top: 41px;
+          font-family: 'Raleway';
+          letter-spacing: 4.6px;
+       }
+      
+      .input{
+          margin-top: 31px;
+          margin-left: 210px;
+      }
+      .btn{
+          width: 171px;
+          letter-spacing: 4.6px;
+          background-color: #fff;
+          color: black;
+          font-family: 'Raleway';
+      }
+      .alert{
+          width: 391px;
+          height: 53px;
+          font-family: 'Raleway';
+          letter-spacing: 4.6px;
+          margin-left: 71px;
+      
+         
+      }
+  }
+  /* tampilan for iphone */
+  @media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2){
+    .frame {
+        position: absolute;
+        top: 0;
+
+        background-color: white;
+        border-radius: 0px 50px 0px 25px;
+        box-shadow: 9px 9px 14.6px 9px rgba(0, 0, 0, 0.16);
+        
+        margin-top: 25%;
+        margin-left: 15px;
+
+        width: 90%;
+        height: 600px;
+        
+    }
+
+    .frame-1 h1 {
+        font-size: 24px;
+        letter-spacing: 10px;
+        margin: 20px;
+        text-align: center;
+        margin-top: 40px;
+        font-family: 'Rufina';
+    }
+
+    .frame-1 hr {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .frame-1 h3{
+        font-family: 'Raleway';
+          letter-spacing: 5px;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 200;
+          margin-left:90px;
+    }
+    .frame-1 h5 {
+        font-size: 16px;
+        text-align: center;
+        font-family: 'Rufina';
+        font-style: normal;
+        font-weight: 200    ;
+        margin-top: 20px;
+        
+    }
+
+    .frame-2 {
+        margin-top: 20px;
+        margin-left: 0;
+    }
+
+    .form-floating {
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .input {
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 200px;
+        margin-left: 25%;
+        margin-right: auto;
+        letter-spacing: 2px;
+        background-color: white;
+        color: black;
+    }
+
+    .alert {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+  }
+
