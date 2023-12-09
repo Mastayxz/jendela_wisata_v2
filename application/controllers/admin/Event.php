@@ -133,7 +133,7 @@ class Event extends CI_Controller
     {
         try {
             $keyword = $this->input->post('table_search');
-            if (empty($keyword) || strlen($keyword) < 3) {
+            if (empty($keyword)) {
                 $data['event'] = $this->M_event->getData(); // Tampilkan semua data
             } else {
                 $data['event'] = $this->M_event->searchEvents($keyword);

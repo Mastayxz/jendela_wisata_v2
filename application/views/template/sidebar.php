@@ -68,7 +68,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('admin/user'); ?>" class="nav-link">
+                <a href="<?= base_url('admin/User'); ?>" class="nav-link">
                   <i class="fa fa-user nav-icon"></i>
                   <p>Member</p>
                 </a>

@@ -11,47 +11,40 @@
         <?= $this->session->flashdata('pesan'); ?>
         <div class="card">
             <div class="card-header">
-                <a href="<?= base_url('admin/jenis_akomodasi/tambahjenis_akomodasi'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Tambah User</a>
+                <a href="<?= base_url('admin/kategori/tambahkategori'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Kategori</a>
                 <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px; height:0px;">
-                        <?php echo form_open('admin/user/searchUser'); ?>
-                        <input type="text" name="table_search" id="table_search" class="form-control float-right" placeholder="Search" style="width: 200px; height:40px;">
-                        <div class=" input-group-append">
+                    <div class="input-group input-group-sm" style="width: 330px; ">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group-append">
                             <button type="submit" class="btn btn-default">
                                 <i class="fas fa-search"></i>
                             </button>
-                            <?php echo form_close(); ?>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <!-- <th>Password</th> -->
-                            <th>Nama</th>
+                            <th>Nama Kategori</th>
                             <th>Action</th>
 
                         </tr>
                     </thead>
                     <?php $no = 1; ?>
-                    <?php foreach ($user as $u) : ?>
+                    <?php foreach ($kategori as $k) :
+                    ?>
                         <tbody>
                             <tr>
                                 <td><?= $no++; ?></td>
-                                <td><?php echo $u->email ?></td>
-                                <td><?php echo $u->username ?></td>
-                                <!-- <td><?php echo $u->password ?></td> -->
-                                <td><?php echo $u->nama ?></td>
+                                <td><?php echo $k->nama_kategori ?></td>
 
                                 <td>
+                                    <a href="<?php echo base_url('admin/kategori/ubahkategori/' . $k->id_kategori) ?>" class="btn btn-warning "><i class="fa fa-edit text-light"></i></a>
+                                    <a href="<?php echo base_url('admin/kategori/deletekategori/' . $k->id_kategori) ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
 
-                                    <a href="<?= base_url('admin/user/deleteuser/' . $u->id_user); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 </td>
 
                             </tr>
@@ -66,7 +59,7 @@
     </div>
 </div>
 <!-- Footer -->
-
+<?php $this->load->view('template/footer') ?>
 <!-- JS -->
 <?php $this->load->view('template/js') ?>
 

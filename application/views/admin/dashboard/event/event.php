@@ -13,7 +13,6 @@
             <!-- application/views/admin/dashboard/event.php -->
 
             <!-- application/views/admin/dashboard/event.php -->
-            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
             <div>
                 <!-- Form Pencarian -->

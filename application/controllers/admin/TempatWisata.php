@@ -192,7 +192,7 @@ class TempatWisata extends CI_Controller
     {
         try {
             $keyword = $this->input->post('table_search');
-            if (empty($keyword) || strlen($keyword) < 3) {
+            if (empty($keyword)) {
                 $data['tempat_wisata'] = $this->M_tempatWisata->getData(); // Tampilkan semua data
             } else {
                 $data['tempat_wisata'] = $this->M_tempatWisata->searchDestinasi($keyword);
@@ -201,6 +201,21 @@ class TempatWisata extends CI_Controller
         } catch (Exception $e) {
             error_log('Error in search_ajax: ' . $e->getMessage());
         }
+    }
+    public function filterByCategory()
+    {
+        // Mendapatkan data kategori dari form
+        $kategori_id = $this->input->post('filter_kategori');
+
+        // Memanggil model untuk melakukan filter berdasarkan kategori
+        $filtered_data = $this->M_tempatWisata->filterByCategory($kategori_id);
+
+        // Mendapatkan daftar kategori untuk ditampilkan di form filter
+        $data['kategori_list'] = $this->kategori_model->getKategori();
+
+        // Tampilkan view dengan data hasil filter dan daftar kategori
+        $data['tempat_wisata'] = $filtered_data;
+        $this->load->view('admin/dashboard/destinasi/tempat_wisata_ajax', $data);
     }
 }
 

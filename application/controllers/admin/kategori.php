@@ -18,34 +18,37 @@ class kategori extends CI_Controller
 
     public function index()
     {
+        $data['page_title'] = 'Kategori Wisata';
         $data['kategori'] = $this->m_kategori->getkategori();
-        $this->load->view('dashboard/kategori/dashkategori', $data);
+        $this->load->view('admin/dashboard/kategori/dashkategori', $data);
     }
 
     public function tambahkategori()
     {
-        $this->load->view('dashboard/kategori/tambahkategori');
+        $data['page_title'] = 'Kategori Wisata';
+        $this->load->view('admin/aktivitas/kategori/tambahkategori', $data);
     }
 
     public function addkategori()
     {
         $this->m_kategori->insertkategori();
-        redirect('kategori');
+        redirect('admin/kategori');
     }
     public function ubahkategori($id)
     {
+        $data['page_title'] = 'Kategori Wisata';
         $data['kategori'] = $this->m_kategori->detailkategori($id);
-        $this->load->view('dashboard/kategori/editkategori', $data);
+        $this->load->view('admin/aktivitas/kategori/editkategori', $data);
     }
     public function editkategori()
     {
         $this->m_kategori->editkategori();
-        redirect('kategori');
+        redirect('admin/kategori');
     }
     public function deletekategori($id)
     {
         $this->m_kategori->deletekategori($id);
-        redirect('kategori');
+        redirect('admin/kategori');
     }
 }
 

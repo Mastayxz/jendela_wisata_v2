@@ -23,21 +23,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="filter_kategori">Filter Kategori:</label>
-                    <select name="filter_kategori" id="filter_kategori">
-                        <option value="">-- Semua Kategori --</option>
-                        <?php foreach ($kategori_list as $kategori) : ?>
-                            <option value="<?= $kategori->id_kategori; ?>"><?= $kategori->nama_kategori; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
+                <!-- Form untuk filter berdasarkan kategori -->
+                <form method="post" action="<?= base_url('admin/tempatWisata/filterByCategory') ?>">
+                    <div class="form-group">
+                        <label for="filter_kategori">Filter Kategori:</label>
+                        <select name="filter_kategori" id="filter_kategori" class="form-control">
+                            <option value="">-- Semua Kategori --</option>
+                            <?php foreach ($kategori_list as $kategori) : ?>
+                                <option value="<?= $kategori->id_kategori; ?>"><?= $kategori->nama_kategori; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
+                </form>
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama /th>
+                                <th>Nama </th>
                                 <th>Biaya Masuk</th>
                                 <th>Alamat</th>
                                 <th>Lokasi</th>
@@ -59,7 +63,7 @@
 
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -93,6 +97,25 @@
                     // Clear the results if the keyword is too short
                     $('#search_results').html('');
                 }
+            });
+            // Event untuk memproses perubahan pada dropdown kategori
+            function filterData() {
+                var kategori_id = $('#filter_kategori').val();
+                $.ajax({
+                    url: "<?= base_url('admin/tempatWisata/filterByCategory') ?>",
+                    type: "POST",
+                    data: {
+                        filter_kategori: kategori_id
+                    },
+                    success: function(data) {
+                        $('#search_results').html(data);
+                    }
+                });
+            }
+
+            // Event for processing changes in the category dropdown
+            $('#filter_kategori').on('change', function() {
+                filterData(); // Call filterData here
             });
         });
     </script>

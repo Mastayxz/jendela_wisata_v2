@@ -177,7 +177,7 @@ class Akomodasi extends CI_Controller
     {
         try {
             $keyword = $this->input->post('table_search');
-            if (empty($keyword) || strlen($keyword) < 3) {
+            if (empty($keyword)) {
                 $data['akomodasi'] = $this->M_akomodasi->getData(); // Tampilkan semua data
             } else {
                 $data['akomodasi'] = $this->M_akomodasi->searchAkomodasi($keyword);

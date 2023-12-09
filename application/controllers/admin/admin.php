@@ -57,7 +57,7 @@ class admin extends CI_Controller
         // $data['page_title'] = 'Admin';
         try {
             $keyword = $this->input->post('table_search');
-            if (empty($keyword) || strlen($keyword) < 3) {
+            if (empty($keyword)) {
                 $data['admin'] = $this->m_admin->getadmin(); // Tampilkan semua data
             } else {
                 $data['admin'] = $this->m_admin->searchAdmin($keyword);

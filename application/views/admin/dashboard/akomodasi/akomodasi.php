@@ -11,7 +11,7 @@
         <?= $this->session->flashdata('pesan'); ?>
         <div class="card">
             <div class="card-header">
-                <a href="<?= base_url('admin/event/tambah'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Akomodasi</a>
+                <a href="<?= base_url('admin/akomodasi/tambah'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Akomodasi</a>
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 200px; height:0px;">
                         <input type="text" name="table_search" id="table_search" class="form-control float-right" placeholder="Search" style="width: 200px; height:40px;">
