@@ -37,6 +37,12 @@ class User extends CI_Controller
         //         error_log('Error in search_ajax: ' . $e->getMessage());
         //     }
     }
+
+    public function deleteuser($id)
+    {
+        $this->m_user->deleteuser($id);
+        redirect('admin/user');
+    }
 }
 
 

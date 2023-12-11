@@ -23,73 +23,103 @@
 
 
 
-<div class="container">
-    <div class="row mt-5">
-        <?php foreach ($akomodasi as $ak) : ?>
-            <div class="col-md-4 ftco-animate">
-
-                <div class="project-wrap hotel">
-                    <a href="#" class="img">
-                        <img src="<?= base_url() . '/upload/akomodasi/' . $ak->gambar_akomodasi1; ?>" class="img">
-                        <span class="price">Rp. <?= number_format($ak->harga_akomodasi); ?> </span>
-                    </a>
-                    <div class="text p-4 mb-2">
-                        <h3><a href="<?= base_url('user/akomodasi/detail/' . $ak->id_akomodasi); ?>" class="mb-5"><?= $ak->nama_akomodasi; ?></a></h3>
-
-                        <div class="location"><span class="fa fa-map-marker"></span> <?= $ak->alamat_akomodasi; ?> </div>
-                        <div class="location"><span class="flaction-hotel"></span> <?= $ak->nama_jenis_akomodasi; ?> </div>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-sun-umbrella"></span><?= $ak->nama; ?></li>
-                        </ul>
-                    </div>
+<div class="container ">
+    <form method="post" action="<?= base_url('admin/akomodasi/filterByJenisAkomodasi') ?>">
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="filter_kategori" class="form-label mt-4">Jenis Akomodasi</label>
+                    <select name="filter_jenis" id="filter_jenis" class="form-control">
+                        <option value="semua">semua</option>
+                        <?php foreach ($jenis_akomodasi_list as $ja) : ?>
+                            <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
             </div>
-        <?php endforeach; ?>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="filter_kategori" class="form-label mt-4">Jenis Akomodasi</label>
+                    <select name="filter_jenis" id="filter_jenis" class="form-control">
+                        <option value="semua">semua</option>
+                        <?php foreach ($jenis_akomodasi_list as $ja) : ?>
+                            <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="filter_kategori" class="form-label mt-4">Harga maksimum </label>
+                    <input type="number" name="price" id="price" placeholder="Masukan Harga" class="form-control">
+                </div>
+            </div>
+        </div>
+        <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
+    </form>
+    <div class="row mt-5" id="search_results">
+
     </div>
 </div>
+</div>
 
-<article class="col-md-12">
 
-    <!-- PRODUCT CARDS -->
-    <!-- <a href="<?= base_url('user/Home'); ?>" class="btn btn-primary">Destinasi</a> -->
-    <!-- <div class="cards-8 section-gray"> -->
-
-    <!-- <div class="container">
-        <div class="row mt-5">
-            <?php foreach ($akomodasi as $ak) : ?>
-                <div class="col-md-3">
-                    <div class="card card-product">
-                        <div class="card-image">
-                            <a href="#"> <img src="<?= base_url() . '/upload/akomodasi/' . $ak->gambar_akomodasi1; ?>" alt=""></a>
-                        </div>
-                        <div class="table">
-                            <h6 class="category text-rose">Destinasi</h6>
-                            <h4 class="card-caption">
-                                <a href="#"><?= $ak->nama_akomodasi; ?></a>
-                            </h4>
-                            <div class="card-address"><?= $ak->nama_jenis_akomodasi; ?></div>
-                            <div class="card-address"><?= $ak->alamat_akomodasi; ?></div>
-
-                            <div class="ftr">
-                                <div class="price">
-                                    <h5 class="mt-3">Rp. <?= number_format($ak->harga_akomodasi); ?></h5>
-                                </div>
-                                <div class="stats">
-                                    <button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-heart"></i> </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div> -->
-
-    <!-- </div> -->
 </article>
+<script>
+    $(document).ready(function() {
+        function performSearch() {
+            var keyword = $('#table_search').val();
 
+            $.ajax({
+                url: "<?= base_url('user/search/search_akomodasi') ?>",
+                type: "POST",
+                data: {
+                    table_search: keyword
+
+                },
+                success: function(data) {
+                    $('#search_results').html(data);
+                }
+            });
+        }
+
+        // Panggil performSearch saat halaman dimuat
+        performSearch();
+
+        // Event untuk memproses pencarian saat tombol pencarian diklik
+        $('#search_button').on('click', function() {
+            performSearch();
+        });
+
+        // Menangani submit form
+        $('#search_form').on('submit', function(event) {
+            event.preventDefault(); // Mencegah form untuk melakukan submit secara default
+            performSearch();
+        });
+
+        function filterData() {
+            var id_jenis_akomodasi = $('#filter_jenis').val();
+            var price = $('#price').val();
+            $.ajax({
+                url: "<?= base_url('user/akomodasi/filterByJenisAkomodasi') ?>",
+                type: "POST",
+                data: {
+                    filter_jenis: id_jenis_akomodasi,
+                    price: price
+                },
+                success: function(data) {
+                    $('#search_results').html(data);
+                }
+            });
+        }
+
+
+        // Event for processing changes in the category dropdown
+        $('#filter_jenis').on('change', function() {
+            filterData(); // Call filterData here
+        });
+    });
+</script>
 
 <!-- JS -->
 <?php $this->load->view('landing/footer') ?>

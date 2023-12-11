@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-8">
+        <div class="col-xl-8 h-100vh ">
             <!-- Account details card-->
             <div class="card mb-4">
                 <div class="card-header">Account Details</div>
@@ -52,16 +52,16 @@
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputPhone">Phone number</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="" name="tlp" value="<?php echo $user['tlp'] ?>">
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="" name="tlp" value="<?php echo $user['tlp_user'] ?>">
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="" name="tgllahir" value="<?php echo $user['tgllahir'] ?>">
+                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="" name="tgllahir" value="<?php echo $user['tgl_lahir'] ?>">
                             </div>
                         </div>
                         <!-- Logout button-->
-                        <button class="btn btn-primary" type="button">LOGOUT</button>
+                        <a href="<?= base_url('c_auth/logout') ?>" class="btn btn-primary">logout</a>
                     </form>
                 </div>
             </div>

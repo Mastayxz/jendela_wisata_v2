@@ -3,8 +3,7 @@
 <!-- Navbar -->
 <?php $this->load->view('template/navbar') ?>
 <!-- Main Sidebar Container -->
-<?php $admin_name = $this->session->userdata('admin_name'); ?>
-<?php $this->load->view('template/sidebar', ['admin_name' => $admin_name]); ?>
+<?php $this->load->view('template/sidebar'); ?>
 
 <div class="row">
     <div class="col-12">
@@ -35,6 +34,8 @@
                             <th>Username</th>
                             <!-- <th>Password</th> -->
                             <th>Nama</th>
+                            <th>No telpon</th>
+                            <th>Tanggal Lahir</th>
                             <th>Action</th>
 
                         </tr>
@@ -48,7 +49,8 @@
                                 <td><?php echo $u->username ?></td>
                                 <!-- <td><?php echo $u->password ?></td> -->
                                 <td><?php echo $u->nama ?></td>
-
+                                <td><?= $u->tlp_user; ?></td>
+                                <td><?= $u->tgl_lahir; ?></td>
                                 <td>
 
                                     <a href="<?= base_url('admin/user/deleteuser/' . $u->id_user); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>

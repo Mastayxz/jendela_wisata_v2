@@ -128,21 +128,6 @@ class Event extends CI_Controller
         $this->M_event->deleteData($id_event);
         redirect('admin/event');
     }
-
-    public function search_ajax()
-    {
-        try {
-            $keyword = $this->input->post('table_search');
-            if (empty($keyword)) {
-                $data['event'] = $this->M_event->getData(); // Tampilkan semua data
-            } else {
-                $data['event'] = $this->M_event->searchEvents($keyword);
-            }
-            $this->load->view('admin/dashboard/event/event_ajax', $data);
-        } catch (Exception $e) {
-            error_log('Error in search_ajax: ' . $e->getMessage());
-        }
-    }
 }
 
 

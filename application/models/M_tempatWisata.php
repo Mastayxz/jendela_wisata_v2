@@ -115,22 +115,6 @@ class M_tempatWisata extends CI_Model
         return $query->result();
     }
 
-    public function filterData($kategori)
-    {
-        $this->db->select('tempat_wisata.*, GROUP_CONCAT(kategori.nama_kategori) as kategori');
-        $this->db->from('tempat_wisata');
-        $this->db->join('kategori_wisata', 'tempat_wisata.id_tempat_wisata = kategori_wisata.id_tempat_wisata');
-        $this->db->join('kategori', 'kategori_wisata.id_kategori = kategori.id_kategori');
-        $this->db->group_by('tempat_wisata.id_tempat_wisata');
-
-        // Filter berdasarkan kategori
-        if (!empty($kategori)) {
-            $this->db->where_in('kategori.id_kategori', $kategori);
-        }
-
-        $query = $this->db->get();
-        return $query->result();
-    }
     public function filterByCategory($kategori_id)
     {
         $this->db->select('tempat_wisata.*, GROUP_CONCAT(kategori.nama_kategori) as kategori');

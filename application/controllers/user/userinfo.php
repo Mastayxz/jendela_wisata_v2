@@ -1,8 +1,9 @@
-<?php 
+<?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class userinfo extends CI_Controller {
+class userinfo extends CI_Controller
+{
 
     public function __construct()
     {
@@ -14,11 +15,9 @@ class userinfo extends CI_Controller {
         $data['page_title'] = 'User Info';
         $data['user'] = $this->m_userinfo->getinfo();
         $this->load->view('templates/footer');
-        $this->load->view('user/userinfo', $data);
+        $this->load->view('user/userinfo/userinfo', $data);
         $this->load->view('templates/header');
     }
-    
 }
 
 /* End of file Controllername.php */
- ?>

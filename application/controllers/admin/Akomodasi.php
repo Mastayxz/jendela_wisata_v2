@@ -22,6 +22,7 @@ class Akomodasi extends CI_Controller
     {
         $data['page_title'] = 'Akomodasi';
         $data['akomodasi'] = $this->M_akomodasi->getData();
+        $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
         $this->load->view('admin/dashboard/akomodasi/akomodasi', $data);
     }
 
@@ -172,20 +173,23 @@ class Akomodasi extends CI_Controller
 
         redirect('admin/akomodasi');
     }
-    // Akomodasi.php
-    public function search_ajax()
+
+    public function filterByJenisAkomodasi()
     {
-        try {
-            $keyword = $this->input->post('table_search');
-            if (empty($keyword)) {
-                $data['akomodasi'] = $this->M_akomodasi->getData(); // Tampilkan semua data
-            } else {
-                $data['akomodasi'] = $this->M_akomodasi->searchAkomodasi($keyword);
-            }
-            $this->load->view('admin/dashboard/akomodasi/akomodasi_ajax', $data);
-        } catch (Exception $e) {
-            error_log('Error in search_ajax: ' . $e->getMessage());
-        }
+        // Mendapatkan data kategori dari form
+        $id_jenis_akomodasi = $this->input->post('filter_jenis');
+
+        // Memanggil model untuk melakukan filter berdasarkan kategori
+        $filtered_data = $this->M_akomodasi->filterByJenisAkomodasi($id_jenis_akomodasi);
+
+        // Mendapatkan daftar kategori untuk ditampilkan di form filter
+        $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
+
+        // Data yang akan dikirimkan ke view
+        $data['akomodasi'] = $filtered_data;
+
+        // Load the view to display the filtered data and category list
+        $this->load->view('admin/dashboard/akomodasi/akomodasi_ajax', $data);
     }
 
     /* End of file Akomodasi.php */

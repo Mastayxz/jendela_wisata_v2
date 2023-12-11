@@ -14,8 +14,9 @@
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item">
                     <?php if ($this->session->userdata('username')) : ?>
+                        <a href="<?= base_url('user/userinfo'); ?>" class="nav-link"><i class="fa fa-user"></i></a>
                         <!-- <p>Halo, <?= $this->session->userdata('username') ?>! Anda sudah login.</p> -->
-                        <a href="<?= base_url('c_auth/logout') ?>" class="nav-link">Logout</a>
+                        <!-- <a href="<?= base_url('c_auth/logout') ?>" class="nav-link">Logout</a> -->
                     <?php else : ?>
                         <a href="<?= base_url('c_auth') ?>" class="nav-link">Login</a>
                     <?php endif; ?>

@@ -6,7 +6,7 @@
 <!-- Navbar -->
 <?php $this->load->view('landing/navbar') ?>
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_1.jpg');">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/image_2.jpg');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -20,17 +20,6 @@
 
 
 <?php $this->load->view('landing/bar') ?>
-<!-- <div class="card-tools">
-    <div class="input-group input-group-sm" style="width: 200px; height:0px;">
-        <input type="text" name="table_search" id="table_search" class="form-control float-right" placeholder="Search" style="width: 200px; height:40px;">
-        <div class=" input-group-append">
-            <button type="submit" class="btn btn-default">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </div>
-</div> -->
-
 
 <div class="container ftco-animate">
     <div class="row mt-5" id="search_results">
@@ -55,7 +44,6 @@
                 }
             });
         }
-
         // Panggil performSearch saat halaman dimuat
         performSearch();
 
@@ -71,5 +59,5 @@
         });
     });
 </script>
-!--JS-- >
+
 <?php $this->load->view('landing/footer') ?>

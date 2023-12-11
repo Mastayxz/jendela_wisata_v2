@@ -1,8 +1,6 @@
 <?php if (!empty($event)) : ?>
     <?php foreach ($event as $ev) : ?>
         <div class="col-md-4">
-
-
             <div class="project-wrap hotel">
                 <a href="#" class="img">
                     <img src="<?= base_url() . '/upload/event/' . $ev->gambar_event; ?>" class="img">

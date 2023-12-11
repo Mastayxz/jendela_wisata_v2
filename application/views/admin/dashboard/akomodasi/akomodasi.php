@@ -3,8 +3,7 @@
 <!-- Navbar -->
 <?php $this->load->view('template/navbar') ?>
 <!-- Main Sidebar Container -->
-<?php $admin_name = $this->session->userdata('admin_name'); ?>
-<?php $this->load->view('template/sidebar', ['admin_name' => $admin_name]); ?>
+<?php $this->load->view('template/sidebar'); ?>
 <!-- content -->
 <div class="row">
     <div class="col-12">
@@ -22,6 +21,18 @@
                         </div>
                     </div>
                 </div>
+                <form method="post" action="<?= base_url('admin/akomodasi/filterByJenisAkomodasi') ?>">
+                    <div class="form-group">
+                        <label for="filter_kategori">Filter Kategori:</label>
+                        <select name="filter_jenis" id="filter_jenis" class="form-control">
+                            <option value="semua">semua</option>
+                            <?php foreach ($jenis_akomodasi_list as $ja) : ?>
+                                <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
+                </form>
             </div>
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -57,7 +68,7 @@
     $(document).ready(function() {
         // Script AJAX untuk pembaruan data event
         $.ajax({
-            url: "<?= base_url('admin/akomodasi/search_ajax') ?>",
+            url: "<?= base_url('search/search_akomodasi') ?>",
             type: "POST",
             data: {
                 table_search: '' // Kosongkan keyword untuk mendapatkan semua data
@@ -72,7 +83,7 @@
             var keyword = $(this).val();
             if (keyword.length >= 1 || keyword.length === 0) {
                 $.ajax({
-                    url: "<?= base_url('admin/akomodasi/search_ajax') ?>",
+                    url: "<?= base_url('search/search_akomodasi') ?>",
                     type: "POST",
                     data: {
                         table_search: keyword
@@ -85,6 +96,26 @@
                 // Clear the results if the keyword is too short
                 $('#search_results').html('');
             }
+        });
+
+        function filterData() {
+            var id_jenis_akomodasi = $('#filter_jenis').val();
+            $.ajax({
+                url: "<?= base_url('admin/akomodasi/filterByJenisAkomodasi') ?>",
+                type: "POST",
+                data: {
+                    filter_jenis: id_jenis_akomodasi
+                },
+                success: function(data) {
+                    $('#search_results').html(data);
+                }
+            });
+        }
+
+
+        // Event for processing changes in the category dropdown
+        $('#filter_jenis').on('change', function() {
+            filterData(); // Call filterData here
         });
     });
 </script>

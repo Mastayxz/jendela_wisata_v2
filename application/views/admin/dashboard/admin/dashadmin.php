@@ -3,8 +3,8 @@
 <!-- Navbar -->
 <?php $this->load->view('template/navbar') ?>
 <!-- Main Sidebar Container -->
-<?php $admin_name = $this->session->userdata('admin_name'); ?>
-<?php $this->load->view('template/sidebar', ['admin_name' => $admin_name]); ?>
+
+<?php $this->load->view('template/sidebar'); ?>
 
 <div class="row">
     <div class="col-12">

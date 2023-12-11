@@ -53,7 +53,7 @@ class M_akomodasi extends CI_Model
         $this->db->delete('akomodasi');
     }
 
-    public function searchAkomodasi($keyword)
+    public function searchAkomodasi($keyword, $price)
     {
         $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama');
         $this->db->from('akomodasi');
@@ -67,6 +67,24 @@ class M_akomodasi extends CI_Model
         $this->db->or_like('LOWER(tempat_wisata.nama)', $keyword);
         // Tambahkan kondisi pencarian lainnya sesuai kebutuhan
         $this->db->group_end();
+        if ($price) {
+            $this->db->where_in('harga_akomodasi <=', $price);
+        }
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function filterByJenisAkomodasi($id_jenis_akomodasi)
+    {
+        $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama');
+        $this->db->from('akomodasi');
+        $this->db->join('jenis_akomodasi', 'akomodasi.id_jenis_akomodasi = jenis_akomodasi.id_jenis_akomodasi');
+        $this->db->join('tempat_wisata', 'akomodasi.id_tempat_wisata = tempat_wisata.id_tempat_wisata');
+
+        if (!empty($id_jenis_akomodasi)) {
+            $this->db->where('jenis_akomodasi.id_jenis_akomodasi', $id_jenis_akomodasi);  // Fix the typo
+        }
 
         $query = $this->db->get();
         return $query->result();

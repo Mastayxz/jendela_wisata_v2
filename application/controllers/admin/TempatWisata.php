@@ -188,20 +188,7 @@ class TempatWisata extends CI_Controller
 
         redirect('admin/tempatwisata');
     }
-    public function search_ajax()
-    {
-        try {
-            $keyword = $this->input->post('table_search');
-            if (empty($keyword)) {
-                $data['tempat_wisata'] = $this->M_tempatWisata->getData(); // Tampilkan semua data
-            } else {
-                $data['tempat_wisata'] = $this->M_tempatWisata->searchDestinasi($keyword);
-            }
-            $this->load->view('admin/dashboard/destinasi/tempat_wisata_ajax', $data);
-        } catch (Exception $e) {
-            error_log('Error in search_ajax: ' . $e->getMessage());
-        }
-    }
+
     public function filterByCategory()
     {
         // Mendapatkan data kategori dari form
