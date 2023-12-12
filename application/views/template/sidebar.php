@@ -15,7 +15,7 @@
           <img src="<?php echo base_url('assets/template/backend/dist') ?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="<?= base_url('c_authadmin/adminProfile'); ?>" class="d-block" style="color:white;"><?= $admin_name; ?></a>
+          <a href="<?= base_url('admin/admininfo'); ?>" class="d-block" style="color:white;"><?= $admin_name; ?></a>
         </div>
       </div>
 

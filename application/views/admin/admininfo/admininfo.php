@@ -31,33 +31,20 @@
                         <!-- Form Group (username)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputUsername">Username</label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="" name="username" value="<?php echo $user['username'] ?>">
+                            <input class="form-control" id="inputUsername" type="text" placeholder="" name="username" value="<?php echo $admin['username'] ?>">
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (name)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstName">Name</label>
-                                <input class="form-control" id="inputFirstName" type="text" placeholder="" value="<?php echo $user['nama'] ?>">
+                                <input class="form-control" id="inputFirstName" type="text" placeholder="" value="<?php echo $admin['nama_admin'] ?>">
                             </div>
                         </div>
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="" value="<?php echo $user['email'] ?>">
-                        </div>
-                        <!-- Form Row-->
-                        <div class="row gx-3 mb-3">
-                            <!-- Form Group (phone number)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputPhone">Phone number</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="" name="tlp" value="<?php echo $user['tlp_user'] ?>">
-                            </div>
-                            <!-- Form Group (birthday)-->
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="" name="tgllahir" value="<?php echo $user['tgl_lahir'] ?>">
-                            </div>
+                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="" value="<?php echo $admin['email'] ?>">
                         </div>
                         <!-- Logout button-->
                         <a href="<?= base_url('c_auth/logout') ?>" class="btn btn-primary">logout</a>

@@ -74,7 +74,7 @@
 
     </div>
 </div>
-<?php var_dump($this->session->userdata('admin_data')); ?>
+<!-- <?php var_dump($this->session->userdata('admin_data')); ?> -->
 <!-- /.content-wrapper -->
 
 
