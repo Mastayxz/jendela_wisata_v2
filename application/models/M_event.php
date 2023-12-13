@@ -53,6 +53,32 @@ class M_event extends CI_Model
         // Tambahkan kondisi pencarian lainnya sesuai kebutuhan
 
         $query = $this->db->get();
+        // echo 'SQL Query: ' . $this->db->last_query() . '<br>';
+        return $query->result();
+    }
+
+    public function get_event_by_filter($alamat_event, $jam_buka, $jam_tutup, $harga_max)
+    {
+        $this->db->select('event.*, tempat_wisata.nama');
+        $this->db->from('event');
+        $this->db->join('tempat_wisata', 'event.id_tempat_wisata = tempat_wisata.id_tempat_wisata', 'left');
+
+        $this->db->like('event.alamat_event', $alamat_event);
+
+        if (!empty($jam_buka)) {
+            $this->db->where('event.jam_buka >=', $jam_buka);
+        }
+
+        if (!empty($jam_tutup)) {
+            $this->db->where('event.jam_tutup <=', $jam_tutup);
+        }
+
+        if (!empty($harga_max)) {
+            $this->db->where('event.biaya_event <=', $harga_max);
+        }
+
+        $query = $this->db->get();
+        // echo 'SQL Query: ' . $this->db->last_query() . '<br>';
         return $query->result();
     }
 }

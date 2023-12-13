@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label for="filter_kategori">Filter Kategori:</label>
                         <select name="filter_kategori" id="filter_kategori" class="form-control">
-                            <option value="">-- Semua Kategori --</option>
+                            <option value="">Semua</option>
                             <?php foreach ($kategori_list as $kategori) : ?>
                                 <option value="<?= $kategori->id_kategori; ?>"><?= $kategori->nama_kategori; ?></option>
                             <?php endforeach; ?>
@@ -69,7 +69,7 @@
         $(document).ready(function() {
             // Script AJAX untuk pembaruan data event
             $.ajax({
-                url: "<?= base_url('admin/tempatWisata/search_ajax') ?>",
+                url: "<?= base_url('admin/search/search_tempat_wisata') ?>",
                 type: "POST",
                 data: {
                     table_search: '' // Kosongkan keyword untuk mendapatkan semua data
@@ -84,7 +84,7 @@
                 var keyword = $(this).val();
                 if (keyword.length >= 1 || keyword.length === 0) {
                     $.ajax({
-                        url: "<?= base_url('admin/tempatWisata/search_ajax') ?>",
+                        url: "<?= base_url('admin/search/search_tempat_wisata') ?>",
                         type: "POST",
                         data: {
                             table_search: keyword
@@ -102,7 +102,7 @@
             function filterData() {
                 var kategori_id = $('#filter_kategori').val();
                 $.ajax({
-                    url: "<?= base_url('admin/tempatWisata/filterByCategory') ?>",
+                    url: "<?= base_url('admin/Filter/filterByCategory') ?>",
                     type: "POST",
                     data: {
                         filter_kategori: kategori_id

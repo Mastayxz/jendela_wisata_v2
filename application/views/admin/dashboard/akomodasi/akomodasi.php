@@ -23,7 +23,7 @@
                 </div>
                 <form method="post" action="<?= base_url('admin/akomodasi/filterByJenisAkomodasi') ?>">
                     <div class="form-group">
-                        <label for="filter_kategori">Filter Kategori:</label>
+                        <label for="filter_kategori">Jenis Akomodasi:</label>
                         <select name="filter_jenis" id="filter_jenis" class="form-control">
                             <option value="semua">semua</option>
                             <?php foreach ($jenis_akomodasi_list as $ja) : ?>
@@ -31,6 +31,7 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
+
                     <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
                 </form>
             </div>
@@ -68,7 +69,7 @@
     $(document).ready(function() {
         // Script AJAX untuk pembaruan data event
         $.ajax({
-            url: "<?= base_url('search/search_akomodasi') ?>",
+            url: "<?= base_url('admin/search/search_akomodasi') ?>",
             type: "POST",
             data: {
                 table_search: '' // Kosongkan keyword untuk mendapatkan semua data
@@ -83,7 +84,7 @@
             var keyword = $(this).val();
             if (keyword.length >= 1 || keyword.length === 0) {
                 $.ajax({
-                    url: "<?= base_url('search/search_akomodasi') ?>",
+                    url: "<?= base_url('admin/search/search_akomodasi') ?>",
                     type: "POST",
                     data: {
                         table_search: keyword
@@ -101,7 +102,7 @@
         function filterData() {
             var id_jenis_akomodasi = $('#filter_jenis').val();
             $.ajax({
-                url: "<?= base_url('admin/akomodasi/filterByJenisAkomodasi') ?>",
+                url: "<?= base_url('admin/filter/filterByJenisAkomodasi') ?>",
                 type: "POST",
                 data: {
                     filter_jenis: id_jenis_akomodasi

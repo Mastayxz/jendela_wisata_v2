@@ -20,7 +20,7 @@ class jenis_akomodasi extends CI_Controller
     {
         $data['page_title'] = 'jenis_akomodasi';
         $data['jenis_akomodasi'] = $this->m_jenis_akomodasi->getjenis_akomodasi();
-        $this->load->view('admin/dashboard/dash_jenis_akomodasi', $data);
+        $this->load->view('admin/dashboard/jenis_akomdasi/dash_jenis_akomodasi', $data);
     }
 
     public function tambahjenis_akomodasi()

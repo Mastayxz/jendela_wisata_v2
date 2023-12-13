@@ -30,6 +30,35 @@
                         </div>
                     </div>
                 </div>
+                <form method="post" action="<?= base_url('admin/filter/filter_event') ?>" id="filterForm">
+                    <div class="row mx-3">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="filter_kategori" class="form-label mt-4">Alamat </label>
+                                <input type="text" name="alamat_event" id="alamat_event" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="filter_kategori" class="form-label mt-4">Jam Buka</label>
+                                <input type="time" name="jam_buka" id="jam_buka" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="filter_kategori" class="form-label mt-4">Jam Tutup</label>
+                                <input type="time" name="jam_tutup" id="jam_tutup" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="filter_kategori" class="form-label mt-4">Harga maksimum </label>
+                                <input type="text" name="price" id="price" placeholder="Masukan Harga" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
+                </form>
 
                 <!-- Tampilkan Hasil Pencarian atau Semua Data -->
                 <div class="card-body table-responsive p-0">
@@ -40,6 +69,7 @@
                                 <th>Nama Event</th>
                                 <th>Biaya</th>
                                 <th>Alamat Event</th>
+                                <th>Deskripsi</th>
                                 <th>Tempat Wisata</th>
                                 <th>Jam Buka</th>
                                 <th>Jam Tutup</th>
@@ -69,7 +99,7 @@
     $(document).ready(function() {
         // Script AJAX untuk pembaruan data event
         $.ajax({
-            url: "<?= base_url('admin/event/search_ajax') ?>",
+            url: "<?= base_url('admin/search/search_event') ?>",
             type: "POST",
             data: {
                 table_search: '' // Kosongkan keyword untuk mendapatkan semua data
@@ -84,7 +114,7 @@
             var keyword = $(this).val();
             if (keyword.length >= 1 || keyword.length === 0) {
                 $.ajax({
-                    url: "<?= base_url('admin/event/search_ajax') ?>",
+                    url: "<?= base_url('admin/search/search_event') ?>",
                     type: "POST",
                     data: {
                         table_search: keyword
@@ -98,11 +128,35 @@
                 $('#search_results').html('');
             }
         });
+
+        // Event untuk memproses filter secara otomatis saat input berubah
+        $('#filterForm input').on('input', function() {
+            // Mengumpulkan data dari setiap elemen formulir
+            var alamat_event = $('#alamat_event').val();
+            var jam_buka = $('#jam_buka').val();
+            var jam_tutup = $('#jam_tutup').val();
+            var price = $('#price').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url('admin/filter/filter_event') ?>',
+                data: {
+                    alamat_event: alamat_event,
+                    jam_buka: jam_buka,
+                    jam_tutup: jam_tutup,
+                    price: price
+                },
+                success: function(data) {
+                    $('#search_results').html(data);
+                }
+            });
+        });
+
     });
 </script>
 
 
 <!-- JS -->
-<!-- <?php $this->load->view('template/js') ?> -->
+<?php $this->load->view('template/js') ?>
 
 <!-- content -->

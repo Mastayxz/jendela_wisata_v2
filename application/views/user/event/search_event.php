@@ -7,7 +7,7 @@
                     <span class="price">Rp. <?= number_format($ev->biaya_event); ?> </span>
                 </a>
                 <div class="text p-4 mb-2">
-                    <h3><a href="#" class="mb-5"><?= $ev->nama_event; ?></a></h3>
+                    <h3><a href="<?= base_url('user/event/detail/' . $ev->id_event); ?>" class="mb-5"><?= $ev->nama_event; ?></a></h3>
 
                     <div class="location"><span class="fa fa-map-marker"></span> <?= $ev->alamat_event; ?> </div>
 
