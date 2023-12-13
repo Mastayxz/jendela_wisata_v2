@@ -18,7 +18,7 @@
                         <!-- <p>Halo, <?= $this->session->userdata('username') ?>! Anda sudah login.</p> -->
                         <!-- <a href="<?= base_url('c_auth/logout') ?>" class="nav-link">Logout</a> -->
                     <?php else : ?>
-                        <a href="<?= base_url('c_auth') ?>" class="nav-link">Login</a>
+                        <a href="<?= base_url('c_auth/index') ?>" class="nav-link">Login</a>
                     <?php endif; ?>
                 </li>
 

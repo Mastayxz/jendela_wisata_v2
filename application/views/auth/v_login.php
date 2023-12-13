@@ -15,9 +15,9 @@
         </div>
         <div class="frame-2">
             <div class="form-floating mb-1">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" value="<?php echo set_value('username') ?>">
-                <?php echo form_error('username', '<small class="text-danger p-3" >', '</small>'); ?>
-                <label for="floatingInput">USERNAME</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Username or Email" name="username_or_email" value="<?php echo set_value('username_or_email') ?>">
+                <?php echo form_error('username_or_email', '<small class="text-danger p-3" >', '</small>'); ?>
+                <label for="floatingInput">USERNAME OR EMAIL</label>
             </div>
             <div class="form-floating mb-1">
                 <input type="password" class="form-control" id="floatingInput" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">

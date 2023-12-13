@@ -4,11 +4,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class c_auth extends CI_Controller
 {
-
+    
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('m_auth');
+        
+    }
+    
     public function index()
     {
 
-        $this->form_validation->set_rules('username', 'Username', 'trim|required');
+        $this->form_validation->set_rules('username_or_email', 'Username_or_Email', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
@@ -22,10 +29,17 @@ class c_auth extends CI_Controller
     }
     private function _login()
     {
-        $username = $this->input->post('username');
+        $username_or_email = $this->input->post('username_or_email');
         $password = $this->input->post('password');
 
-        $user = $this->db->get_where('user', ['username' => $username])->row_array();
+
+        //cek inputan berupa email atau username 
+        if(filter_var($username_or_email,FILTER_VALIDATE_EMAIL)){
+            $user = $this->m_auth->get_email($username_or_email);
+        }else{
+            $user = $this->m_auth->get_username($username_or_email);
+        }
+        
         //jika ada username
         if ($user) {
             //cek password
@@ -181,14 +195,14 @@ class c_auth extends CI_Controller
             $this->db->where('email', $email);
             $this->db->update('user');
 
-            $this->session->unset_userdata('email');
+            $this->session->unset_userdata('riset');
 
             $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
             password has ben changed!</div>');
             redirect('c_auth/index');
         }
     }
-    public function send_email($to, $subject, $message)
+    public function send_email($to,$subject, $message)
     {
         $this->email->set_newline("\r\n");
         $this->email->from('alimanbudi@gmail.com', 'Jendela Wisata');
@@ -207,6 +221,6 @@ class c_auth extends CI_Controller
     public function logout()
     {
         session_destroy();
-        redirect('c_auth/index');
+        redirect('user/akomodasi');
     }
 }
