@@ -23,24 +23,28 @@
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Biaya</label>
-                            <input type="number" name="biaya_event" class="form-control" required>
+                            <input type="number" name="biaya_event" class="form-control" required min="1">
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Alamat Event</label>
                             <textarea class="form-control" name="alamat_event" rows="3" required></textarea>
                         </div>
                         <div class="form-group">
+                            <label for="" class="form-label">Deskripsi Event</label>
+                            <textarea class="form-control" name="deskripsi_event" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="" class="form-label">Jam Buka</label>
-                            <input type="time" name="jam_buka" id="" class="form-control">
+                            <input type="time" name="jam_buka" id="" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Jam Tutup</label>
-                            <input type="time" name="jam_tutup" id="" class="form-control">
+                            <input type="time" name="jam_tutup" id="" class="form-control" required>
                         </div>
 
                         <div class="form-group">
                             <label for="id_tempat_wisata" class="form-label">Tempat Wisata</label>
-                            <select name="id_tempat_wisata" class="form-control">
+                            <select name="id_tempat_wisata" class="form-control" required>
                                 <?php foreach ($tempat_wisata_list as $tw) : ?>
                                     <option value="<?= $tw->id_tempat_wisata; ?>"><?= $tw->nama; ?></option>
                                 <?php endforeach; ?>
@@ -48,7 +52,7 @@
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Gambar</label>
-                            <input type="file" name="gambar" class="form-control" required min="1">
+                            <input type="file" name="gambar" class="form-control" required>
                         </div>
                         <button type="submit" class="btn btn-primary my-4">Simpan</button>
                         <button type="reset" class="btn btn-danger my-4">Reset</button>

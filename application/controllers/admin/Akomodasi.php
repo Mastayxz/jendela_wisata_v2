@@ -15,6 +15,7 @@ class Akomodasi extends CI_Controller
 
         $this->load->model('M_akomodasi');
         $this->load->model('M_tempatWisata');
+        $this->load->model('kategori_model');
     }
 
 
@@ -23,6 +24,7 @@ class Akomodasi extends CI_Controller
         $data['page_title'] = 'Akomodasi';
         $data['akomodasi'] = $this->M_akomodasi->getData();
         $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
+        $data['kategori_list'] = $this->kategori_model->getKategori();
         $this->load->view('admin/dashboard/akomodasi/akomodasi', $data);
     }
 

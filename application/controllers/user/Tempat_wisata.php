@@ -16,6 +16,8 @@ class Tempat_wisata extends CI_Controller
     public function index()
     {
         $data['page_title'] = 'Destinasi Wisatai';
+        $data['kategori_list'] = $this->kategori_model->getKategori();
+
         $data['tempat_wisata'] = $this->M_tempatWisata->getData();
         $this->load->view('user/tempat_wisata/index', $data);
     }

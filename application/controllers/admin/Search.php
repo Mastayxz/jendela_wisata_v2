@@ -41,7 +41,7 @@ class Search extends CI_Controller
     public function search_event()
     {
         try {
-            $keyword = $this->input->post('table_search');
+            $keyword = $this->input->post('table_search');;
             if (empty($keyword)) {
                 $data['event'] = $this->M_event->getData(); // Tampilkan semua data
             } else {
@@ -57,6 +57,7 @@ class Search extends CI_Controller
         // $data['page_title'] = 'Admin';
         try {
             $keyword = $this->input->post('table_search');
+
             if (empty($keyword)) {
                 $data['admin'] = $this->m_admin->getadmin(); // Tampilkan semua data
             } else {

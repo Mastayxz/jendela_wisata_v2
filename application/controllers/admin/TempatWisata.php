@@ -20,6 +20,7 @@ class TempatWisata extends CI_Controller
     public function index()
     {
         $data['page_title'] = 'Tempat Wisata';
+        $this->session->set_userdata('active_menu', 'tempatwisata');
         $data['tempat_wisata'] = $this->M_tempatWisata->getData();
         $data['kategori_list'] = $this->kategori_model->getKategori();
         $this->load->view('admin/dashboard/destinasi/tempat_wisata', $data);
@@ -187,22 +188,6 @@ class TempatWisata extends CI_Controller
     </div>');
 
         redirect('admin/tempatwisata');
-    }
-
-    public function filterByCategory()
-    {
-        // Mendapatkan data kategori dari form
-        $kategori_id = $this->input->post('filter_kategori');
-
-        // Memanggil model untuk melakukan filter berdasarkan kategori
-        $filtered_data = $this->M_tempatWisata->filterByCategory($kategori_id);
-
-        // Mendapatkan daftar kategori untuk ditampilkan di form filter
-        $data['kategori_list'] = $this->kategori_model->getKategori();
-
-        // Tampilkan view dengan data hasil filter dan daftar kategori
-        $data['tempat_wisata'] = $filtered_data;
-        $this->load->view('admin/dashboard/destinasi/tempat_wisata_ajax', $data);
     }
 }
 

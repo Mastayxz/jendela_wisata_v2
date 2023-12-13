@@ -19,7 +19,42 @@
 </section>
 
 
+
 <?php $this->load->view('landing/bar') ?>
+<div class="container">
+    <div class="row">
+        <form method="post" action="<?= base_url('admin/akomodasi/filterByJenisAkomodasi') ?>">
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="filter_kategori" class="form-label mt-4">Alamat </label>
+                        <input type="text" name="alamat_event" id="alamat_event" class="form-control">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="filter_kategori" class="form-label mt-4">Jam Buka</label>
+                        <input type="time" name="jam_buka" id="jam_buka" class="form-control">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="filter_kategori" class="form-label mt-4">Jam Tutup</label>
+                        <input type="time" name="jam_tutup" id="jam_tutup " class="form-control">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="filter_kategori" class="form-label mt-4">Harga maksimum </label>
+                        <input type="number" name="price" id="price" placeholder="Masukan Harga" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
+        </form>
+
+    </div>
+</div>
 
 <div class="container ftco-animate">
     <div class="row mt-5" id="search_results">

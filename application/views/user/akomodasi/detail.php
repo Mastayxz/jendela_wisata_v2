@@ -25,18 +25,18 @@
     <div class="row">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="wrap mt-5">
-                        <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi1']; ?>" alt="" class="image" style="height: 73vh;">
+                        <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi1']; ?>" alt="" class="image" style="height: 80vh;">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="wrap mt-5">
-                        <div class="image-grid">
+                        <div class="image-grid" style="display: flex; flex-direction: column; height: 73vh;">
                             <!-- Gambar 1 -->
-                            <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi2']; ?>" alt="" class="small-image " style="height: 73vh;">
+                            <img src=" <?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi2']; ?>" alt="" class="small-image " style="flex: 1; height:40vh;">
                             <!-- Gambar 2 -->
-                            <img src=" <?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi3']; ?>" alt="" class="small-image" style="height: 73vh;">
+                            <img src=" <?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi3']; ?>" alt="" class="small-image" style="flex: 1; height:40vh;">
                             <!-- Gambar 3 -->
                         </div>
                     </div>

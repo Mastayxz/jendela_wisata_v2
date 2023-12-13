@@ -1,5 +1,5 @@
 <!-- application/views/admin/dashboard/event_ajax.php -->
-<?php if (!empty($event)) : ?>
+<?php if (isset($event) && !empty($event)) : ?>
     <?php $no = 1; ?>
     <?php foreach ($event as $ev) : ?>
         <tr>
@@ -7,6 +7,7 @@
             <td><?= $ev->nama_event; ?></td>
             <td>Rp. <?= number_format($ev->biaya_event); ?> </td>
             <td><?= $ev->alamat_event; ?></td>
+            <td><?= $ev->deskripsi_event; ?></td>
             <td><?= $ev->nama ?? ''; ?></td>
             <td><?= $ev->jam_buka; ?></td>
             <td><?= $ev->jam_tutup; ?></td>

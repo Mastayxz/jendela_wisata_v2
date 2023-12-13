@@ -31,6 +31,10 @@
                             <textarea class="form-control" name="alamat_event" rows="3" required><?= $event['alamat_event']; ?></textarea>
                         </div>
                         <div class="form-group">
+                            <label for="" class="form-label">Deskripsi Event</label>
+                            <textarea class="form-control" name="deskripsi_event" rows="3" required><?= $event['deskripsi_event']; ?></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="" class="form-label">Jam Buka</label>
                             <input type="time" name="jam_buka" id="" value="<?= $event['jam_buka']; ?>" class="form-control">
                         </div>
