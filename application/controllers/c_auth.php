@@ -46,6 +46,10 @@ class c_auth extends CI_Controller
             if (password_verify($password, $user['password'])) {
                 $data = [
                     'username' => $user['username'],
+                    'nama' => $user['nama'],
+                    'email' => $user['email'],
+                    'tlp_user' => $user['tlp_user'],
+                    'tgl_lahir' => $user['tgl_lahir']
                 ];
                 $this->session->set_userdata($data);
                 redirect('user/tempat_wisata');
