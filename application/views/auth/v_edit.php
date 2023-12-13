@@ -9,7 +9,7 @@
       <h1>CHANGE PASSWORD</h1>
       <hr>
       <h3>JENDELA WISATA</h3>
-      <h5 class="mb-4"><?php echo $this->session->userdata('email') ?></h5>
+      <h5 class="mb-4"><?php echo $this->session->userdata('riset') ?></h5>
     </div>
     <div class="alert">
       <?php echo $this->session->flashdata('pesan'); ?>
@@ -27,7 +27,7 @@
       </div>
 
       <div class="input">
-        <button type="submit" class="btn btn-secondary">SIGN</button>
+        <button type="submit" class="btn btn-secondary">CHANGE PASSWORD</button>
       </div>
     </div>
   </div>
