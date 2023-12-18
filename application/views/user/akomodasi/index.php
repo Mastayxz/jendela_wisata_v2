@@ -101,7 +101,7 @@
             var id_jenis_akomodasi = $('#filter_jenis').val();
             var price = $('#price').val();
             $.ajax({
-                url: "<?= base_url('user/akomodasi/filterByJenisAkomodasi') ?>",
+                url: "<?= base_url('user/filter/filterByJenisAkomodasi') ?>",
                 type: "POST",
                 data: {
                     filter_jenis: id_jenis_akomodasi,

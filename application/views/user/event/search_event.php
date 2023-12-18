@@ -12,8 +12,8 @@
                     <div class="location"><span class="fa fa-map-marker"></span> <?= $ev->alamat_event; ?> </div>
 
                     <ul>
-                        <li><span class="flaticon-shower"></span>2</li>
-                        <li><span class="flaticon-king-size"></span>3</li>
+                        <li><span class="flaticon-shower"></span><?= $ev->jam_buka; ?> - <?= $ev->jam_tutup; ?></li>
+
                         <li><span class="flaticon-sun-umbrella"></span><?= $ev->nama; ?></li>
                     </ul>
                 </div>

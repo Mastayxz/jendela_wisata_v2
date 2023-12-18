@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="wrap mt-5">
-                        <img src="<?= base_url() . '/upload/event/' . $event['gambar_event']; ?>" alt="" class="image" style="height: 80vh;">
+                        <img src="<?= base_url() . '/upload/event/' . $event['gambar_event']; ?>" alt="" class="image" style="height: 150vh;">
                     </div>
                 </div>
             </div>

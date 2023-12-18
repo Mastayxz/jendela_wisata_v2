@@ -22,38 +22,37 @@
 
 <?php $this->load->view('landing/bar') ?>
 <div class="container">
-    <div class="row">
-        <form method="post" action="<?= base_url('admin/akomodasi/filterByJenisAkomodasi') ?>">
-            <div class="row">
-                <div class="col-3">
-                    <div class="form-group">
-                        <label for="filter_kategori" class="form-label mt-4">Alamat </label>
-                        <input type="text" name="alamat_event" id="alamat_event" class="form-control">
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="form-group">
-                        <label for="filter_kategori" class="form-label mt-4">Jam Buka</label>
-                        <input type="time" name="jam_buka" id="jam_buka" class="form-control">
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="form-group">
-                        <label for="filter_kategori" class="form-label mt-4">Jam Tutup</label>
-                        <input type="time" name="jam_tutup" id="jam_tutup " class="form-control">
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="form-group">
-                        <label for="filter_kategori" class="form-label mt-4">Harga maksimum </label>
-                        <input type="number" name="price" id="price" placeholder="Masukan Harga" class="form-control">
-                    </div>
+    <form method="post" action="<?= base_url('user/filter/filter_event') ?>" id="filterForm">
+        <div class="row mx-3">
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="filter_kategori" class="form-label mt-4">Alamat </label>
+                    <input type="text" name="alamat_event" id="alamat_event" class="form-control">
                 </div>
             </div>
-            <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
-        </form>
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="filter_kategori" class="form-label mt-4">Jam Buka</label>
+                    <input type="time" name="jam_buka" id="jam_buka" class="form-control">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="filter_kategori" class="form-label mt-4">Jam Tutup</label>
+                    <input type="time" name="jam_tutup" id="jam_tutup" class="form-control">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="filter_kategori" class="form-label mt-4">Harga maksimum </label>
+                    <input type="text" name="price" id="price" placeholder="Masukan Harga" class="form-control">
+                </div>
+            </div>
+        </div>
+        <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
+    </form>
 
-    </div>
+
 </div>
 
 <div class="container ftco-animate">
@@ -69,7 +68,7 @@
         function performSearch() {
             var keyword = $('#table_search').val();
             $.ajax({
-                url: "<?= base_url('user/event/search_ajax') ?>",
+                url: "<?= base_url('user/search/search_event') ?>",
                 type: "POST",
                 data: {
                     table_search: keyword
@@ -91,6 +90,29 @@
         $('#search_form').on('submit', function(event) {
             event.preventDefault(); // Mencegah form untuk melakukan submit secara default
             performSearch();
+        });
+
+
+        $('#filterForm input').on('input', function() {
+            // Mengumpulkan data dari setiap elemen formulir
+            var alamat_event = $('#alamat_event').val();
+            var jam_buka = $('#jam_buka').val();
+            var jam_tutup = $('#jam_tutup').val();
+            var price = $('#price').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url('user/filter/filter_event') ?>',
+                data: {
+                    alamat_event: alamat_event,
+                    jam_buka: jam_buka,
+                    jam_tutup: jam_tutup,
+                    price: price
+                },
+                success: function(data) {
+                    $('#search_results').html(data);
+                }
+            });
         });
     });
 </script>

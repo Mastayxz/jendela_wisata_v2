@@ -23,26 +23,15 @@
 ?>
 
 <div class="container  ftco-animate">
-    <form method="post" action="<?= base_url('admin/akomodasi/filterByJenisAkomodasi') ?>">
+    <form method="post" action="<?= base_url('user/filter/filterByJenisAkomodasi') ?>">
         <div class="row">
             <div class="col-4">
                 <div class="form-group">
                     <label for="filter_kategori" class="form-label mt-4">Jenis Akomodasi</label>
                     <select name="filter_kategori" id="filter_kategori" class="form-control">
-                        <option value="">-- Semua Kategori --</option>
+                        <option value="">Semua</option>
                         <?php foreach ($kategori_list as $kategori) : ?>
                             <option value="<?= $kategori->id_kategori; ?>"><?= $kategori->nama_kategori; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Jenis Akomodasi</label>
-                    <select name="filter_jenis" id="filter_jenis" class="form-control">
-                        <option value="semua">semua</option>
-                        <?php foreach ($jenis_akomodasi_list as $ja) : ?>
-                            <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -93,13 +82,13 @@
         });
 
         function filterData() {
-            var id_jenis_akomodasi = $('#filter_jenis').val();
+            var kategori_id = $('#filter_kategori').val();
             var price = $('#price').val();
             $.ajax({
-                url: "<?= base_url('user/akomodasi/filterByJenisAkomodasi') ?>",
+                url: "<?= base_url('user/Filter/filterByCategory') ?>",
                 type: "POST",
                 data: {
-                    filter_jenis: id_jenis_akomodasi,
+                    filter_kategori: kategori_id,
                     price: price
                 },
                 success: function(data) {
@@ -108,9 +97,8 @@
             });
         }
 
-
         // Event for processing changes in the category dropdown
-        $('#filter_jenis').on('change', function() {
+        $('#filter_kategori').on('change', function() {
             filterData(); // Call filterData here
         });
     });

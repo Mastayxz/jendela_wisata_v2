@@ -209,6 +209,199 @@ body {
     }
   }
 
+  /* Stil untuk iPhone 13 Pro Max (portrait and landscape) */
+@media only screen 
+and (device-width: 428px) 
+and (device-height: 926px) 
+and (-webkit-min-device-pixel-ratio: 3) {
+
+  .frame {
+    position: absolute;
+    width: 90%;
+    height: 600px;
+    max-width: 428px;
+    margin-left: 20px;
+    margin-top: 30%;
+    background-color: white;
+    margin-bottom: 50px;
+    top: 0;
+    border-radius: 0px 50.12px 0px 25.12px;
+    box-shadow: 9px 9px 14.6px 9px rgba(0, 0, 0, 0.16);
+  }
+
+  .frame-1 h1 {
+    font-size: 24px;
+    letter-spacing: 4px;
+    margin-left: 140px;
+    padding-top: 50px;
+    font-family: 'Rufina';
+  }
+
+  .frame-1 hr {
+    width: 50%;
+    height: 2px;
+    margin-top: 5px;
+    margin-left: 90px;
+  }
+
+  .frame-1 h3 {
+    font-size: 12px;
+    letter-spacing: 5px;
+    margin-left: 105px;
+    padding-top: 0px;
+    font-family: 'Rufina';
+  }
+
+  .frame-2 {
+    margin-left: 10%;
+    margin-top: 50px;
+  }
+
+  .form-floating {
+    width: 80%;
+    max-width: 428px;
+    height: 40px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-family: 'Rufina';
+  }
+
+  .regis {
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+
+  .regis h6 {
+    font-size: 14px;
+  }
+
+  .regis a {
+    font-size: 14px;
+  }
+
+  .input {
+    margin-top: 5px;
+    width: auto;
+    margin-left: 200px;
+  }
+
+  .btn {
+    width: 70%;
+    letter-spacing: 2px;
+    font-size: 18px;
+    background-color: #fff;
+    color: black;
+  }
+
+  .alert {
+    width: 90%;
+    max-width: 428px;
+    height: 40px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+}
+
+/* Stil untuk iPhone 12 (portrait and landscape) */
+@media only screen 
+  and (device-width: 390px) 
+  and (device-height: 844px) 
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+  .frame {
+    position: absolute;
+    width: 90%;
+    height: 550px;
+    max-width: 390px;
+    margin-left: 20px;
+    margin-top: 30%;
+    background-color: white;
+    margin-bottom: 50px;
+    top: 0;
+    border-radius: 0px 50.12px 0px 25.12px;
+    box-shadow: 9px 9px 14.6px 9px rgba(0, 0, 0, 0.16);
+  }
+
+  .frame-1 h1 {
+    font-size: 22px;
+    letter-spacing: 4px;
+    margin-left: 130px;
+    padding-top: 50px;
+    font-family: 'Rufina';
+  }
+
+  .frame-1 hr {
+    width: 50%;
+    height: 2px;
+    margin-top: 5px;
+    margin-left: 85px;
+  }
+
+  .frame-1 h3 {
+    font-size: 11px;
+    letter-spacing: 5px;
+    margin-left: 100px;
+    padding-top: 0px;
+    font-family: 'Rufina';
+  }
+
+  .frame-2 {
+    margin-left: 10%;
+    margin-top: 50px;
+  }
+
+  .form-floating {
+    width: 80%;
+    max-width: 390px;
+    height: 35px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-family: 'Rufina';
+  }
+
+  .regis {
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+
+  .regis h6 {
+    font-size: 14px;
+  }
+
+  .regis a {
+    font-size: 14px;
+  }
+
+  .input {
+    margin-top: 5px;
+    width: auto;
+    margin-left: 190px;
+  }
+
+  .btn {
+    width: 70%;
+    letter-spacing: 2px;
+    font-size: 16px;
+    background-color: #fff;
+    color: black;
+  }
+
+  .alert {
+    width: 90%;
+    max-width: 390px;
+    height: 30px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+}
+
+
 
 
 

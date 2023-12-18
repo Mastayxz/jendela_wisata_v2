@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </div>
-                <form method="post" action="<?= base_url('admin/filter/filter_event') ?>" id="filterForm">
+                <form method="post" action="<?= base_url('user/filter/filter_event') ?>" id="filterForm">
                     <div class="row mx-3">
                         <div class="col-3">
                             <div class="form-group">
@@ -139,7 +139,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '<?= base_url('admin/filter/filter_event') ?>',
+                url: '<?= base_url('user/filter/filter_event') ?>',
                 data: {
                     alamat_event: alamat_event,
                     jam_buka: jam_buka,
