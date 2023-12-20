@@ -58,7 +58,7 @@
                         <li>
                             <p class="title"><?php echo $destinasi['nama']; ?></p>
                         </li>
-                        <li> <button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-heart"></i> </button>
+                        <li> <a type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-heart"></i> </a>
                         </li>
                     </ul>
                 </div>

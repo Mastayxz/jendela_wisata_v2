@@ -21,7 +21,7 @@
 
 
 <?php $this->load->view('landing/bar') ?>
-<div class="container">
+<div class="container ftco-animate">
     <form method="post" action="<?= base_url('user/filter/filter_event') ?>" id="filterForm">
         <div class="row mx-3">
             <div class="col-3">
@@ -52,14 +52,14 @@
         <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
     </form>
 
-
-</div>
-
-<div class="container ftco-animate">
     <div class="row mt-5" id="search_results">
 
     </div>
 </div>
+
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

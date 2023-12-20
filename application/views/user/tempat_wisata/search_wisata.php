@@ -1,7 +1,7 @@
 <?php if (!empty($tempat_wisata)) : ?>
 
     <?php foreach ($tempat_wisata as $tw) : ?>
-        <div class="col-md-4 ">
+        <div class="col-md-4">
             <div class="project-wrap hotel">
                 <a href="#" class="img">
                     <img src="<?= base_url() . '/upload/destinasi/' . $tw->gambar1; ?>" alt="" class="img">

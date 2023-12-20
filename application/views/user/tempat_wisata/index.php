@@ -45,7 +45,7 @@
         </div>
         <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
     </form>
-    <div class="row mt-5" id="search_results">
+    <div class="row mt-5 ftco-animate" id="search_results">
 
     </div>
 </div>

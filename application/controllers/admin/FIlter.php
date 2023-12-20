@@ -37,6 +37,29 @@ class Filter extends CI_Controller
         $this->load->view('admin/dashboard/akomodasi/akomodasi_ajax', $data);
     }
 
+    // public function filterByJenisAkomodasi()
+    // {
+    //     // Mendapatkan data jenis akomodasi dari form
+    //     $id_jenis_akomodasi = $this->input->post('filter_jenis');
+
+    //     // Mendapatkan data harga dari form
+    //     $harga_min = $this->input->post('filter_harga_min');
+    //     $harga_max = $this->input->post('filter_harga_max');
+
+    //     // Memanggil model untuk melakukan filter berdasarkan jenis dan harga
+    //     $filtered_data = $this->M_akomodasi->filterByJenisDanHarga($id_jenis_akomodasi, $harga_min, $harga_max);
+
+    //     // Mendapatkan daftar jenis akomodasi untuk ditampilkan di form filter
+    //     $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
+
+    //     // Data yang akan dikirimkan ke view
+    //     $data['akomodasi'] = $filtered_data;
+
+    //     // Load the view to display the filtered data and jenis akomodasi list
+    //     $this->load->view('admin/dashboard/akomodasi/akomodasi_ajax', $data);
+    // }
+
+
     public function filterByCategory()
     {
         // Mendapatkan data kategori dari form

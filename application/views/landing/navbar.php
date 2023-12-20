@@ -7,10 +7,10 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="<?= base_url('homecontrol') ?>" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="<?= base_url('user/event'); ?>" class="nav-link">Event</a></li>
                 <li class="nav-item"><a href="<?= base_url('user/tempat_wisata'); ?>" class="nav-link">Destination</a></li>
-                <li class="nav-item"><a href="<?= base_url('user/akomodasi'); ?>" class="nav-link">Akomodasi</a></li>
+                <li class="nav-item"><a href="<?= base_url('user/akomodasi'); ?>" class="nav-link">Akomodation</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">Contact</a></li>
                 <li class="nav-item">
                     <?php if ($this->session->userdata('username')) : ?>

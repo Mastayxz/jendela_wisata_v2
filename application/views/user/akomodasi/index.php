@@ -23,14 +23,14 @@
 
 
 
-<div class="container ">
-    <form method="post" action="<?= base_url('admin/akomodasi/filterByJenisAkomodasi') ?>">
+<div class="container  ftco-animate ">
+    <form method="post" action="<?= base_url('user/filter/filterByJenisDanHarga') ?>" id="filter-form">
         <div class="row">
             <div class="col-4">
                 <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Jenis Akomodasi</label>
+                    <label for="filter_jenis" class="form-label mt-4">Jenis Akomodasi</label>
                     <select name="filter_jenis" id="filter_jenis" class="form-control">
-                        <option value="semua">semua</option>
+                        <option value="semua">Semua</option>
                         <?php foreach ($jenis_akomodasi_list as $ja) : ?>
                             <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
                         <?php endforeach; ?>
@@ -39,23 +39,17 @@
             </div>
             <div class="col-4">
                 <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Jenis Akomodasi</label>
-                    <select name="filter_jenis" id="filter_jenis" class="form-control">
-                        <option value="semua">semua</option>
-                        <?php foreach ($jenis_akomodasi_list as $ja) : ?>
-                            <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                    <label for="filter_harga_min" class="form-label mt-4">Harga Minimum</label>
+                    <input type="text" name="filter_harga_min" id="filter_harga_min" class="form-control" placeholder="Harga Minimum">
                 </div>
             </div>
             <div class="col-4">
                 <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Harga maksimum </label>
-                    <input type="number" name="price" id="price" placeholder="Masukan Harga" class="form-control">
+                    <label for="filter_harga_max" class="form-label mt-4">Harga Maximum</label>
+                    <input type="text" name="filter_harga_max" id="filter_harga_max" class="form-control" placeholder="Harga Maximum">
                 </div>
             </div>
         </div>
-        <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
     </form>
     <div class="row mt-5" id="search_results">
 
@@ -65,6 +59,7 @@
 
 
 </article>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         function performSearch() {
@@ -99,13 +94,16 @@
 
         function filterData() {
             var id_jenis_akomodasi = $('#filter_jenis').val();
-            var price = $('#price').val();
+            var harga_min = $('#filter_harga_min').val();
+            var harga_max = $('#filter_harga_max').val();
+
             $.ajax({
-                url: "<?= base_url('user/filter/filterByJenisAkomodasi') ?>",
+                url: "<?= base_url('user/filter/filter_akomodasi') ?>",
                 type: "POST",
                 data: {
                     filter_jenis: id_jenis_akomodasi,
-                    price: price
+                    filter_harga_min: harga_min,
+                    filter_harga_max: harga_max
                 },
                 success: function(data) {
                     $('#search_results').html(data);
@@ -113,10 +111,14 @@
             });
         }
 
-
-        // Event for processing changes in the category dropdown
+        // Event untuk memproses perubahan pada dropdown kategori
         $('#filter_jenis').on('change', function() {
-            filterData(); // Call filterData here
+            filterData();
+        });
+
+        // Event untuk memproses perubahan pada input harga
+        $('#filter_harga_min, #filter_harga_max').on('input', function() {
+            filterData();
         });
     });
 </script>

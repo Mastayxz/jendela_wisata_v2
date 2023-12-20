@@ -90,5 +90,36 @@ class M_akomodasi extends CI_Model
         return $query->result();
     }
 
+    // M_akomodasi.php
+
+    // M_akomodasi.php
+
+    public function filterByJenisDanHarga($id_jenis_akomodasi, $harga_min, $harga_max)
+    {
+        $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama');
+        $this->db->from('akomodasi');
+        $this->db->join('jenis_akomodasi', 'akomodasi.id_jenis_akomodasi = jenis_akomodasi.id_jenis_akomodasi');
+        $this->db->join('tempat_wisata', 'akomodasi.id_tempat_wisata = tempat_wisata.id_tempat_wisata');
+
+        // Filter berdasarkan jenis akomodasi
+        if (!empty($id_jenis_akomodasi) && $id_jenis_akomodasi != "semua") {
+            $this->db->where('jenis_akomodasi.id_jenis_akomodasi', $id_jenis_akomodasi);
+        }
+
+        // Filter berdasarkan harga
+        if (!empty($harga_min)) {
+            $this->db->where('akomodasi.harga_akomodasi >=', $harga_min);
+        }
+
+        if (!empty($harga_max)) {
+            $this->db->where('akomodasi.harga_akomodasi <=', $harga_max);
+        }
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+
+
     /* End of file M_akomodasi.php */
 }
