@@ -13,7 +13,7 @@ class event extends CI_Controller
     }
     public function index()
     {
-        $data['page_title'] = 'event';
+        $data['page_title'] = 'Event';
         $data['tempat_wisata'] = $this->M_tempatWisata->getData();
         $data['event'] = $this->M_event->getData();
         $this->load->view('user/event/index', $data);

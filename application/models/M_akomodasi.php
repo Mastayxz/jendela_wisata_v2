@@ -14,7 +14,7 @@ class M_akomodasi extends CI_Model
 
     public function getData()
     {
-        $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama');
+        $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama_tempat_wisata');
         $this->db->from('akomodasi');
         $this->db->join('jenis_akomodasi', 'akomodasi.id_jenis_akomodasi = jenis_akomodasi.id_jenis_akomodasi');
         $this->db->join('tempat_wisata', 'akomodasi.id_tempat_wisata = tempat_wisata.id_tempat_wisata');
@@ -55,7 +55,7 @@ class M_akomodasi extends CI_Model
 
     public function searchAkomodasi($keyword, $price)
     {
-        $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama');
+        $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama_tempat_wisata');
         $this->db->from('akomodasi');
         $this->db->join('jenis_akomodasi', 'akomodasi.id_jenis_akomodasi = jenis_akomodasi.id_jenis_akomodasi');
         $this->db->join('tempat_wisata', 'akomodasi.id_tempat_wisata = tempat_wisata.id_tempat_wisata');
@@ -64,7 +64,7 @@ class M_akomodasi extends CI_Model
 
         $this->db->group_start();
         $this->db->like('LOWER(akomodasi.nama_akomodasi)', $keyword, false);
-        $this->db->or_like('LOWER(tempat_wisata.nama)', $keyword);
+        $this->db->or_like('LOWER(tempat_wisata.nama_tempat_wisata)', $keyword);
         // Tambahkan kondisi pencarian lainnya sesuai kebutuhan
         $this->db->group_end();
         if ($price) {
@@ -77,7 +77,7 @@ class M_akomodasi extends CI_Model
 
     public function filterByJenisAkomodasi($id_jenis_akomodasi)
     {
-        $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama');
+        $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama_tempat_wisata');
         $this->db->from('akomodasi');
         $this->db->join('jenis_akomodasi', 'akomodasi.id_jenis_akomodasi = jenis_akomodasi.id_jenis_akomodasi');
         $this->db->join('tempat_wisata', 'akomodasi.id_tempat_wisata = tempat_wisata.id_tempat_wisata');
@@ -94,13 +94,14 @@ class M_akomodasi extends CI_Model
 
     // M_akomodasi.php
 
-    public function filterByJenisDanHarga($id_jenis_akomodasi, $harga_min, $harga_max)
+    public function filterByJenisDanHarga($id_jenis_akomodasi, $harga_min, $harga_max, $alamat)
     {
-        $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama');
+        $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama_tempat_wisata');
         $this->db->from('akomodasi');
         $this->db->join('jenis_akomodasi', 'akomodasi.id_jenis_akomodasi = jenis_akomodasi.id_jenis_akomodasi');
         $this->db->join('tempat_wisata', 'akomodasi.id_tempat_wisata = tempat_wisata.id_tempat_wisata');
-
+        $this->db->like('akomodasi.alamat_akomodasi', $alamat);
+        $this->db->or_like('tempat_wisata.nama_tempat_wisata', $alamat);
         // Filter berdasarkan jenis akomodasi
         if (!empty($id_jenis_akomodasi) && $id_jenis_akomodasi != "semua") {
             $this->db->where('jenis_akomodasi.id_jenis_akomodasi', $id_jenis_akomodasi);

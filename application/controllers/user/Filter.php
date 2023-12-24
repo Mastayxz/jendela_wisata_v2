@@ -24,11 +24,12 @@ class Filter extends CI_Controller
             // Mendapatkan data harga dari form
             $harga_min = $this->input->post('filter_harga_min');
             $harga_max = $this->input->post('filter_harga_max');
+            $alamat = $this->input->post('alamat');
 
-            if (empty($id_jenis_akomodasi) && empty($harga_min) && empty($harga_max)) {
+            if (empty($id_jenis_akomodasi) && empty($harga_min) && empty($harga_max) && empty($alamat)) {
                 $filtered_data = $this->M_akomodasi->getData(); // Tampilkan semua data
             } else {
-                $filtered_data = $this->M_akomodasi->filterByJenisDanHarga($id_jenis_akomodasi, $harga_min, $harga_max);
+                $filtered_data = $this->M_akomodasi->filterByJenisDanHarga($id_jenis_akomodasi, $harga_min, $harga_max, $alamat);
             }
 
             // Mendapatkan daftar jenis akomodasi untuk ditampilkan di form filter
@@ -46,15 +47,19 @@ class Filter extends CI_Controller
 
 
 
-    public function filterByCategory()
+    public function filter_destinasi()
     {
         // Mendapatkan data kategori dari form
         $kategori_id = $this->input->post('filter_kategori');
+        $harga_min = $this->input->post('filter_harga_min');
+        $harga_max = $this->input->post('filter_harga_max');
+        $alamat = $this->input->post('alamat');
 
-        if ($kategori_id == "semua") {
+
+        if (empty($kategori_id) && empty($harga_max) && empty($harga_min) && empty($alamat)) {
             $filtered_data = $this->M_tempatWisata->getData();
         } else {
-            $filtered_data = $this->M_tempatWisata->filterByCategory($kategori_id);
+            $filtered_data = $this->M_tempatWisata->filterByCategory($kategori_id, $harga_max, $harga_min, $alamat);
         }
         // Memanggil model untuk melakukan filter berdasarkan kategori
 

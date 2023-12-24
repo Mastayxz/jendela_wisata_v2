@@ -56,7 +56,7 @@
                         <li> | <?= $akomodasi['alamat_akomodasi']; ?></li>
                         <li> | <?php foreach ($tempat_wisata_list as $tw) : ?>
                                 <?php if ($tw->id_tempat_wisata == $akomodasi['id_tempat_wisata']) : ?>
-                                    <?= $tw->nama; ?>
+                                    <?= $tw->nama_tempat_wisata; ?>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </li>
@@ -74,11 +74,9 @@
                 <div class="mt-5">
                     <div class="price-container">
                         <div class="harga">
-                            <p class="fw-bold mb-0">Harga</p>
+                            <p class="fw-bold mb-0">Price Accomodation</p>
                             <p class="fw-bold">Rp.<?= number_format($akomodasi['harga_akomodasi']); ?></p>
-                            <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#pesanTiketModal">
-                                Pesan Tiket
-                            </a>
+
                         </div>
                     </div>
                 </div>

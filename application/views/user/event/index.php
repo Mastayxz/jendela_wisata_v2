@@ -6,7 +6,7 @@
 <!-- Navbar -->
 <?php $this->load->view('landing/navbar') ?>
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/image_2.jpg');">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/services-1.jpg');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -20,37 +20,66 @@
 
 
 
-<?php $this->load->view('landing/bar') ?>
-<div class="container ftco-animate">
-    <form method="post" action="<?= base_url('user/filter/filter_event') ?>" id="filterForm">
-        <div class="row mx-3">
-            <div class="col-3">
-                <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Alamat </label>
-                    <input type="text" name="alamat_event" id="alamat_event" class="form-control">
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Jam Buka</label>
-                    <input type="time" name="jam_buka" id="jam_buka" class="form-control">
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Jam Tutup</label>
-                    <input type="time" name="jam_tutup" id="jam_tutup" class="form-control">
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Harga maksimum </label>
-                    <input type="text" name="price" id="price" placeholder="Masukan Harga" class="form-control">
+<!-- <?php $this->load->view('landing/bar') ?> -->
+
+
+<section class="ftco-section ftco-no-pb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search-wrap-1 ftco-animate">
+                    <form method="post" action="<?= base_url('user/filter/filter_event') ?>" id="filterForm" class="search-property-1">
+                        <div class="row no-gutters">
+                            <div class="col-lg d-flex">
+                                <div class="form-group p-4 border-0">
+                                    <label for="#">Place Name</label>
+                                    <div class="form-field">
+                                        <div class="icon"><span class="fa fa-search"></span></div>
+                                        <input type="text" name="alamat_event" id="alamat_event" class="form-control" placeholder="location name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg d-flex">
+                                <div class="form-group p-4">
+                                    <label for="#">Opening hours</label>
+                                    <div class="form-field">
+                                        <div class="icon"><span class="fa fa-clock"></span></div>
+                                        <input type="time" name="jam_buka" id="jam_buka" class="form-control" placeholder="open">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg d-flex">
+                                <div class="form-group p-4">
+                                    <label for="#">Closing hours</label>
+                                    <div class="form-field">
+                                        <div class="icon"><span class="fa fa-clock"></span></div>
+                                        <input type="time" name="jam_tutup" id="jam_tutup" class="form-control" placeholder="close">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg d-flex">
+                                <div class="form-group p-4">
+                                    <label for="#">Price</label>
+                                    <div class="form-field">
+                                        <div class="select-wrap">
+                                            <div class="icon"><span class="fa fa-chevron-down"></span></div>
+                                            <input type="text" name="price" id="price" placeholder="max price" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
-    </form>
+    </div>
+</section>
+
+
+
+<div class="container ftco-animate">
 
     <div class="row mt-5" id="search_results">
 

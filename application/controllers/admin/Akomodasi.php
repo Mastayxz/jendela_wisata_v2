@@ -129,7 +129,6 @@ class Akomodasi extends CI_Controller
                 }
             }
         }
-
         $edit = array(
             'nama_akomodasi' => $this->input->post('nama_akomodasi'),
             'harga_akomodasi' => $this->input->post('harga_akomodasi'),

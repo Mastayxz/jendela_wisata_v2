@@ -12,6 +12,7 @@ class Dashboard extends CI_Controller
 			redirect('c_authadmin/index');
 		}
 		$this->load->model('M_wisata');
+		$this->load->model('Log_model');
 	}
 
 	public function index()
@@ -23,6 +24,8 @@ class Dashboard extends CI_Controller
 		$data['event'] = $this->M_wisata->getJumlahEvent();
 		$data['member'] = $this->M_wisata->getJumlahMember();
 
+		// Pass username to the view
+		$data['username'] = $this->session->userdata('admin_data')['username'];
 
 		$this->load->view('admin/dashboard/index', $data);
 	}

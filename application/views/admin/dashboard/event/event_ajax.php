@@ -8,7 +8,7 @@
             <td>Rp. <?= number_format($ev->biaya_event); ?> </td>
             <td><?= $ev->alamat_event; ?></td>
             <td><?= $ev->deskripsi_event; ?></td>
-            <td><?= $ev->nama ?? ''; ?></td>
+            <td><?= $ev->nama_tempat_wisata ?? ''; ?></td>
             <td><?= $ev->jam_buka; ?></td>
             <td><?= $ev->jam_tutup; ?></td>
             <td><img src="<?= base_url('upload/event/' . $ev->gambar_event); ?>" width="100" alt=""></td>

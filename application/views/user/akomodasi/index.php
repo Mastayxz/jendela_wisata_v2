@@ -12,7 +12,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center">
                 <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url('user/tempat_wisata'); ?>">Home <i class="fa fa-chevron-right"></i></a></span> <span>Hotel <i class="fa fa-chevron-right"></i></span></p>
-                <h1 class="mb-0 bread">Akomodasi</h1>
+                <h1 class="mb-0 bread">Accomodation</h1>
             </div>
         </div>
     </div>
@@ -21,36 +21,67 @@
 
 <?php $this->load->view('landing/bar') ?>
 
-
-
-<div class="container  ftco-animate ">
-    <form method="post" action="<?= base_url('user/filter/filterByJenisDanHarga') ?>" id="filter-form">
+<section class="ftco-section ftco-no-pb">
+    <div class="container">
         <div class="row">
-            <div class="col-4">
-                <div class="form-group">
-                    <label for="filter_jenis" class="form-label mt-4">Jenis Akomodasi</label>
-                    <select name="filter_jenis" id="filter_jenis" class="form-control">
-                        <option value="semua">Semua</option>
-                        <?php foreach ($jenis_akomodasi_list as $ja) : ?>
-                            <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="form-group">
-                    <label for="filter_harga_min" class="form-label mt-4">Harga Minimum</label>
-                    <input type="text" name="filter_harga_min" id="filter_harga_min" class="form-control" placeholder="Harga Minimum">
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="form-group">
-                    <label for="filter_harga_max" class="form-label mt-4">Harga Maximum</label>
-                    <input type="text" name="filter_harga_max" id="filter_harga_max" class="form-control" placeholder="Harga Maximum">
+            <div class="col-md-12">
+                <div class="search-wrap-1 ftco-animate">
+                    <form method="post" action="<?= base_url('user/filter/filterByJenisDanHarga') ?>" id="filter-form" class="search-property-1">
+                        <div class="row no-gutters">
+                            <div class="col-lg d-flex">
+                                <div class="form-group p-4 border-0">
+                                    <label for="#">Place Name</label>
+                                    <div class="form-field">
+                                        <div class="icon"><span class="fa fa-map-marker"></span></div>
+                                        <input type="text" name="alamat" id="alamat" class="form-control" placeholder="location name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg d-flex">
+                                <div class="form-group p-4">
+                                    <label for="#">Minimum Price</label>
+                                    <div class="form-field">
+                                        <div class="icon"><span class="fa fa-tag"></span></div>
+                                        <input type="text" name="filter_harga_min" id="filter_harga_min" class="form-control" placeholder="min price">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg d-flex">
+                                <div class="form-group p-4">
+                                    <label for="#">Limit Price</label>
+                                    <div class="form-field">
+                                        <div class="icon"><span class="fa fa-tag"></span></div>
+                                        <input type="text" name="filter_harga_max" id="filter_harga_max" class="form-control" placeholder="max price">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg d-flex">
+                                <div class="form-group p-4">
+                                    <label for="#">Acomodation Type</label>
+                                    <div class="form-field">
+                                        <div class="select-wrap">
+                                            <div class="icon"><span class="fa fa-chevron-down"></span></div>
+                                            <select name="filter_jenis" id="filter_jenis" class="form-control">
+                                                <option value="semua">Semua</option>
+                                                <?php foreach ($jenis_akomodasi_list as $ja) : ?>
+                                                    <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+</section>
+
+<div class="container  ftco-animate ">
+    <!--  -->
     <div class="row mt-5" id="search_results">
 
     </div>
@@ -96,6 +127,7 @@
             var id_jenis_akomodasi = $('#filter_jenis').val();
             var harga_min = $('#filter_harga_min').val();
             var harga_max = $('#filter_harga_max').val();
+            var alamat = $('#alamat').val();
 
             $.ajax({
                 url: "<?= base_url('user/filter/filter_akomodasi') ?>",
@@ -103,7 +135,8 @@
                 data: {
                     filter_jenis: id_jenis_akomodasi,
                     filter_harga_min: harga_min,
-                    filter_harga_max: harga_max
+                    filter_harga_max: harga_max,
+                    alamat: alamat
                 },
                 success: function(data) {
                     $('#search_results').html(data);
@@ -117,7 +150,7 @@
         });
 
         // Event untuk memproses perubahan pada input harga
-        $('#filter_harga_min, #filter_harga_max').on('input', function() {
+        $('#filter_harga_min, #filter_harga_max, #alamat').on('input', function() {
             filterData();
         });
     });

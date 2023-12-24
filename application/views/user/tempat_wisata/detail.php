@@ -52,11 +52,11 @@
                 <div class="mt-5 kontent">
                     <ul class="kategori">
                         <li>| <?php echo implode(", ", array_column($kategori, 'nama_kategori')); ?></li>
-                        <li> | <?= $destinasi['alamat']; ?></li>
+                        <li> | <?= $destinasi['alamat_tempat_wisata']; ?></li>
                     </ul>
                     <ul class="kategori">
                         <li>
-                            <p class="title"><?php echo $destinasi['nama']; ?></p>
+                            <p class="title"><?php echo $destinasi['nama_tempat_wisata']; ?></p>
                         </li>
                         <li> <a type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-heart"></i> </a>
                         </li>
@@ -68,22 +68,22 @@
                     <div class="price-container">
                         <div class="harga">
                             <p class="fw-bold mb-0">Biaya Masuk </p>
-                            <p class="fw-bold">Rp.<?= number_format($destinasi['biaya']); ?></p>
+                            <p class="fw-bold">Rp.<?= number_format($destinasi['biaya_tempat_wisata']); ?></p>
                             <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#pesanTiketModal">
-                                Pesan Tiket
+                                informasi Tiket
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="wrapped-description">
-                <p><?php echo $destinasi['deskripsi'] ?></p>
+                <p><?php echo $destinasi['deskripsi_tempat_wisata'] ?></p>
             </div>
             <div class="map-container mt-5">
                 <div class="map-info">
                     <p><i class="fa fa-map-marker map-icon"></i> Lokasi:</p>
                     <div class="wrap">
-                        <p width="600" height="450"><?php echo $destinasi['lokasi']; ?></p>
+                        <p width="600" height="450"><?php echo $destinasi['lokasi_tempat_wisata']; ?></p>
                     </div>
 
                 </div>

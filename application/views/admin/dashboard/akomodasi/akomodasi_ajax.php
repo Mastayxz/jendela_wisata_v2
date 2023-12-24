@@ -20,7 +20,7 @@
                     <?= $ak->deskripsi_akomodasi; ?>
                 </div>
             </td>
-            <td><?= $ak->nama; ?></td>
+            <td><?= $ak->nama_tempat_wisata; ?></td>
             <td><img src="<?= base_url() . '/upload/akomodasi/' . $ak->gambar_akomodasi1; ?>" width="100" alt=""></td>
             <td><img src="<?= base_url() . '/upload/akomodasi/' . $ak->gambar_akomodasi2; ?>" width="100" alt=""></td>
             <td><img src="<?= base_url() . '/upload/akomodasi/' . $ak->gambar_akomodasi3; ?>" width="100" alt=""></td>

@@ -15,7 +15,7 @@
                     <ul>
                         <li><span class="flaticon-shower"></span>2</li>
                         <li><span class="flaticon-king-size"></span>3</li>
-                        <li><span class="flaticon-sun-umbrella"></span><?= $ak->nama; ?></li>
+                        <li><span class="flaticon-sun-umbrella"></span><?= $ak->nama_tempat_wisata; ?></li>
                     </ul>
                 </div>
             </div>

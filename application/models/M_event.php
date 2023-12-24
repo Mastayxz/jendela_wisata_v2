@@ -14,7 +14,7 @@ class M_event extends CI_Model
 
     public function getData()
     {
-        $this->db->select('event.*, tempat_wisata.nama');
+        $this->db->select('event.*, tempat_wisata.nama_tempat_wisata');
         $this->db->from('event');
         $this->db->join('tempat_wisata', 'event.id_tempat_wisata = tempat_wisata.id_tempat_wisata');
         $query = $this->db->get();
@@ -44,7 +44,7 @@ class M_event extends CI_Model
     }
     public function searchEvents($keyword)
     {
-        $this->db->select('event.*, tempat_wisata.nama');
+        $this->db->select('event.*, tempat_wisata.nama_tempat_wisata');
         $this->db->from('event');
         $this->db->join('tempat_wisata', 'event.id_tempat_wisata = tempat_wisata.id_tempat_wisata', 'left');
         $this->db->like('LOWER(nama_event)', strtolower($keyword), false);
@@ -59,11 +59,12 @@ class M_event extends CI_Model
 
     public function get_event_by_filter($alamat_event, $jam_buka, $jam_tutup, $harga_max)
     {
-        $this->db->select('event.*, tempat_wisata.nama');
+        $this->db->select('event.*, tempat_wisata.nama_tempat_wisata');
         $this->db->from('event');
         $this->db->join('tempat_wisata', 'event.id_tempat_wisata = tempat_wisata.id_tempat_wisata', 'left');
 
         $this->db->like('event.alamat_event', $alamat_event);
+        $this->db->or_like('tempat_wisata.nama_tempat_wisata', $alamat_event);
 
         if (!empty($jam_buka)) {
             $this->db->where('event.jam_buka >=', $jam_buka);

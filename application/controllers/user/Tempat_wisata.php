@@ -15,7 +15,7 @@ class Tempat_wisata extends CI_Controller
 
     public function index()
     {
-        $data['page_title'] = 'Destinasi Wisatai';
+        $data['page_title'] = 'Destinasi Wisata';
         $data['kategori_list'] = $this->kategori_model->getKategori();
 
         $data['tempat_wisata'] = $this->M_tempatWisata->getData();
@@ -23,7 +23,7 @@ class Tempat_wisata extends CI_Controller
     }
     public function detail($id_tempat_wisata)
     {
-        $data['page_title'] = 'Detail Destinasi Wisatai';
+        $data['page_title'] = 'Detail Destinasi Wisata';
         $data['destinasi'] = $this->M_tempatWisata->getDetail($id_tempat_wisata);
         $data['kategori'] = $this->kategori_model->getKategoriByTempatWisata($id_tempat_wisata);
         $this->load->view('user/tempat_wisata/detail', $data);
