@@ -26,20 +26,20 @@ class event extends CI_Controller
         $data['tempat_wisata_list'] = $this->M_tempatWisata->getData($id);
         $this->load->view('user/event/detail', $data);
     }
-    public function search_ajax()
-    {
-        try {
-            $keyword = $this->input->post('table_search');
-            if (empty($keyword)) {
-                $data['event'] = $this->M_event->getData(); // Tampilkan semua data
-            } else {
-                $data['event'] = $this->M_event->searchEvents($keyword);
-            }
-            $this->load->view('user/event/search_event', $data);
-        } catch (Exception $e) {
-            error_log('Error in search_ajax: ' . $e->getMessage());
-        }
-    }
+    // public function search_ajax()
+    // {
+    //     try {
+    //         $keyword = $this->input->post('table_search');
+    //         if (empty($keyword)) {
+    //             $data['event'] = $this->M_event->getData(); // Tampilkan semua data
+    //         } else {
+    //             $data['event'] = $this->M_event->searchEvents($keyword);
+    //         }
+    //         $this->load->view('user/event/search_event', $data);
+    //     } catch (Exception $e) {
+    //         error_log('Error in search_ajax: ' . $e->getMessage());
+    //     }
+    // }
 }
 
 /* End of file Home_ak.php */

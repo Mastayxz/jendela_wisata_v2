@@ -15,27 +15,15 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center">
-                <h1 class="mb-0 bread">Destination</h1>
+                <h1 class="mb-0 bread">Event</h1>
             </div>
         </div>
     </div>
 </section>
-<div class="container-fluid mt-3">
-    <div class="row">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="wrap mt-5">
-                        <img src="<?= base_url() . '/upload/event/' . $event['gambar_event']; ?>" alt="" class="image" style="height: 150vh;">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <div class="cards-8 section">
-    <div class="container">
+    <div class="container ftco-animate">
         <div class="row">
             <div class="col-md-9 d-flex justify-content-between">
                 <div class="mt-5 kontent">
@@ -43,7 +31,7 @@
                         <li> | <?= $event['alamat_event']; ?></li>
                         <li> | <?php foreach ($tempat_wisata_list as $tw) : ?>
                                 <?php if ($tw->id_tempat_wisata == $event['id_tempat_wisata']) : ?>
-                                    <?= $tw->nama; ?>
+                                    <?= $tw->nama_tempat_wisata; ?>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </li>
@@ -52,7 +40,13 @@
                         <li>
                             <p class="title"><?php echo $event['nama_event']; ?></p>
                         </li>
-                        <li> <button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-heart"></i> </button>
+                        <li>
+                            <a title="Wishlist" class="btn btn-just-icon btn-simple btn-warning" href="<?= base_url('user/wishlist/add_to_wish/null/' . $event['id_event']); ?>">
+                                <i class="fa fa-heart"></i>
+                            </a>
+                        </li>
+
+
                         </li>
                     </ul>
                 </div>
@@ -88,49 +82,7 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="pesanTiketModal" tabindex="-1" role="dialog" aria-labelledby="pesanTiketModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="pesanTiketModalLabel">Form Pemesanan Tiket</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Tempatkan formulir pemesanan tiket di sini -->
-                <form id="formPesanTiket">
-                    <!-- ... (elemen formulir lainnya) ... -->
-                    <div class="form-group">
-                        <label for="nama">Nama:</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Jumlah Tiket</label>
-                        <input type="number" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Waktu</label>
-                        <input type="time" class="form-control" id="email" name="email" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
-
-<script>
-    $(document).ready(function() {
-        $('#formPesanTiket').submit(function(event) {
-            event.preventDefault(); // Mencegah pengiriman formulir (untuk keperluan contoh)
-            // Tambahkan logika pengiriman data formulir atau interaksi lain di sini
-            $('#pesanTiketModal').modal('hide'); // Menutup modal setelah pengiriman formulir (gantilah dengan logika sesuai kebutuhan)
-        });
-    });
-</script>
 
 
 <?php $this->load->view('landing/footer') ?>

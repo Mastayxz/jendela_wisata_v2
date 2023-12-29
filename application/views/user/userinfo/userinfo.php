@@ -1,7 +1,6 @@
 <?php $this->load->view('landing/header') ?>
 
-<?php $this->load->view('landing/navbar') ?>
-<link rel="stylesheet" href="<?= base_url('public/css/style.css'); ?>">
+
 <!-- Navbar -->
 <link rel="stylesheet" href="<?php echo base_url('assets/template/backend/dist/css/userinfo.css') ?>" type="text/css">
 

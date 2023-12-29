@@ -21,6 +21,7 @@ class akomodasi extends CI_Controller
     }
     public function detail($id)
     {
+        $data['page_title'] = 'Detail Akomodasi';
         $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi($id);
         $data['tempat_wisata_list'] = $this->M_tempatWisata->getData($id);
         $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
@@ -40,7 +41,7 @@ class akomodasi extends CI_Controller
     //         error_log('Error in search_ajax: ' . $e->getMessage());
     //     }
     // }
-   
+
 }
 
 /* End of file Home_ak.php */

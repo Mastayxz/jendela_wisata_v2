@@ -20,7 +20,7 @@
 
 
 
-<!-- <?php $this->load->view('landing/bar') ?> -->
+<?php $this->load->view('landing/bar') ?>
 
 
 <section class="ftco-section ftco-no-pb">

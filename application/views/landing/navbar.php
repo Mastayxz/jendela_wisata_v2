@@ -11,10 +11,12 @@
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/event') ? 'active' : ''; ?>"><a href="<?= base_url('user/event'); ?>" class="nav-link">Event</a></li>
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/tempat_wisata') ? 'active' : ''; ?>"><a href="<?= base_url('user/tempat_wisata'); ?>" class="nav-link">Destination</a></li>
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/akomodasi') ? 'active' : ''; ?>"><a href="<?= base_url('user/akomodasi'); ?>" class="nav-link">Accomodation</a></li>
+                <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/wishlist') ? 'active' : ''; ?>"><a href="<?= base_url('user/wishlist'); ?>" class="nav-link">wishlist</a></li>
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'blog') ? 'active' : ''; ?>"><a href="blog.html" class="nav-link">Contact</a></li>
+
                 <li class="nav-item">
-                    <?php if ($this->session->userdata('username')) : ?>
-                        <a href="<?= base_url('user/userinfo'); ?>" class="nav-link"><i class="fa fa-user"></i></a>
+                    <?php if ($this->session->userdata('id_user')) : ?>
+                        <a href="<?= base_url('user/userinfo'); ?>" class="nav-link"><i class="fa fa-user"> </i></a>
                     <?php else : ?>
                         <a href="<?= base_url('c_auth/index') ?>" class="nav-link">Login</a>
                     <?php endif; ?>
