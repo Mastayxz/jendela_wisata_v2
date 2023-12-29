@@ -1,47 +1,128 @@
 <?php
 
-defined('BASEPATH') or exit('No direct script access allowed');
-
 class Wishlist extends CI_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('wishlist_model');
-        $this->load->library('session');
+        $this->load->model('Wishlist_model');
+        $this->load->model('M_akomodasi');
+        $this->load->model('M_tempatWisata');
+        $this->load->model('kategori_model');
+        $this->load->model('M_event');
     }
 
-    public function addToWishlist($type, $id)
+    public function add_to_wish($id_akomodasi = null, $id_event = null, $id_tempat_wisata = null)
     {
-        // Mendapatkan ID pengguna dari sesi
-        $user_id = $this->session->userdata('user_id');
+        // Pastikan user sudah login
+        if (!$this->session->userdata('id_user')) {
+            // Handle jika user belum login (misalnya, redirect ke halaman login)
+            redirect('c_auth');
+        }
 
-        // Memasukkan data ke dalam tabel Wishlist
-        $data = array(
-            'id_user' => $user_id,
-            'id_akomodasi' => ($type == 'akomodasi') ? $id : null,
-            'id_event' => ($type == 'event') ? $id : null,
-            'id_tempat_wisata' => ($type == 'tempat_wisata') ? $id : null,
-        );
+        // Ambil ID user dari sesi
+        $id_user = $this->session->userdata('id_user');
 
-        $this->wishlist_model->addToWishlist($data);
+        // Atur id_akomodasi menjadi null jika tombol ditekan pada halaman event atau destinasi
+        $id_akomodasi = ($id_akomodasi === 'null') ? null : $id_akomodasi;
+        $id_event = ($id_event === 'null') ? null : $id_event;
+        $id_tempat_wisata = ($id_tempat_wisata === 'null') ? null : $id_tempat_wisata;
+
+        // Panggil model untuk menambahkan ke wishlist
+        $result = $this->Wishlist_model->add_to_wishlist($id_user, $id_akomodasi, $id_event, $id_tempat_wisata);
+
+        if ($result) {
+            $this->session->set_flashdata('success_message', 'Item berhasil ditambahkan ke Wishlist.');
+        } else {
+            $this->session->set_flashdata('error_message', 'Gagal menambahkan item ke Wishlist.');
+        }
 
         // Redirect atau tampilkan pesan sukses
-        redirect('wishlist');
+        redirect('user/wishlist');
     }
+
+
+
 
     public function index()
     {
-        // Mendapatkan ID pengguna dari sesi
-        $user_id = $this->session->userdata('user_id');
 
-        // Mendapatkan daftar wishlist pengguna
-        $data['wishlist'] = $this->wishlist_model->getWishlist($user_id);
+        $data['page_title'] = 'Wishlist';
+        $data['tempat_wisata'] = $this->M_tempatWisata->getData();
+        $data['akomodasi'] = $this->M_akomodasi->getData();
+        $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
+
+        // Pastikan user sudah login
+        if (!$this->session->userdata('id_user')) {
+            // Handle jika user belum login (misalnya, redirect ke halaman login)
+            redirect('c_auth');
+        }
+
+        // Ambil ID user dari sesi
+        $id_user = $this->session->userdata('id_user');
+
+        // Panggil model untuk mendapatkan daftar wishlist
+        $data['wishlist'] = $this->Wishlist_model->get_user_wishlist($id_user);
 
         // Tampilkan halaman wishlist
-        $this->load->view('wishlist', $data);
+        $this->load->view('user/wishlist/wishlist', $data);
+    }
+
+    // Wishlist.php (controller)
+
+    // public function add_to_wishlist($id_item = null, $item_type = null)
+    // {
+    //     // Pastikan user sudah login
+    //     if (!$this->session->userdata('id_user')) {
+    //         redirect('c_auth');
+    //     }
+
+    //     // Ambil ID user dari sesi
+    //     $id_user = $this->session->userdata('id_user');
+
+    //     // Panggil model untuk menambahkan ke wishlist
+    //     $this->Wishlist_model->add_to_wishlist($id_user, $id_item, $item_type);
+
+    //     // Redirect atau tampilkan pesan sukses
+    //     redirect('user/wishlist/wishlist');
+    // }
+
+    // public function index()
+    // {
+    //     // Pastikan user sudah login
+    //     if (!$this->session->userdata('id_user')) {
+    //         redirect('c_auth');
+    //     }
+
+    //     // Ambil ID user dari sesi
+    //     $id_user = $this->session->userdata('id_user');
+
+    //     // Panggil model untuk mendapatkan daftar wishlist
+    //     $data['wishlist'] = $this->Wishlist_model->get_user_wishlist($id_user);
+
+    //     // Tampilkan halaman wishlist
+    //     $this->load->view('user/wishlist/wishlist', $data);
+    // }
+
+
+    public function delete($id_wishlist)
+    {
+        // Pastikan user sudah login
+        if (!$this->session->userdata('id_user')) {
+            redirect('c_auth');
+        }
+
+        // Panggil model untuk menghapus item dari wishlist
+        $result = $this->Wishlist_model->delete_wishlist_item($id_wishlist);
+
+        if ($result) {
+            $this->session->set_flashdata('success_message', 'Item berhasil dihapus dari Wishlist.');
+        } else {
+            $this->session->set_flashdata('error_message', 'Gagal menghapus item dari Wishlist.');
+        }
+
+        // Redirect atau tampilkan pesan sukses
+        redirect('user/wishlist');
     }
 }
-
-/* End of file Wishlist.php */

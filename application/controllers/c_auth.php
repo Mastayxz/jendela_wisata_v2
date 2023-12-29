@@ -4,14 +4,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class c_auth extends CI_Controller
 {
-    
+
     public function __construct()
     {
         parent::__construct();
         $this->load->model('m_auth');
-        
     }
-    
+
     public function index()
     {
 
@@ -34,17 +33,18 @@ class c_auth extends CI_Controller
 
 
         //cek inputan berupa email atau username 
-        if(filter_var($username_or_email,FILTER_VALIDATE_EMAIL)){
+        if (filter_var($username_or_email, FILTER_VALIDATE_EMAIL)) {
             $user = $this->m_auth->get_email($username_or_email);
-        }else{
+        } else {
             $user = $this->m_auth->get_username($username_or_email);
         }
-        
+
         //jika ada username
         if ($user) {
             //cek password
             if (password_verify($password, $user['password'])) {
                 $data = [
+                    'id_user' => $user['id_user'],
                     'username' => $user['username'],
                     'nama' => $user['nama'],
                     'email' => $user['email'],
@@ -206,7 +206,7 @@ class c_auth extends CI_Controller
             redirect('c_auth/index');
         }
     }
-    public function send_email($to,$subject, $message)
+    public function send_email($to, $subject, $message)
     {
         $this->email->set_newline("\r\n");
         $this->email->from('alimanbudi@gmail.com', 'Jendela Wisata');
@@ -225,6 +225,6 @@ class c_auth extends CI_Controller
     public function logout()
     {
         session_destroy();
-        redirect('user/akomodasi');
+        redirect('homecontrol');
     }
 }

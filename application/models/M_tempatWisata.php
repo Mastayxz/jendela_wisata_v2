@@ -107,25 +107,34 @@ class M_tempatWisata extends CI_Model
         $this->db->join('kategori_wisata', 'tempat_wisata.id_tempat_wisata = kategori_wisata.id_tempat_wisata');
         $this->db->join('kategori', 'kategori_wisata.id_kategori = kategori.id_kategori');
         $this->db->group_by('tempat_wisata.id_tempat_wisata');
-        $this->db->like('LOWER(nama)', strtolower($keyword), false);
-        $this->db->or_like('alamat', $keyword);
+        $this->db->like('LOWER(nama_tempat_wisata)', strtolower($keyword), false);
+        $this->db->or_like('alamat_tempat_wisata', $keyword);
 
 
         $query = $this->db->get();
         return $query->result();
     }
 
-    public function filterByCategory($kategori_id)
+    public function filterByCategory($kategori_id, $harga_max, $harga_min, $alamat)
     {
         $this->db->select('tempat_wisata.*, GROUP_CONCAT(kategori.nama_kategori) as kategori');
         $this->db->from('tempat_wisata');
         $this->db->join('kategori_wisata', 'tempat_wisata.id_tempat_wisata = kategori_wisata.id_tempat_wisata');
         $this->db->join('kategori', 'kategori_wisata.id_kategori = kategori.id_kategori');
         $this->db->group_by('tempat_wisata.id_tempat_wisata');
+        $this->db->like('tempat_wisata.alamat_tempat_wisata', $alamat);
 
         // Filter berdasarkan kategori
         if (!empty($kategori_id)) {
             $this->db->where('kategori.id_kategori', $kategori_id);
+        }
+        // Filter berdasarkan harga
+        if (!empty($harga_min)) {
+            $this->db->where('tempat_wisata.biaya_tempat_wisata >=', $harga_min);
+        }
+
+        if (!empty($harga_max)) {
+            $this->db->where('tempat_wisata.biaya_tempat_wisata <=', $harga_max);
         }
 
         $query = $this->db->get();

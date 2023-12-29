@@ -11,7 +11,7 @@
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_2.jpg');
 ">
     <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi1']; ?>" alt="" class="image" style="height: 100vh;">
-    <div class=" overlay"></div>
+    <!-- <div class=" overlay"></div> -->
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center">
@@ -21,7 +21,7 @@
     </div>
 </section>
 
-<div class="container-fluid mt-5">
+<div class="container-fluid ftco-animate mt-5">
     <div class="row">
         <div class="container-fluid">
             <div class="row">
@@ -48,7 +48,7 @@
 </div>
 
 <div class="cards-8 section">
-    <div class="container">
+    <div class="container ftco-animate">
         <div class="row">
             <div class="col-md-9 d-flex justify-content-between">
                 <div class="mt-5 kontent">
@@ -56,7 +56,7 @@
                         <li> | <?= $akomodasi['alamat_akomodasi']; ?></li>
                         <li> | <?php foreach ($tempat_wisata_list as $tw) : ?>
                                 <?php if ($tw->id_tempat_wisata == $akomodasi['id_tempat_wisata']) : ?>
-                                    <?= $tw->nama; ?>
+                                    <?= $tw->nama_tempat_wisata; ?>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </li>
@@ -65,7 +65,12 @@
                         <li>
                             <p class="title"><?php echo $akomodasi['nama_akomodasi']; ?></p>
                         </li>
-                        <li> <button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-simple btn-warning" data-original-title="Saved to Wishlist"> <i class="fa fa-heart"></i> </button>
+                        <li> <a title="Wishlist" class="btn btn-just-icon btn-simple btn-warning" href="<?= base_url('user/wishlist/add_to_wish/' . $akomodasi['id_akomodasi']); ?>">
+                                <i class="fa fa-heart"></i>
+                            </a>
+                            <!-- <a title="Wishlist" class="btn btn-just-icon btn-simple btn-warning" href="<?= base_url('user/wishlist/add_to_wishlist/' . $akomodasi['id_akomodasi'] . '/akomodasi'); ?>">
+                            <i class="fa fa-heart"></i>
+                        </a> -->
                         </li>
                     </ul>
                 </div>
@@ -74,11 +79,9 @@
                 <div class="mt-5">
                     <div class="price-container">
                         <div class="harga">
-                            <p class="fw-bold mb-0">Harga</p>
+                            <p class="fw-bold mb-0">Price Accomodation</p>
                             <p class="fw-bold">Rp.<?= number_format($akomodasi['harga_akomodasi']); ?></p>
-                            <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#pesanTiketModal">
-                                Pesan Tiket
-                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -97,38 +100,7 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="pesanTiketModal" tabindex="-1" role="dialog" aria-labelledby="pesanTiketModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="pesanTiketModalLabel">Form Pemesanan Tiket</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Tempatkan formulir pemesanan tiket di sini -->
-                <form id="formPesanTiket">
-                    <!-- ... (elemen formulir lainnya) ... -->
-                    <div class="form-group">
-                        <label for="nama">Nama:</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Jumlah Tiket</label>
-                        <input type="number" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Waktu</label>
-                        <input type="time" class="form-control" id="email" name="email" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 
 <script>

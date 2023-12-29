@@ -13,6 +13,17 @@
 <!-- Content Wrapper. Contains page content -->
 
 <!--  -->
+
+<div class="row mt-4">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Welcome, <?= $username ?>!</h5>
+                <p class="card-text">Here is the dashboard for Jendela Wisata.</p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
 
     <div class="row">
@@ -74,6 +85,17 @@
 
     </div>
 </div>
+
+<!-- Login Logs -->
+<!-- Dashboard content -->
+
+<!-- Display welcome message and other dashboard elements -->
+
+<!-- Display logged-in users -->
+
+
+<!-- Remaining content of the view -->
+
 <!-- <?php var_dump($this->session->userdata('admin_data')); ?> -->
 <!-- /.content-wrapper -->
 

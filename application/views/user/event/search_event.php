@@ -14,7 +14,7 @@
                     <ul>
                         <li><span class="flaticon-shower"></span><?= $ev->jam_buka; ?> - <?= $ev->jam_tutup; ?></li>
 
-                        <li><span class="flaticon-sun-umbrella"></span><?= $ev->nama; ?></li>
+                        <li><span class="flaticon-sun-umbrella"></span><?= $ev->nama_tempat_wisata; ?></li>
                     </ul>
                 </div>
             </div>

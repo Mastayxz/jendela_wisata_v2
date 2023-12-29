@@ -3,18 +3,18 @@
     <?php foreach ($tempat_wisata as $tw) : ?>
         <tr>
             <td><?= $no++; ?></td>
-            <td><?= $tw->nama; ?></td>
-            <td>Rp. <?= number_format($tw->biaya); ?> </td>
-            <td><?= $tw->alamat; ?></td>
+            <td><?= $tw->nama_tempat_wisata; ?></td>
+            <td>Rp. <?= number_format($tw->biaya_tempat_wisata); ?> </td>
+            <td><?= $tw->alamat_tempat_wisata; ?></td>
             <td>
                 <div style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; max-height:300px;">
-                    <?= $tw->lokasi; ?>
+                    <?= $tw->lokasi_tempat_wisata; ?>
                 </div>
             </td>
             <td><?= $tw->kategori; ?></td>
             <td class="d-flex">
                 <div style="max-width: 100px; max-height: 100px; overflow: hidden; text-overflow: ellipsis;">
-                    <?= $tw->deskripsi; ?>
+                    <?= $tw->deskripsi_tempat_wisata; ?>
                 </div>
             </td>
             <td><img src="<?= base_url() . '/upload/destinasi/' . $tw->gambar1; ?>" width="100" height="100" alt=""></td>
