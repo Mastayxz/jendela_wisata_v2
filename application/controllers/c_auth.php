@@ -148,9 +148,9 @@ class c_auth extends CI_Controller
             $subject = 'lupa Password';
             $message =
                 "<html>
-                                    <p>silahkan mengklik link di bawah ini </p>
-                                    <a href='$link'>ganti password</a>
-                     <html>";
+                <p>silahkan mengklik link di bawah ini </p>
+                <a href='$link'>ganti password</a>
+                <html>";
 
 
             if ($user) {
