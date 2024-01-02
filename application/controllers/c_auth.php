@@ -14,8 +14,12 @@ class c_auth extends CI_Controller
     public function index()
     {
 
-        $this->form_validation->set_rules('username_or_email', 'Username_or_Email', 'trim|required');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        $this->form_validation->set_rules('username_or_email', 'Username or Email', 'trim|required',array(
+            'required' => 'pleas fill in this column'
+        ));
+        $this->form_validation->set_rules('password', 'Password', 'trim|required',array(
+            'required' => 'pleas fill in this column'
+        ));
 
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = 'Jendela wisata login';

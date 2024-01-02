@@ -7,17 +7,14 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-<<<<<<< HEAD
-            
-=======
+
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'homecontrol') ? 'active' : ''; ?>"><a href="<?= base_url('homecontrol') ?>" class="nav-link">Home</a></li>
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/event') ? 'active' : ''; ?>"><a href="<?= base_url('user/event'); ?>" class="nav-link">Event</a></li>
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/tempat_wisata') ? 'active' : ''; ?>"><a href="<?= base_url('user/tempat_wisata'); ?>" class="nav-link">Destination</a></li>
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/akomodasi') ? 'active' : ''; ?>"><a href="<?= base_url('user/akomodasi'); ?>" class="nav-link">Accomodation</a></li>
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/wishlist') ? 'active' : ''; ?>"><a href="<?= base_url('user/wishlist'); ?>" class="nav-link">wishlist</a></li>
-                <li class="nav-item <?php echo ($this->uri->uri_string() == 'blog') ? 'active' : ''; ?>"><a href="blog.html" class="nav-link">Contact</a></li>
+                <li class="nav-item <?php echo ($this->uri->uri_string() == 'c_hubungi') ? 'active' : ''; ?>"><a href="<?= base_url('c_hubungi/index')?>" class="nav-link">Contact</a></li>
 
->>>>>>> 3c08fa4ead9315dc96b9bee2fe70a844c4a28542
                 <li class="nav-item">
                     <?php if ($this->session->userdata('id_user')) : ?>
                         <a href="<?= base_url('user/userinfo'); ?>" class="nav-link"><i class="fa fa-user"> </i></a>

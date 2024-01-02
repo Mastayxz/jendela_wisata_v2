@@ -1,14 +1,16 @@
 <?php $this->load->view('landing/header');
  ?>
+
 <link rel="stylesheet"  style="" href="<?php echo base_url('public/css/design.css'); ?>"> 
 <?php $this->load->view('landing/navbar');
  ?>
   
- <!-- END nav -->
 
+ 
+ 
+ 
 
- <!-- Controler-->
- <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('./assets/landing/images/bg_1.jpg');">
+ <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_1.jpg');">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -47,7 +49,7 @@
      <span class="fa fa-paper-plane"></span>
    </div>
    <h3 class="mb-2">Email Address</h3>
-   <p><a href="mailto:info@yoursite.com">alimanbudi@gmail.com</a></p>
+   <p><a href="mailto:kadekdwipratama21@gmail.com">Send Gmail</a></p>
  </div>
 </div>
 <div class="col-md-3 d-flex">
@@ -56,8 +58,7 @@
    <span class="fa fa-globe"></span>
  </div>
  <h3 class="mb-2">Website</h3>
- <p><a href="http://localhost/jendela_wisata_v2/user/akomodasi">http://localhost/jendela_
-  wisata_v2/user/akomodasi</a></p>
+ <p><a href="http://localhost/jendela_wisata_v2/user/akomodasi">Jendela Wisata</a></p>
 </div>
 </div>
 </div>
@@ -68,21 +69,27 @@
   <div class="container">
     <div class="row block-9">
       <div class="col-md-6 order-md-last d-flex">
-        <form action="#" class="bg-light p-5 contact-form">
+        <form action="<?php echo base_url('c_hubungi/index') ?>" class="bg-light p-5 contact-form" method="post">
           <div class="form-group">
-            <input type="text" class="form-control" name="name" placeholder="Your Name">
+            <input type="text" class="form-control" name="name" placeholder="Your Name" value="<?php echo set_value('name') ?>">
+            <?php echo form_error('name', '<small class="text-danger p-3" >', '</small>'); ?>
+            
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="email" placeholder="Your Email">
+            <input type="text" class="form-control" name="email" placeholder="Your Email" value="<?php echo set_value('email') ?>">
+            <?php echo form_error('email', '<small class="text-danger p-3" >', '</small>'); ?>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="subject" placeholder="Subject">
+            <input type="text" class="form-control" name="subject" placeholder="Subject" value="<?php echo set_value('subject') ?>">
+            <?php echo form_error('subject', '<small class="text-danger p-3" >', '</small>'); ?>
           </div>
           <div class="form-group">
-            <textarea name="" id="" cols="30" rows="7" class="form-control" name="massage" placeholder="Message"></textarea>
+            <textarea cols="30" rows="7" class="form-control" name="pesan" placeholder="Message" value="<?php echo set_value('pesan') ?>"></textarea>
+            <?php echo form_error('pesan', '<small class="text-danger p-3" >', '</small>'); ?>
           </div>
           <div class="form-group">
             <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+            
           </div>
         </form>
         
@@ -113,3 +120,4 @@
 
 <?php $this->load->view('landing/footer');
  ?>
+ 
