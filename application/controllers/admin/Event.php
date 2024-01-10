@@ -53,6 +53,7 @@ class Event extends CI_Controller
         $insert = array(
             'nama_event' => $this->input->post('nama_event'),
             'biaya_event' => $this->input->post('biaya_event'),
+            'tanggal_event' => $this->input->post('tanggal_event'),
             'alamat_event' => $this->input->post('alamat_event'),
             'deskripsi_event' => $this->input->post('deskripsi_event'),
             'jam_buka' => $this->input->post('jam_buka'),
@@ -61,6 +62,7 @@ class Event extends CI_Controller
             'id_tempat_wisata' => $this->input->post('id_tempat_wisata')
         );
         $this->M_event->insertData($insert);
+        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil ditambah.');
         redirect('admin/event');
     }
 
@@ -109,6 +111,7 @@ class Event extends CI_Controller
         $edit = array(
             'nama_event' => $this->input->post('nama_event'),
             'biaya_event' => $this->input->post('biaya_event'),
+            'tanggal_event' => $this->input->post('tanggal_event'),
             'alamat_event' => $this->input->post('alamat_event'),
             'deskripsi_event' => $this->input->post('deskripsi_event'),
             'jam_buka' => $this->input->post('jam_buka'),
@@ -117,6 +120,7 @@ class Event extends CI_Controller
             'id_tempat_wisata' => $this->input->post('id_tempat_wisata')
         );
         $this->M_event->updateData($edit, $id_event);
+        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil diperbarui.');
         redirect('admin/event');
     }
 
@@ -128,6 +132,7 @@ class Event extends CI_Controller
             unlink('./upload/event/' . $gambar);
         }
         $this->M_event->deleteData($id_event);
+        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil dihapus.');
         redirect('admin/event');
     }
 }

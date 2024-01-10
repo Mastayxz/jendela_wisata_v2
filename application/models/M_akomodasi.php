@@ -32,9 +32,27 @@ class M_akomodasi extends CI_Model
 
     public function insertData($insert)
     {
+        // Cek apakah nama_akomodasi sudah ada di database
+        $existingData = $this->db->get_where(
+            'akomodasi',
+            [
+                'nama_akomodasi' => $insert['nama_akomodasi']
+            ]
+        );
 
-        return $this->db->insert('akomodasi', $insert);
+        if ($existingData->num_rows() > 0) {
+            // Jika data sudah ada, return false
+            log_message('error', 'Data sudah ada!');
+            return false;
+        } else {
+            // Jika data belum ada, lanjutkan dengan proses insert
+            $this->db->insert('akomodasi', $insert);
+
+            // Periksa apakah proses insert berhasil
+            return $this->db->affected_rows() > 0;
+        }
     }
+
     public function getDetail($id)
     {
         $this->db->where('id_akomodasi', $id);
@@ -94,31 +112,31 @@ class M_akomodasi extends CI_Model
 
     // M_akomodasi.php
 
-    public function filterByJenisDanHarga($id_jenis_akomodasi, $harga_min, $harga_max, $alamat)
-    {
-        $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama_tempat_wisata');
-        $this->db->from('akomodasi');
-        $this->db->join('jenis_akomodasi', 'akomodasi.id_jenis_akomodasi = jenis_akomodasi.id_jenis_akomodasi');
-        $this->db->join('tempat_wisata', 'akomodasi.id_tempat_wisata = tempat_wisata.id_tempat_wisata');
-        $this->db->like('akomodasi.alamat_akomodasi', $alamat);
-        $this->db->or_like('tempat_wisata.nama_tempat_wisata', $alamat);
-        // Filter berdasarkan jenis akomodasi
-        if (!empty($id_jenis_akomodasi) && $id_jenis_akomodasi != "semua") {
-            $this->db->where('jenis_akomodasi.id_jenis_akomodasi', $id_jenis_akomodasi);
-        }
+    // public function filterByJenisDanHarga($id_jenis_akomodasi, $harga_min, $harga_max, $alamat)
+    // {
+    //     $this->db->select('akomodasi.*, jenis_akomodasi.nama_jenis_akomodasi, tempat_wisata.nama_tempat_wisata');
+    //     $this->db->from('akomodasi');
+    //     $this->db->join('jenis_akomodasi', 'akomodasi.id_jenis_akomodasi = jenis_akomodasi.id_jenis_akomodasi');
+    //     $this->db->join('tempat_wisata', 'akomodasi.id_tempat_wisata = tempat_wisata.id_tempat_wisata');
+    //     $this->db->like('akomodasi.alamat_akomodasi', $alamat);
+    //     $this->db->or_like('tempat_wisata.nama_tempat_wisata', $alamat);
+    //     // Filter berdasarkan jenis akomodasi
+    //     if (!empty($id_jenis_akomodasi) && $id_jenis_akomodasi != "semua") {
+    //         $this->db->where('jenis_akomodasi.id_jenis_akomodasi', $id_jenis_akomodasi);
+    //     }
 
-        // Filter berdasarkan harga
-        if (!empty($harga_min)) {
-            $this->db->where('akomodasi.harga_akomodasi >=', $harga_min);
-        }
+    //     // Filter berdasarkan harga
+    //     if (!empty($harga_min)) {
+    //         $this->db->where('akomodasi.harga_akomodasi >=', $harga_min);
+    //     }
 
-        if (!empty($harga_max)) {
-            $this->db->where('akomodasi.harga_akomodasi <=', $harga_max);
-        }
+    //     if (!empty($harga_max)) {
+    //         $this->db->where('akomodasi.harga_akomodasi <=', $harga_max);
+    //     }
 
-        $query = $this->db->get();
-        return $query->result();
-    }
+    //     $query = $this->db->get();
+    //     return $query->result();
+    // }
 
 
 

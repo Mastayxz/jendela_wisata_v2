@@ -15,34 +15,49 @@ class Filter extends CI_Controller
     }
 
 
-    public function filter_akomodasi()
+    // public function filter_akomodasi()
+    // {
+
+    //     // Mendapatkan data jenis akomodasi dari form
+    //     $id_jenis_akomodasi = $this->input->post('filter_jenis');
+
+    //     // Mendapatkan data harga dari form
+    //     $harga_min = $this->input->post('filter_harga_min');
+    //     $harga_max = $this->input->post('filter_harga_max');
+    //     $alamat = $this->input->post('alamat');
+
+
+
+    //     if (empty($id_jenis_akomodasi) && empty($harga_min) && empty($harga_max) && empty($alamat)) {
+    //         $filtered_data = $this->M_akomodasi->getData(); // Tampilkan semua data
+    //     } else {
+    //         $filtered_data = $this->M_akomodasi->filterByJenisDanHarga($id_jenis_akomodasi, $harga_min, $harga_max, $alamat);
+    //     }
+
+    //     // Mendapatkan daftar jenis akomodasi untuk ditampilkan di form filter
+    //     $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
+
+    //     // Data yang akan dikirimkan ke view
+    //     $data['akomodasi'] = $filtered_data;
+
+    //     // Load the view to display the filtered data and jenis akomodasi list
+    //     $this->load->view('user/akomodasi/search_akomodasi', $data);
+    // }
+    public function filterByJenisAkomodasi()
     {
-        try {
-            // Mendapatkan data jenis akomodasi dari form
-            $id_jenis_akomodasi = $this->input->post('filter_jenis');
+        // Mendapatkan data kategori dari form
+        $id_jenis_akomodasi = $this->input->post('filter_jenis');
 
-            // Mendapatkan data harga dari form
-            $harga_min = $this->input->post('filter_harga_min');
-            $harga_max = $this->input->post('filter_harga_max');
-            $alamat = $this->input->post('alamat');
+        // Memanggil model untuk melakukan filter berdasarkan kategori
+        $filtered_data = $this->M_akomodasi->filterByJenisAkomodasi($id_jenis_akomodasi);
 
-            if (empty($id_jenis_akomodasi) && empty($harga_min) && empty($harga_max) && empty($alamat)) {
-                $filtered_data = $this->M_akomodasi->getData(); // Tampilkan semua data
-            } else {
-                $filtered_data = $this->M_akomodasi->filterByJenisDanHarga($id_jenis_akomodasi, $harga_min, $harga_max, $alamat);
-            }
+        // Mendapatkan daftar kategori untuk ditampilkan di form filter
+        $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
+        // Data yang akan dikirimkan ke view
+        $data['akomodasi'] = $filtered_data;
 
-            // Mendapatkan daftar jenis akomodasi untuk ditampilkan di form filter
-            $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
-
-            // Data yang akan dikirimkan ke view
-            $data['akomodasi'] = $filtered_data;
-
-            // Load the view to display the filtered data and jenis akomodasi list
-            $this->load->view('user/akomodasi/search_akomodasi', $data);
-        } catch (Exception $e) {
-            error_log('Error in filter_akomodasi: ' . $e->getMessage());
-        }
+        // Load the view to display the filtered data and category list
+        $this->load->view('user/akomodasi/search_akomodasi', $data);
     }
 
 

@@ -10,79 +10,96 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <!-- application/views/admin/dashboard/event.php -->
+            <div class="card-header">
+                <button type="button" class="btn btn-primary" id="tambahModalBtn">Tambah Data</button>
 
-            <!-- application/views/admin/dashboard/event.php -->
-
-            <div>
-                <!-- Form Pencarian -->
-                <div class="card-header">
-                    <a href="<?= base_url('admin/event/tambah'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Event Atau Activity
-                    </a>
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 200px; height:0px;">
-                            <input type="text" name="table_search" id="table_search" class="form-control float-right" placeholder="Search" style="width: 200px; height:40px;">
-                            <div class=" input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
+                <!-- modal -->
+                <!-- Modal Tambah Data -->
+                <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="tambahModalLabel">Tambah Data Event And Activity</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+                            <div class="modal-body">
+                                <!-- Tempat untuk menampilkan formulir tambah data -->
+                                <div id="tambahFormContainer"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <!-- Skrip SweetAlert untuk formulir tambah data -->
+                            </div>
                         </div>
                     </div>
                 </div>
-                <form method="post" action="<?= base_url('user/filter/filter_event') ?>" id="filterForm">
-                    <div class="row mx-3">
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="filter_kategori" class="form-label mt-4">Alamat </label>
-                                <input type="text" name="alamat_event" id="alamat_event" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="filter_kategori" class="form-label mt-4">Jam Buka</label>
-                                <input type="time" name="jam_buka" id="jam_buka" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="filter_kategori" class="form-label mt-4">Jam Tutup</label>
-                                <input type="time" name="jam_tutup" id="jam_tutup" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="filter_kategori" class="form-label mt-4">Harga maksimum </label>
-                                <input type="text" name="price" id="price" placeholder="Masukan Harga" class="form-control">
-                            </div>
+
+
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 200px; height:0px;">
+                        <input type="text" name="table_search" id="table_search" class="form-control float-right" placeholder="Search" style="width: 200px; height:40px;">
+                        <div class=" input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
                     </div>
-                    <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
-                </form>
-
-                <!-- Tampilkan Hasil Pencarian atau Semua Data -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Event</th>
-                                <th>Biaya</th>
-                                <th>Alamat Event</th>
-                                <th>Deskripsi</th>
-                                <th>Tempat Wisata</th>
-                                <th>Jam Buka</th>
-                                <th>Jam Tutup</th>
-                                <th>Gambar</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="search_results">
-                            <!-- Hasil pencarian akan ditampilkan di sini -->
-                        </tbody>
-                    </table>
                 </div>
             </div>
+            <form method="post" action="<?= base_url('user/filter/filter_event') ?>" id="filterForm">
+                <div class="row mx-3">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="filter_kategori" class="form-label mt-4">Alamat </label>
+                            <input type="text" name="alamat_event" id="alamat_event" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="filter_kategori" class="form-label mt-4">Jam Buka</label>
+                            <input type="time" name="jam_buka" id="jam_buka" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="filter_kategori" class="form-label mt-4">Jam Tutup</label>
+                            <input type="time" name="jam_tutup" id="jam_tutup" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="filter_kategori" class="form-label mt-4">Harga maksimum </label>
+                            <input type="text" name="price" id="price" placeholder="Masukan Harga" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
+            </form>
+
+            <!-- Tampilkan Hasil Pencarian atau Semua Data -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Event</th>
+                            <th>Biaya</th>
+                            <th>Alamat Event</th>
+                            <th>Deskripsi</th>
+                            <th>Tempat Wisata</th>
+                            <th>Jam Buka</th>
+                            <th>Jam Tutup</th>
+                            <th>Gambar</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="search_results">
+                        <!-- Hasil pencarian akan ditampilkan di sini -->
+                    </tbody>
+                </table>
+            </div>
+
 
 
 
@@ -92,9 +109,12 @@
 
     </div>
 </div>
+<?php $this->load->view('template/footer') ?>
 <!-- Footer -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Sertakan script JavaScript yang telah Anda buat -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <script>
     $(document).ready(function() {
         // Script AJAX untuk pembaruan data event
@@ -139,7 +159,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '<?= base_url('user/filter/filter_event') ?>',
+                url: '<?= base_url('admin/filter/filter_event') ?>',
                 data: {
                     alamat_event: alamat_event,
                     jam_buka: jam_buka,
@@ -153,7 +173,49 @@
         });
 
     });
+
+    function loadFormTambahData() {
+        // Kirim permintaan AJAX untuk mendapatkan formulir tambah data
+        $.ajax({
+            url: '<?= base_url('admin/event/tambah/') ?>',
+            method: 'GET',
+            dataType: 'html',
+            success: function(response) {
+                // Tampilkan formulir tambah data di dalam modal
+                $('#tambahFormContainer').html(response);
+
+                // Aktifkan modal setelah formulir ditampilkan
+                $('#tambahModal').modal('show');
+            },
+            error: function() {
+                alert('Gagal mengambil formulir!');
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        // Tombol untuk menampilkan modal tambah data
+        $('#tambahModalBtn').on('click', function() {
+            // Panggil fungsi untuk mengambil dan menampilkan formulir tambah data
+            loadFormTambahData();
+        });
+    });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    $(document).ready(function() {
+        <?php if ($this->session->flashdata('pesan')) : ?>
+            // Tampilkan notifikasi jika ada pesan flashdata
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses',
+                text: '<?= $this->session->flashdata("pesan") ?>',
+            });
+        <?php endif; ?>
+    });
+</script>
+
 
 
 <!-- JS -->

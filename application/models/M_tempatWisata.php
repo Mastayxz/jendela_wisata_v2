@@ -20,7 +20,15 @@ class M_tempatWisata extends CI_Model
         return $query->result();
     }
 
+    public function getTempatWisataByName($nama_tempat_wisata)
+    {
+        // Mengambil data tempat wisata berdasarkan nama
+        $this->db->where('nama_tempat_wisata', $nama_tempat_wisata);
+        $query = $this->db->get('tempat_wisata');
 
+        // Mengembalikan hasil query
+        return $query->row();
+    }
 
     public function insertData($data)
     {

@@ -20,7 +20,7 @@ class TempatWisata extends CI_Controller
     public function index()
     {
         $data['page_title'] = 'Tempat Wisata';
-        $this->session->set_userdata('active_menu', 'tempatwisata');
+        // $this->session->set_userdata('active_menu', 'tempatwisata');
         $data['tempat_wisata'] = $this->M_tempatWisata->getData();
         $data['kategori_list'] = $this->kategori_model->getKategori();
         $this->load->view('admin/dashboard/destinasi/tempat_wisata', $data);
@@ -40,6 +40,13 @@ class TempatWisata extends CI_Controller
         $config['max_size'] = 10000;
 
         $this->load->library('upload', $config);
+        $nama_tempat_wisata = $this->input->post('nama');
+        $tempat_wisata_exist = $this->M_tempatWisata->getTempatWisataByName($nama_tempat_wisata);
+        if ($tempat_wisata_exist) {
+            // Tempat wisata dengan nama yang sama sudah ada, berikan respons atau tindakan yang sesuai
+            $this->session->set_flashdata('error', 'Tempat wisata dengan nama yang sama sudah ada.');
+            redirect('admin/tempatwisata');
+        }
 
         $uploaded_files = array();
 
@@ -84,12 +91,7 @@ class TempatWisata extends CI_Controller
         }
 
         // Set flash message
-        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            Data Berhasil tambah.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-        </div>');
+        $this->session->set_flashdata('pesan', 'Data destinasi berhasil ditamabah.');
 
         // Redirect to the desired page
         redirect('admin/tempatwisata');
@@ -104,6 +106,15 @@ class TempatWisata extends CI_Controller
         $this->load->view('admin/aktivitas/tempat_wisata/edit', $data);
     }
 
+    public function get_detail($id_tempat_wisata)
+    {
+        $data['destinasi'] = $this->M_tempatWisata->getDetail($id_tempat_wisata);
+        $data['kategori_list'] = $this->kategori_model->getKategori();
+        $data['selected_kategori'] = $this->M_tempatWisata->getKategoriByTempatWisataId($id_tempat_wisata);
+
+        // Load view yang berisi formulir edit
+        $this->load->view('admin/aktivitas/tempat_wisata/edit_form', $data);
+    }
 
 
     public function update()
@@ -156,12 +167,7 @@ class TempatWisata extends CI_Controller
         $this->M_tempatWisata->updateTempatWisata($id_tempat_wisata, $data, $kategori_ids);
 
         // Set flash message
-        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            Data Berhasil diubah.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-        </div>');
+        $this->session->set_flashdata('pesan', 'Data destinasi berhasil diperbarui.');
 
         // Redirect to the desired page
         redirect('admin/tempatWisata');
@@ -180,12 +186,7 @@ class TempatWisata extends CI_Controller
         }
 
         $this->M_tempatWisata->deleteData($id_tempat_wisata);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Data Berhasil dihapus.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>');
+        $this->session->set_flashdata('pesan', 'Data destinasi berhasil dihapus.');
 
         redirect('admin/tempatwisata');
     }

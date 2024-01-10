@@ -11,7 +11,34 @@
         <?= $this->session->flashdata('pesan'); ?>
         <div class="card">
             <div class="card-header">
-                <a href="<?= base_url('admin/admin/tambahadmin'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Admin</a>
+                <button type="button" class="btn btn-primary" id="tambahModalBtn">Tambah Data</button>
+
+                <!-- modal -->
+                <!-- Modal Tambah Data -->
+                <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="tambahModalLabel">Tambah Data Admin</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Tempat untuk menampilkan formulir tambah data -->
+                                <div id="tambahFormContainer"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <!-- Skrip SweetAlert untuk formulir tambah data -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- <a href="<?= base_url('admin/admin/tambahadmin'); ?>" class="btn btn-primary"></i> Tambah Admin</a> -->
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 200px; height:0px;">
                         <input type="text" name="table_search" id="table_search" class="form-control float-right" placeholder="Search" style="width: 200px; height:40px;">
@@ -80,6 +107,44 @@
                 // Clear the results if the keyword is too short
                 $('#search_results').html('');
             }
+        });
+    });
+
+    $(document).ready(function() {
+        <?php if ($this->session->flashdata('pesan')) : ?>
+            // Tampilkan notifikasi jika ada pesan flashdata
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses',
+                text: '<?= $this->session->flashdata("pesan") ?>',
+            });
+        <?php endif; ?>
+    });
+
+    function loadFormTambahData() {
+        // Kirim permintaan AJAX untuk mendapatkan formulir tambah data
+        $.ajax({
+            url: '<?= base_url('admin/admin/tambahadmin/') ?>',
+            method: 'GET',
+            dataType: 'html',
+            success: function(response) {
+                // Tampilkan formulir tambah data di dalam modal
+                $('#tambahFormContainer').html(response);
+
+                // Aktifkan modal setelah formulir ditampilkan
+                $('#tambahModal').modal('show');
+            },
+            error: function() {
+                alert('Gagal mengambil formulir!');
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        // Tombol untuk menampilkan modal tambah data
+        $('#tambahModalBtn').on('click', function() {
+            // Panggil fungsi untuk mengambil dan menampilkan formulir tambah data
+            loadFormTambahData();
         });
     });
 </script>

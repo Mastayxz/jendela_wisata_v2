@@ -1,8 +1,7 @@
 <!-- Meta -->
 <?php $this->load->view('landing/header') ?>
 
-
-<link rel="stylesheet" href="<?= base_url('public/css/style.css'); ?>">
+<link rel="stylesheet" style="" href="<?php echo base_url('public/css/design.css'); ?>">
 <!-- Navbar -->
 <?php $this->load->view('landing/navbar') ?>
 
@@ -12,8 +11,8 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url('user/tempat_wisata'); ?>">Home <i class="fa fa-chevron-right"></i></a></span> <span>Hotel <i class="fa fa-chevron-right"></i></span></p>
-                <h1 class="mb-0 bread">Destinastion</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="<?= base_url('user/tempat_wisata'); ?>">Home <i class="fa fa-chevron-right"></i></a></span> <span>Destination <i class="fa fa-chevron-right"></i></span></p>
+                <h1 class="mb-0 bread">Destination</h1>
             </div>
         </div>
     </div>

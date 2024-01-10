@@ -26,11 +26,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="search-wrap-1 ftco-animate">
-                    <form method="post" action="<?= base_url('user/filter/filterByJenisDanHarga') ?>" id="filter-form" class="search-property-1">
+                    <form method="post" action="<?= base_url('user/filter/filter_akomodasi') ?>" id="filter-form" class="search-property-1">
                         <div class="row no-gutters">
                             <div class="col-lg d-flex">
                                 <div class="form-group p-4 border-0">
-                                    <label for="#">Place Name</label>
+                                    <label for="#">Location Name</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="fa fa-map-marker"></span></div>
                                         <input type="text" name="alamat" id="alamat" class="form-control" placeholder="location name">
@@ -39,7 +39,7 @@
                             </div>
                             <div class="col-lg d-flex">
                                 <div class="form-group p-4">
-                                    <label for="#">Minimum Price</label>
+                                    <label for="#">Minim Price</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="fa fa-tag"></span></div>
                                         <input type="text" name="filter_harga_min" id="filter_harga_min" class="form-control" placeholder="min price">
@@ -57,12 +57,12 @@
                             </div>
                             <div class="col-lg d-flex">
                                 <div class="form-group p-4">
-                                    <label for="#">Acomodation Type</label>
+                                    <label for="#">Destination Type</label>
                                     <div class="form-field">
                                         <div class="select-wrap">
                                             <div class="icon"><span class="fa fa-chevron-down"></span></div>
                                             <select name="filter_jenis" id="filter_jenis" class="form-control">
-                                                <option value="semua">Semua</option>
+                                                <option value="semua">semua</option>
                                                 <?php foreach ($jenis_akomodasi_list as $ja) : ?>
                                                     <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
                                                 <?php endforeach; ?>
@@ -71,7 +71,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </form>
                 </div>
@@ -80,16 +79,15 @@
     </div>
 </section>
 
-<div class="container  ftco-animate ">
-    <!--  -->
-    <div class="row mt-5" id="search_results">
+
+<div class="container  ftco-animate">
+    <div class="row mt-5 ftco-animate" id="search_results">
 
     </div>
 </div>
-</div>
 
 
-</article>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -101,7 +99,6 @@
                 type: "POST",
                 data: {
                     table_search: keyword
-
                 },
                 success: function(data) {
                     $('#search_results').html(data);
@@ -117,6 +114,7 @@
             performSearch();
         });
 
+        // Menangani submit form
         // Menangani submit form
         $('#search_form').on('submit', function(event) {
             event.preventDefault(); // Mencegah form untuk melakukan submit secara default
@@ -144,12 +142,12 @@
             });
         }
 
-        // Event untuk memproses perubahan pada dropdown kategori
+        // Event untuk memproses perubahan pada dropdown jenis akomodasi
         $('#filter_jenis').on('change', function() {
             filterData();
         });
 
-        // Event untuk memproses perubahan pada input harga
+        // Event untuk memproses perubahan pada input harga dan alamat
         $('#filter_harga_min, #filter_harga_max, #alamat').on('input', function() {
             filterData();
         });

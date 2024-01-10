@@ -14,9 +14,6 @@ class admininfo extends CI_Controller
     {
         $data['page_title'] = 'Admin Info';
         $data['admin'] = $this->m_admininfo->getinfo();
-        $this->load->view('templates/footer');
         $this->load->view('admin/admininfo/admininfo', $data);
-        $this->load->view('templates/header');
     }
 }
-

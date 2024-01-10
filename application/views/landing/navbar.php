@@ -13,7 +13,7 @@
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/tempat_wisata') ? 'active' : ''; ?>"><a href="<?= base_url('user/tempat_wisata'); ?>" class="nav-link">Destination</a></li>
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/akomodasi') ? 'active' : ''; ?>"><a href="<?= base_url('user/akomodasi'); ?>" class="nav-link">Accomodation</a></li>
                 <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/wishlist') ? 'active' : ''; ?>"><a href="<?= base_url('user/wishlist'); ?>" class="nav-link">wishlist</a></li>
-                <li class="nav-item <?php echo ($this->uri->uri_string() == 'c_hubungi') ? 'active' : ''; ?>"><a href="<?= base_url('c_hubungi/index')?>" class="nav-link">Contact</a></li>
+                <li class="nav-item <?php echo ($this->uri->uri_string() == 'c_hubungi/index') ? 'active' : ''; ?>"><a href="<?= base_url('c_hubungi/index') ?>" class="nav-link">Contact</a></li>
 
                 <li class="nav-item">
                     <?php if ($this->session->userdata('id_user')) : ?>
