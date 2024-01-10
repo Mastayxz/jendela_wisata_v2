@@ -10,18 +10,19 @@
         <?= $this->session->flashdata('pesan'); ?>
         <div class="card">
             <div class="card-header">
-                <a href="<?= base_url('admin/jenis_akomodasi/tambahjenis_akomodasi'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Tambah User</a>
                 <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px; height:0px;">
-                        <?php echo form_open('admin/user/searchUser'); ?>
+                    <?php echo form_open('admin/user/searchUser'); ?>
+                    <div class="input-group input-group-sm" style="width: 200px; height:40px;">
+
                         <input type="text" name="table_search" id="table_search" class="form-control float-right" placeholder="Search" style="width: 200px; height:40px;">
                         <div class=" input-group-append">
                             <button type="submit" class="btn btn-default">
                                 <i class="fas fa-search"></i>
                             </button>
-                            <?php echo form_close(); ?>
+
                         </div>
                     </div>
+                    <?php echo form_close(); ?>
                 </div>
             </div>
 

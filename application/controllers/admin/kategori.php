@@ -27,6 +27,12 @@ class kategori extends CI_Controller
     {
         $data['page_title'] = 'Kategori Wisata';
         $this->load->view('admin/aktivitas/kategori/tambahkategori', $data);
+        if ($this->m_kategori->insertkategori()) {
+            $this->session->set_flashdata('pesan', 'Data Kategori berhasil ditambahkan.');
+        } else {
+            // Simpan pesan flashdata jika terjadi kesalahan
+            $this->session->set_flashdata('error', 'Terjadi kesalahan saat menambahkan data kategori.');
+        }
     }
 
     public function addkategori()
@@ -36,18 +42,24 @@ class kategori extends CI_Controller
     }
     public function ubahkategori($id)
     {
-        $data['page_title'] = 'Kategori Wisata';
+        // $data['page_title'] = 'Kategori Wisata';
         $data['kategori'] = $this->m_kategori->detailkategori($id);
         $this->load->view('admin/aktivitas/kategori/editkategori', $data);
     }
     public function editkategori()
     {
-        $this->m_kategori->editkategori();
+        if ($this->m_kategori->editkategori()) {
+            $this->session->set_flashdata('pesan', 'Data Kategori berhasil diubah.');
+        } else {
+            // Simpan pesan flashdata jika terjadi kesalahan
+            $this->session->set_flashdata('error', 'Terjadi kesalahan saat mengubah data kategori.');
+        }
         redirect('admin/kategori');
     }
     public function deletekategori($id)
     {
         $this->m_kategori->deletekategori($id);
+        $this->session->set_flashdata('pesan', 'Data Kategori berhasil dihapus.');
         redirect('admin/kategori');
     }
 }

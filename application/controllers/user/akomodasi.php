@@ -9,6 +9,9 @@ class akomodasi extends CI_Controller
         parent::__construct();
         $this->load->model('M_akomodasi');
         $this->load->model('M_tempatWisata');
+        $this->load->model('M_tempatWisata');
+        $this->load->model('kategori_model');
+        $this->load->model('M_event');
     }
     public function index()
     {

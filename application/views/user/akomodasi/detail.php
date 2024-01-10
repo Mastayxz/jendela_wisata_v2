@@ -3,11 +3,7 @@
 
 <?php $this->load->view('landing/navbar') ?>
 
-<style>
-    p {
-        color: black;
-    }
-</style>
+
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_2.jpg');
 ">
     <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi1']; ?>" alt="" class="image" style="height: 100vh;">
@@ -65,7 +61,7 @@
                         <li>
                             <p class="title"><?php echo $akomodasi['nama_akomodasi']; ?></p>
                         </li>
-                        <li> <a title="Wishlist" class="btn btn-just-icon btn-simple btn-warning" href="<?= base_url('user/wishlist/add_to_wish/' . $akomodasi['id_akomodasi']); ?>">
+                        <li> <a title="Wishlist" class="btn btn-just-icon btn-simple btn-pink" href="<?= base_url('user/wishlist/add_to_wish/' . $akomodasi['id_akomodasi']); ?>">
                                 <i class="fa fa-heart"></i>
                             </a>
                             <!-- <a title="Wishlist" class="btn btn-just-icon btn-simple btn-warning" href="<?= base_url('user/wishlist/add_to_wishlist/' . $akomodasi['id_akomodasi'] . '/akomodasi'); ?>">

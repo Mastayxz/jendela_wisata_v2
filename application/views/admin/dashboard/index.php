@@ -18,7 +18,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Welcome, <?= $username ?>!</h5>
+                <h5 class="card-title">Welcome, <?= $nama_admin ?>!</h5>
                 <p class="card-text">Here is the dashboard for Jendela Wisata.</p>
             </div>
         </div>
@@ -37,7 +37,7 @@
                 <div class="icon">
                     <i class="ion ion-home"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('admin/TempatWisata'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
 
@@ -51,7 +51,7 @@
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('admin/akomodasi'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
 
@@ -65,7 +65,7 @@
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('admin/user'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
 
@@ -79,7 +79,7 @@
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('admin/event'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
 
@@ -99,7 +99,25 @@
 <!-- <?php var_dump($this->session->userdata('admin_data')); ?> -->
 <!-- /.content-wrapper -->
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+<script>
+    // Check if the admin has logged in
+    <?php if ($this->session->userdata('admin_data') && !$this->session->userdata('welcome_popup_shown')) : ?>
+        // Display a welcome popup
+        Swal.fire({
+            title: 'Welcome, <?= $admin_name ?>!',
+            text: 'Here is the dashboard for Jendela Wisata.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+
+        // Set a session variable to indicate that the popup has been shown
+        <?php $this->session->set_userdata('welcome_popup_shown', true); ?>
+    <?php endif; ?>
+
+    // Your existing script for other functionalities
+</script>
 <!-- Footer -->
 <?php $this->load->view('template/footer') ?>
 

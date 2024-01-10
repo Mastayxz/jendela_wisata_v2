@@ -13,21 +13,47 @@
   </ul>
 
   <!-- SEARCH FORM -->
-  <form class="form-inline ml-3">
-    <div class="input-group input-group-sm">
-      <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-      <div class="input-group-append">
-        <button class="btn btn-navbar" type="submit">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
-    </div>
-  </form>
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="<?= base_url('c_authadmin/index'); ?>" class="nav-link btn btn-danger text-light">Logout</a>
+      <button id="logoutButton" class="btn btn-danger">Logout</button>
+
     </li>
   </ul>
 </nav>
+
+<!-- SweetAlert library -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<!-- Periksa apakah Bootstrap dan jQuery dimuat dengan benar -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  // Add a click event listener to the logout button
+  document.getElementById('logoutButton').addEventListener('click', function() {
+    Swal.fire({
+      title: 'Logout',
+      text: 'Are you sure you want to logout?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, logout!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // If the user confirms the logout, send an AJAX request to perform the logout
+        $.ajax({
+          url: '<?= base_url('c_authadmin/logout') ?>',
+          type: 'POST',
+          dataType: 'json',
+          success: function(response) {
+            if (response.status === 'success') {
+              // Redirect to the desired page after successful logout
+              window.location.href = '<?= base_url('c_authadmin/index') ?>';
+            }
+          }
+        });
+      }
+    });
+  });
+</script>

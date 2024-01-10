@@ -35,10 +35,11 @@ class admin extends CI_Controller
     {
         $this->m_admin->insertadmin();
         redirect('admin/admin');
+        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil ditambahkan.');
     }
     public function ubahadmin($id)
     {
-        $data['page_title'] = 'Admin';
+        // $data['page_title'] = 'Admin';
         $data['admin'] = $this->m_admin->detailadmin($id);
         $this->load->view('admin/aktivitas/admin/editadmin', $data);
     }

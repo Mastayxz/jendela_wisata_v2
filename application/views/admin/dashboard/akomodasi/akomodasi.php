@@ -7,10 +7,32 @@
 <!-- content -->
 <div class="row">
     <div class="col-12">
-        <?= $this->session->flashdata('pesan'); ?>
         <div class="card">
             <div class="card-header">
-                <a href="<?= base_url('admin/akomodasi/tambah'); ?>" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Akomodasi</a>
+                <button type="button" class="btn btn-primary" id="tambahModalBtn">Tambah Data</button>
+
+                <!-- modal -->
+                <!-- Modal Tambah Data -->
+                <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="tambahModalLabel">Tambah Data Akomodasi</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Tempat untuk menampilkan formulir tambah data -->
+                                <div id="tambahFormContainer"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <!-- Skrip SweetAlert untuk formulir tambah data -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <a href="<?= base_url('admin/akomodasi/tambah'); ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Akomodasi</a> -->
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 200px; height:0px;">
                         <input type="text" name="table_search" id="table_search" class="form-control float-right" placeholder="Search" style="width: 200px; height:40px;">
@@ -21,19 +43,62 @@
                         </div>
                     </div>
                 </div>
-                <form method="post" action="<?= base_url('admin/akomodasi/filterByJenisAkomodasi') ?>">
-                    <div class="form-group">
-                        <label for="filter_kategori">Jenis Akomodasi:</label>
-                        <select name="filter_jenis" id="filter_jenis" class="form-control">
-                            <option value="semua">semua</option>
-                            <?php foreach ($jenis_akomodasi_list as $ja) : ?>
-                                <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+                <section class="ftco-section ftco-no-pb">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="search-wrap-1 ftco-animate">
+                                <form method="post" action="<?= base_url('user/filter/filterByJenisDanHarga') ?>" id="filter-form" class="search-property-1">
+                                    <div class="row no-gutters">
+                                        <div class="col-lg ">
+                                            <div class="form-group p-4 border-0">
+                                                <label for="#">Place Name</label>
+                                                <div class="form-field">
 
-                    <!-- <button type="submit" class="btn btn-primary">Filter</button> -->
-                </form>
+                                                    <input type="text" name="alamat" id="alamat" class="form-control" placeholder="location name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg ">
+                                            <div class="form-group p-4">
+                                                <label for="#">Minimum Price</label>
+                                                <div class="form-field">
+
+                                                    <input type="text" name="filter_harga_min" id="filter_harga_min" class="form-control" placeholder="min price">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg ">
+                                            <div class="form-group p-4">
+                                                <label for="#">Limit Price</label>
+                                                <div class="form-field">
+
+                                                    <input type="text" name="filter_harga_max" id="filter_harga_max" class="form-control" placeholder="max price">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg ">
+                                            <div class="form-group p-4">
+                                                <label for="#">Accommodation Type</label>
+                                                <div class="form-field">
+                                                    <div class="select-wrap">
+
+                                                        <select name="filter_jenis" id="filter_jenis" class="form-control">
+                                                            <option value="semua">Semua</option>
+                                                            <?php foreach ($jenis_akomodasi_list as $ja) : ?>
+                                                                <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
             </div>
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
@@ -119,8 +184,59 @@
             filterData(); // Call filterData here
         });
     });
+
+
+
+    function loadFormTambahData() {
+        $.ajax({
+            url: '<?= base_url('admin/akomodasi/tambah/') ?>',
+            method: 'GET',
+            dataType: 'html',
+            success: function(response) {
+                $('#tambahFormContainer').html(response);
+                $('#tambahModal').modal('show');
+            },
+            error: function() {
+                alert('Gagal mengambil formulir!');
+            }
+
+        });
+
+    }
+    $(document).ready(function() {
+        $('#tambahModalBtn').on('click', function() {
+            loadFormTambahData();
+        })
+    });
+    $(document).ready(function() {
+        <?php if ($this->session->flashdata('pesan')) : ?>
+            // Tampilkan notifikasi sukses jika ada pesan flashdata
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses',
+                text: '<?= $this->session->flashdata("pesan") ?>',
+            });
+        <?php endif; ?>
+
+        <?php if ($this->session->flashdata('error')) : ?>
+            // Tampilkan notifikasi error jika ada pesan flashdata error
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '<?= $this->session->flashdata("error") ?>',
+            });
+        <?php endif; ?>
+    });
 </script>
 <!-- Footer -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+
+
+
+<?php $this->load->view('template/footer') ?>
 
 <!-- JS -->
 <?php $this->load->view('template/js') ?>

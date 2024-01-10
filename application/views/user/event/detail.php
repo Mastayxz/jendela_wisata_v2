@@ -41,9 +41,10 @@
                             <p class="title"><?php echo $event['nama_event']; ?></p>
                         </li>
                         <li>
-                            <a title="Wishlist" class="btn btn-just-icon btn-simple btn-warning" href="<?= base_url('user/wishlist/add_to_wish/null/' . $event['id_event']); ?>">
+                            <a title="Wishlist" class="btn btn-just-icon btn-simple btn-pink" href="<?= base_url('user/wishlist/add_to_wish/null/' . $event['id_event']); ?>">
                                 <i class="fa fa-heart"></i>
                             </a>
+
                         </li>
 
 
@@ -57,9 +58,7 @@
                         <div class="harga">
                             <p class="fw-bold mb-0">Biaya Masuk </p>
                             <p class="fw-bold">Rp.<?= number_format($event['biaya_event']); ?></p>
-                            <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#pesanTiketModal">
-                                Pesan Tiket
-                            </a>
+
                         </div>
                     </div>
                 </div>
