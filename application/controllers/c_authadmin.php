@@ -24,7 +24,7 @@ class c_authadmin extends CI_Controller
     {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
-
+        //sql 
         $result = $this->db->get_where('admin', ['email' => $email]);
         $admin = $result->row_array();
 
