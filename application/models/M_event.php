@@ -49,7 +49,7 @@ class M_event extends CI_Model
         $this->db->join('tempat_wisata', 'event.id_tempat_wisata = tempat_wisata.id_tempat_wisata', 'left');
         $this->db->like('LOWER(nama_event)', strtolower($keyword), false);
         $this->db->or_like('event.alamat_event', $keyword);
-        $this->db->or_like('tempat_wisata.nama', $keyword);
+        $this->db->or_like('tempat_wisata.nama_tempat_wisata', $keyword);
         // Tambahkan kondisi pencarian lainnya sesuai kebutuhan
 
         $query = $this->db->get();
@@ -64,7 +64,6 @@ class M_event extends CI_Model
         $this->db->join('tempat_wisata', 'event.id_tempat_wisata = tempat_wisata.id_tempat_wisata', 'left');
 
         $this->db->like('event.alamat_event', $alamat_event);
-        $this->db->or_like('tempat_wisata.nama_tempat_wisata', $alamat_event);
 
         if (!empty($jam_buka)) {
             $this->db->where('event.jam_buka >=', $jam_buka);

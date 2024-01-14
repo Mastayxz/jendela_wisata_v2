@@ -33,9 +33,9 @@ class Wishlist extends CI_Controller
         $result = $this->Wishlist_model->add_to_wishlist($id_user, $id_akomodasi, $id_event, $id_tempat_wisata);
 
         if ($result) {
-            $this->session->set_flashdata('success_message', 'Item berhasil ditambahkan ke Wishlist.');
+            $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil diperbarui.');
         } else {
-            $this->session->set_flashdata('error_message', 'Gagal menambahkan item ke Wishlist.');
+            $this->session->set_flashdata('pesan', 'Data sudah ada di wishlist.');
         }
 
         // Redirect atau tampilkan pesan sukses
@@ -69,41 +69,7 @@ class Wishlist extends CI_Controller
         $this->load->view('user/wishlist/wishlist', $data);
     }
 
-    // Wishlist.php (controller)
 
-    // public function add_to_wishlist($id_item = null, $item_type = null)
-    // {
-    //     // Pastikan user sudah login
-    //     if (!$this->session->userdata('id_user')) {
-    //         redirect('c_auth');
-    //     }
-
-    //     // Ambil ID user dari sesi
-    //     $id_user = $this->session->userdata('id_user');
-
-    //     // Panggil model untuk menambahkan ke wishlist
-    //     $this->Wishlist_model->add_to_wishlist($id_user, $id_item, $item_type);
-
-    //     // Redirect atau tampilkan pesan sukses
-    //     redirect('user/wishlist/wishlist');
-    // }
-
-    // public function index()
-    // {
-    //     // Pastikan user sudah login
-    //     if (!$this->session->userdata('id_user')) {
-    //         redirect('c_auth');
-    //     }
-
-    //     // Ambil ID user dari sesi
-    //     $id_user = $this->session->userdata('id_user');
-
-    //     // Panggil model untuk mendapatkan daftar wishlist
-    //     $data['wishlist'] = $this->Wishlist_model->get_user_wishlist($id_user);
-
-    //     // Tampilkan halaman wishlist
-    //     $this->load->view('user/wishlist/wishlist', $data);
-    // }
 
 
     public function delete($id_wishlist)

@@ -109,6 +109,46 @@
     margin: 0;
 }
 
+/* CSS untuk Pop-up */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    max-width: 300px;
+    text-align: center;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Animasi untuk Pop-up */
+.popup.scale-in {
+    animation: scale-in 0.3s ease-in-out;
+}
+
+@keyframes scale-in {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
 
 
 .wrapped-description {
@@ -151,3 +191,30 @@
     margin: 0;
 }
 
+
+/* Gaya CSS untuk Bintang Rating */
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 30px;
+    color: #ffd700;
+    cursor: pointer;
+}
+
+.star-rating input:checked ~ label {
+    color: #ffcc00;
+}
+/* design.css */
+
+.btn-pink {
+    background-color: pink !important; /* Use !important to override existing styles */
+    color: #dc3545 !important; /* Set text color to white or your preferred color */
+    border: none !important; /* Remove border if necessary */
+}
+
+.btn-pink:hover {
+    color: white !important;
+    background-color: #dc3545 !important; /* Change hover background color if desired */
+}

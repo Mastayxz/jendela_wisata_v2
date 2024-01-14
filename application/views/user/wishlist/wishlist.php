@@ -78,6 +78,20 @@
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    $(document).ready(function() {
+        <?php if ($this->session->flashdata('pesan')) : ?>
+            // Tampilkan notifikasi jika ada pesan flashdata
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses',
+                text: '<?= $this->session->flashdata("pesan") ?>',
+            });
+        <?php endif; ?>
+    });
+</script>
 
 
 <!-- Tampilkan daftar wishlist -->

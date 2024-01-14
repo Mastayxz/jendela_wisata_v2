@@ -112,6 +112,13 @@ body {
       margin-top: 10px;
      
     }
+    .showPassword{
+      font-family: 'Raleway';
+      font-size: 12px;
+      margin-top: 10px;
+      margin-left: 12px;
+      letter-spacing: 2px;
+    }
   }
 
   @media only screen 
@@ -171,6 +178,7 @@ body {
         margin-top: 41px;
         font-family: 'Raleway';
         letter-spacing: 4.6px;
+        
      }
      .regis{
         margin-top: 43px;
@@ -204,9 +212,14 @@ body {
         font-family: 'Raleway';
         letter-spacing: 4.6px;
         margin-left: 71px;
-    
-       
     }
+    .showPassword{
+      font-family: 'Raleway';
+      font-size: 15px;
+      margin-top: 10px;
+      margin-left: 12px;
+      letter-spacing: 2px;
+    } 
   }
 
   /* Stil untuk iPhone 13 Pro Max (portrait and landscape) */
@@ -302,6 +315,13 @@ and (-webkit-min-device-pixel-ratio: 3) {
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
+  }
+  .showPassword{
+    font-family:'Raleway';
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 12px;
+    letter-spacing: 2px;
   }
 }
 
@@ -399,11 +419,11 @@ and (-webkit-min-device-pixel-ratio: 3) {
     margin-right: auto;
     margin-top: 10px;
   }
+  .showPassword{
+    font-family:'Raleway';
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 12px;
+    letter-spacing: 2px;
+  }
 }
-
-
-
-
-
-
- 

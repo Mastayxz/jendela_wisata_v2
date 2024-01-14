@@ -25,6 +25,7 @@ class Akomodasi extends CI_Controller
         $data['akomodasi'] = $this->M_akomodasi->getData();
         $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
         $data['kategori_list'] = $this->kategori_model->getKategori();
+        $data['tempat_wisata_list'] = $this->M_tempatWisata->getData();
         $this->load->view('admin/dashboard/akomodasi/akomodasi', $data);
     }
 
@@ -76,14 +77,12 @@ class Akomodasi extends CI_Controller
             $data = array_merge($insert, $uploaded_files);
         }
 
-        $this->M_akomodasi->insertData($data);
-
-        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Data Berhasil tambah.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>');
+        if ($this->M_akomodasi->insertData($data)) {
+            $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil ditambahkan.');
+        } else {
+            // Simpan pesan flashdata jika terjadi kesalahan
+            $this->session->set_flashdata('error', 'Terjadi kesalahan saat menambahkan data Akomodasi.');
+        }
 
         redirect('admin/akomodasi');
     }
@@ -93,6 +92,14 @@ class Akomodasi extends CI_Controller
     public function edit($id)
     {
         $data['page_title'] = 'Edit Data';
+        $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
+        $data['tempat_wisata_list'] = $this->M_tempatWisata->getData();
+        $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
+        $this->load->view('admin/aktivitas/akomodasi/edit', $data);
+    }
+
+    public function get_detail($id)
+    {
         $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
         $data['tempat_wisata_list'] = $this->M_tempatWisata->getData();
         $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
@@ -143,12 +150,7 @@ class Akomodasi extends CI_Controller
         $data = array_merge($edit, $uploaded_files);
 
         $this->M_akomodasi->updateData($data, $id_akomodasi);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Data Berhasil diubah.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>');
+        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil diperbarui.');
         redirect('admin/akomodasi');
     }
 
@@ -165,12 +167,7 @@ class Akomodasi extends CI_Controller
         }
 
         $this->M_akomodasi->deleteData($id_akomodasi);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Data Berhasil dihapus.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>');
+        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil dihapus.');
 
         redirect('admin/akomodasi');
     }
@@ -192,6 +189,7 @@ class Akomodasi extends CI_Controller
         // Load the view to display the filtered data and category list
         $this->load->view('admin/dashboard/akomodasi/akomodasi_ajax', $data);
     }
+
 
     /* End of file Akomodasi.php */
 }

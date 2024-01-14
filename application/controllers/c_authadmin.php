@@ -24,7 +24,7 @@ class c_authadmin extends CI_Controller
     {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
-
+        //sql 
         $result = $this->db->get_where('admin', ['email' => $email]);
         $admin = $result->row_array();
 
@@ -58,8 +58,15 @@ class c_authadmin extends CI_Controller
 
     public function logout()
     {
-        session_destroy();
-        redirect('c_authadmin/index');
+        if ($this->input->is_ajax_request()) {
+            // This block will be executed when the request is AJAX (triggered by SweetAlert)
+            session_destroy();
+            echo json_encode(['status' => 'success']);
+            exit;
+        }
+
+        // If it's a regular request, show the SweetAlert confirmation
+        $this->load->view('logout_confirmation');
     }
 }
 
