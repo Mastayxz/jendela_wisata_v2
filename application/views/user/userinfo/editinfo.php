@@ -17,42 +17,41 @@
                     <div class="card mb-4">
                         <div class="card-header">Account Details</div>
                         <div class="card-body">
-                            <form>
+                            <form method="post" enctype="multipart/form-data" action="<?php echo base_url('user/editinfo/edituser') ?>">
                                 <!-- Form Group (username)-->
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputUsername">Username</label>
-                                    <input class="form-control" id="inputUsername" type="text" placeholder="" name="username" value="<?php echo $user['username'] ?>" readonly>
+                                    <input class="form-control" id="inputUsername" type="text" placeholder="" name="username" value="<?php echo $user['username'] ?>">
                                 </div>
                                 <!-- Form Row-->
                                 <div class="mb-3">
                                     <!-- Form Group (name)-->
 
                                     <label class="small mb-1" for="inputFirstName">Name</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="" value="<?php echo $user['nama'] ?>" readonly>
+                                    <input class="form-control" id="inputFirstName" type="text" placeholder="" name="nama" value="<?php echo $user['nama'] ?>" >
                                 </div>
                                 <!-- Form Group (email address)-->
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                    <input class="form-control" id="inputEmailAddress" type="email" placeholder="" value="<?php echo $user['email'] ?>" readonly>
+                                    <input class="form-control" id="inputEmailAddress" type="email" placeholder="" name="email" value="<?php echo $user['email'] ?>" >
                                 </div>
                                 <!-- Form Row-->
                                 <div class="row gx-3 mb-3">
                                     <!-- Form Group (phone number)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputPhone">Phone number</label>
-                                        <input class="form-control" id="inputPhone" type="tel" placeholder="" name="tlp_user" value="<?php echo $user['tlp_user'] ?>" readonly>
+                                        <input class="form-control" id="inputPhone" type="tel" placeholder="" name="tlp_user" value="<?php echo $user['tlp_user'] ?>">
                                     </div>
                                     <!-- Form Group (birthday)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="" name="tgl_lahir" value="<?php echo $user['tgl_lahir'] ?>" readonly>
+                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="" name="tgl_lahir" value="<?php echo $user['tgl_lahir'] ?>">
                                     </div>
                                 </div>
                                 <!-- Logout button-->
                                 <div class="mb-2">
-                                    <a href="<?= base_url('user/editinfo') ?>" class="btn btn-primary col-md-1">Edit Info</a>
+                                    <button type="submit" class="btn btn-primary col-md-1">Simpan</button>
                                 </div>
-                                <a href="<?= base_url('c_auth/logout') ?>" class="btn btn-primary col-md-1">Logout</a>
                             </div>
 
                         

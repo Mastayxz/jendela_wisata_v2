@@ -33,7 +33,7 @@
       </div>
       <div class="form-floating mb-1">
         <input type="password" class="form-control" id="floatingInput" name="password1">
-        <label for="floatingInput">CONFRIM PASSWORD</label>
+        <label for="floatingInput">CONFIRM PASSWORD</label>
         <?php echo form_error('password', '<small class="text-danger p-3" >', '</small>'); ?>
       </div>
     </div>
@@ -53,7 +53,7 @@
 
     <div class="tgl_lahir">
       <div class="form-floating mb-1">
-        <input type="date" class="form-control" id="floatingInput" name="birthday" value="<?php echo set_value('birthay') ?>">
+        <input type="date" class="form-control" id="floatingInput" name="birthday" value="<?php echo set_value('birthday') ?>">
         <label for="floatingInput">BIRTHDAY</label>
         <?php echo form_error('birthday', '<small class="text-danger p-3" >', '</small>'); ?>
       </div>

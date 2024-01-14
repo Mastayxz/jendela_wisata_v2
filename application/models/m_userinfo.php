@@ -16,11 +16,35 @@ class m_userinfo extends CI_Model {
         $result = $this->db->get_where('user');
         return $result->row_array();
     }
-    
+    public function getDetail($id)
+    {
+        $this->db->where('id_user', $id);
+        $result = $this->db->get('user')->result_array();
+        return $result[0];
+    }
+    public function edituser()
+    {
+        $id_user = $this->session->userdata('id_user');
+        $data = $this->m_userinfo->getinfo();
+
+        $data = array(
+            'username' => $this->input->post('username'),
+            'nama'    => $this->input->post('nama'),
+            'email'    => $this->input->post('email'), 
+            'tlp_user'    => $this->input->post('tlp_user'), 
+            'tgl_lahir'    => $this->input->post('tgl_lahir'),                
+        );
+        var_dump($data);
+        $this->db->where('id_user', $id_user);
+        $result = $this->db->update('user', $data);
+        return $result;
+
+        redirect('user/userinfo'); 
+    }
 
 }
 
+
 /* End of file m_userinfo.php */
- ?>
 
  
