@@ -20,10 +20,25 @@
                 <label for="floatingInput">USERNAME OR EMAIL</label>
             </div>
             <div class="form-floating mb-1">
-                <input type="password" class="form-control" id="floatingInput" placeholder="Password" name="password" value="<?php echo set_value('password') ?>">
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password"  value="<?php echo set_value('password') ?>">
                 <?php echo form_error('password', '<small class="text-danger p-3" >', '</small>'); ?>
-                <label for="floatingInput">PASSWORD</label>
+                <label for="floatingInput">PASSWORD</label>  
             </div>
+            <!-- menambahkan fungsi melihat password -->
+            <div class="showPassword">
+            <input type="checkbox" onclick="showPassword()" />    
+                <script>
+                    function showPassword(){
+                    let inputPassword = document.getElementById("password");
+                    if (inputPassword.type === "password"){
+                        inputPassword.type = "text";
+                    }else{
+                        inputPassword.type = "password";
+                     }
+                  }
+                </script>
+            </div>
+                
             <div class="regis">
                 <h6>don't have account?</h6>
                 <a href="<?php echo base_url('c_auth/register') ?>">create account</a><br>
@@ -35,3 +50,6 @@
         </div>
     </div>
 </form>
+ 
+
+

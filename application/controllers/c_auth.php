@@ -58,7 +58,7 @@ class c_auth extends CI_Controller
                 $this->session->set_userdata($data);
                 redirect('user/tempat_wisata');
             } else {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger " role="alert">
                 wrong password</div>');
                 redirect('c_auth/index');
             }
@@ -121,7 +121,8 @@ class c_auth extends CI_Controller
                 <h2>Aktivasi Akun</h2>
                 <p>akun anda sudah di buat</p>
                 <html>';
-
+            
+            //sql
             $this->db->insert('user', $data);
 
             if (isset($data)) {
@@ -199,6 +200,7 @@ class c_auth extends CI_Controller
             $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
             $email = $this->session->userdata('riset');
 
+            //sql
             $this->db->set('password', $password);
             $this->db->where('email', $email);
             $this->db->update('user');
@@ -226,6 +228,9 @@ class c_auth extends CI_Controller
             // return show_error($this->email->print_debugger());
         }
     }
+    
+
+    
     public function logout()
     {
         session_destroy();
