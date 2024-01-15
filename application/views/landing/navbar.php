@@ -8,12 +8,17 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item <?php echo ($this->uri->uri_string() == 'homecontrol') ? 'active' : ''; ?>"><a href="<?= base_url('homecontrol') ?>" class="nav-link">Home</a></li>
-                <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/event') ? 'active' : ''; ?>"><a href="<?= base_url('user/event'); ?>" class="nav-link">Event</a></li>
-                <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/tempat_wisata') ? 'active' : ''; ?>"><a href="<?= base_url('user/tempat_wisata'); ?>" class="nav-link">Destination</a></li>
-                <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/akomodasi') ? 'active' : ''; ?>"><a href="<?= base_url('user/akomodasi'); ?>" class="nav-link">Accomodation</a></li>
-                <li class="nav-item <?php echo ($this->uri->uri_string() == 'user/wishlist') ? 'active' : ''; ?>"><a href="<?= base_url('user/wishlist'); ?>" class="nav-link">wishlist</a></li>
-                <li class="nav-item <?php echo ($this->uri->uri_string() == 'c_hubungi/index') ? 'active' : ''; ?>"><a href="<?= base_url('c_hubungi/index') ?>" class="nav-link">Contact</a></li>
+                <li class="nav-item <?php echo ($this->uri->uri_string() == '' && 'homecontrol') ? 'active' : ''; ?>"><a href="<?= base_url('homecontrol') ?>" class="nav-link">Home</a></li>
+
+                <li class="nav-item <?php echo ($this->uri->segment(1) == 'user' && $this->uri->segment(2) == 'event') ? 'active' : ''; ?>"><a href="<?= base_url('user/event'); ?>" class="nav-link">Event</a></li>
+
+                <li class="nav-item <?php echo ($this->uri->segment(1) == 'user' && ($this->uri->segment(2) == 'tempat_wisata' || $this->uri->segment(2) == 'tempat_wisata/detail')) ? 'active' : ''; ?>"><a href="<?= base_url('user/tempat_wisata'); ?>" class="nav-link">Destination</a></li>
+
+                <li class="nav-item <?php echo ($this->uri->segment(1) == 'user' && $this->uri->segment(2) == 'akomodasi') ? 'active' : ''; ?>"><a href="<?= base_url('user/akomodasi'); ?>" class="nav-link">Accommodation</a></li>
+
+                <li class="nav-item <?php echo ($this->uri->segment(1) == 'user' && $this->uri->segment(2) == 'wishlist') ? 'active' : ''; ?>"><a href="<?= base_url('user/wishlist'); ?>" class="nav-link">Wishlist</a></li>
+
+                <li class="nav-item <?php echo ($this->uri->segment(1) == 'c_hubungi' && $this->uri->segment(2) == 'index') ? 'active' : ''; ?>"><a href="<?= base_url('c_hubungi/index') ?>" class="nav-link">Contact</a></li>
 
                 <li class="nav-item">
                     <?php if ($this->session->userdata('id_user')) : ?>

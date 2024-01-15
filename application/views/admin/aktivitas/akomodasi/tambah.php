@@ -39,6 +39,10 @@
                         <!-- Right Column - 4 Fields -->
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="" class="form-label">fasilitas</label>
+                                <textarea class="form-control" name="fasilitas_akomodasi" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label for="id_tempat_wisata" class="form-label">Tempat Wisata</label>
                                 <select name="id_tempat_wisata" class="form-control">
                                     <option value="semua">semua</option>

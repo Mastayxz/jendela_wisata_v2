@@ -33,6 +33,10 @@
                 <label for="" class="form-label">Lokasi</label>
                 <textarea id="lokasi" class="form-control" name="lokasi" rows="3" required></textarea>
               </div>
+              <div class="form-group">
+                <label for="" class="form-label">Deskripsi</label>
+                <textarea id="fasilitas" class="form-control" name="fasilitas" rows="6" required></textarea>
+              </div>
             </div>
 
             <!-- Right side with 4 fields -->

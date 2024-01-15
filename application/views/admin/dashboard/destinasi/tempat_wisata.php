@@ -122,6 +122,7 @@
                                 <th>Gambar 1</th>
                                 <th>Gambar 2</th>
                                 <th>Gambar 3 </th>
+                                <th>Fasilitas</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

@@ -2,7 +2,11 @@
 <link rel="stylesheet" href="<?= base_url('public/css/design.css'); ?>">
 
 <?php $this->load->view('landing/navbar') ?>
-
+<style>
+    p {
+        color: black;
+    }
+</style>
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_2.jpg');
 ">
@@ -75,7 +79,7 @@
                 <div class="mt-5">
                     <div class="price-container">
                         <div class="harga">
-                            <p class="fw-bold mb-0">Price Accomodation</p>
+                            <p class="fw-bold mb-0">Price</p>
                             <p class="fw-bold">Rp.<?= number_format($akomodasi['harga_akomodasi']); ?></p>
 
                         </div>
@@ -84,6 +88,9 @@
             </div>
             <div class="wrapped-description">
                 <p><?php echo $akomodasi['deskripsi_akomodasi'] ?></p>
+            </div>
+            <div class="wrapped-description">
+                <p><?php echo $akomodasi['fasilitas_akomodasi'] ?></p>
             </div>
             <div class="map-container mt-5">
                 <div class="map-info">

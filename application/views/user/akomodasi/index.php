@@ -1,8 +1,7 @@
 <!-- Meta -->
 <?php $this->load->view('landing/header') ?>
 
-
-<link rel="stylesheet" href="<?= base_url('public/css/style.css'); ?>">
+<link rel="stylesheet" style="" href="<?php echo base_url('public/css/design.css'); ?>">
 <!-- Navbar -->
 <?php $this->load->view('landing/navbar') ?>
 
@@ -122,19 +121,19 @@
         });
 
         function filterData() {
+            var alamat = $('#alamat').val();
             var id_jenis_akomodasi = $('#filter_jenis').val();
             var harga_min = $('#filter_harga_min').val();
             var harga_max = $('#filter_harga_max').val();
-            var alamat = $('#alamat').val();
 
             $.ajax({
                 url: "<?= base_url('user/filter/filter_akomodasi') ?>",
                 type: "POST",
                 data: {
+                    alamat: alamat,
                     filter_jenis: id_jenis_akomodasi,
                     filter_harga_min: harga_min,
-                    filter_harga_max: harga_max,
-                    alamat: alamat
+                    filter_harga_max: harga_max
                 },
                 success: function(data) {
                     $('#search_results').html(data);
@@ -142,12 +141,12 @@
             });
         }
 
-        // Event untuk memproses perubahan pada dropdown jenis akomodasi
+        // Event untuk memproses perubahan pada dropdown kategori
         $('#filter_jenis').on('change', function() {
             filterData();
         });
 
-        // Event untuk memproses perubahan pada input harga dan alamat
+        // Event untuk memproses perubahan pada input harga
         $('#filter_harga_min, #filter_harga_max, #alamat').on('input', function() {
             filterData();
         });

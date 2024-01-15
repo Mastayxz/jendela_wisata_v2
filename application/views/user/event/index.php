@@ -62,7 +62,7 @@
                                     <label for="#">Price</label>
                                     <div class="form-field">
                                         <div class="select-wrap">
-                                            <div class="icon"><span class="fa fa-chevron-down"></span></div>
+                                            <div class="icon"><span class="fa fa-tag"></span></div>
                                             <input type="text" name="price" id="price" placeholder="max price" class="form-control">
                                         </div>
                                     </div>
@@ -77,97 +77,68 @@
     </div>
 </section>
 
-<div class="container">
-    <!-- <form method="post" action="<?= base_url('user/filter/filter_event') ?>" id="filterForm">
-        <div class="row mx-3">
-            <div class="col-3">
-                <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Alamat </label>
-                    <input type="text" name="alamat_event" id="alamat_event" class="form-control">
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Jam Buka</label>
-                    <input type="time" name="jam_buka" id="jam_buka" class="form-control">
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Jam Tutup</label>
-                    <input type="time" name="jam_tutup" id="jam_tutup" class="form-control">
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <label for="filter_kategori" class="form-label mt-4">Harga maksimum </label>
-                    <input type="text" name="price" id="price" placeholder="Masukan Harga" class="form-control">
-                </div>
-            </div>
-        </div>
-        
-    </form> -->
 
-    <div class="container ftco-animate">
-        <div class="row mt-5" id="search_results">
 
-        </div>
+<div class="container ftco-animate">
+    <div class="row mt-5" id="search_results">
+
     </div>
+</div>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            function performSearch() {
-                var keyword = $('#table_search').val();
-                $.ajax({
-                    url: "<?= base_url('user/search/search_event') ?>",
-                    type: "POST",
-                    data: {
-                        table_search: keyword
-                    },
-                    success: function(data) {
-                        $('#search_results').html(data);
-                    }
-                });
-            }
-            // Panggil performSearch saat halaman dimuat
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        function performSearch() {
+            var keyword = $('#table_search').val();
+            $.ajax({
+                url: "<?= base_url('user/search/search_event') ?>",
+                type: "POST",
+                data: {
+                    table_search: keyword
+                },
+                success: function(data) {
+                    $('#search_results').html(data);
+                }
+            });
+        }
+        // Panggil performSearch saat halaman dimuat
+        performSearch();
+
+        // Event untuk memproses pencarian saat tombol pencarian diklik
+        $('#search_button').on('click', function() {
             performSearch();
+        });
 
-            // Event untuk memproses pencarian saat tombol pencarian diklik
-            $('#search_button').on('click', function() {
-                performSearch();
-            });
-
-            // Menangani submit form
-            $('#search_form').on('submit', function(event) {
-                event.preventDefault(); // Mencegah form untuk melakukan submit secara default
-                performSearch();
-            });
+        // Menangani submit form
+        $('#search_form').on('submit', function(event) {
+            event.preventDefault(); // Mencegah form untuk melakukan submit secara default
+            performSearch();
+        });
 
 
-            $('#filterForm input').on('input', function() {
-                // Mengumpulkan data dari setiap elemen formulir
-                var alamat_event = $('#alamat_event').val();
-                var jam_buka = $('#jam_buka').val();
-                var jam_tutup = $('#jam_tutup').val();
-                var price = $('#price').val();
+        $('#filterForm input').on('input', function() {
+            // Mengumpulkan data dari setiap elemen formulir
+            var alamat_event = $('#alamat_event').val();
+            var jam_buka = $('#jam_buka').val();
+            var jam_tutup = $('#jam_tutup').val();
+            var price = $('#price').val();
 
-                $.ajax({
-                    type: 'POST',
-                    url: '<?= base_url('user/filter/filter_event') ?>',
-                    data: {
-                        alamat_event: alamat_event,
-                        jam_buka: jam_buka,
-                        jam_tutup: jam_tutup,
-                        price: price
-                    },
-                    success: function(data) {
-                        $('#search_results').html(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url('user/filter/filter_event') ?>',
+                data: {
+                    alamat_event: alamat_event,
+                    jam_buka: jam_buka,
+                    jam_tutup: jam_tutup,
+                    price: price
+                },
+                success: function(data) {
+                    $('#search_results').html(data);
+                }
             });
         });
-    </script>
+    });
+</script>
 
-    <?php $this->load->view('landing/footer') ?>
+<?php $this->load->view('landing/footer') ?>

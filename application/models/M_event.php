@@ -14,7 +14,7 @@ class M_event extends CI_Model
 
     public function getData()
     {
-        $this->db->select('event.*, tempat_wisata.nama_tempat_wisata');
+        $this->db->select('event.*, tempat_wisata.nama_tempat_wisata, tempat_wisata.lokasi_tempat_wisata');
         $this->db->from('event');
         $this->db->join('tempat_wisata', 'event.id_tempat_wisata = tempat_wisata.id_tempat_wisata');
         $query = $this->db->get();
@@ -63,7 +63,10 @@ class M_event extends CI_Model
         $this->db->from('event');
         $this->db->join('tempat_wisata', 'event.id_tempat_wisata = tempat_wisata.id_tempat_wisata', 'left');
 
+        $this->db->group_start(); // Group start for OR condition
         $this->db->like('event.alamat_event', $alamat_event);
+        $this->db->or_like('tempat_wisata.nama_tempat_wisata', $alamat_event);
+        $this->db->group_end(); // Group end for OR condition
 
         if (!empty($jam_buka)) {
             $this->db->where('event.jam_buka >=', $jam_buka);
@@ -80,6 +83,15 @@ class M_event extends CI_Model
         $query = $this->db->get();
         // echo 'SQL Query: ' . $this->db->last_query() . '<br>';
         return $query->result();
+    }
+
+    public function getEventsByDestination($destination_id)
+    {
+        // Assuming you have a table named 'event' in your database
+        $this->db->where('id_tempat_wisata', $destination_id);
+        $query = $this->db->get('event');
+
+        return $query->result_array();
     }
 }
 

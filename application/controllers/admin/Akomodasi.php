@@ -65,14 +65,16 @@ class Akomodasi extends CI_Controller
         }
 
         $insert = array(
-            'nama_akomodasi' => $this->input->post('nama_akomodasi'),
-            'harga_akomodasi' => $this->input->post('harga_akomodasi'),
-            'alamat_akomodasi' => $this->input->post('alamat_akomodasi'),
-            'deskripsi_akomodasi' => $this->input->post('deskripsi_akomodasi'),
+            'nama_akomodasi' => htmlspecialchars($this->input->post('nama_akomodasi')),
+            'harga_akomodasi' => htmlspecialchars($this->input->post('harga_akomodasi')),
+            'alamat_akomodasi' => htmlspecialchars($this->input->post('alamat_akomodasi')),
+            'deskripsi_akomodasi' => htmlspecialchars($this->input->post('deskripsi_akomodasi')),
             'lokasi_akomodasi' => $this->input->post('lokasi_akomodasi'),
-            'id_jenis_akomodasi' =>  $this->input->post('id_jenis_akomodasi'),
-            'id_tempat_wisata' => $this->input->post('id_tempat_wisata')
+            'fasilitas_akomodasi' => $this->input->post('fasilitas_akomodasi'),
+            'id_jenis_akomodasi' => htmlspecialchars($this->input->post('id_jenis_akomodasi')),
+            'id_tempat_wisata' => htmlspecialchars($this->input->post('id_tempat_wisata'))
         );
+
         if (!empty($uploaded_files)) {
             $data = array_merge($insert, $uploaded_files);
         }
@@ -137,20 +139,24 @@ class Akomodasi extends CI_Controller
             }
         }
         $edit = array(
-            'nama_akomodasi' => $this->input->post('nama_akomodasi'),
-            'harga_akomodasi' => $this->input->post('harga_akomodasi'),
-            'alamat_akomodasi' => $this->input->post('alamat_akomodasi'),
-            'deskripsi_akomodasi' => $this->input->post('deskripsi_akomodasi'),
+            'nama_akomodasi' => htmlspecialchars($this->input->post('nama_akomodasi')),
+            'harga_akomodasi' => htmlspecialchars($this->input->post('harga_akomodasi')),
+            'alamat_akomodasi' => htmlspecialchars($this->input->post('alamat_akomodasi')),
+            'deskripsi_akomodasi' => htmlspecialchars($this->input->post('deskripsi_akomodasi')),
             'lokasi_akomodasi' => $this->input->post('lokasi_akomodasi'),
-            'id_jenis_akomodasi' =>  $this->input->post('id_jenis_akomodasi'),
-            'id_tempat_wisata' => $this->input->post('id_tempat_wisata')
+            'fasilitas_akomodasi' => $this->input->post('fasilitas_akomodasi'),
+            'id_jenis_akomodasi' => htmlspecialchars($this->input->post('id_jenis_akomodasi')),
+            'id_tempat_wisata' => htmlspecialchars($this->input->post('id_tempat_wisata'))
         );
 
         // Merge existing data with uploaded files
         $data = array_merge($edit, $uploaded_files);
 
+
         $this->M_akomodasi->updateData($data, $id_akomodasi);
-        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil diperbarui.');
+        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil ditambahkan.');
+
+
         redirect('admin/akomodasi');
     }
 
