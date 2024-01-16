@@ -87,9 +87,11 @@
                             <th>Biaya</th>
                             <th>Alamat Event</th>
                             <th>Deskripsi</th>
+                            <th>Tanggal</th>
                             <th>Tempat Wisata</th>
                             <th>Jam Buka</th>
                             <th>Jam Tutup</th>
+                            <th>Fasilitas</th>
                             <th>Gambar</th>
                             <th>Action</th>
                         </tr>

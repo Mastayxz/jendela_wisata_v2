@@ -13,8 +13,8 @@
                     <div class="location"><span class="fa fa-map-marker"></span> <?= $ak->alamat_akomodasi; ?> </div>
                     <div class="location"><span class="flaction-hotel"></span> <?= $ak->nama_jenis_akomodasi; ?> </div>
                     <ul>
-                        <li><span class="flaticon-shower"></span>2</li>
-                        <li><span class="flaticon-king-size"></span>3</li>
+                        <li><span class="flaticon-shower"></span></li>
+                        <li><span class="flaticon-king-size"></span></li>
                         <li><span class="flaticon-sun-umbrella"></span><?= $ak->nama_tempat_wisata; ?></li>
                     </ul>
                 </div>

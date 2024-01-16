@@ -7,10 +7,21 @@
             <td><?= $ev->nama_event; ?></td>
             <td>Rp. <?= number_format($ev->biaya_event); ?> </td>
             <td><?= $ev->alamat_event; ?></td>
-            <td><?= $ev->deskripsi_event; ?></td>
+            <td class="d-flex">
+                <div style="max-width: 100px; max-height: 100px; overflow: hidden; text-overflow: ellipsis;">
+                    <?= $ev->deskripsi_event; ?>
+                </div>
+            </td>
+            <!-- <td><?= $ev->tanggal_event; ?></td> -->
+            <td><?= date('F j, Y', strtotime($ev->tanggal_event)); ?></td>
             <td><?= $ev->nama_tempat_wisata ?? ''; ?></td>
             <td><?= $ev->jam_buka; ?></td>
             <td><?= $ev->jam_tutup; ?></td>
+            <td class="d-flex">
+                <div style="max-width: 100px; max-height: 100px; overflow: hidden; text-overflow: ellipsis;">
+                    <?= $ev->fasilitas_event; ?>
+                </div>
+            </td>
             <td><img src="<?= base_url('upload/event/' . $ev->gambar_event); ?>" width="100" alt=""></td>
             <td>
                 <button class="btn btn-warning edit-btn" data-id="<?= $ev->id_event; ?>" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit text-light"></i></button>

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(../assets/landing/images/bg_3.jpg);">
     <div class="container">
         <div class="row mb-5">

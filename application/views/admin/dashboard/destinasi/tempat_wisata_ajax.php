@@ -12,14 +12,23 @@
                 </div>
             </td>
             <td><?= $tw->kategori; ?></td>
+
             <td class="d-flex">
                 <div style="max-width: 100px; max-height: 100px; overflow: hidden; text-overflow: ellipsis;">
                     <?= $tw->deskripsi_tempat_wisata; ?>
                 </div>
             </td>
+
             <td><img src="<?= base_url() . '/upload/destinasi/' . $tw->gambar1; ?>" width="100" height="100" alt=""></td>
             <td><img src="<?= base_url() . '/upload/destinasi/' . $tw->gambar2; ?>" width="100" height="100" alt=""></td>
             <td><img src="<?= base_url() . '/upload/destinasi/' . $tw->gambar3; ?>" width="100" height="100" alt=""></td>
+            <td class="d-flex">
+
+                <div style="max-width: 100px; max-height: 100px; overflow: hidden; text-overflow: ellipsis;">
+                    <?= $tw->fasilitas_tempat_wisata; ?>
+                </div>
+
+            </td>
             <td>
                 <button class="btn btn-warning edit-btn" data-id="<?= $tw->id_tempat_wisata; ?>" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit text-light"></i></button>
                 <button class="btn btn-danger delete-btn" data-id="<?= $tw->id_tempat_wisata; ?>"><i class="fa fa-trash"></i></button>

@@ -12,7 +12,8 @@
                     <div class="location"><span class="fa fa-map-marker"></span> <?= $ev->alamat_event; ?> </div>
 
                     <ul>
-                        <li><span class="flaticon-shower"></span><?= $ev->jam_buka; ?> - <?= $ev->jam_tutup; ?></li>
+                        <li><span class="fas fa-clock"></span><?= $ev->jam_buka; ?> - <?= $ev->jam_tutup; ?></li>
+                        <li><span class="fas fa-calendar"></span> <?= date('F j, Y', strtotime($ev->tanggal_event)); ?></li>
 
                         <li><span class="flaticon-sun-umbrella"></span><?= $ev->nama_tempat_wisata; ?></li>
                     </ul>

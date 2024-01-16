@@ -24,6 +24,7 @@ class event extends CI_Controller
         $data['page_title'] = 'Detail Event';
         $data['event'] = $this->M_event->getDetail($id);
         $data['tempat_wisata_list'] = $this->M_tempatWisata->getData($id);
+        $data['lokasi_wisata_list'] = $this->M_tempatWisata->getData($id);
         $this->load->view('user/event/detail', $data);
     }
     // public function search_ajax()
