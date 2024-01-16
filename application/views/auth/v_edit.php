@@ -23,7 +23,7 @@
       <div class="form-floating mb-1">
         <input type="password" class="form-control" id="floatingInput" placeholder="Reapet Password" name="password1">
         <?php echo form_error('password1', '<small class="text-danger p-3" >', '</small>'); ?>
-        <label for="floatingInput">REAPET PASSWORD</label>
+        <label for="floatingInput">REPEAT PASSWORD</label>
       </div>
 
       <div class="input">
