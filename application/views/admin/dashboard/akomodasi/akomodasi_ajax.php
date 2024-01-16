@@ -20,6 +20,11 @@
                 </div>
             </td>
             <td><?= $ak->nama_tempat_wisata; ?></td>
+            <td>
+                <div style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; max-height:300px;">
+                    <?= $ak->fasilitas_akomodasi; ?>
+                </div>
+            </td>
             <td><img src="<?= base_url() . '/upload/akomodasi/' . $ak->gambar_akomodasi1; ?>" width="100" alt=""></td>
             <td><img src="<?= base_url() . '/upload/akomodasi/' . $ak->gambar_akomodasi2; ?>" width="100" alt=""></td>
             <td><img src="<?= base_url() . '/upload/akomodasi/' . $ak->gambar_akomodasi3; ?>" width="100" alt=""></td>

@@ -26,11 +26,20 @@
                                 <label for="" class="form-label">Deskripsi Event</label>
                                 <textarea class="form-control" name="deskripsi_event" rows="3" required><?= $event['deskripsi_event']; ?></textarea>
                             </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Tanggal Event</label>
+                                <input type="date" name="tanggal_event" id="" class="form-control" value="<?= $event['tanggal_event']; ?>" required>
+                            </div>
 
                         </div>
 
                         <!-- Right Column - 3 Fields -->
-                        <div class="col-md-6">
+                        <div class=" col-md-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">Fasilitas Event</label>
+                                <textarea class="form-control" name="fasilitas_event" rows="3" required><?= $event['fasilitas_event']; ?></textarea>
+                            </div>
+
                             <div class="form-group">
                                 <label for="" class="form-label">Jam Buka</label>
                                 <input type="time" name="jam_buka" id="" value="<?= $event['jam_buka']; ?>" class="form-control">

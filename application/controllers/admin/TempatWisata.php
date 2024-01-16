@@ -73,7 +73,8 @@ class TempatWisata extends CI_Controller
             'biaya_tempat_wisata' => $this->input->post('biaya'),
             'alamat_tempat_wisata' => $this->input->post('alamat'),
             'deskripsi_tempat_wisata' => $this->input->post('deskripsi'),
-            'lokasi_tempat_wisata' => $this->input->post('lokasi')
+            'lokasi_tempat_wisata' => $this->input->post('lokasi'),
+            'fasilitas_tempat_wisata' => $this->input->post('fasilitas'),
         );
 
 
@@ -153,7 +154,8 @@ class TempatWisata extends CI_Controller
             'biaya_tempat_wisata' => $this->input->post('biaya'),
             'alamat_tempat_wisata' => $this->input->post('alamat'),
             'deskripsi_tempat_wisata' => $this->input->post('deskripsi'),
-            'lokasi_tempat_wisata' => $this->input->post('lokasi')
+            'lokasi_tempat_wisata' => $this->input->post('lokasi'),
+            'fasilitas_tempat_wisata' => $this->input->post('fasilitas'),
         );
 
         // Merge existing data with uploaded files

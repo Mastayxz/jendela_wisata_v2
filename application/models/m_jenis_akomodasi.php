@@ -13,7 +13,7 @@ class m_jenis_akomodasi extends CI_Model
     public function getjenis_akomodasi()
     {
         $result = $this->db->get('jenis_akomodasi');
-        return $result;
+        return $result->result();
     }
     public function insertjenis_akomodasi()
     {

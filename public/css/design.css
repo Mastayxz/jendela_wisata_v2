@@ -158,8 +158,16 @@
     margin-top: 20px;
     width: 100%;
     background-color: ghostwhite;
-    width: 900px;
-}
+    max-height: 200px; /* Set the maximum height you want for the description */
+    overflow: auto;
+    text-overflow: ellipsis;
+    color: black;
+ }
+
+.wrapped-description p {
+        margin: 0; /* Remove default margin to prevent spacing issues */
+ }
+
 .map-container {
     display: flex;
     align-items: center;

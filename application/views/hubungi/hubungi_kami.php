@@ -31,7 +31,11 @@
             <span class="fa fa-map-marker"></span>
           </div>
           <h3 class="mb-2">Address</h3>
-          <p><!--alamat--></p>
+          <p><?php 
+              $googleMap ="https://www.google.com/maps/place/Politeknik+Negeri+Bali/@-8.7984439,115.1618759,19z/data=!4m10!1m2!2m1!1sPoliteknik+negri+Bali!3m6!1s0x2dd244c13ee9d753:0x6c05042449b50f81!8m2!3d-8.798698!4d115.162487!15sChZQb2xpdGVrbmlrIG5lZ2VyaSBCYWxpkgEScG9seXRlY2huaWNfc2Nob29s4AEA!16s%2Fg%2F1229clgc?entry=ttu";
+              echo anchor($googleMap,'Address');
+          ?>
+          </p>
         </div>
       </div>
       <div class="col-md-3 d-flex">
@@ -76,7 +80,7 @@
 
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="email" placeholder="Your Email" value="<?php echo set_value('email') ?>">
+            <input type="email" class="form-control" name="email" placeholder="Your Email" value="<?php echo set_value('email') ?>">
             <?php echo form_error('email', '<small class="text-danger p-3" >', '</small>'); ?>
           </div>
           <div class="form-group">
@@ -84,7 +88,7 @@
             <?php echo form_error('subject', '<small class="text-danger p-3" >', '</small>'); ?>
           </div>
           <div class="form-group">
-            <textarea cols="30" rows="7" class="form-control" name="pesan" placeholder="Message" value="<?php echo set_value('pesan') ?>"></textarea>
+            <textarea cols="30" rows="7" class="form-control" name="pesan" placeholder="Message" value="<?php echo set_value('pesan')?>"></textarea>
             <?php echo form_error('pesan', '<small class="text-danger p-3" >', '</small>'); ?>
           </div>
           <div class="form-group">

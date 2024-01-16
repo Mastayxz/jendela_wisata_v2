@@ -30,25 +30,30 @@ class c_hubungi extends CI_Controller
             $subject = $this->input->post('subject');
             $pesan = $this->input->post('pesan');
 
+
+           
             $subject = $subject;
             $message =
                 "<html>
+                '$email'
+                <br>
                 '$name'
+                <br>
                 '$pesan'
-            </html>";
+                </html>";   
 
 
-            $this->send_email($email, $subject, $message);
+            $this->send_email($email,$subject, $message);
 
             redirect('c_hubungi/index');
         }
     }
-    public function send_email($to, $subject, $message)
+    public function send_email($from,$subject, $message)
     {
-
+        
         $this->email->set_newline("\r\n");
-        $this->email->from($to);
-        $this->email->to('kadekdwipratama09@gmail.com');
+        $this->email->from($from);
+        $this->email->to('alimanbudi341@gmail.com');
         $this->email->subject($subject);
         $this->email->message($message);
 

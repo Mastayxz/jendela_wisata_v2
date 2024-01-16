@@ -40,6 +40,10 @@
                                 <label for="" class="form-label">Lokasi</label>
                                 <textarea class="form-control" name="lokasi" rows="3" required><?= $destinasi['lokasi_tempat_wisata']; ?></textarea>
                             </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Deskripsi</label>
+                                <textarea id="fasilitas" class="form-control" name="fasilitas" rows="6" required><?= $destinasi['fasilitas_tempat_wisata']; ?></textarea>
+                            </div>
                         </div>
                         <div class="col-md-6">
 

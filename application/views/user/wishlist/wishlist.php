@@ -28,12 +28,11 @@
                     <div class="project-wrap hotel">
                         <a href="#" class="img">
                             <img src="<?= base_url() . '/upload/event/' . $item->gambar_event; ?>" alt="" class="img">
-                            <span class="price"> <?= $item->tgl_ditambah ?> </span>
-
+                            <span class="price"><?= date('F j, Y', strtotime($item->tgl_ditambah)); ?></span>
                         </a>
                         <div class="text p-4 mb-2">
                             <h3 class="mb-3"><a href="<?= base_url('user/tempat_wisata/detail/' . $item->id_event); ?>"><?= $item->nama_event; ?></a></h3>
-                            <a href="<?= base_url('user/wishlist/delete/' . $item->id_wishlist); ?>" class="btn btn-danger">Hapus</a>
+                            <a href="<?= base_url('user/wishlist/delete/' . $item->id_wishlist); ?>" class="btn btn-danger">delete</a>
 
                         </div>
                     </div>
@@ -45,12 +44,11 @@
                     <div class="project-wrap hotel">
                         <a href="#" class="img">
                             <img src="<?= base_url() . '/upload/akomodasi/' . $item->gambar_akomodasi1; ?>" alt="" class="img">
-                            <span class="price"> <?= $item->tgl_ditambah ?> </span>
-
+                            <span class="price"><?= date('F j, Y', strtotime($item->tgl_ditambah)); ?></span>
                         </a>
                         <div class="text p-4 mb-2">
                             <h3 class="mb-3"><a href="<?= base_url('user/tempat_wisata/detail/' . $item->id_akomodasi); ?>"><?= $item->nama_akomodasi; ?></a></h3>
-                            <a href="<?= base_url('user/wishlist/delete/' . $item->id_wishlist); ?>" class="btn btn-danger">Hapus</a>
+                            <a href="<?= base_url('user/wishlist/delete/' . $item->id_wishlist); ?>" class="btn btn-danger">delete</a>
 
                         </div>
                     </div>
@@ -61,11 +59,11 @@
                     <div class="project-wrap hotel">
                         <a href="#" class="img">
                             <img src="<?= base_url() . '/upload/destinasi/' . $item->gambar1; ?>" alt="" class="img">
-                            <span class="price"> <?= $item->tgl_ditambah ?> </span>
+                            <span class="price"><?= date('F j, Y', strtotime($item->tgl_ditambah)); ?></span>
                         </a>
                         <div class="text p-4 mb-2">
                             <h3 class="mb-3"><a href="<?= base_url('user/tempat_wisata/detail/' . $item->id_tempat_wisata); ?>"><?= $item->nama_tempat_wisata; ?></a></h3>
-                            <a href="<?= base_url('user/wishlist/delete/' . $item->id_wishlist); ?>" class="btn btn-danger">Hapus</a>
+                            <a href="<?= base_url('user/wishlist/delete/' . $item->id_wishlist); ?>" class="btn btn-danger">delete</a>
 
                         </div>
                     </div>
@@ -80,18 +78,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-<script>
-    $(document).ready(function() {
-        <?php if ($this->session->flashdata('pesan')) : ?>
-            // Tampilkan notifikasi jika ada pesan flashdata
-            Swal.fire({
-                icon: 'success',
-                title: 'Sukses',
-                text: '<?= $this->session->flashdata("pesan") ?>',
-            });
-        <?php endif; ?>
-    });
-</script>
+
 
 
 <!-- Tampilkan daftar wishlist -->

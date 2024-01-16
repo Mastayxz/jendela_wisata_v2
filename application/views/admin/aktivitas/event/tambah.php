@@ -29,6 +29,10 @@
                         <!-- Right Column - 4 Fields -->
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="" class="form-label">Fasilitas Event</label>
+                                <textarea class="form-control" name="fasilitas_event" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label for="" class="form-label">Jam Buka</label>
                                 <input type="time" name="jam_buka" id="" class="form-control" required>
                             </div>
@@ -37,7 +41,7 @@
                                 <input type="time" name="jam_tutup" id="" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="" class="form-label">Date Event</label>
+                                <label for="" class="form-label">Tanggal Event</label>
                                 <input type="date" name="tanggal_event" id="" class="form-control" required>
                             </div>
                             <div class="form-group">

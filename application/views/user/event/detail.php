@@ -4,7 +4,8 @@
 <?php $this->load->view('landing/navbar') ?>
 
 <style>
-    p {
+    p,
+    li {
         color: black;
     }
 </style>
@@ -46,17 +47,16 @@
                             </a>
 
                         </li>
-
-
-                        </li>
                     </ul>
+                    <li><span class="fas fa-clock"></span> <?= $event['jam_buka']; ?> - <?= $event['jam_tutup']; ?></li>
+                    <li><span class="fas fa-calendar"></span> <?= date('F j, Y', strtotime($event['tanggal_event'])); ?></li>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="mt-5">
                     <div class="price-container">
                         <div class="harga">
-                            <p class="fw-bold mb-0">Biaya Masuk </p>
+                            <p class="fw-bold mb-0">Price </p>
                             <p class="fw-bold">Rp.<?= number_format($event['biaya_event']); ?></p>
 
                         </div>
@@ -66,12 +66,19 @@
             <div class="wrapped-description">
                 <p><?php echo $event['deskripsi_event'] ?></p>
             </div>
+            <h4 class="mt-3 mb-0">Fasilitas</h4>
+            <div class="wrapped-description">
+                <p><?php echo $event['fasilitas_event'] ?></p>
+            </div>
             <div class="map-container mt-5">
                 <div class="map-info">
                     <p><i class="fa fa-map-marker map-icon"></i> Lokasi:</p>
-                    <div class="wrap">
-                        <p width="600" height="450"><?php echo $event['lokasi_event']; ?></p>
-                    </div>
+                    <li> | <?php foreach ($lokasi_wisata_list as $tw) : ?>
+                            <?php if ($tw->id_tempat_wisata == $event['id_tempat_wisata']) : ?>
+                                <?= $tw->lokasi_tempat_wisata; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </li>
                 </div>
             </div>
         </div>

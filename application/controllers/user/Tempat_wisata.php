@@ -10,6 +10,8 @@ class Tempat_wisata extends CI_Controller
         parent::__construct();
         $this->load->model('M_tempatWisata');
         $this->load->model('kategori_model');
+        $this->load->model('M_akomodasi');
+        $this->load->model('M_event');
     }
 
 
@@ -26,6 +28,10 @@ class Tempat_wisata extends CI_Controller
         $data['page_title'] = 'Detail Destinasi Wisata';
         $data['destinasi'] = $this->M_tempatWisata->getDetail($id_tempat_wisata);
         $data['kategori'] = $this->kategori_model->getKategoriByTempatWisata($id_tempat_wisata);
+        $data['akomodasi'] = $this->M_akomodasi->getAkomodasiByDestination($id_tempat_wisata);
+        $data['event'] = $this->M_event->getEventsByDestination($id_tempat_wisata);
+        $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
+        $data['tempat_wisata'] = $this->M_tempatWisata->getData();
         $this->load->view('user/tempat_wisata/detail', $data);
     }
     public function search_ajax()
