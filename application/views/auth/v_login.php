@@ -26,7 +26,7 @@
             </div>
             <!-- menambahkan fungsi melihat password -->
             <div class="showPassword">
-            <input type="checkbox" onclick="showPassword()" />    
+            <input type="checkbox" onclick="showPassword()"/> Show Password    
                 <script>
                     function showPassword(){
                     let inputPassword = document.getElementById("password");

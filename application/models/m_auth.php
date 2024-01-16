@@ -14,8 +14,12 @@
             $user = $this->db->get_where('user',array('email'=>$email));
             return $user->row_array();
         }
-        
-    
+        public function insertUser($data)
+        {
+            $insert = $this->db->insert('user',$data);
+            return $insert;
+        }
+       
     }
     
     /* End ofmfile .php */

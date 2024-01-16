@@ -32,8 +32,8 @@ class c_auth extends CI_Controller
     }
     private function _login()
     {
-        $username_or_email = $this->input->post('username_or_email');
-        $password = $this->input->post('password');
+        $username_or_email = htmlspecialchars ($this->input->post('username_or_email'));
+        $password = htmlspecialchars($this->input->post('password'));
 
 
         //cek inputan berupa email atau username 
@@ -96,12 +96,12 @@ class c_auth extends CI_Controller
             $this->load->view('auth/v_register');
             $this->load->view('templates/footer');
         } else {
-            $username = $this->input->post('username');
-            $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-            $nama = $this->input->post('nama');
-            $email = $this->input->post('email');
-            $tlp_user = $this->input->post('telephone');
-            $tgl_lahir = $this->input->post('birthday');
+            $username = htmlspecialchars($this->input->post('username'));
+            $password = htmlspecialchars(password_hash($this->input->post('password'), PASSWORD_DEFAULT));
+            $nama =  htmlspecialchars($this->input->post('nama'));
+            $email = htmlspecialchars($this->input->post('email'));
+            $tlp_user = htmlspecialchars($this->input->post('telephone'));
+            $tgl_lahir = htmlspecialchars($this->input->post('birthday'));
             $date_user = time();
 
             $data = array(
@@ -122,12 +122,12 @@ class c_auth extends CI_Controller
                 <p>akun anda sudah di buat</p>
                 <html>';
             
-            //sql
-            $this->db->insert('user', $data);
-
-            if (isset($data)) {
+            //models
+             $insert = $this->m_auth->insertUser($data);
+            //pengecekan 
+            if (isset($insert)) {
                 $this->send_email($email, $subject, $message);
-                $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
+                $this->session->set_flashdata('pesan','<div class="alert alert-success" role="alert">
                     account has ben created</div>');
                 redirect('c_auth/index');
             } else {
@@ -167,6 +167,8 @@ class c_auth extends CI_Controller
                     pliss check your email </div>');
                     redirect('c_auth/forgot_pass');
                 } else {
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
+                    pliss check your email </div>');
                     redirect('c_auth/index');
                 }
             } else {
@@ -197,13 +199,13 @@ class c_auth extends CI_Controller
             $this->load->view('templates/footer');
         } else {
 
-            $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+            $password =password_hash($this->input->post('password'), PASSWORD_DEFAULT);
             $email = $this->session->userdata('riset');
 
             //sql
-            $this->db->set('password', $password);
-            $this->db->where('email', $email);
-            $this->db->update('user');
+                $this->db->set('password', $password);
+                $this->db->where('email', $email);
+                $this->db->update('user');
 
             $this->session->unset_userdata('riset');
 
