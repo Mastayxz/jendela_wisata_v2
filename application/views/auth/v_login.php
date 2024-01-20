@@ -42,7 +42,7 @@
             <div class="regis">
                 <h6>don't have account?</h6>
                 <a href="<?php echo base_url('c_auth/register') ?>">create account</a><br>
-                <a href="<?php echo base_url('c_auth/forgot_pass') ?>">forgot passwor?</a>
+                <a href="<?php echo base_url('c_auth/forgot_pass') ?>">forgot password?</a>
             </div>
             <div class="input">
                 <button type="submit" class="btn btn-secondary">SIGN</button>
