@@ -13,7 +13,7 @@
                         <input type="text" name="username" id="" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="" class="form-label">password</label>
+                        <label for="" class="form-label">Password</label>
                         <input type="password" name="password" id="" class="form-control">
                     </div>
                     <div class="form-group">

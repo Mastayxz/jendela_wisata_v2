@@ -21,7 +21,7 @@
             </div>
 
             <div class="regis">
-                <a href="<?php echo base_url('c_auth/index') ?>">back to login</a><br>
+                <a href="<?php echo base_url('c_auth/index') ?>">Back to Login</a><br>
             </div>
             <div class="input">
                 <button type="submit" class="btn btn-secondary">SEND</button>

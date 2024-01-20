@@ -63,7 +63,7 @@
     </div>
 
     <div class="login">
-      <a href="<?php echo base_url('c_auth/index') ?>">do you have an account?Login</a>
+      Already have an account? <a href="<?php echo base_url('c_auth/index') ?>">Login</a>
     </div>
 
   </div>

@@ -50,7 +50,7 @@ class c_authadmin extends CI_Controller
         } else {
             // Admin not found
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
-        Email atau password tidak ada </div>');
+        Email atau password tidak valid </div>');
             redirect('c_authadmin/index');
         }
     }

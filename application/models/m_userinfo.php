@@ -29,12 +29,11 @@ class m_userinfo extends CI_Model {
 
         $data = array(
             'username' => $this->input->post('username'),
-            'nama'    => $this->input->post('nama'),
-            'email'    => $this->input->post('email'), 
-            'tlp_user'    => $this->input->post('tlp_user'), 
-            'tgl_lahir'    => $this->input->post('tgl_lahir'),                
+            'email' => $this->input->post('email'),
+            'nama' => $this->input->post('nama'),
+            'tgl_lahir' => $this->input->post('tgl_lahir'),
+            'tlp_user' => $this->input->post('tlp_user')               
         );
-        var_dump($data);
         $this->db->where('id_user', $id_user);
         $result = $this->db->update('user', $data);
         return $result;
