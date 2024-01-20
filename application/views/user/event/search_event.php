@@ -2,7 +2,7 @@
     <?php foreach ($event as $ev) : ?>
         <div class="col-md-4">
             <div class="project-wrap hotel">
-                <a href="#" class="img">
+                <a href="<?= base_url('user/event/detail/' . $ev->id_event); ?>" class="img">
                     <img src="<?= base_url() . '/upload/event/' . $ev->gambar_event; ?>" class="img">
                     <span class="price">Rp. <?= number_format($ev->biaya_event); ?> </span>
                 </a>

@@ -27,7 +27,7 @@ class jenis_akomodasi extends CI_Controller
 
     {
         $data['page_title'] = 'Jenis Akomodasi';
-        $this->load->view('admin/aktivitas/jenis_akomodasi/tambah_jenis_akomodasi', $data);
+        $this->load->view('admin/dashboard/jenis_akomodasi/tambah_jenis_akomodasi', $data);
     }
 
     public function addjenis_akomodasi()
@@ -46,7 +46,7 @@ class jenis_akomodasi extends CI_Controller
     {
         $data['page_title'] = 'Jenis Akomodasi';
         $data['jenis_akomodasi'] = $this->m_jenis_akomodasi->detailjenis_akomodasi($id);
-        $this->load->view('admin/aktivitas/jenis_akomodasi/edit_jenis_akomodasi', $data);
+        $this->load->view('admin/dashboard/jenis_akomodasi/edit_jenis_akomodasi', $data);
     }
     public function editjenis_akomodasi()
     {

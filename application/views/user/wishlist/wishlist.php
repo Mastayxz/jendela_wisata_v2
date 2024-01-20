@@ -76,10 +76,40 @@
 </div>
 
 
+<!-- Tambahkan script SweetAlert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-
-
+<!-- Di dalam view, misalnya user/wishlist/wishlist.php -->
+<?php if ($this->session->flashdata('pesan')) : ?>
+    <script>
+        Swal.fire({
+            icon: 'info',
+            title: 'Pesan',
+            text: '<?= $this->session->flashdata("pesan"); ?>',
+            showConfirmButton: false,
+            timer: 3000 // Waktu (ms) pesan ditampilkan sebelum otomatis hilang
+        });
+    </script>
+<?php elseif ($this->session->flashdata('success_message')) : ?>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses',
+            text: '<?= $this->session->flashdata("success_message"); ?>',
+            showConfirmButton: false,
+            timer: 3000 // Waktu (ms) pesan ditampilkan sebelum otomatis hilang
+        });
+    </script>
+<?php elseif ($this->session->flashdata('error_message')) : ?>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '<?= $this->session->flashdata("error_message"); ?>',
+            showConfirmButton: false,
+            timer: 3000 // Waktu (ms) pesan ditampilkan sebelum otomatis hilang
+        });
+    </script>
+<?php endif; ?>
 
 <!-- Tampilkan daftar wishlist -->
 

@@ -53,8 +53,8 @@
                                 <td><?= $u->tlp_user; ?></td>
                                 <td><?= $u->tgl_lahir; ?></td>
                                 <td>
-
-                                    <a href="<?= base_url('admin/user/deleteuser/' . $u->id_user); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                    <button class="btn btn-danger delete-btn" data-id="<?= $u->id_user ?>"><i class="fa fa-trash"></i></button>
+                                    <!-- <a href="<?= base_url('admin/user/deleteuser/' . $u->id_user); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a> -->
                                 </td>
 
                             </tr>
@@ -69,7 +69,27 @@
     </div>
 </div>
 <!-- Footer -->
+<script>
+    $(document).ready(function() {
+        $('.delete-btn').on('click', function() {
+            var id = $(this).data('id');
 
+            Swal.fire({
+                title: 'Anda yakin ingin menghapus data ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect to delete URL or perform AJAX delete
+                    window.location.href = "<?= base_url('admin/user/deleteuser/'); ?>" + id;
+                }
+            });
+        });
+    });
+</script>
 <!-- JS -->
 <?php $this->load->view('template/js') ?>
 

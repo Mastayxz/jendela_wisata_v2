@@ -40,20 +40,25 @@
                                     <!-- Form Group (phone number)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputPhone">Phone number</label>
-                                        <input class="form-control" id="inputPhone" type="tel" placeholder="" name="tlp_user" value="<?php echo $user['tlp_user'] ?>" readonly>
+                                        <input class="form-control" id="inputPhone" type="text" placeholder="" name="tlp_user" value="<?php echo $user['tlp_user'] ?>" readonly>
                                     </div>
                                     <!-- Form Group (birthday)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="" name="tgl_lahir" value="<?php echo $user['tgl_lahir'] ?>" readonly>
+                                        <input class="form-control" id="inputBirthday" type="date" name="birthday" placeholder="" name="tgl_lahir" value="<?php echo $user['tgl_lahir'] ?>" readonly>
                                     </div>
                                 </div>
                                 <!-- Logout button-->
                                 <div class="mb-2">
                                     <a href="<?= base_url('user/editinfo') ?>" class="btn btn-primary col-md-1">Edit Info</a>
                                 </div>
-                                <a href="<?= base_url('c_auth/logout') ?>" class="btn btn-primary col-md-1">Logout</a>
-                            </div>
+                                <div class="mb-2">
+                                    <a href="<?= base_url('c_auth/logout') ?>" class="btn btn-primary col-md-1">Logout</a>
+                                </div>
+                                <div class="mb-2">
+                                    <a href="<?= base_url('user/event') ?>" class="btn btn-primary col-md-1">Kembali</a>
+                                </div>
+                                
 
                         
                         </form>

@@ -14,8 +14,9 @@ class Wishlist_model extends CI_Model
     {
         // Pastikan item belum ada di wishlist
         $existing_wishlist = $this->db->get_where('wishlist', array('id_user' => $id_user, 'id_event' => $id_event, 'id_akomodasi' => $id_akomodasi, 'id_tempat_wisata' => $id_tempat_wisata))->row();
-
-        if (!$existing_wishlist) {
+        if ($existing_wishlist) {
+            return false;
+        } else if (!$existing_wishlist) {
             // Tambahkan item ke wishlist
             $data = array(
                 'id_user' => $id_user,
@@ -23,8 +24,8 @@ class Wishlist_model extends CI_Model
                 'id_akomodasi' => $id_akomodasi,
                 'id_tempat_wisata' => $id_tempat_wisata
             );
-
             $this->db->insert('wishlist', $data);
+            return true;
         }
     }
 
@@ -75,6 +76,7 @@ class Wishlist_model extends CI_Model
     {
         $this->db->where('id_wishlist', $id_wishlist);
         $this->db->delete('wishlist');
+        return true;
     }
 
 

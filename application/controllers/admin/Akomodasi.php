@@ -34,7 +34,7 @@ class Akomodasi extends CI_Controller
         $data['page_title'] = 'Tambah Akomodasi';
         $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
         $data['tempat_wisata_list'] = $this->M_tempatWisata->getData();
-        $this->load->view('admin/aktivitas/akomodasi/tambah', $data);
+        $this->load->view('admin/dashboard/akomodasi/tambah_akomodasi', $data);
     }
 
     public function add()
@@ -97,7 +97,7 @@ class Akomodasi extends CI_Controller
         $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
         $data['tempat_wisata_list'] = $this->M_tempatWisata->getData();
         $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
-        $this->load->view('admin/aktivitas/akomodasi/edit', $data);
+        $this->load->view('admin/dashboard/akomodasi/edit_akomodasi', $data);
     }
 
     public function get_detail($id)
@@ -105,7 +105,7 @@ class Akomodasi extends CI_Controller
         $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi();
         $data['tempat_wisata_list'] = $this->M_tempatWisata->getData();
         $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
-        $this->load->view('admin/aktivitas/akomodasi/edit', $data);
+        $this->load->view('admin/dashboard/akomodasi/edit_akomodasi', $data);
     }
 
     public function update()

@@ -3,7 +3,7 @@
         <div class="col-md-4 ">
 
             <div class="project-wrap hotel">
-                <a href="#" class="img">
+                <a href="<?= base_url('user/akomodasi/detail/' . $ak->id_akomodasi); ?>" class="img">
                     <img src="<?= base_url() . '/upload/akomodasi/' . $ak->gambar_akomodasi1; ?>" class="img">
                     <span class="price">Rp. <?= number_format($ak->harga_akomodasi); ?> </span>
                 </a>

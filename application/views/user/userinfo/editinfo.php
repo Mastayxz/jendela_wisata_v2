@@ -40,12 +40,12 @@
                                     <!-- Form Group (phone number)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputPhone">Phone number</label>
-                                        <input class="form-control" id="inputPhone" type="tel" placeholder="" name="tlp_user" value="<?php echo $user['tlp_user'] ?>">
+                                        <input class="form-control" id="inputPhone" type="text" placeholder="" name="tlp_user" value="<?php echo $user['tlp_user'] ?>">
                                     </div>
                                     <!-- Form Group (birthday)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="" name="tgl_lahir" value="<?php echo $user['tgl_lahir'] ?>">
+                                        <input class="form-control" id="inputBirthday" type="date" placeholder="" name="tgl_lahir" value="<?php echo $user['tgl_lahir'] ?>">
                                     </div>
                                 </div>
                                 <!-- Logout button-->

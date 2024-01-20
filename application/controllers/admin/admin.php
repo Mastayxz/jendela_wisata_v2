@@ -28,24 +28,36 @@ class admin extends CI_Controller
     public function tambahadmin()
     {
         $data['page_title'] = 'Admin';
-        $this->load->view('admin/aktivitas/admin/tambahadmin', $data);
+        $this->load->view('admin/dashboard/admin/tambahadmin', $data);
     }
 
     public function addadmin()
     {
-        $this->m_admin->insertadmin();
+        if ($this->m_admin->insertadmin()) {
+            $this->session->set_flashdata('pesan', 'Admin berhasil ditambahkan.');
+        } else {
+            // Simpan pesan flashdata jika terjadi kesalahan
+            $this->session->set_flashdata('error', 'Terjadi kesalahan saat menambahkan Admin.');
+        }
+
+        // $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil ditambahkan.');
         redirect('admin/admin');
-        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil ditambahkan.');
     }
     public function ubahadmin($id)
     {
         // $data['page_title'] = 'Admin';
         $data['admin'] = $this->m_admin->detailadmin($id);
-        $this->load->view('admin/aktivitas/admin/editadmin', $data);
+        $this->load->view('admin/dashboard/admin/editadmin', $data);
     }
     public function editadmin()
     {
-        $this->m_admin->editadmin();
+        if ($this->m_admin->editadmin()) {
+            $this->session->set_flashdata('pesan', 'Admin berhasil diubah.');
+        } else {
+            // Simpan pesan flashdata jika terjadi kesalahan
+            $this->session->set_flashdata('error', 'Terjadi kesalahan saat mengubah data admin.');
+        }
+
         redirect('admin/admin');
     }
     public function deleteadmin($id)

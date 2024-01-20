@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Jendela Wisata<span>Tourism Information</span></a>
+        <a class="navbar-brand" href="<?= base_url(); ?>">Jendela Wisata<span>Tourism Information</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item <?php echo ($this->uri->uri_string() == '' && 'homecontrol') ? 'active' : ''; ?>"><a href="<?= base_url('homecontrol') ?>" class="nav-link">Home</a></li>
+                <li class="nav-item <?php echo ($this->uri->segment(1) == '' && $this->uri->segment(2) == 'homecontrol') ? 'active' : ''; ?>"><a href="<?= base_url('homecontrol') ?>" class="nav-link">Home</a></li>
 
                 <li class="nav-item <?php echo ($this->uri->segment(1) == 'user' && $this->uri->segment(2) == 'event') ? 'active' : ''; ?>"><a href="<?= base_url('user/event'); ?>" class="nav-link">Event</a></li>
 

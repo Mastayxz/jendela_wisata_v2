@@ -17,15 +17,26 @@
         }
         public function insertadmin()
         {
+            // Validasi apakah email sudah ada
+            $existingEmail = $this->db->get_where('admin', array('email' => $this->input->post('email')))->row();
+
+            if ($existingEmail) {
+                // Email sudah ada, kembalikan pesan kesalahan atau lakukan tindakan yang sesuai
+                return false;
+            }
+
+            // Email belum ada, lakukan operasi insert
             $insert = array(
                 'email' => $this->input->post('email'),
                 'username' => $this->input->post('username'),
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT), // Use MD5 for password
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'nama_admin' => $this->input->post('nama_admin')
             );
+
             $result = $this->db->insert('admin', $insert);
             return $result;
         }
+
         public function editAdmin()
         {
             // Di awal fungsi editAdmin

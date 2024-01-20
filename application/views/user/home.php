@@ -183,10 +183,10 @@
             <div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate d-flex align-items-center">
                 <div class="w-100">
                     <span class="subheading">Welcome to Jendela Wisata</span>
-                    <h2 class="mb-4">It's time to start your adventure</h2>
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-                        A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    <h2 class="mb-4">It's time to start your adventure in Bali</h2>
+                    <p>Bali, an island in Indonesia, is a renowned tourist destination known for its stunning natural beauty, rich culture, and warm hospitality. With its white sandy beaches, clear blue waters, and ideal waves for surfing, Bali is a tropical paradise. The island boasts majestic mountains, lush terraced rice fields, and captivating tropical forests.</p>
+                    <p>Bali is also famous for its cultural heritage, featuring traditional dances, religious ceremonies, and beautiful wood carvings. Art and cultural hubs like Ubud attract tourists seeking an immersion into Bali's artistic and spiritual life. 
+                        Ancient temples, such as Pura Besakih, showcase the island's strong religious traditions.</p>
                     <p><a href="<?= base_url('user/tempat_wisata'); ?>" class="btn btn-primary py-3 px-4">Search Destination</a></p>
                 </div>
             </div>
@@ -377,7 +377,8 @@
                             <div class="col-md-12 heading-section ftco-animate">
                                 <span class="subheading">About Us</span>
                                 <h2 class="mb-4">Make Your Tour Memorable and Safe With Us</h2>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                                <p>The vibrant nightlife with clubs and restaurants, local craft shops, and bustling traditional markets add to Bali's unique charm. Adventure enthusiasts can enjoy activities like diving, snorkeling, trekking, and surfing. Bali, with its laid-back atmosphere, offers a perfect blend of natural beauty, cultural richness, 
+                                    and entertainment, making it one of the world's top tourist destinations.</p>
 
                             </div>
                         </div>

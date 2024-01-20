@@ -44,7 +44,7 @@
                         </div>
                         <!-- Form Group (email address) -->
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                            <label class="small mb-1" for="inputEmailAddress">Email Address</label>
                             <input class="form-control" id="inputEmailAddress" type="email" placeholder="" value="<?php echo $admin['email'] ?>">
                         </div>
                         <!-- Logout button -->

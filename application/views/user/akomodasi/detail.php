@@ -65,13 +65,12 @@
                         <li>
                             <p class="title"><?php echo $akomodasi['nama_akomodasi']; ?></p>
                         </li>
-                        <li> <a title="Wishlist" class="btn btn-just-icon btn-simple btn-pink" href="<?= base_url('user/wishlist/add_to_wish/' . $akomodasi['id_akomodasi']); ?>">
+                        <li>
+                            <a title="Wishlist" class="btn btn-just-icon btn-simple btn-pink btn-wishlist" href="<?= base_url('user/wishlist/add_to_wish/' . $akomodasi['id_akomodasi']); ?>">
                                 <i class="fa fa-heart"></i>
                             </a>
-                            <!-- <a title="Wishlist" class="btn btn-just-icon btn-simple btn-warning" href="<?= base_url('user/wishlist/add_to_wishlist/' . $akomodasi['id_akomodasi'] . '/akomodasi'); ?>">
-                            <i class="fa fa-heart"></i>
-                        </a> -->
                         </li>
+
                     </ul>
                 </div>
             </div>
@@ -112,6 +111,19 @@
             event.preventDefault(); // Mencegah pengiriman formulir (untuk keperluan contoh)
             // Tambahkan logika pengiriman data formulir atau interaksi lain di sini
             $('#pesanTiketModal').modal('hide'); // Menutup modal setelah pengiriman formulir (gantilah dengan logika sesuai kebutuhan)
+        });
+
+        // Tambahkan event click pada tombol wishlist
+        $('.btn-wishlist').click(function(event) {
+            event.preventDefault(); // Mencegah navigasi saat tombol wishlist diklik
+
+            // Tambahkan logika untuk menampilkan popup hanya jika pengguna belum login
+            <?php if (!$this->session->userdata('logged_in')) : ?>
+                alert('Anda harus login untuk menambahkan ke wishlist.');
+            <?php else : ?>
+                // Tambahkan logika untuk menambahkan ke wishlist jika pengguna sudah login
+                window.location.href = $(this).attr('href');
+            <?php endif; ?>
         });
     });
 </script>

@@ -18,9 +18,12 @@ class m_user extends CI_Model
     public function insertuser()
     {
         $insert = array(
+            'username' => $this->input->post('username'),
             'email' => $this->input->post('email'),
             'password' => $this->input->post('password'),
-            'nama' => $this->input->post('nama')
+            'nama' => $this->input->post('nama'),
+            'tgl_lahir' => $this->input->post('tgl_lahir'),
+            'tlp_user' => $this->input->post('tlp_user')
         );
         $result = $this->db->insert('user', $insert);
         return $result;
@@ -28,9 +31,12 @@ class m_user extends CI_Model
     public function edituser()
     {
         $edit = array(
+            'username' => $this->input->post('username'),
             'email' => $this->input->post('email'),
             'password' => $this->input->post('password'),
-            'nama' => $this->input->post('nama')
+            'nama' => $this->input->post('nama'),
+            'tgl_lahir' => $this->input->post('tgl_lahir'),
+            'tlp_user' => $this->input->post('tlp_user')
         );
         $this->db->where('id_user', $this->input->post('id_user'));
         $result = $this->db->update('user', $edit);

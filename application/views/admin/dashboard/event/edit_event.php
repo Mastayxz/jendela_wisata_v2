@@ -80,7 +80,7 @@
                         <div class="col-md-6">
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary"> <i class="fa fa-save"></i> Save </button>
-                                <a href="<?= base_url('admin/event'); ?>" class="btn btn-danger"><i class="fa fa-power-off"></i> Cancel</a>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-power-off"></i> Cancel</button>
 
                             </div>
                         </div>
