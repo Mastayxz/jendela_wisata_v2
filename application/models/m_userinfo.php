@@ -34,7 +34,6 @@ class m_userinfo extends CI_Model {
             'tgl_lahir' => $this->input->post('tgl_lahir'),
             'tlp_user' => $this->input->post('tlp_user')               
         );
-        var_dump($data);
         $this->db->where('id_user', $id_user);
         $result = $this->db->update('user', $data);
         return $result;

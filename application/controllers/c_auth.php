@@ -15,10 +15,10 @@ class c_auth extends CI_Controller
     {
 
         $this->form_validation->set_rules('username_or_email', 'Username or Email', 'trim|required',array(
-            'required' => 'pleas fill in this column'
+            'required' => 'please fill this column'
         ));
         $this->form_validation->set_rules('password', 'Password', 'trim|required',array(
-            'required' => 'pleas fill in this column'
+            'required' => 'please fill this column'
         ));
 
         if ($this->form_validation->run() == FALSE) {
@@ -59,13 +59,13 @@ class c_auth extends CI_Controller
                 redirect('user/tempat_wisata');
             } else {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger " role="alert">
-                wrong password</div>');
+                Wrong password</div>');
                 redirect('c_auth/index');
             }
         } else {
             //jika username tidak ada
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
-           usernmae does not exits</div>');
+           Username does not exist</div>');
             redirect('c_auth/index');
         }
     }
@@ -74,16 +74,16 @@ class c_auth extends CI_Controller
     public function register()
     {
         $this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[user.username]', array(
-            'is_unique' => 'username alrady exists'
+            'is_unique' => 'Username already exist'
         ));
         $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|matches[password1]', array(
-            'matches' => 'password are not the same ',
-            'min_length' => 'password is not long enough'
+            'matches' => 'Password are not the same ',
+            'min_length' => 'Password is not long enough'
         ));
         $this->form_validation->set_rules('password1', 'Password', 'trim|required|matches[password]');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[user.email]', array(
-            'is_unique' => 'email alrady exists'
+            'is_unique' => 'Email already exist'
         ));
         $this->form_validation->set_rules('telephone', 'Telephone', 'trim|required');
         $this->form_validation->set_rules('birthday', 'Birthday', 'trim|required');
@@ -119,7 +119,7 @@ class c_auth extends CI_Controller
             $subject = 'Pesan';
             $message = '<html>
                 <h2>Aktivasi Akun</h2>
-                <p>akun anda sudah di buat</p>
+                <p>Akun anda sudah dibuat</p>
                 <html>';
             
             //models
@@ -128,7 +128,7 @@ class c_auth extends CI_Controller
             if (isset($insert)) {
                 $this->send_email($email, $subject, $message);
                 $this->session->set_flashdata('pesan','<div class="alert alert-success" role="alert">
-                    account has ben created</div>');
+                    Account has been created</div>');
                 redirect('c_auth/index');
             } else {
                 redirect('c_auth/register');
@@ -153,8 +153,8 @@ class c_auth extends CI_Controller
             $subject = 'lupa Password';
             $message =
                 "<html>
-                <p>silahkan mengklik link di bawah ini </p>
-                <a href='$link'>ganti password</a>
+                <p>Silahkan klik link di bawah ini </p>
+                <a href='$link'>Ganti password</a>
                 <html>";
 
 
@@ -164,16 +164,16 @@ class c_auth extends CI_Controller
                 $this->edit();
                 if (isset($email)) {
                     $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
-                    pliss check your email </div>');
+                    Please check your email </div>');
                     redirect('c_auth/forgot_pass');
                 } else {
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
-                    pliss check your email </div>');
+                    Please check your email </div>');
                     redirect('c_auth/index');
                 }
             } else {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
-            your email was not found </div>');
+            Your email is not found </div>');
                 redirect('c_auth/forgot_pass');
             }
         }
@@ -183,13 +183,13 @@ class c_auth extends CI_Controller
 
 
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[3]|matches[password1]', array(
-            'min_length' => 'password is to short',
-            'matches' => 'password is not same'
+            'min_length' => 'Password is to short',
+            'matches' => 'Password is not same'
 
         ));
         $this->form_validation->set_rules('password1', 'Password1', 'trim|required|min_length[3]|matches[password]', array(
-            'min_length' => 'password is to short',
-            'matches' => 'password is not same'
+            'min_length' => 'Password is to short',
+            'matches' => 'Password is not same'
         ));
 
         if ($this->form_validation->run() == false) {
@@ -210,7 +210,7 @@ class c_auth extends CI_Controller
             $this->session->unset_userdata('riset');
 
             $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
-            password has ben changed!</div>');
+            Your password has been changed!</div>');
             redirect('c_auth/index');
         }
     }

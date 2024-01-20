@@ -40,9 +40,9 @@
             </div>
                 
             <div class="regis">
-                <h6>don't have account?</h6>
-                <a href="<?php echo base_url('c_auth/register') ?>">create account</a><br>
-                <a href="<?php echo base_url('c_auth/forgot_pass') ?>">forgot password?</a>
+                <h6>Don't have an account?</h6>
+                <a href="<?php echo base_url('c_auth/register') ?>">Create account</a><br>
+                <a href="<?php echo base_url('c_auth/forgot_pass') ?>">Forgot password?</a>
             </div>
             <div class="input">
                 <button type="submit" class="btn btn-secondary">SIGN</button>
