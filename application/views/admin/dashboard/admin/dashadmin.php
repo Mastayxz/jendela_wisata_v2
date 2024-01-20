@@ -74,6 +74,7 @@
     </div>
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -110,17 +111,6 @@
         });
     });
 
-    $(document).ready(function() {
-        <?php if ($this->session->flashdata('pesan')) : ?>
-            // Tampilkan notifikasi jika ada pesan flashdata
-            Swal.fire({
-                icon: 'success',
-                title: 'Sukses',
-                text: '<?= $this->session->flashdata("pesan") ?>',
-            });
-        <?php endif; ?>
-    });
-
     function loadFormTambahData() {
         // Kirim permintaan AJAX untuk mendapatkan formulir tambah data
         $.ajax({
@@ -146,6 +136,26 @@
             // Panggil fungsi untuk mengambil dan menampilkan formulir tambah data
             loadFormTambahData();
         });
+    });
+
+    $(document).ready(function() {
+        <?php if ($this->session->flashdata('pesan')) : ?>
+            // Tampilkan notifikasi sukses jika ada pesan flashdata
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses',
+                text: '<?= $this->session->flashdata("pesan") ?>',
+            });
+        <?php endif; ?>
+
+        <?php if ($this->session->flashdata('error')) : ?>
+            // Tampilkan notifikasi error jika ada pesan flashdata error
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '<?= $this->session->flashdata("error") ?>',
+            });
+        <?php endif; ?>
     });
 </script>
 

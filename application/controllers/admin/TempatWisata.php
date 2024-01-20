@@ -29,7 +29,7 @@ class TempatWisata extends CI_Controller
     {
         $data['page_title'] = 'Tambah Data';
         $data['kategori_list'] = $this->kategori_model->getKategori();
-        $this->load->view('admin/aktivitas/tempat_wisata/tambah', $data);
+        $this->load->view('admin/dashboard/destinasi/tambah_destinasi', $data);
     }
 
 
@@ -104,7 +104,7 @@ class TempatWisata extends CI_Controller
         $data['kategori_list'] = $this->kategori_model->getKategori();
         $data['selected_kategori'] = $this->M_tempatWisata->getKategoriByTempatWisataId($id_tempat_wisata);
 
-        $this->load->view('admin/aktivitas/tempat_wisata/edit', $data);
+        $this->load->view('admin/dashboard/destinasi/edit_destinasi', $data);
     }
 
     public function get_detail($id_tempat_wisata)
@@ -114,7 +114,7 @@ class TempatWisata extends CI_Controller
         $data['selected_kategori'] = $this->M_tempatWisata->getKategoriByTempatWisataId($id_tempat_wisata);
 
         // Load view yang berisi formulir edit
-        $this->load->view('admin/aktivitas/tempat_wisata/edit_form', $data);
+        $this->load->view('admin/dashboard/destinasi/edit_destinasi', $data);
     }
 
 

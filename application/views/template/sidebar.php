@@ -4,7 +4,7 @@
     <?php $admin_name = $this->session->userdata('admin_name'); ?>
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <a href="index3.html" class="brand-link">
+      <a href="<?= base_url('homecontrol'); ?>" class="brand-link">
         <img src="<?php echo base_url('assets/template/backend/dist') ?>/img/AdminLTELogo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-bold">Jendela Wisata</span>
       </a>

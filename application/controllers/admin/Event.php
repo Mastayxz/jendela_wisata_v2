@@ -29,7 +29,7 @@ class Event extends CI_Controller
     {
         $data['page_title'] = 'Tambah Data Event';
         $data['tempat_wisata_list'] = $this->M_tempatWisata->getData();
-        $this->load->view('admin/aktivitas/event/tambah', $data);
+        $this->load->view('admin/dashboard/event/tambah_event', $data);
     }
 
     public function add()
@@ -72,7 +72,7 @@ class Event extends CI_Controller
         $data['page_title'] = 'Tambah Data Event';
         $data['tempat_wisata_list'] = $this->M_tempatWisata->getData();
         $data['event'] = $this->M_event->getDetail($id_event);
-        $this->load->view('admin/aktivitas/event/edit', $data);
+        $this->load->view('admin/dashboard/event/edit_event', $data);
     }
 
     public function update()

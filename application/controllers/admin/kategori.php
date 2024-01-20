@@ -26,7 +26,7 @@ class kategori extends CI_Controller
     public function tambahkategori()
     {
         $data['page_title'] = 'Kategori Wisata';
-        $this->load->view('admin/aktivitas/kategori/tambahkategori', $data);
+        $this->load->view('admin/dashboard/kategori/tambahkategori', $data);
         if ($this->m_kategori->insertkategori()) {
             $this->session->set_flashdata('pesan', 'Data Kategori berhasil ditambahkan.');
         } else {
@@ -44,7 +44,7 @@ class kategori extends CI_Controller
     {
         // $data['page_title'] = 'Kategori Wisata';
         $data['kategori'] = $this->m_kategori->detailkategori($id);
-        $this->load->view('admin/aktivitas/kategori/editkategori', $data);
+        $this->load->view('admin/dashboard/kategori/editkategori', $data);
     }
     public function editkategori()
     {
