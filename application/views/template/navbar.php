@@ -33,12 +33,12 @@
   document.getElementById('logoutButton').addEventListener('click', function() {
     Swal.fire({
       title: 'Logout',
-      text: 'Are you sure you want to logout?',
+      text: 'apakah anda yakin ingin logout?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, logout!'
+      confirmButtonText: 'Ya, logout!'
     }).then((result) => {
       if (result.isConfirmed) {
         // If the user confirms the logout, send an AJAX request to perform the logout

@@ -1,7 +1,7 @@
 <body>
     <div class="container-fluid">
         <div class="card card-primary">
-            <div class="card-header">Edit Data Admin</div>
+            <!-- <div class="card-header">Edit Data Admin</div> -->
             <div class="card-body">
                 <form method="post" enctype="multipart/form-data" action="<?php echo base_url('admin/admin/editadmin') ?>">
                     <div class="form-group">

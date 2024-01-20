@@ -32,10 +32,10 @@ class Wishlist extends CI_Controller
         // Panggil model untuk menambahkan ke wishlist
         $result = $this->Wishlist_model->add_to_wishlist($id_user, $id_akomodasi, $id_event, $id_tempat_wisata);
 
-        if ($result) {
-            $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil diperbarui.');
+        if ($result === true) {
+            $this->session->set_flashdata('pesan', 'item di tambahkan ke dalam wishlist.');
         } else {
-            $this->session->set_flashdata('pesan', 'Data sudah ada di wishlist.');
+            $this->session->set_flashdata('pesan', 'item  sudah ada di dalam  wishlist.');
         }
 
         // Redirect atau tampilkan pesan sukses
@@ -85,7 +85,7 @@ class Wishlist extends CI_Controller
         if ($result) {
             $this->session->set_flashdata('success_message', 'Item berhasil dihapus dari Wishlist.');
         } else {
-            $this->session->set_flashdata('error_message', 'Gagal menghapus item dari Wishlist.');
+            $this->session->set_flashdata('error_message', 'Gagal menghapus item dari Wishlist atau item tidak ditemukan.');
         }
 
         // Redirect atau tampilkan pesan sukses
