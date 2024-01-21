@@ -147,7 +147,7 @@ class c_auth extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $email = $this->input->post('email');
-            $user = $this->db->get_where('user', ['email' => $email])->row_array();
+            $user = $this->m_auth->get_email($email);
 
             $link = base_url('c_auth/edit');
             $subject = 'lupa Password';
@@ -163,7 +163,7 @@ class c_auth extends CI_Controller
                 $this->send_email($email, $subject, $message);
                 $this->edit();
                 if (isset($email)) {
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">    
                     Please check your email </div>');
                     redirect('c_auth/forgot_pass');
                 } else {
