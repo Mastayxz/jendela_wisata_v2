@@ -203,13 +203,11 @@ class c_auth extends CI_Controller
             $email = $this->session->userdata('riset');
 
             //sql
-                $this->db->set('password', $password);
-                $this->db->where('email', $email);
-                $this->db->update('user');
+            $this->m_auth->editPassword($email,$password);
 
             $this->session->unset_userdata('riset');
 
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success " role="alert">
             Your password has been changed!</div>');
             redirect('c_auth/index');
         }

@@ -45,7 +45,7 @@
                 <a href="<?php echo base_url('c_auth/forgot_pass') ?>">Forgot password?</a>
             </div>
             <div class="input">
-                <button type="submit" class="btn btn-secondary">SIGN</button>
+                <button type="submit" class="btn btn-secon dary">SIGN</button>
             </div>
         </div>
     </div>

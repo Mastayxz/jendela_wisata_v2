@@ -19,6 +19,12 @@
             $insert = $this->db->insert('user',$data);
             return $insert;
         }
+        public function editPassword($email,$password)
+        {
+            $this->db->set('password',$password);
+            $this->db->where('email',$email);
+            $this->db->update('user');
+        }
        
     }
     
