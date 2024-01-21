@@ -8,10 +8,11 @@
     }
 </style>
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_2.jpg');
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_2.jpg'); background-color:#F2F1EB;
 ">
-    <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi1']; ?>" alt="" class="image" style="height: 100vh;">
-    <!-- <div class=" overlay"></div> -->
+
+    <div class=" overlay"></div>
+    <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi1']; ?>" alt="" class="hero-wrap hero-wrap-2 js-fullheight">
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center">
@@ -85,15 +86,24 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-12 heading-section  ftco-animate ">
+                <span class="subheading">description</span>
+            </div>
             <div class="wrapped-description">
                 <p><?php echo $akomodasi['deskripsi_akomodasi'] ?></p>
+            </div>
+            <div class="col-md-12 heading-section  ftco-animate mt-5">
+                <span class="subheading">facility</span>
             </div>
             <div class="wrapped-description">
                 <p><?php echo $akomodasi['fasilitas_akomodasi'] ?></p>
             </div>
-            <div class="map-container mt-5">
+            <div class="col-md-12 heading-section  ftco-animate mt-5">
+                <span class="subheading"><i class="fa fa-map-marker map-icon"></i>Location </span>
+            </div>
+            <div class="map-container ">
                 <div class="map-info">
-                    <p><i class="fa fa-map-marker map-icon"></i> Lokasi:</p>
+                    <!-- <p><i class="fa fa-map-marker map-icon"></i> Lokasi:</p> -->
                     <p><?php echo $akomodasi['lokasi_akomodasi']; ?></p>
                 </div>
             </div>

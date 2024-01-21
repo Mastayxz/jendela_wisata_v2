@@ -125,16 +125,7 @@
     text-align: center;
 }
 
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
+
 
 /* Animasi untuk Pop-up */
 .popup.scale-in {
@@ -157,7 +148,7 @@
     padding: 15px;
     margin-top: 20px;
     width: 100%;
-    background-color: ghostwhite;
+    background-color:#F2F1EB;
     max-height: 200px; /* Set the maximum height you want for the description */
     /* overflow: auto; */
     text-overflow: ellipsis;
@@ -173,7 +164,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: ghostwhite; /* Ganti warna latar belakang sesuai keinginan Anda */
+    background-color: #F2F1EB; /* Ganti warna latar belakang sesuai keinginan Anda */
     padding: 20px;
 }
 

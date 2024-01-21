@@ -1,7 +1,7 @@
 <!-- Meta -->
 <?php $this->load->view('landing/header') ?>
 
-<link rel="stylesheet" style="" href="<?php echo base_url('public/css/design.css'); ?>">
+<!-- <link rel="stylesheet" href="<?php echo base_url('public/css/design.css'); ?>"> -->
 <!-- Navbar -->
 <?php $this->load->view('landing/navbar') ?>
 

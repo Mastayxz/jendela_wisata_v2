@@ -1,7 +1,7 @@
 <?php $this->load->view('landing/header') ?>
 
 
-<link rel="stylesheet" style="" href="<?php echo base_url('public/css/design.css'); ?>">
+<!-- <link rel="stylesheet" style="" href="<?php echo base_url('public/css/design.css'); ?>"> -->
 <!-- Navbar -->
 <?php $this->load->view('landing/navbar') ?>
 
@@ -18,165 +18,6 @@
     </div>
 </div>
 
-<!-- <section class="ftco-section ftco-no-pb ftco-no-pt">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="ftco-search d-flex justify-content-center">
-                    <div class="row">
-                        <div class="col-md-12 nav-link-wrap">
-                            <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Search Tour</a>
-
-                                <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Hotel</a>
-
-                            </div>
-                        </div>
-                        <div class="col-md-12 tab-wrap">
-
-                            <div class="tab-content" id="v-pills-tabContent">
-
-                                <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
-                                    <form action="#" class="search-property-1">
-                                        <div class="row no-gutters">
-                                            <div class="col-md d-flex">
-                                                <div class="form-group p-4 border-0">
-                                                    <label for="#">Destination</label>
-                                                    <div class="form-field">
-                                                        <div class="icon"><span class="fa fa-search"></span></div>
-                                                        <input type="text" class="form-control" placeholder="Search place">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md d-flex">
-                                                <div class="form-group p-4">
-                                                    <label for="#">Check-in date</label>
-                                                    <div class="form-field">
-                                                        <div class="icon"><span class="fa fa-calendar"></span></div>
-                                                        <input type="text" class="form-control checkin_date" placeholder="Check In Date">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md d-flex">
-                                                <div class="form-group p-4">
-                                                    <label for="#">Check-out date</label>
-                                                    <div class="form-field">
-                                                        <div class="icon"><span class="fa fa-calendar"></span></div>
-                                                        <input type="text" class="form-control checkout_date" placeholder="Check Out Date">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md d-flex">
-                                                <div class="form-group p-4">
-                                                    <label for="#">Price Limit</label>
-                                                    <div class="form-field">
-                                                        <div class="select-wrap">
-                                                            <div class="icon"><span class="fa fa-chevron-down"></span></div>
-                                                            <select name="" id="" class="form-control">
-                                                                <option value="">$100</option>
-                                                                <option value="">$10,000</option>
-                                                                <option value="">$50,000</option>
-                                                                <option value="">$100,000</option>
-                                                                <option value="">$200,000</option>
-                                                                <option value="">$300,000</option>
-                                                                <option value="">$400,000</option>
-                                                                <option value="">$500,000</option>
-                                                                <option value="">$600,000</option>
-                                                                <option value="">$700,000</option>
-                                                                <option value="">$800,000</option>
-                                                                <option value="">$900,000</option>
-                                                                <option value="">$1,000,000</option>
-                                                                <option value="">$2,000,000</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md d-flex">
-                                                <div class="form-group d-flex w-100 border-0">
-                                                    <div class="form-field w-100 align-items-center d-flex">
-                                                        <input type="submit" value="Search" class="align-self-stretch form-control btn btn-primary">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
-                                    <form action="#" class="search-property-1">
-                                        <div class="row no-gutters">
-                                            <div class="col-lg d-flex">
-                                                <div class="form-group p-4 border-0">
-                                                    <label for="#">Destination</label>
-                                                    <div class="form-field">
-                                                        <div class="icon"><span class="fa fa-search"></span></div>
-                                                        <input type="text" class="form-control" placeholder="Search place">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg d-flex">
-                                                <div class="form-group p-4">
-                                                    <label for="#">Check-in date</label>
-                                                    <div class="form-field">
-                                                        <div class="icon"><span class="fa fa-calendar"></span></div>
-                                                        <input type="text" class="form-control checkin_date" placeholder="Check In Date">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg d-flex">
-                                                <div class="form-group p-4">
-                                                    <label for="#">Check-out date</label>
-                                                    <div class="form-field">
-                                                        <div class="icon"><span class="fa fa-calendar"></span></div>
-                                                        <input type="text" class="form-control checkout_date" placeholder="Check Out Date">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg d-flex">
-                                                <div class="form-group p-4">
-                                                    <label for="#">Price Limit</label>
-                                                    <div class="form-field">
-                                                        <div class="select-wrap">
-                                                            <div class="icon"><span class="fa fa-chevron-down"></span></div>
-                                                            <select name="" id="" class="form-control">
-                                                                <option value="">$100</option>
-                                                                <option value="">$10,000</option>
-                                                                <option value="">$50,000</option>
-                                                                <option value="">$100,000</option>
-                                                                <option value="">$200,000</option>
-                                                                <option value="">$300,000</option>
-                                                                <option value="">$400,000</option>
-                                                                <option value="">$500,000</option>
-                                                                <option value="">$600,000</option>
-                                                                <option value="">$700,000</option>
-                                                                <option value="">$800,000</option>
-                                                                <option value="">$900,000</option>
-                                                                <option value="">$1,000,000</option>
-                                                                <option value="">$2,000,000</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg d-flex">
-                                                <div class="form-group d-flex w-100 border-0">
-                                                    <div class="form-field w-100 align-items-center d-flex">
-                                                        <input type="submit" value="Search" class="align-self-stretch form-control btn btn-primary p-0">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-</section> -->
-
 <section class="ftco-section services-section">
     <div class="container">
         <div class="row d-flex">
@@ -185,7 +26,7 @@
                     <span class="subheading">Welcome to Jendela Wisata</span>
                     <h2 class="mb-4">It's time to start your adventure in Bali</h2>
                     <p>Bali, an island in Indonesia, is a renowned tourist destination known for its stunning natural beauty, rich culture, and warm hospitality. With its white sandy beaches, clear blue waters, and ideal waves for surfing, Bali is a tropical paradise. The island boasts majestic mountains, lush terraced rice fields, and captivating tropical forests.</p>
-                    <p>Bali is also famous for its cultural heritage, featuring traditional dances, religious ceremonies, and beautiful wood carvings. Art and cultural hubs like Ubud attract tourists seeking an immersion into Bali's artistic and spiritual life. 
+                    <p>Bali is also famous for its cultural heritage, featuring traditional dances, religious ceremonies, and beautiful wood carvings. Art and cultural hubs like Ubud attract tourists seeking an immersion into Bali's artistic and spiritual life.
                         Ancient temples, such as Pura Besakih, showcase the island's strong religious traditions.</p>
                     <p><a href="<?= base_url('user/tempat_wisata'); ?>" class="btn btn-primary py-3 px-4">Search Destination</a></p>
                 </div>
@@ -236,121 +77,6 @@
 
 
 
-<!-- <section class="ftco-section">
-    <div class="container">
-        <div class="row justify-content-center pb-4">
-            <div class="col-md-12 heading-section text-center ftco-animate">
-                <span class="subheading">Destination</span>
-                <h2 class="mb-4">Tour Destination</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(./assets/lanfnig/images/destination-1.jpg);">
-                        <span class="price">$550/person</span>
-                    </a>
-                    <div class="text p-4">
-                        <span class="days">8 Days Tour</span>
-                        <h3><a href="#">Banaue Rice Terraces</a></h3>
-                        <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-mountains"></span>Near Mountain</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(./assets/landing/images/destination-2.jpg);">
-                        <span class="price">$550/person</span>
-                    </a>
-                    <div class="text p-4">
-                        <span class="days">10 Days Tour</span>
-                        <h3><a href="#">Banaue Rice Terraces</a></h3>
-                        <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(./assets/landnig/images/destination-3.jpg);">
-                        <span class="price">$550/person</span>
-                    </a>
-                    <div class="text p-4">
-                        <span class="days">7 Days Tour</span>
-                        <h3><a href="#">Banaue Rice Terraces</a></h3>
-                        <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(./assets/lanf=dnig/images/destination-4.jpg);">
-                        <span class="price">$550/person</span>
-                    </a>
-                    <div class="text p-4">
-                        <span class="days">8 Days Tour</span>
-                        <h3><a href="#">Banaue Rice Terraces</a></h3>
-                        <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(images/destination-5.jpg);">
-                        <span class="price">$550/person</span>
-                    </a>
-                    <div class="text p-4">
-                        <span class="days">10 Days Tour</span>
-                        <h3><a href="#">Banaue Rice Terraces</a></h3>
-                        <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="project-wrap">
-                    <a href="#" class="img" style="background-image: url(images/destination-6.jpg);">
-                        <span class="price">$550/person</span>
-                    </a>
-                    <div class="text p-4">
-                        <span class="days">7 Days Tour</span>
-                        <h3><a href="#">Banaue Rice Terraces</a></h3>
-                        <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
-                        <ul>
-                            <li><span class="flaticon-shower"></span>2</li>
-                            <li><span class="flaticon-king-size"></span>3</li>
-                            <li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
 
 <section class="ftco-section ftco-about img" style="background-image: url(./assets/landing/images/bg_4.jpg);">
     <div class="overlay"></div>
@@ -377,7 +103,7 @@
                             <div class="col-md-12 heading-section ftco-animate">
                                 <span class="subheading">About Us</span>
                                 <h2 class="mb-4">Make Your Tour Memorable and Safe With Us</h2>
-                                <p>The vibrant nightlife with clubs and restaurants, local craft shops, and bustling traditional markets add to Bali's unique charm. Adventure enthusiasts can enjoy activities like diving, snorkeling, trekking, and surfing. Bali, with its laid-back atmosphere, offers a perfect blend of natural beauty, cultural richness, 
+                                <p>The vibrant nightlife with clubs and restaurants, local craft shops, and bustling traditional markets add to Bali's unique charm. Adventure enthusiasts can enjoy activities like diving, snorkeling, trekking, and surfing. Bali, with its laid-back atmosphere, offers a perfect blend of natural beauty, cultural richness,
                                     and entertainment, making it one of the world's top tourist destinations.</p>
 
                             </div>
@@ -389,7 +115,7 @@
     </div>
 </section>
 
-<section class="ftco-section testimony-section bg-bottom" style="background-image: url(images/bg_1.jpg);">
+<section class="ftco-section testimony-section bg-bottom" style="background-image: url(./assets/landing/images/bg_1.jpg);">
     <div class="overlay"></div>
     <div class="container">
         <div class="row justify-content-center pb-4">
