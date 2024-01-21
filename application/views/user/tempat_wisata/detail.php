@@ -1,5 +1,6 @@
     <?php $this->load->view('landing/header') ?>
-    <link rel="stylesheet" href="<?= base_url('public/css/design.css'); ?>">
+
+    <link rel="stylesheet" style="" href="<?= base_url('public/css/design.css'); ?>">
 
     <?php $this->load->view('landing/navbar') ?>
 
@@ -78,91 +79,108 @@
                         </div>
                     </div>
                 </div>
-                <div class="wrapped-description">
-                    <p><?php echo $destinasi['deskripsi_tempat_wisata'] ?></p>
-
-                </div>
-                <div class="wrapped-description">
-                    <h5>fasilitas</h5>
-                    <p><?php echo $destinasi['fasilitas_tempat_wisata'] ?></p>
-
-                </div>
-
-                <div class="map-container mt-5">
-                    <div class="map-info">
-                        <p><i class="fa fa-map-marker map-icon"></i> Lokasi:</p>
-                        <div class="wrap">
-                            <p width="600" height="450"><?php echo $destinasi['lokasi_tempat_wisata']; ?></p>
-                        </div>
+                <div class="row justify-content-center pb-4">
+                    <div class="col-md-12 heading-section  ftco-animate">
+                        <span class="subheading">description</span>
+                    </div>
+                    <div class="wrapped-description">
+                        <p><?php echo $destinasi['deskripsi_tempat_wisata'] ?></p>
 
                     </div>
+                    <div class="col-md-12 heading-section  ftco-animate mt-5">
+                        <span class="subheading">facility</span>
+                    </div>
+                    <div class="wrapped-description">
+                        <h5>fasilitas</h5>
+                        <p><?php echo $destinasi['fasilitas_tempat_wisata'] ?></p>
+
+                    </div>
+
+                    <div class="map-container mt-5">
+                        <div class="map-info">
+                            <p><i class="fa fa-map-marker map-icon"></i> Lokasi:</p>
+                            <div class="wrap">
+                                <p width="600" height="450"><?php echo $destinasi['lokasi_tempat_wisata']; ?></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+        <!-- Accommodations Section -->
+        <div class="container mt-5">
+            <div class="row justify-content-center pb-4">
+                <div class="col-md-12 heading-section text-center ftco-animate">
+                    <span class="subheading">Accomodation</span>
+                    <h2 class="mb-4">Accomodation Nearby</h2>
                 </div>
             </div>
-            <hr>
-        </div>
-    </div>
+            <div class="row">
+                <?php foreach ($akomodasi as $ak) : ?>
+                    <div class="col-md-4 ">
+                        <div class="project-wrap hotel">
+                            <a href="#" class="img">
+                                <img src="<?= base_url() . '/upload/akomodasi/' . $ak['gambar_akomodasi1']; ?>" class="img">
+                                <span class="price">Rp. <?= number_format($ak['harga_akomodasi']); ?> </span>
+                            </a>
+                            <div class="text p-4 mb-2">
+                                <h3><a href="<?= base_url('user/akomodasi/detail/' . $ak['id_akomodasi']); ?>" class="mb-5"><?= $ak['nama_akomodasi']; ?></a></h3>
 
+                                <div class="location"><span class="fa fa-map-marker"></span> <?= $ak['alamat_akomodasi']; ?> </div>
 
-    <!-- Accommodations Section -->
-    <div class="container mt-5">
-        <h2>Accommodations Nearby</h2>
-        <div class="row">
-            <?php foreach ($akomodasi as $ak) : ?>
-                <div class="col-md-4 ">
-                    <div class="project-wrap hotel">
-                        <a href="#" class="img">
-                            <img src="<?= base_url() . '/upload/akomodasi/' . $ak['gambar_akomodasi1']; ?>" class="img">
-                            <span class="price">Rp. <?= number_format($ak['harga_akomodasi']); ?> </span>
-                        </a>
-                        <div class="text p-4 mb-2">
-                            <h3><a href="<?= base_url('user/akomodasi/detail/' . $ak['id_akomodasi']); ?>" class="mb-5"><?= $ak['nama_akomodasi']; ?></a></h3>
+                                <?php if (isset($ak['nama_jenis_akomodasi'])) : ?>
+                                    <div class="location"><span class="flaction-hotel"></span> <?= $ak['nama_jenis_akomodasi']; ?> </div>
+                                <?php endif; ?>
 
-                            <div class="location"><span class="fa fa-map-marker"></span> <?= $ak['alamat_akomodasi']; ?> </div>
+                                <ul>
+                                    <li><span class="flaticon-shower"></span>2</li>
+                                    <li><span class="flaticon-king-size"></span>3</li>
 
-                            <?php if (isset($ak['nama_jenis_akomodasi'])) : ?>
-                                <div class="location"><span class="flaction-hotel"></span> <?= $ak['nama_jenis_akomodasi']; ?> </div>
-                            <?php endif; ?>
-
-                            <ul>
-                                <li><span class="flaticon-shower"></span>2</li>
-                                <li><span class="flaticon-king-size"></span>3</li>
-
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
 
 
-    <!-- Events Section -->
-    <div class="container mt-3">
-        <h2>Events </h2>
-        <div class="row">
-            <?php foreach ($event as $ev) : ?>
-                <div class="col-md-4">
-                    <div class="project-wrap hotel">
-                        <a href="#" class="img">
-                            <img src="<?= base_url() . '/upload/event/' . $ev['gambar_event']; ?>" class="img">
-                            <span class="price">Rp. <?= number_format($ev['biaya_event']); ?> </span>
-                        </a>
-                        <div class="text p-4 mb-2">
-                            <h3><a href="<?= base_url('user/event/detail/' . $ev['id_event']); ?>" class="mb-5"><?= $ev['nama_event']; ?></a></h3>
+        <!-- Events Section -->
+        <div class="container mt-5">
+            <div class="row justify-content-center pb-4">
+                <div class="col-md-12 heading-section text-center ftco-animate">
+                    <span class="subheading">Event And Activity</span>
+                    <h2 class="mb-4">Event And Activity</h2>
+                </div>
+            </div>
+            <div class="row">
+                <?php foreach ($event as $ev) : ?>
+                    <div class="col-md-4">
+                        <div class="project-wrap hotel">
+                            <a href="#" class="img">
+                                <img src="<?= base_url() . '/upload/event/' . $ev['gambar_event']; ?>" class="img">
+                                <span class="price">Rp. <?= number_format($ev['biaya_event']); ?> </span>
+                            </a>
+                            <div class="text p-4 mb-2">
+                                <h3><a href="<?= base_url('user/event/detail/' . $ev['id_event']); ?>" class="mb-5"><?= $ev['nama_event']; ?></a></h3>
 
-                            <div class="location"><span class="fa fa-map-marker"></span> <?= $ev['alamat_event']; ?> </div>
+                                <div class="location"><span class="fa fa-map-marker"></span> <?= $ev['alamat_event']; ?> </div>
 
-                            <ul>
-                                <li><span class="flaticon-shower"></span><?= $ev['jam_buka']; ?> - <?= $ev['jam_tutup']; ?></li>
-                                <li><span class="fa fa-calendar"></span><?= $ev['tanggal_event']; ?> </li>
+                                <ul>
+                                    <li><span class="flaticon-shower"></span><?= $ev['jam_buka']; ?> - <?= $ev['jam_tutup']; ?></li>
+                                    <li><span class="fa fa-calendar"></span><?= $ev['tanggal_event']; ?> </li>
 
 
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
 
-    <?php $this->load->view('landing/footer') ?>
+        <?php $this->load->view('landing/footer') ?>

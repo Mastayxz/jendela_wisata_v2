@@ -48,8 +48,7 @@
 
                         </li>
                     </ul>
-                    <li><span class="fas fa-clock"></span> <?= $event['jam_buka']; ?> - <?= $event['jam_tutup']; ?></li>
-                    <li><span class="fas fa-calendar"></span> <?= date('F j, Y', strtotime($event['tanggal_event'])); ?></li>
+
                 </div>
             </div>
             <div class="col-md-2">
@@ -63,10 +62,18 @@
                     </div>
                 </div>
             </div>
-            <div class="wrapped-description">
-                <p><?php echo $event['deskripsi_event'] ?></p>
+            <div class="col-md-12 heading-section  ftco-animate">
+                <span class="subheading">description</span>
             </div>
-            <h4 class="mt-3 mb-0">Fasilitas</h4>
+            <div class="wrapped-description">
+                <span class="fas fa-clock"></span> <?= $event['jam_buka']; ?> - <?= $event['jam_tutup']; ?><br>
+                <span class="fas fa-calendar"></span> <?= date('F j, Y', strtotime($event['tanggal_event'])); ?>
+                <p><?php echo $event['deskripsi_event'] ?></p>
+
+            </div>
+            <div class="col-md-12 heading-section  ftco-animate mt-5">
+                <span class="subheading">facility</span>
+            </div>
             <div class="wrapped-description">
                 <p><?php echo $event['fasilitas_event'] ?></p>
             </div>
