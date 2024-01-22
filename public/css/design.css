@@ -150,7 +150,7 @@
     width: 100%;
     background-color:#F2F1EB;
     max-height: 200px; /* Set the maximum height you want for the description */
-    /* overflow: auto; */
+    overflow: auto;
     text-overflow: ellipsis;
     color: black;
  }

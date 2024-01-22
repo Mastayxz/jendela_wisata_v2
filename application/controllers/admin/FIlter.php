@@ -15,10 +15,6 @@ class Filter extends CI_Controller
     }
 
 
-    public function index()
-    {
-    }
-
     public function filter_akomodasi()
     {
         try {
@@ -48,6 +44,7 @@ class Filter extends CI_Controller
             error_log('Error in filter_akomodasi: ' . $e->getMessage());
         }
     }
+
     public function filterByJenisAkomodasi()
     {
         // Mendapatkan data kategori dari form

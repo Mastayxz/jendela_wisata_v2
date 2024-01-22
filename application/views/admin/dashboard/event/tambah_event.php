@@ -13,7 +13,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="form-label">Biaya</label>
-                                <input type="text" name="biaya_event" class="form-control" required min="1">
+                                <input type="number" name="biaya_event" class="form-control" required min="1">
                             </div>
                             <div class="form-group">
                                 <label for="" class="form-label">Alamat Event</label>

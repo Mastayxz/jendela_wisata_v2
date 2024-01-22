@@ -8,7 +8,6 @@ class TempatWisata extends CI_Controller
     {
         parent::__construct();
         if (!$this->session->userdata('admin_data')) {
-            // Redirect ke halaman login jika tidak login
             redirect('c_authadmin/index');
         }
         $this->load->model('M_tempatWisata');
@@ -43,7 +42,7 @@ class TempatWisata extends CI_Controller
         $nama_tempat_wisata = $this->input->post('nama');
         $tempat_wisata_exist = $this->M_tempatWisata->getTempatWisataByName($nama_tempat_wisata);
         if ($tempat_wisata_exist) {
-            // Tempat wisata dengan nama yang sama sudah ada, berikan respons atau tindakan yang sesuai
+
             $this->session->set_flashdata('error', 'Tempat wisata dengan nama yang sama sudah ada.');
             redirect('admin/tempatwisata');
         }
@@ -64,7 +63,6 @@ class TempatWisata extends CI_Controller
             } else {
                 $error = array('error' => $this->upload->display_errors());
                 print_r($error);
-                // Handle upload error (optional)
             }
         }
 
@@ -82,19 +80,19 @@ class TempatWisata extends CI_Controller
             $data = array_merge($data, $uploaded_files);
         }
 
-        // Insert data into the database
+
         $tempat_wisata_id = $this->M_tempatWisata->insertData($data);
 
-        // Insert related categories
+
         $kategori_ids = $this->input->post('id_kategori');
         foreach ($kategori_ids as $kategori_id) {
             $this->M_tempatWisata->insertTempatWisataKategori($tempat_wisata_id, $kategori_id);
         }
 
-        // Set flash message
+
         $this->session->set_flashdata('pesan', 'Data destinasi berhasil ditamabah.');
 
-        // Redirect to the desired page
+
         redirect('admin/tempatwisata');
     }
     public function edit($id_tempat_wisata)
@@ -113,7 +111,7 @@ class TempatWisata extends CI_Controller
         $data['kategori_list'] = $this->kategori_model->getKategori();
         $data['selected_kategori'] = $this->M_tempatWisata->getKategoriByTempatWisataId($id_tempat_wisata);
 
-        // Load view yang berisi formulir edit
+
         $this->load->view('admin/dashboard/destinasi/edit_destinasi', $data);
     }
 
@@ -124,7 +122,6 @@ class TempatWisata extends CI_Controller
 
         $uploaded_files = array();
 
-        // Loop through the three images
         for ($i = 1; $i <= 3; $i++) {
             if (!empty($_FILES['gambar' . $i]['name'])) {
                 $config['upload_path']   = './upload/destinasi/';
@@ -158,20 +155,13 @@ class TempatWisata extends CI_Controller
             'fasilitas_tempat_wisata' => $this->input->post('fasilitas'),
         );
 
-        // Merge existing data with uploaded files
         $data = array_merge($data, $uploaded_files);
-
-        // Update data in the database
-
-
-        // Update related categories
         $kategori_ids = $this->input->post('id_kategori');
         $this->M_tempatWisata->updateTempatWisata($id_tempat_wisata, $data, $kategori_ids);
 
-        // Set flash message
         $this->session->set_flashdata('pesan', 'Data destinasi berhasil diperbarui.');
 
-        // Redirect to the desired page
+
         redirect('admin/tempatWisata');
     }
 

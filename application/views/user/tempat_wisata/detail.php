@@ -11,7 +11,7 @@
     </style>
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_2.jpg');
     ">
-        <img src="<?= base_url() . '/upload/destinasi/' . $destinasi['gambar1']; ?>" alt="" class="image" style="height: 100vh;">
+
         <div class=" overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -47,9 +47,9 @@
     </div>
 
     <div class="cards-8 section">
-        <div class="container">
+        <div class="container ftco-animate">
             <div class="row">
-                <div class="col-md-10 d-flex justify-content-between">
+                <div class="col-md-10 d-flex justify-content-between ftco-animate">
                     <div class="mt-5 kontent">
                         <ul class="kategori">
                             <li>| <?php echo implode(", ", array_column($kategori, 'nama_kategori')); ?></li>
@@ -83,22 +83,23 @@
                     <div class="col-md-12 heading-section  ftco-animate">
                         <span class="subheading">description</span>
                     </div>
-                    <div class="wrapped-description">
+                    <div class="wrapped-description ftco-animate">
                         <p><?php echo $destinasi['deskripsi_tempat_wisata'] ?></p>
 
                     </div>
                     <div class="col-md-12 heading-section  ftco-animate mt-5">
                         <span class="subheading">facility</span>
                     </div>
-                    <div class="wrapped-description">
-                        <h5>fasilitas</h5>
+                    <div class="wrapped-description ftco-animate">
+
                         <p><?php echo $destinasi['fasilitas_tempat_wisata'] ?></p>
 
                     </div>
-
-                    <div class="map-container mt-5">
+                    <div class="col-md-12 heading-section mt-5">
+                        <span class="subheading"><i class="fa fa-map-marker map-icon"></i>Location </span>
+                    </div>
+                    <div class="map-container ">
                         <div class="map-info">
-                            <p><i class="fa fa-map-marker map-icon"></i> Lokasi:</p>
                             <div class="wrap">
                                 <p width="600" height="450"><?php echo $destinasi['lokasi_tempat_wisata']; ?></p>
                             </div>

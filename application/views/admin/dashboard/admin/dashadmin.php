@@ -34,10 +34,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
                 <!-- <a href="<?= base_url('admin/admin/tambahadmin'); ?>" class="btn btn-primary"></i> Tambah Admin</a> -->
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 200px; height:0px;">

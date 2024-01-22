@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-                <section class="ftco-section ftco-no-pb">
+                <!-- <section class="ftco-section ftco-no-pb">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="search-wrap-1 ftco-animate">
@@ -97,7 +97,66 @@
                             </div>
                         </div>
                     </div>
+                </section> -->
+
+                <section class="ftco-section ftco-no-pb">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="search-wrap-1 ftco-animate">
+                                    <form method="post" action="<?= base_url('admin/filter/filter_akomodasi') ?>" id="filter-form" class="search-property-1">
+                                        <div class="row no-gutters">
+                                            <div class="col-lg d-flex">
+                                                <div class="form-group p-4 border-0">
+                                                    <label for="#">Location Name</label>
+                                                    <div class="form-field">
+                                                        <!-- <div class="icon"><span class="fa fa-map-marker"></span></div> -->
+                                                        <input type="text" name="alamat" id="alamat" class="form-control" placeholder="location name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Minim Price</label>
+                                                    <div class="form-field">
+                                                        <!-- <div class="icon"><span class="fa fa-tag"></span></div> -->
+                                                        <input type="text" name="filter_harga_min" id="filter_harga_min" class="form-control" placeholder="min price">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Limit Price</label>
+                                                    <div class="form-field">
+                                                        <!-- <div class="icon"><span class="fa fa-tag"></span></div> -->
+                                                        <input type="text" name="filter_harga_max" id="filter_harga_max" class="form-control" placeholder="max price">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg d-flex">
+                                                <div class="form-group p-4">
+                                                    <label for="#">Destination Type</label>
+                                                    <div class="form-field">
+                                                        <div class="select-wrap">
+                                                            <!-- <div class="icon"><span class="fa fa-chevron-down"></span></div> -->
+                                                            <select name="filter_jenis" id="filter_jenis" class="form-control">
+                                                                <option value="semua">semua</option>
+                                                                <?php foreach ($jenis_akomodasi_list as $ja) : ?>
+                                                                    <option value="<?= $ja->id_jenis_akomodasi; ?>"><?= $ja->nama_jenis_akomodasi; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
+
 
             </div>
             <div class="card-body table-responsive p-0">
@@ -166,12 +225,19 @@
         });
 
         function filterData() {
+            var alamat = $('#alamat').val();
             var id_jenis_akomodasi = $('#filter_jenis').val();
+            var harga_min = $('#filter_harga_min').val();
+            var harga_max = $('#filter_harga_max').val();
+
             $.ajax({
-                url: "<?= base_url('admin/filter/filterByJenisAkomodasi') ?>",
+                url: "<?= base_url('admin/filter/filter_akomodasi') ?>",
                 type: "POST",
                 data: {
-                    filter_jenis: id_jenis_akomodasi
+                    alamat: alamat,
+                    filter_jenis: id_jenis_akomodasi,
+                    filter_harga_min: harga_min,
+                    filter_harga_max: harga_max
                 },
                 success: function(data) {
                     $('#search_results').html(data);
@@ -179,10 +245,14 @@
             });
         }
 
-
-        // Event for processing changes in the category dropdown
+        // Event untuk memproses perubahan pada dropdown kategori
         $('#filter_jenis').on('change', function() {
-            filterData(); // Call filterData here
+            filterData();
+        });
+
+        // Event untuk memproses perubahan pada input harga
+        $('#filter_harga_min, #filter_harga_max, #alamat').on('input', function() {
+            filterData();
         });
     });
 

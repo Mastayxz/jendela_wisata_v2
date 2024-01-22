@@ -77,9 +77,11 @@
             <div class="wrapped-description">
                 <p><?php echo $event['fasilitas_event'] ?></p>
             </div>
-            <div class="map-container mt-5">
+            <div class="col-md-12 heading-section mt-5">
+                <span class="subheading"><i class="fa fa-map-marker map-icon"></i>Location </span>
+            </div>
+            <div class="map-container ">
                 <div class="map-info">
-                    <p><i class="fa fa-map-marker map-icon"></i> Lokasi:</p>
                     <li> | <?php foreach ($lokasi_wisata_list as $tw) : ?>
                             <?php if ($tw->id_tempat_wisata == $event['id_tempat_wisata']) : ?>
                                 <?= $tw->lokasi_tempat_wisata; ?>

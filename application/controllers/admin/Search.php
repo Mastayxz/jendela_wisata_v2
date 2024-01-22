@@ -57,6 +57,7 @@ class Search extends CI_Controller
     }
     public function searchAdmin()
     {
+
         // $data['page_title'] = 'Admin';
         try {
             $keyword = $this->input->post('table_search');

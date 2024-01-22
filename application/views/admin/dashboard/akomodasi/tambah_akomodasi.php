@@ -22,7 +22,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="form-label">Harga</label>
-                                <input type="text" name="harga_akomodasi" class="form-control" required>
+                                <input type="number" name="harga_akomodasi" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="" class="form-label">Lokasi </label>
