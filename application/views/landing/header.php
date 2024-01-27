@@ -23,4 +23,5 @@
 
     <link rel="stylesheet" href="<?= base_url('assets/landing/css/flaticon.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/landing/css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('public/css/design.css'); ?>">
 </head>

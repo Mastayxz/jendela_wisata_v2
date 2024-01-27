@@ -127,6 +127,22 @@
 
 
 
+.custom-btn {
+    background-color: #f15d30; /* Default button color */
+    color: #fff; /* Default text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.custom-btn:hover {
+    background-color: white;
+    color: #f15d30; /* Change the color to your desired hover color */
+    border: #f15d30 1px solid;
+}
+
 /* Animasi untuk Pop-up */
 .popup.scale-in {
     animation: scale-in 0.3s ease-in-out;

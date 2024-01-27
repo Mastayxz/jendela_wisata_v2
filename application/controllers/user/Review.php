@@ -15,6 +15,7 @@ class Review extends CI_Controller
     {
         // Fetch reviews from the database
         $data['reviews'] = $this->Review_model->get_reviews();
+        $data['reviews'] = array_unique($data['reviews'], SORT_REGULAR);
 
         // Load your home view and pass the review data
         $this->load->view('user/home', $data);
@@ -43,11 +44,7 @@ class Review extends CI_Controller
             // Insert the review into the database
             $this->Review_model->insert_review($data);
 
-            // You can redirect to a success page or load a view here
-            // For example, redirect('success_page');
+            redirect('homecontrol');
         }
-
-        // Load your view here (you need to adjust the view file path according to your structure)
-        // $this->load->view('path_to_your_view');
     }
 }

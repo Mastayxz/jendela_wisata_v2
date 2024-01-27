@@ -6,13 +6,18 @@ class Review_model extends CI_Model
 
     public function insert_review($data)
     {
+
         // Insert the review data into the database
-        $this->db->insert('review', $data);
+        $query = $this->db->insert('review', $data);
+        return $query;
     }
     public function get_reviews()
     {
-        // Fetch reviews from the database
-        $query = $this->db->get('review');
+        $this->db->select('review.*, user.nama as user_name');
+        $this->db->from('review');
+        $this->db->join('user', 'user.id_user = review.id_user', 'left'); // Adjust the join condition accordingly
+        $query = $this->db->get();
+
         return $query->result_array();
     }
 }

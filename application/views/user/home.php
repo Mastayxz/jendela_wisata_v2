@@ -1,13 +1,6 @@
 <?php $this->load->view('landing/header') ?>
 
 
-<link rel="stylesheet" style="" href="<?php echo base_url('public/css/design.css'); ?>">
-<!-- Navbar -->
-<style>
-    label {
-        color: black;
-    }
-</style>
 <?php $this->load->view('landing/navbar') ?>
 
 <div class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('./assets/landing/images/bg_4.jpg');">
@@ -33,7 +26,7 @@
                     <p>Bali, an island in Indonesia, is a renowned tourist destination known for its stunning natural beauty, rich culture, and warm hospitality. With its white sandy beaches, clear blue waters, and ideal waves for surfing, Bali is a tropical paradise. The island boasts majestic mountains, lush terraced rice fields, and captivating tropical forests.</p>
                     <p>Bali is also famous for its cultural heritage, featuring traditional dances, religious ceremonies, and beautiful wood carvings. Art and cultural hubs like Ubud attract tourists seeking an immersion into Bali's artistic and spiritual life.
                         Ancient temples, such as Pura Besakih, showcase the island's strong religious traditions.</p>
-                    <p><a href="<?= base_url('user/tempat_wisata'); ?>" class="btn btn-primary py-3 px-4">Search Destination</a></p>
+                    <p><a href="<?= base_url('user/tempat_wisata'); ?>" class="custom-btn py-3 px-4">Search Destination</a></p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -152,7 +145,7 @@
                                     <div class="d-flex align-items-center">
                                         <div class="user-img" style="background-image: url(./assets/landing/images/person_1.jpg)"></div>
                                         <div class="pl-3">
-                                            <p class="name">User ID: <?php echo $review['id_user']; ?></p>
+                                            <p class="name"> <?php echo $review['user_name']; ?></p>
                                             <!-- Add more details if needed -->
                                         </div>
                                     </div>
@@ -161,12 +154,13 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div>
+                <div class="text-center">
                     <!-- Add id to the button -->
-                    <button id="reviewButton" data-toggle="modal" data-target="#reviewModal">Review</button>
+                    <button id="reviewButton" data-toggle="modal" data-target="#reviewModal" class="custom-btn ">Review</button>
 
                     <!-- Add id to the modal -->
                 </div>
+
             </div>
         </div>
     </div>
@@ -184,7 +178,7 @@
             </div>
             <div class="modal-body">
                 <!-- Your review form content -->
-                <form action="<?php echo base_url('user/Review/index') ?>" class="bg-light p-5 contact-form" method="post">
+                <form action="<?php echo base_url('user/Review/insert_review') ?>" class="bg-light p-5 contact-form" method="post">
                     <input type="hidden" name="id_user">
                     <div class="form-group">
                         <label for="review">Review:</label>
