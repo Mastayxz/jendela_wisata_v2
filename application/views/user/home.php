@@ -1,8 +1,13 @@
 <?php $this->load->view('landing/header') ?>
 
 
-<!-- <link rel="stylesheet" style="" href="<?php echo base_url('public/css/design.css'); ?>"> -->
+<link rel="stylesheet" style="" href="<?php echo base_url('public/css/design.css'); ?>">
 <!-- Navbar -->
+<style>
+    label {
+        color: black;
+    }
+</style>
 <?php $this->load->view('landing/navbar') ?>
 
 <div class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('./assets/landing/images/bg_4.jpg');">
@@ -115,7 +120,8 @@
     </div>
 </section>
 
-<section class="ftco-section testimony-section bg-bottom" style="background-image: url(./assets/landing/images/bg_1.jpg);">
+<!-- Your home view content -->
+<section class="ftco-section testimony-section bg-bottom" style="background-image: url(assets/landing/images/bg_1.jpg);">
     <div class="overlay"></div>
     <div class="container">
         <div class="row justify-content-center pb-4">
@@ -127,35 +133,95 @@
         <div class="row ftco-animate">
             <div class="col-md-12">
                 <div class="carousel-testimony owl-carousel">
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="text">
-                                <p class="star">
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </p>
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url(./assets/landing/images/person_1.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
+                    <!-- Loop through reviews and display them -->
+                    <?php foreach ($reviews as $review) : ?>
+                        <div class="item">
+                            <div class="testimony-wrap py-4">
+                                <div class="text">
+                                    <!-- Display star rating -->
+                                    <p class="star">
+                                        <?php for ($i = 1; $i <= 5; $i++) : ?>
+                                            <?php if ($i <= $review['rating']) : ?>
+                                                <span class="fa fa-star"></span>
+                                            <?php else : ?>
+                                                <span class="fa fa-star-o"></span>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
+                                    </p>
+                                    <p class="mb-4"><?php echo $review['review']; ?></p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-img" style="background-image: url(./assets/landing/images/person_1.jpg)"></div>
+                                        <div class="pl-3">
+                                            <p class="name">User ID: <?php echo $review['id_user']; ?></p>
+                                            <!-- Add more details if needed -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <div>
+                    <!-- Add id to the button -->
+                    <button id="reviewButton" data-toggle="modal" data-target="#reviewModal">Review</button>
+
+                    <!-- Add id to the modal -->
                 </div>
             </div>
         </div>
     </div>
-    </div>
 </section>
 
 
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reviewModalLabel">Tourist Review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Your review form content -->
+                <form action="<?php echo base_url('user/Review/index') ?>" class="bg-light p-5 contact-form" method="post">
+                    <input type="hidden" name="id_user">
+                    <div class="form-group">
+                        <label for="review">Review:</label>
+                        <textarea cols="30" rows="7" class="form-control" name="review" placeholder="Your Review"><?php echo set_value('review'); ?></textarea>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rating">Rating:</label>
+                        <!-- Your star rating inputs -->
+                        <div class="rating">
+                            <input type="radio" name="rating" id="star5" value="5" />
+                            <label for="star5" title="5 stars">&#9733;</label>
+                            <input type="radio" name="rating" id="star4" value="4" />
+                            <label for="star4" title="4 stars">&#9733;</label>
+                            <input type="radio" name="rating" id="star3" value="3" />
+                            <label for="star3" title="3 stars">&#9733;</label>
+                            <input type="radio" name="rating" id="star2" value="2" />
+                            <label for="star2" title="2 stars">&#9733;</label>
+                            <input type="radio" name="rating" id="star1" value="1" />
+                            <label for="star1" title="1 star">&#9733;</label>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit Review" class="btn btn-primary py-3 px-5">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!-- Close button within the modal -->
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!--  -->
 
 <section class="ftco-intro ftco-section ftco-no-pt">
@@ -172,5 +238,6 @@
         </div>
     </div>
 </section>
+
 
 <?php $this->load->view('landing/footer') ?>

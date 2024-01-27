@@ -34,13 +34,17 @@
                                 <label for="" class="form-label">Alamat</label>
                                 <textarea class="form-control" name="alamat_akomodasi" rows="3" required></textarea>
                             </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Deskripsi </label>
+                                <textarea class="form-control" name="deskripsi_akomodasi" rows="4" required></textarea>
+                            </div>
                         </div>
 
                         <!-- Right Column - 4 Fields -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="form-label">fasilitas</label>
-                                <textarea class="form-control" name="fasilitas_akomodasi" rows="3" required></textarea>
+                                <textarea class="form-control" name="fasilitas_akomodasi" rows="6" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="id_tempat_wisata" class="form-label">Tempat Wisata</label>
@@ -63,10 +67,7 @@
                                 <label for="" class="form-label">Gambar 3</label>
                                 <input type="file" name="gambar_akomodasi[]" class="form-control" required min="1">
                             </div>
-                            <div class="form-group">
-                                <label for="" class="form-label">Deskripsi </label>
-                                <textarea class="form-control" name="deskripsi_akomodasi" rows="5" required></textarea>
-                            </div>
+
                         </div>
                     </div>
                     <div class="row justify-content-end">

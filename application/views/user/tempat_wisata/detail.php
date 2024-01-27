@@ -11,7 +11,7 @@
     </style>
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_2.jpg');
     ">
-
+        <img src="<?= base_url() . '/upload/destinasi/' . $destinasi['gambar1']; ?>" alt="" class="image" style="height: 100vh;">
         <div class=" overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -21,7 +21,7 @@
             </div>
         </div>
     </section>
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-5 ftco-animate">
         <div class="row">
             <div class="container-fluid">
                 <div class="row">

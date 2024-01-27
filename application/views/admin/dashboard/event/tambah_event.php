@@ -23,6 +23,10 @@
                                 <label for="" class="form-label">Deskripsi Event</label>
                                 <textarea class="form-control" name="deskripsi_event" rows="3" required></textarea>
                             </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Tanggal Event</label>
+                                <input type="date" name="tanggal_event" id="" class="form-control" required>
+                            </div>
 
                         </div>
 
@@ -40,10 +44,7 @@
                                 <label for="" class="form-label">Jam Tutup</label>
                                 <input type="time" name="jam_tutup" id="" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label for="" class="form-label">Tanggal Event</label>
-                                <input type="date" name="tanggal_event" id="" class="form-control" required>
-                            </div>
+
                             <div class="form-group">
                                 <label for="id_tempat_wisata" class="form-label">Tempat Wisata</label>
                                 <select name="id_tempat_wisata" class="form-control" required>

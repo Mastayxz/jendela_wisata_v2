@@ -22,7 +22,7 @@
     </div>
 </section>
 
-<div class="container-fluid ftco-animate mt-5">
+<div class="container-fluid mt-5 ftco-animate">
     <div class="row">
         <div class="container-fluid">
             <div class="row">

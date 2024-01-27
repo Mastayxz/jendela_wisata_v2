@@ -10,6 +10,7 @@ class HomeControl extends CI_Controller
         parent::__construct();
         $this->load->model('M_tempatWisata');
         $this->load->model('kategori_model');
+        $this->load->model('Review_model');
     }
 
 
@@ -17,6 +18,7 @@ class HomeControl extends CI_Controller
     {
         $data['page_title'] = 'jendela wisata';
         $data['tempat_wisata'] = $this->M_tempatWisata->getData();
+        $data['reviews'] = $this->Review_model->get_reviews();
         $this->load->view('user/home', $data);
     }
 }
