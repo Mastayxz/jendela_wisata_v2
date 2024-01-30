@@ -35,21 +35,30 @@ class Event extends CI_Controller
     public function add()
     {
         $config['upload_path'] = realpath('./upload/event/');
-        $config['allowed_types'] = 'gif|jpg|jpeg|png';
-        $config['max_size']      = 2048;
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|webp';
+        $config['max_size']      = 10000;
 
         $this->load->library('upload', $config);
 
-        echo $config['upload_path'];
+        $uploaded_files = array();
 
-        if ($this->upload->do_upload('gambar')) {
-            $upload_data = $this->upload->data();
-            $data['gambar'] = $upload_data['file_name'];
-        } else {
-            $error = array('error' => $this->upload->display_errors());
-            print_r($error);
-            // Handle upload error (optional)
+        for ($i = 1; $i <= 3; $i++) {
+            $_FILES['userfile']['name'] = $_FILES['gambar_event']['name'][$i - 1];
+            $_FILES['userfile']['type'] = $_FILES['gambar_event']['type'][$i - 1];
+            $_FILES['userfile']['tmp_name'] = $_FILES['gambar_event']['tmp_name'][$i - 1];
+            $_FILES['userfile']['error'] = $_FILES['gambar_event']['error'][$i - 1];
+            $_FILES['userfile']['size'] = $_FILES['gambar_event']['size'][$i - 1];
+
+            if ($this->upload->do_upload('userfile')) {
+                $upload_data = $this->upload->data();
+                $uploaded_files["gambar_event{$i}"] = $upload_data['file_name'];
+            } else {
+                $error = array('error' => $this->upload->display_errors());
+                print_r($error);
+                // Handle upload error (optional)
+            }
         }
+
         $insert = array(
             'nama_event' => $this->input->post('nama_event'),
             'biaya_event' => $this->input->post('biaya_event'),
@@ -59,13 +68,24 @@ class Event extends CI_Controller
             'fasilitas_event' => $this->input->post('fasilitas_event'),
             'jam_buka' => $this->input->post('jam_buka'),
             'jam_tutup' => $this->input->post('jam_tutup'),
-            'gambar_event' => $data['gambar'],
             'id_tempat_wisata' => $this->input->post('id_tempat_wisata')
         );
-        $this->M_event->insertData($insert);
-        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil ditambah.');
+
+        if (!empty($uploaded_files)) {
+            $data = array_merge($insert, $uploaded_files);
+        }
+
+        if ($this->M_event->insertData($data)) {
+            $this->session->set_flashdata('pesan', 'Data Event berhasil ditambahkan.');
+        } else {
+            // Simpan pesan flashdata jika terjadi kesalahan
+            $this->session->set_flashdata('error', 'Terjadi kesalahan saat menambahkan data event.');
+        }
+
         redirect('admin/event');
     }
+
+
 
     public function edit($id_event)
     {
@@ -77,38 +97,35 @@ class Event extends CI_Controller
 
     public function update()
     {
-        if (!empty($_FILES['gambar']['name'])) {
-            // Handle unggah file
-            $config['upload_path']   = './upload/event/';
-            $config['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config['max_size']      = 10000;
-
-            $this->load->library('upload', $config);
-
-            if ($this->upload->do_upload('gambar')) {
-                // Hapus gambar sebelumnya
-                $old_data = $this->M_event->getDetail($this->input->post('id_event'));
-                $old_image = $old_data['gambar_event'];
-                if ($old_image && file_exists('./upload/event/' . $old_image)) {
-                    unlink('./upload/event/' . $old_image);
-                }
-
-                // Dapatkan nama file yang diunggah
-                $upload_data = $this->upload->data();
-                $gambar = $upload_data['file_name'];
-            } else {
-                // Tangani jika pengunggahan gagal
-                $error = array('error' => $this->upload->display_errors());
-                // Anda dapat menangani kesalahan sesuai kebutuhan
-                echo $error['error'];
-                // redirect ke halaman kesalahan, dll.
-                return;
-            }
-        } else {
-            // Tidak ada gambar baru yang diunggah, tetapkan gambar sebelumnya
-            $gambar = $this->input->post('old_gambar');
-        }
         $id_event = $this->input->post('id_event');
+
+        $uploaded_files = array();
+
+        // Loop through the three images
+        for ($i = 1; $i <= 3; $i++) {
+            if (!empty($_FILES['gambar_event' . $i]['name'])) {
+                $config['upload_path']   = './upload/event/';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size']      = 10000;
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('gambar_event' . $i)) {
+                    $old_data = $this->M_event->getDetail($id_event);
+                    $old_image = $old_data['gambar_event' . $i];
+                    if ($old_image && file_exists('./upload/event/' . $old_image)) {
+                        unlink('./upload/event/' . $old_image);
+                    }
+                    $upload_data = $this->upload->data();
+                    $uploaded_files["gambar_event{$i}"] = $upload_data['file_name'];
+                } else {
+                    $error = array('error' => $this->upload->display_errors());
+                    echo $error['error'];
+                    return;
+                }
+            }
+        }
+
         $edit = array(
             'nama_event' => $this->input->post('nama_event'),
             'biaya_event' => $this->input->post('biaya_event'),
@@ -118,26 +135,40 @@ class Event extends CI_Controller
             'fasilitas_event' => $this->input->post('fasilitas_event'),
             'jam_buka' => $this->input->post('jam_buka'),
             'jam_tutup' => $this->input->post('jam_tutup'),
-            'gambar_event' => $gambar,
             'id_tempat_wisata' => $this->input->post('id_tempat_wisata')
         );
-        $this->M_event->updateData($edit, $id_event);
-        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil diperbarui.');
+
+        // Merge existing data with uploaded files
+        $data = array_merge($edit, $uploaded_files);
+
+
+        $this->M_event->updateData($data, $id_event);
+        $this->session->set_flashdata('pesan', 'Data event berhasil ditambahkan.');
+
+
         redirect('admin/event');
     }
+
+
 
     public function delete($id_event)
     {
         $event = $this->M_event->getDetail($id_event);
-        $gambar = $event['gambar_event'];
-        if ($gambar && file_exists('./upload/event/' . $gambar)) {
-            unlink('./upload/event/' . $gambar);
+
+        // Hapus ketiga gambar jika ada
+        for ($i = 1; $i <= 3; $i++) {
+            $gambar = $event['gambar_event' . $i];
+            if ($gambar && file_exists('./upload/event/' . $gambar)) {
+                unlink('./upload/event/' . $gambar);
+            }
         }
         $this->M_event->deleteData($id_event);
-        $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil dihapus.');
+        $this->session->set_flashdata('pesan', 'Data event berhasil dihapus.');
         redirect('admin/event');
+
+        redirect('admin/akomodasi');
     }
 }
 
 
-/* End of file Akomodasi.php */
+/* End of file event.php */

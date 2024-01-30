@@ -26,12 +26,12 @@
 
                 <div class="col-md-4">
                     <div class="project-wrap hotel">
-                        <a href="#" class="img">
-                            <img src="<?= base_url() . '/upload/event/' . $item->gambar_event; ?>" alt="" class="img">
+                        <a href="<?= base_url('user/event/detail/' . $item->id_event); ?>" class="img">
+                            <img src="<?= base_url() . '/upload/event/' . $item->gambar_event1; ?>" alt="" class="img">
                             <span class="price"><?= date('F j, Y', strtotime($item->tgl_ditambah)); ?></span>
                         </a>
                         <div class="text p-4 mb-2">
-                            <h3 class="mb-3"><a href="<?= base_url('user/tempat_wisata/detail/' . $item->id_event); ?>"><?= $item->nama_event; ?></a></h3>
+                            <h3 class="mb-3"><a href="<?= base_url('user/event/detail/' . $item->id_event); ?>"><?= $item->nama_event; ?></a></h3>
                             <a href="<?= base_url('user/wishlist/delete/' . $item->id_wishlist); ?>" class="btn btn-danger">delete</a>
 
                         </div>
@@ -42,12 +42,12 @@
 
                 <div class="col-md-4">
                     <div class="project-wrap hotel">
-                        <a href="#" class="img">
+                        <a href="<?= base_url('user/akomodasi/detail/' . $item->id_akomodasi); ?>" class="img">
                             <img src="<?= base_url() . '/upload/akomodasi/' . $item->gambar_akomodasi1; ?>" alt="" class="img">
                             <span class="price"><?= date('F j, Y', strtotime($item->tgl_ditambah)); ?></span>
                         </a>
                         <div class="text p-4 mb-2">
-                            <h3 class="mb-3"><a href="<?= base_url('user/tempat_wisata/detail/' . $item->id_akomodasi); ?>"><?= $item->nama_akomodasi; ?></a></h3>
+                            <h3 class="mb-3"><a href="<?= base_url('user/akomodasi/detail/' . $item->id_akomodasi); ?>"><?= $item->nama_akomodasi; ?></a></h3>
                             <a href="<?= base_url('user/wishlist/delete/' . $item->id_wishlist); ?>" class="btn btn-danger">delete</a>
 
                         </div>
@@ -57,7 +57,7 @@
             <?php elseif ($item->id_tempat_wisata) : ?>
                 <div class="col-md-4">
                     <div class="project-wrap hotel">
-                        <a href="#" class="img">
+                        <a href="<?= base_url('user/tempat_wisata/detail/' . $item->id_tempat_wisata); ?>" class="img">
                             <img src="<?= base_url() . '/upload/destinasi/' . $item->gambar1; ?>" alt="" class="img">
                             <span class="price"><?= date('F j, Y', strtotime($item->tgl_ditambah)); ?></span>
                         </a>

@@ -32,7 +32,7 @@ class Wishlist_model extends CI_Model
 
     public function get_user_wishlist($id_user)
     {
-        $this->db->select('wishlist.*, event.gambar_event, event.nama_event, akomodasi.gambar_akomodasi1, akomodasi.nama_akomodasi, tempat_wisata.gambar1, tempat_wisata.nama_tempat_wisata');
+        $this->db->select('wishlist.*, event.gambar_event1, event.nama_event, akomodasi.gambar_akomodasi1, akomodasi.nama_akomodasi, tempat_wisata.gambar1, tempat_wisata.nama_tempat_wisata');
         $this->db->from('wishlist');
         $this->db->where('wishlist.id_user', $id_user);
         $this->db->join('event', 'wishlist.id_event = event.id_event', 'left');

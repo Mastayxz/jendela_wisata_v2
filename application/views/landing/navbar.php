@@ -8,7 +8,9 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item <?php echo ($this->uri->segment(1) == '' && $this->uri->segment(2) == 'homecontrol') ? 'active' : ''; ?>"><a href="<?= base_url('homecontrol') ?>" class="nav-link">Home</a></li>
+                <li class="nav-item <?php echo ($this->uri->segment(1) == 'homecontrol') ? 'active' : ''; ?>">
+                    <a href="<?= base_url('homecontrol') ?>" class="nav-link">Home</a>
+                </li>
 
                 <li class="nav-item <?php echo ($this->uri->segment(1) == 'user' && $this->uri->segment(2) == 'event') ? 'active' : ''; ?>"><a href="<?= base_url('user/event'); ?>" class="nav-link">Event</a></li>
 

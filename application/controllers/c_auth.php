@@ -14,10 +14,10 @@ class c_auth extends CI_Controller
     public function index()
     {
 
-        $this->form_validation->set_rules('username_or_email', 'Username or Email', 'trim|required',array(
+        $this->form_validation->set_rules('username_or_email', 'Username or Email', 'trim|required', array(
             'required' => 'please fill this column'
         ));
-        $this->form_validation->set_rules('password', 'Password', 'trim|required',array(
+        $this->form_validation->set_rules('password', 'Password', 'trim|required', array(
             'required' => 'please fill this column'
         ));
 
@@ -32,7 +32,7 @@ class c_auth extends CI_Controller
     }
     private function _login()
     {
-        $username_or_email = htmlspecialchars ($this->input->post('username_or_email'));
+        $username_or_email = htmlspecialchars($this->input->post('username_or_email'));
         $password = htmlspecialchars($this->input->post('password'));
 
 
@@ -121,13 +121,13 @@ class c_auth extends CI_Controller
                 <h2>Aktivasi Akun</h2>
                 <p>Akun anda sudah dibuat</p>
                 <html>';
-            
+
             //models
-             $insert = $this->m_auth->insertUser($data);
+            $insert = $this->m_auth->insertUser($data);
             //pengecekan 
             if (isset($insert)) {
                 $this->send_email($email, $subject, $message);
-                $this->session->set_flashdata('pesan','<div class="alert alert-success" role="alert">
+                $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
                     Account has been created</div>');
                 redirect('c_auth/index');
             } else {
@@ -199,11 +199,11 @@ class c_auth extends CI_Controller
             $this->load->view('templates/footer');
         } else {
 
-            $password =password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+            $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
             $email = $this->session->userdata('riset');
 
             //sql
-            $this->m_auth->editPassword($email,$password);
+            $this->m_auth->editPassword($email, $password);
 
             $this->session->unset_userdata('riset');
 
@@ -228,9 +228,9 @@ class c_auth extends CI_Controller
             // return show_error($this->email->print_debugger());
         }
     }
-    
 
-    
+
+
     public function logout()
     {
         session_destroy();

@@ -6,7 +6,7 @@
 <!-- Navbar -->
 <?php $this->load->view('landing/navbar') ?>
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/services-1.jpg');">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/hanuman.jpg');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">

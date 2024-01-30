@@ -10,7 +10,7 @@
 
 
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_1.jpg');">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/patung-1.jpg');">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -31,10 +31,10 @@
             <span class="fa fa-map-marker"></span>
           </div>
           <h3 class="mb-2">Address</h3>
-          <p><?php 
-              $googleMap ="https://www.google.com/maps/place/Politeknik+Negeri+Bali/@-8.7984439,115.1618759,19z/data=!4m10!1m2!2m1!1sPoliteknik+negri+Bali!3m6!1s0x2dd244c13ee9d753:0x6c05042449b50f81!8m2!3d-8.798698!4d115.162487!15sChZQb2xpdGVrbmlrIG5lZ2VyaSBCYWxpkgEScG9seXRlY2huaWNfc2Nob29s4AEA!16s%2Fg%2F1229clgc?entry=ttu";
-              echo anchor($googleMap,'Address');
-          ?>
+          <p><?php
+              $googleMap = "https://www.google.com/maps/place/Politeknik+Negeri+Bali/@-8.7984439,115.1618759,19z/data=!4m10!1m2!2m1!1sPoliteknik+negri+Bali!3m6!1s0x2dd244c13ee9d753:0x6c05042449b50f81!8m2!3d-8.798698!4d115.162487!15sChZQb2xpdGVrbmlrIG5lZ2VyaSBCYWxpkgEScG9seXRlY2huaWNfc2Nob29s4AEA!16s%2Fg%2F1229clgc?entry=ttu";
+              echo anchor($googleMap, 'Address');
+              ?>
           </p>
         </div>
       </div>
@@ -88,7 +88,7 @@
             <?php echo form_error('subject', '<small class="text-danger p-3" >', '</small>'); ?>
           </div>
           <div class="form-group">
-            <textarea cols="30" rows="7" class="form-control" name="pesan" placeholder="Message" value="<?php echo set_value('pesan')?>"></textarea>
+            <textarea cols="30" rows="7" class="form-control" name="pesan" placeholder="Message" value="<?php echo set_value('pesan') ?>"></textarea>
             <?php echo form_error('pesan', '<small class="text-danger p-3" >', '</small>'); ?>
           </div>
           <div class="form-group">
@@ -115,7 +115,7 @@
         <div class="img" style="background-image: url(../assets/landing/images/bg_2.jpg);">
           <div class="overlay"></div>
           <h2>We Are Pacific A Travel Agency</h2>
-          <p>We can manage your dream building A small river named Duden flows by their place</p>
+          <p>We can assist you in managing your travel plans</p>
           <p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
         </div>
       </div>

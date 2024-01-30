@@ -93,6 +93,8 @@
                             <th>Jam Tutup</th>
                             <th>Fasilitas</th>
                             <th>Gambar</th>
+                            <th>Gambar</th>
+                            <th>Gambar</th>
                             <th>Action</th>
                         </tr>
                     </thead>

@@ -55,7 +55,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="form-label">Gambar</label>
-                                <input type="file" name="gambar" class="form-control" required>
+                                <input type="file" name="gambar_event[]" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Gambar</label>
+                                <input type="file" name="gambar_event[]" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Gambar</label>
+                                <input type="file" name="gambar_event[]" class="form-control" required>
                             </div>
                         </div>
                     </div>

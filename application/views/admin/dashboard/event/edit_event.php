@@ -62,16 +62,42 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="form-label">Gambar</label>
-                                <input type="hidden" name="old_gambar" value="<?= $event['gambar_event']; ?>">
+                                <input type="hidden" name="old_gambar1" value="<?= $event['gambar_event1']; ?>">
                                 <?php
-                                if ($event['gambar_event'] != null) {  ?>
+                                if ($event['gambar_event1'] != null) {  ?>
                                     <div>
-                                        <img src="<?= base_url() . '/upload/event/' . $event['gambar_event']; ?>" width="100" alt="">
+                                        <img src="<?= base_url() . '/upload/event/' . $event['gambar_event1']; ?>" width="100" alt="">
                                     </div>
                                 <?php
                                 }
                                 ?>
-                                <input type="file" name="gambar" class="form-control">
+                                <input type="file" name="gambar_event1" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Gambar</label>
+                                <input type="hidden" name="old_gambar2" value="<?= $event['gambar_event2']; ?>">
+                                <?php
+                                if ($event['gambar_event2'] != null) {  ?>
+                                    <div>
+                                        <img src="<?= base_url() . '/upload/event/' . $event['gambar_event2']; ?>" width="100" alt="">
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                                <input type="file" name="gambar_event2" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Gambar</label>
+                                <input type="hidden" name="old_gambar3" value="<?= $event['gambar_event3']; ?>">
+                                <?php
+                                if ($event['gambar_event3'] != null) {  ?>
+                                    <div>
+                                        <img src="<?= base_url() . '/upload/event/' . $event['gambar_event3']; ?>" width="100" alt="">
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                                <input type="file" name="gambar_event3" class="form-control">
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@
 <?php $this->load->view('landing/navbar') ?>
 
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_4.jpg');">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/melasti.jpg');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -47,7 +47,7 @@
                             </div>
                             <div class="col-lg d-flex">
                                 <div class="form-group p-4">
-                                    <label for="#">Limit Price</label>
+                                    <label for="#">Maximum Price</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="fa fa-tag"></span></div>
                                         <input type="text" name="filter_harga_max" id="filter_harga_max" class="form-control" placeholder="max price">

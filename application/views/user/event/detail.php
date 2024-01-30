@@ -11,7 +11,7 @@
 </style>
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_2.jpg');
 ">
-    <img src="<?= base_url() . '/upload/event/' . $event['gambar_event']; ?>" alt="" class="image" style="height: 100vh;">
+    <img src="<?= base_url() . '/upload/event/' . $event['gambar_event1']; ?>" alt="" class="image" style="height: 100vh;">
     <div class=" overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -21,12 +21,35 @@
         </div>
     </div>
 </section>
-
+<div class="container-fluid mt-5 ftco-animate">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="wrap mt-5">
+                        <img src="<?= base_url() . '/upload/event/' . $event['gambar_event1']; ?>" alt="" class="image" style="height: 62vh;">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="wrap mt-5">
+                        <div class="image-grid" style="display: flex; flex-direction: column; height: 60vh;">
+                            <!-- Gambar 1 -->
+                            <img src="<?= base_url() . '/upload/event/' . $event['gambar_event2']; ?>" alt="" class="small-image" style="flex: 1; height:30vh;">
+                            <!-- Gambar 2 -->
+                            <img src="<?= base_url() . '/upload/event/' . $event['gambar_event3']; ?>" alt="" class="small-image" style="flex: 1; height:30vh;">
+                            <!-- Gambar 3 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="cards-8 section">
     <div class="container ftco-animate">
         <div class="row">
-            <div class="col-md-9 d-flex justify-content-between">
+            <div class="col-md-8 d-flex justify-content-between">
                 <div class="mt-5 kontent">
                     <ul class="kategori">
                         <li> | <?= $event['alamat_event']; ?></li>
@@ -51,7 +74,7 @@
 
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="mt-5">
                     <div class="price-container">
                         <div class="harga">

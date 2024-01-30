@@ -111,6 +111,39 @@
             </div>
         </div>
 
+        <!-- Events Section -->
+        <div class="container mt-5">
+            <div class="row justify-content-center pb-4">
+                <div class="col-md-12 heading-section text-center ftco-animate">
+                    <span class="subheading">Event And Activity</span>
+                    <h2 class="mb-4">Event And Activity</h2>
+                </div>
+            </div>
+            <div class="row">
+                <?php foreach ($event as $ev) : ?>
+                    <div class="col-md-4">
+                        <div class="project-wrap hotel">
+                            <a href="#" class="img">
+                                <img src="<?= base_url() . '/upload/event/' . $ev['gambar_event1']; ?>" class="img">
+                                <span class="price">Rp. <?= number_format($ev['biaya_event']); ?> </span>
+                            </a>
+                            <div class="text p-4 mb-2">
+                                <h3><a href="<?= base_url('user/event/detail/' . $ev['id_event']); ?>" class="mb-5"><?= $ev['nama_event']; ?></a></h3>
+
+                                <div class="location"><span class="fa fa-map-marker"></span> <?= $ev['alamat_event']; ?> </div>
+
+                                <ul>
+                                    <li><span class="flaticon-shower"></span><?= $ev['jam_buka']; ?> - <?= $ev['jam_tutup']; ?></li>
+                                    <li><span class="fa fa-calendar"></span><?= $ev['tanggal_event']; ?> </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
 
         <!-- Accommodations Section -->
         <div class="container mt-5">
@@ -150,38 +183,6 @@
         </div>
 
 
-        <!-- Events Section -->
-        <div class="container mt-5">
-            <div class="row justify-content-center pb-4">
-                <div class="col-md-12 heading-section text-center ftco-animate">
-                    <span class="subheading">Event And Activity</span>
-                    <h2 class="mb-4">Event And Activity</h2>
-                </div>
-            </div>
-            <div class="row">
-                <?php foreach ($event as $ev) : ?>
-                    <div class="col-md-4">
-                        <div class="project-wrap hotel">
-                            <a href="#" class="img">
-                                <img src="<?= base_url() . '/upload/event/' . $ev['gambar_event']; ?>" class="img">
-                                <span class="price">Rp. <?= number_format($ev['biaya_event']); ?> </span>
-                            </a>
-                            <div class="text p-4 mb-2">
-                                <h3><a href="<?= base_url('user/event/detail/' . $ev['id_event']); ?>" class="mb-5"><?= $ev['nama_event']; ?></a></h3>
 
-                                <div class="location"><span class="fa fa-map-marker"></span> <?= $ev['alamat_event']; ?> </div>
-
-                                <ul>
-                                    <li><span class="flaticon-shower"></span><?= $ev['jam_buka']; ?> - <?= $ev['jam_tutup']; ?></li>
-                                    <li><span class="fa fa-calendar"></span><?= $ev['tanggal_event']; ?> </li>
-
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
 
         <?php $this->load->view('landing/footer') ?>

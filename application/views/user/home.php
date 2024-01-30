@@ -3,7 +3,7 @@
 
 <?php $this->load->view('landing/navbar') ?>
 
-<div class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('./assets/landing/images/bg_4.jpg');">
+<div class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('./assets/landing/images/bali-5464683_1920.jpg');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
@@ -35,8 +35,8 @@
                         <div class="services services-1 color-1 d-block img" style="background-image: url(./assets/landing/images/services-1.jpg);">
                             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-paragliding"></span></div>
                             <div class="media-body">
-                                <h3 class="heading mb-3">Activities</h3>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                <h3 class="heading mb-3">Events And Activities</h3>
+                                <p>Explore a variety of captivating activities and events in our place, where every moment becomes an unforgettable experience.</p>
                             </div>
                         </div>
                     </div>
@@ -44,8 +44,8 @@
                         <div class="services services-1 color-2 d-block img" style="background-image: url(./assets/landing/images/services-2.jpg);">
                             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
                             <div class="media-body">
-                                <h3 class="heading mb-3">Travel Arrangements</h3>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                <h3 class="heading mb-3">Accommodations And Destinations</h3>
+                                <p>"Discover comfort and beauty where quality accommodation meets captivating destinations in our place</p>
                             </div>
                         </div>
                     </div>
@@ -53,8 +53,10 @@
                         <div class="services services-1 color-3 d-block img" style="background-image: url(./assets/landing/images/services-3.jpg);">
                             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-tour-guide"></span></div>
                             <div class="media-body">
-                                <h3 class="heading mb-3">Private Guide</h3>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                <h3 class="heading mb-3">Tour Guide</h3>
+                                <p>
+                                    Explore the magic of Bali with our skilled tour guides, unraveling the island's beauty and culture for an unforgettable journey
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -63,7 +65,9 @@
                             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-map"></span></div>
                             <div class="media-body">
                                 <h3 class="heading mb-3">Location Manager</h3>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
+                                <p>
+                                    In Bali, our dedicated location manager creates enchanting settings, capturing the island's unique charm for an unparalleled experience
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -76,7 +80,7 @@
 
 
 
-<section class="ftco-section ftco-about img" style="background-image: url(./assets/landing/images/bg_4.jpg);">
+<section class="ftco-section ftco-about img" style="background-image: url(./assets/landing/images/patung-1.jpg);">
     <div class="overlay"></div>
     <div class="container py-md-5">
         <div class="row py-md-5">
@@ -93,7 +97,7 @@
             <div class="col-md-12 about-intro">
                 <div class="row">
                     <div class="col-md-6 d-flex align-items-stretch">
-                        <div class="img d-flex w-100 align-items-center justify-content-center" style="background-image:url(./assets/landing/images/about-1.jpg);">
+                        <div class="img d-flex w-100 align-items-center justify-content-center" style="background-image:url(./assets/landing/images/landscape-3846391_1920.jpg);">
                         </div>
                     </div>
                     <div class="col-md-6 pl-md-5 py-5">
@@ -101,9 +105,7 @@
                             <div class="col-md-12 heading-section ftco-animate">
                                 <span class="subheading">About Us</span>
                                 <h2 class="mb-4">Make Your Tour Memorable and Safe With Us</h2>
-                                <p>The vibrant nightlife with clubs and restaurants, local craft shops, and bustling traditional markets add to Bali's unique charm. Adventure enthusiasts can enjoy activities like diving, snorkeling, trekking, and surfing. Bali, with its laid-back atmosphere, offers a perfect blend of natural beauty, cultural richness,
-                                    and entertainment, making it one of the world's top tourist destinations.</p>
-
+                                <p>"Jendela Wisata" is a website that will guide you throughout your travel journey on the island of Bali. From land attractions like mountains to sea excursions such as beautiful beaches, we provide guides for every place, featuring recommendations for the best accommodations and must-try local cuisine. Let's explore the Island of Bali with a comprehensive guide from our website!</p>
                             </div>
                         </div>
                     </div>
@@ -143,10 +145,11 @@
                                     </p>
                                     <p class="mb-4"><?php echo $review['review']; ?></p>
                                     <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url(./assets/landing/images/person_1.jpg)"></div>
+                                        <!-- <div class="user-img" style="background-image: url(./assets/landing/images/person_1.jpg)"></div> -->
                                         <div class="pl-3">
                                             <p class="name"> <?php echo $review['user_name']; ?></p>
                                             <!-- Add more details if needed -->
+                                            <span class="price"><?= date('F j, Y', strtotime($review['tanggal_review'])); ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -154,10 +157,9 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div class="text-center">
+                <div class="text-center mt-5">
                     <!-- Add id to the button -->
                     <button id="reviewButton" data-toggle="modal" data-target="#reviewModal" class="custom-btn ">Review</button>
-
                     <!-- Add id to the modal -->
                 </div>
 
@@ -225,8 +227,8 @@
                 <div class="img" style="background-image: url(./assets/landing/images/bg_2.jpg);">
                     <div class="overlay"></div>
                     <h2>We Are Pacific A Travel Agency</h2>
-                    <p>We can manage your dream building A small river named Duden flows by their place</p>
-                    <p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
+                    <p>We can assist you in managing your travel plans</p>
+                    <p class="mb-0"><a href="<?= base_url('c_hubungi/index'); ?>" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
                 </div>
             </div>
         </div>

@@ -22,7 +22,9 @@
                     <?= $ev->fasilitas_event; ?>
                 </div>
             </td>
-            <td><img src="<?= base_url('upload/event/' . $ev->gambar_event); ?>" width="100" alt=""></td>
+            <td><img src="<?= base_url('upload/event/' . $ev->gambar_event1); ?>" width="100" alt=""></td>
+            <td><img src="<?= base_url('upload/event/' . $ev->gambar_event2); ?>" width="100" alt=""></td>
+            <td><img src="<?= base_url('upload/event/' . $ev->gambar_event3); ?>" width="100" alt=""></td>
             <td>
                 <button class="btn btn-warning edit-btn" data-id="<?= $ev->id_event; ?>" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit text-light"></i></button>
                 <button class="btn btn-danger delete-btn" data-id="<?= $ev->id_event; ?>"><i class="fa fa-trash"></i></button>

@@ -47,7 +47,7 @@
                             </div>
                             <div class="col-lg d-flex">
                                 <div class="form-group p-4">
-                                    <label for="#">Limit Price</label>
+                                    <label for="#">Maxim Price</label>
                                     <div class="form-field">
                                         <div class="icon"><span class="fa fa-tag"></span></div>
                                         <input type="text" name="filter_harga_max" id="filter_harga_max" class="form-control" placeholder="max price">
