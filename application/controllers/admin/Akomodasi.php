@@ -157,7 +157,7 @@ class Akomodasi extends CI_Controller
         $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil ditambahkan.');
 
 
-        redirect('admin/akomodasi');
+        redirect('admin_ako/detail/index/' . $id_akomodasi);
     }
 
     public function delete($id_akomodasi)
@@ -175,7 +175,7 @@ class Akomodasi extends CI_Controller
         $this->M_akomodasi->deleteData($id_akomodasi);
         $this->session->set_flashdata('pesan', 'Data Akomodasi berhasil dihapus.');
 
-        redirect('admin/akomodasi');
+        redirect('admin_ako/detail');
     }
 
     public function filterByJenisAkomodasi()

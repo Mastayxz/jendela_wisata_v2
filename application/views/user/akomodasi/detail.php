@@ -81,7 +81,7 @@
                         <div class="harga">
                             <p class="fw-bold mb-0">Price</p>
                             <p class="fw-bold">Rp.<?= number_format($akomodasi['harga_akomodasi']); ?></p>
-
+                            <a href="<?= base_url('user/pemesanan/index/' . $akomodasi['id_akomodasi']); ?>" class="btn btn-primary">Pesan</a>
                         </div>
                     </div>
                 </div>
@@ -97,6 +97,29 @@
             </div>
             <div class="wrapped-description">
                 <p><?php echo $akomodasi['fasilitas_akomodasi'] ?></p>
+            </div>
+            <div class="wrapped-description">
+                <h3>Kamar</h3>
+                <table border="1">
+                    <tr>
+                        <th>Tipe Kamar</th>
+                        <th>Gambar</th>
+                        <th>Jumlah</th>
+                        <th>Aksi</th>
+                    </tr>
+                    <?php foreach ($kamar as $k) : ?>
+                        <tr>
+                            <td><?= $k->tipe_kamar ?></td>
+                            <td><img src="<?= $k->gambar ?>" alt="<?= $k->tipe_kamar ?>" width="100"></td>
+                            <td><?= $k->jumlah ?></td>
+                            <td>
+                                <a href="<?= base_url('kamarakomodasi/detail/' . $k->id_kamar) ?>">Detail</a>
+                                <a href="<?= base_url('kamarakomodasi/edit/' . $k->id_kamar) ?>">Edit</a>
+                                <a href="<?= base_url('kamarakomodasi/delete/' . $k->id_kamar) ?>" onclick="return confirm('Yakin ingin menghapus kamar ini?')">Hapus</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
             </div>
             <div class="col-md-12 heading-section  ftco-animate mt-5">
                 <span class="subheading"><i class="fa fa-map-marker map-icon"></i>Location </span>

@@ -169,12 +169,6 @@
                                 <?php if (isset($ak['nama_jenis_akomodasi'])) : ?>
                                     <div class="location"><span class="flaction-hotel"></span> <?= $ak['nama_jenis_akomodasi']; ?> </div>
                                 <?php endif; ?>
-
-                                <ul>
-                                    <li><span class="flaticon-shower"></span>2</li>
-                                    <li><span class="flaticon-king-size"></span>3</li>
-
-                                </ul>
                             </div>
                         </div>
                     </div>

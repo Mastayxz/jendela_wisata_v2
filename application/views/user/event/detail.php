@@ -80,7 +80,7 @@
                         <div class="harga">
                             <p class="fw-bold mb-0">Price </p>
                             <p class="fw-bold">Rp.<?= number_format($event['biaya_event']); ?></p>
-
+                            <a href="<?= base_url('user/pemesanan/index/' . $event['id_event']); ?>" class="btn btn-primary">Pesan</a>
                         </div>
                     </div>
                 </div>

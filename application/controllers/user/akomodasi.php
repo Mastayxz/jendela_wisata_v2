@@ -9,10 +9,11 @@ class akomodasi extends CI_Controller
         parent::__construct();
         $this->load->model('M_akomodasi');
         $this->load->model('M_tempatWisata');
-        $this->load->model('M_tempatWisata');
-        $this->load->model('kategori_model');
+        $this->load->model('M_kamar_akomodasi');
         $this->load->model('M_event');
     }
+
+
     public function index()
     {
         $data['page_title'] = 'Akomodasi';
@@ -22,29 +23,15 @@ class akomodasi extends CI_Controller
 
         $this->load->view('user/akomodasi/index', $data);
     }
+
     public function detail($id)
     {
+        $data['id_akomodasi'] = $id;
         $data['page_title'] = 'Detail Akomodasi';
         $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi($id);
         $data['tempat_wisata_list'] = $this->M_tempatWisata->getData($id);
         $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
+        $data['kamar'] = $this->M_kamar_akomodasi->getKamarByAkomodasi($id);
         $this->load->view('user/akomodasi/detail', $data);
     }
-    // public function search_ajax()
-    // {
-    //     try {
-    //         $keyword = $this->input->post('table_search');
-    //         if (empty($keyword)) {
-    //             $data['akomodasi'] = $this->M_akomodasi->getData(); // Tampilkan semua data
-    //         } else {
-    //             $data['akomodasi'] = $this->M_akomodasi->searchAkomodasi($keyword);
-    //         }
-    //         $this->load->view('user/akomodasi/search_akomodasi', $data);
-    //     } catch (Exception $e) {
-    //         error_log('Error in search_ajax: ' . $e->getMessage());
-    //     }
-    // }
-
 }
-
-/* End of file Home_ak.php */

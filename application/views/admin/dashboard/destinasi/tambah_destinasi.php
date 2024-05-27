@@ -3,7 +3,7 @@
     <div class="card card-primary">
 
       <div class="card-body">
-        <form method="post" enctype="multipart/form-data" action="<?php echo base_url('admin/tempatwisata/add') ?>">
+        <form method="post" enctype="multipart/form-data" action="<?php echo base_url('admin/TempatWisata/add') ?>">
           <div class="row">
             <!-- Left side with 5 fields -->
             <div class="col-md-6">
