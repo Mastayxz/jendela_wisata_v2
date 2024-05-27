@@ -1,71 +1,50 @@
-###################
-What is CodeIgniter
-###################
+# Jendela Wisata
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+Selamat datang di repositori Jendela Wisata! Repositori ini merupakan proyek untuk membangun sebuah platform daring yang memungkinkan pengguna untuk menemukan destinasi wisata menarik di berbagai tempat di Bali.
 
-*******************
-Release Information
-*******************
+## Deskripsi
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+Jendela Wisata bertujuan untuk menyajikan informasi lengkap tentang destinasi wisata dari berbagai daerash di bali, mulai dari tempat wisata alam, sejarah, budaya, hingga wisata kuliner. Pengguna dapat menelusuri berbagai destinasi wisata berdasarkan kategori, lokasi, atau aktivitas yang diminati.
 
-**************************
-Changelog and New Features
-**************************
+## Fitur Utama
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+- Penelusuran Destinasi: Cari destinasi wisata berdasarkan kategori, lokasi, atau aktivitas.
+- Detail Destinasi: Lihat informasi detail tentang setiap destinasi wisata, termasuk deskripsi, foto, dan ulasan pengguna.
+- Ulasan Pengguna: Beri ulasan tentang destinasi yang pernah dikunjungi dan baca ulasan dari pengguna lain.
+- Peta Interaktif: Jelajahi destinasi wisata menggunakan peta interaktif.
+- Wishlist destinasi : dapat membuat sebuah perencanna perjalanan wisata 
 
-*******************
-Server Requirements
-*******************
+## Cara Menggunakan
 
-PHP version 5.6 or newer is recommended.
+1. **Instalasi**:
+   - Clone repositori ini ke lokal Anda:
+     ```
+     git clone https://github.com/username/Jendela_Wisata_v2.git
+     ```
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+2. **Menjalankan Aplikasi**:
+   - Pastikan Anda memiliki PHP dan MySQL/MariaDB terpasang di komputer Anda.
+   - Impor file SQL yang disediakan ke basis data Anda.
+   - Buka terminal dan arahkan ke direktori repositori.
+   - Jalankan aplikasi dengan menggunakan server PHP built-in atau server web lainnya.
+   - Buka browser dan kunjungi `http://localhost:port` untuk melihat aplikasi.
 
-************
-Installation
-************
+3. **Kontribusi**:
+   - Jika Anda ingin berkontribusi pada proyek ini, silakan buat cabang baru (`git checkout -b fitur-baru`) dan kirimkan pull request dengan deskripsi singkat tentang perubahan yang Anda buat.
 
-Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
-of the CodeIgniter User Guide.
+## Teknologi yang Digunakan
 
-*******
-License
-*******
+- PHP: Bahasa pemrograman sisi server.
+- CodeIgniter 3: Framework PHP untuk membangun aplikasi web.
+- JavaScript & jQuery: Bahasa pemrograman klien untuk meningkatkan interaktivitas pengguna.
+- MySQL/MariaDB: Sistem manajemen basis data relasional untuk menyimpan data destinasi wisata.
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+## Kontak
 
-*********
-Resources
-*********
+Jika Anda memiliki pertanyaan atau masukan, jangan ragu untuk menghubungi kami di [gustibagus826@gmail.com]
+Terima kasih atas minat dan kontribusi Anda!
 
--  `User Guide <https://codeigniter.com/docs>`_
--  `Contributing Guide <https://github.com/bcit-ci/CodeIgniter/blob/develop/contributing.md>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
+Jangan lupa kunjungi website ini karena telah di publish https://pariwisata.lab-trpl.id/
 
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
 
-***************
-Acknowledgement
-***************
 
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
