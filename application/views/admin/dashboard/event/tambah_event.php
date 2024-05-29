@@ -24,6 +24,10 @@
                                 <textarea class="form-control" name="deskripsi_event" rows="3" required></textarea>
                             </div>
                             <div class="form-group">
+                                <label for="" class="form-label">Stok Tiket</label>
+                                <input type="number" class="form-control" name="stok_tiket" rows="3" required></input>
+                            </div>
+                            <div class="form-group">
                                 <label for="" class="form-label">Tanggal Event</label>
                                 <input type="date" name="tanggal_event" id="" class="form-control" required>
                             </div>
