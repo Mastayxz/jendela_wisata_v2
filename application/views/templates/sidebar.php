@@ -29,19 +29,41 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-item <?php echo ($this->uri->segment(2) == 'detail') ? 'menu-open' : ''; ?>">
-                            <a href="<?= base_url('admin_ako/detail/index/') . $admin_data['akomodasi']; ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'detail') ? 'active' : ''; ?>">
-                                <i class="fa fa-info nav-icon"></i>
-                                <p>Detail</p>
-                            </a>
-                        </li>
-                        <li class="nav-item <?php echo ($this->uri->segment(2) == 'room') ? 'menu-open' : ''; ?>">
-                            <a href="<?= base_url('admin_ako/KamarAkomodasi/index/') . $admin_data['akomodasi']; ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'room') ? 'active' : ''; ?>">
-                                <i class="fa fa-money-check nav-icon"></i>
-                                <p>Rooms</p>
-                            </a>
-                        </li>
-
+                        <?php if ($admin_data['akomodasi'] !== null) : ?>
+                            <!-- Jika yang login adalah akomodasi -->
+                            <li class="nav-item <?php echo ($this->uri->segment(2) == 'detail') ? 'menu-open' : ''; ?>">
+                                <a href="<?= base_url('admin_ako/detail/index/') . $admin_data['akomodasi']; ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'detail') ? 'active' : ''; ?>">
+                                    <i class="fa fa-info nav-icon"></i>
+                                    <p>Detail Akomodasi</p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($admin_data['event'] !== null) : ?>
+                            <!-- Jika yang login adalah event -->
+                            <li class="nav-item <?php echo ($this->uri->segment(2) == 'detail_event') ? 'menu-open' : ''; ?>">
+                                <a href="<?= base_url('admin_ako/detail_event/index/') . $admin_data['event']; ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'detail_event') ? 'active' : ''; ?>">
+                                    <i class="fa fa-info nav-icon"></i>
+                                    <p>Detail Event</p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($admin_data['tempat_wisata'] !== null) : ?>
+                            <!-- Jika yang login adalah event -->
+                            <li class="nav-item <?php echo ($this->uri->segment(2) == 'detail_destinasi') ? 'menu-open' : ''; ?>">
+                                <a href="<?= base_url('admin_ako/detail_destinasi/index/') . $admin_data['tempat_wisata']; ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'detail_event') ? 'active' : ''; ?>">
+                                    <i class="fa fa-info nav-icon"></i>
+                                    <p>Detail Destinasi</p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($admin_data['akomodasi'] !== null) : ?>
+                            <li class="nav-item <?php echo ($this->uri->segment(2) == 'room') ? 'menu-open' : ''; ?>">
+                                <a href="<?= base_url('admin_ako/KamarAkomodasi/index/') . $admin_data['akomodasi']; ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'room') ? 'active' : ''; ?>">
+                                    <i class="fa fa-money-check nav-icon"></i>
+                                    <p>Rooms</p>
+                                </a>
+                            </li>
+                        <?php endif; ?>
                         <!-- Tambahkan elemen lainnya sesuai kebutuhan -->
 
                         <!-- (Kode lainnya, jika ada) -->

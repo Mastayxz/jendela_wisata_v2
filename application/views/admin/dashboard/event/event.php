@@ -86,6 +86,7 @@
                             <th>Nama Event</th>
                             <th>Biaya</th>
                             <th>Alamat Event</th>
+                            <th>Stok Tiket</th>
                             <th>Deskripsi</th>
                             <th>Tanggal</th>
                             <th>Tempat Wisata</th>

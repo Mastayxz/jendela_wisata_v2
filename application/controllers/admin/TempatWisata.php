@@ -73,6 +73,7 @@ class TempatWisata extends CI_Controller
             'deskripsi_tempat_wisata' => $this->input->post('deskripsi'),
             'lokasi_tempat_wisata' => $this->input->post('lokasi'),
             'fasilitas_tempat_wisata' => $this->input->post('fasilitas'),
+            'stok_tiket' => $this->input->post('stok_tiket')
         );
 
 
@@ -153,6 +154,8 @@ class TempatWisata extends CI_Controller
             'deskripsi_tempat_wisata' => $this->input->post('deskripsi'),
             'lokasi_tempat_wisata' => $this->input->post('lokasi'),
             'fasilitas_tempat_wisata' => $this->input->post('fasilitas'),
+            'stok_tiket' => $this->input->post('stok_tiket'),
+
         );
 
         $data = array_merge($data, $uploaded_files);

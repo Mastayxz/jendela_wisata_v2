@@ -68,6 +68,7 @@ class Event extends CI_Controller
             'fasilitas_event' => $this->input->post('fasilitas_event'),
             'jam_buka' => $this->input->post('jam_buka'),
             'jam_tutup' => $this->input->post('jam_tutup'),
+            'stok_tiket' => $this->input->post('stok_tiket'),
             'id_tempat_wisata' => $this->input->post('id_tempat_wisata')
         );
 
@@ -133,6 +134,7 @@ class Event extends CI_Controller
             'alamat_event' => $this->input->post('alamat_event'),
             'deskripsi_event' => $this->input->post('deskripsi_event'),
             'fasilitas_event' => $this->input->post('fasilitas_event'),
+            'stok_tiket' => $this->input->post('stok_tiket'),
             'jam_buka' => $this->input->post('jam_buka'),
             'jam_tutup' => $this->input->post('jam_tutup'),
             'id_tempat_wisata' => $this->input->post('id_tempat_wisata')
@@ -146,7 +148,7 @@ class Event extends CI_Controller
         $this->session->set_flashdata('pesan', 'Data event berhasil ditambahkan.');
 
 
-        redirect('admin/event');
+        redirect('admin_ako/detail_event/index/' . $id_event);
     }
 
 

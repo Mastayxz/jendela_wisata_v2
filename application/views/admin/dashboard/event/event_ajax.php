@@ -7,6 +7,8 @@
             <td><?= $ev->nama_event; ?></td>
             <td>Rp. <?= number_format($ev->biaya_event); ?> </td>
             <td><?= $ev->alamat_event; ?></td>
+            <td><?= $ev->stok_tiket; ?></td>
+
             <td class="d-flex">
                 <div style="max-width: 100px; max-height: 100px; overflow: hidden; text-overflow: ellipsis;">
                     <?= $ev->deskripsi_event; ?>
