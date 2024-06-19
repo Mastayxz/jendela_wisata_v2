@@ -32,6 +32,10 @@
                                 <input type="number" name="biaya" class="form-control" value="<?= $destinasi['biaya_tempat_wisata']; ?>" required>
                             </div>
                             <div class="form-group">
+                                <label for="" class="form-label">Stok Tiket</label>
+                                <input type="number" name="stok_tiket" class="form-control" value="<?= $destinasi['stok_tiket']; ?>" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="" class="form-label">Alamat</label>
                                 <textarea class="form-control" name="alamat" rows="3" required><?= $destinasi['alamat_tempat_wisata']; ?></textarea>
                             </div>

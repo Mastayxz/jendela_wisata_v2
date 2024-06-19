@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         if (!$this->session->userdata('admin_data')) {
+
             redirect('c_authadminako/index');
         }
         // Load model yang diperlukan
