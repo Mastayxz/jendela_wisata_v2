@@ -125,10 +125,12 @@
     text-align: center;
 }
 
-
+.main-color{
+    background-color: #f15d30; /*
+}
 
 .custom-btn {
-    background-color: #f15d30; /* Default button color */
+     Default button color */
     color: #fff; /* Default text color */
     padding: 10px 20px;
     border: none;

@@ -148,6 +148,22 @@ class M_tempatWisata extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    // M_tempatWisata.php
+    public function kurangiStokTiket($id_tempat_wisata, $jumlah_orang)
+    {
+        $this->db->set('stok_tiket', 'stok_tiket - ' . (int) $jumlah_orang, FALSE);
+        $this->db->where('id_tempat_wisata', $id_tempat_wisata);
+        return $this->db->update('tempat_wisata');
+    }
+
+    public function getStokTiket($id_tempat_wisata)
+    {
+        $this->db->select('stok_tiket');
+        $this->db->from('tempat_wisata');
+        $this->db->where('id_tempat_wisata', $id_tempat_wisata);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }
 
 /* End of file M_tempatWisata.php */

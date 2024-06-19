@@ -91,7 +91,7 @@ class C_AuthAdminAko extends CI_Controller
             } elseif ($jenis_admin == 'destinasi') {
                 $destinasi_data = [
                     // Sesuaikan kolom-kolom di bawah sesuai dengan kolom yang ada di tabel 'tempat_wisata'
-                    'nama_tempat_wisata' => $this->input->post('nama'),
+                    'nama_tempat_wisata' => $this->input->post('nama_destinasi'),
                     'biaya_tempat_wisata' => $this->input->post('biaya'),
                     'alamat_tempat_wisata' => $this->input->post('alamat'),
                     // dll.
