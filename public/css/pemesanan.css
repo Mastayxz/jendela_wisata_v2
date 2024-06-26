@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+
+}
+.frame-pemesanan{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    width: 100%;
+    height: 100%;
+
+}
+.data-diri{
+    width: 20%;
+    height: 15%;
+    display: block;
+    align-items: start;
+    margin-top: 50px;
+ 
+}
+.checkin-checkout{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10%;
+}
+.pemesanan{
+    position: absolute;
+    width: 15%;
+    height: 25%;
+    right: 20%;
+    top: 10%;
+    bottom: 0;
+    border: 2px solid ;
+    display: block;
+    
+}
+.input{
+    width: 100%;
+}
+.pemesanan input{
+    width: 50%;
+    border: none;
+    border-radius: 12%;
+    background-color: orangered;
+    color: white;
+    margin-top: 25%;
+    margin-left: 25%;
+    
+    
+}

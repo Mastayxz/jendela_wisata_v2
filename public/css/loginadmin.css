@@ -1,97 +1,119 @@
-@import url('https://fonts.googleapis.com/css2?family=Gudea&family=Lato:wght@100;400&family=Lexend:wght@100;400&family=Poppins:wght@100&family=Raleway:wght@100;300;400;600&family=Rufina&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gudea&family=Lato:wght@100;400&family=Lexend:wght@100;400&family=Poppins:wght@100&family=Raleway:ital,wght@0,100;0,300;0,400;0,600;1,400&family=Rufina&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gudea&family=Lato:wght@100;400&family=Lexend:wght@100;400&family=Poppins:wght@100&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,600;1,400&family=Rufina&display=swap');
-.wrapper img{
-    
-    width: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap');
+body{
+    margin: 0;
+    padding: 0;
     height: 100vh;
-   
-    
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
 }
-.frame{
+div.gambar{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+div.gambar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+div.frameLogin{
     position: absolute;
-    background-color: white;
-    width: 712px;
-    height: 803px;
+    width: 45%;
+    height: 45%;
+    overflow: hidden;
+    top: 25%;
+    left: 30%;
+    right: 30%;
+    bottom: 30%;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    backdrop-filter: blur(38px); /* Blur effect */
     z-index: 1;
-    top: 0;
-    border-radius: 0px 122.55px 0px 80.25px;
-    box-shadow: 9px 9px 14.6px 0px rgba(0, 0, 0, 0.16);
-    margin-left: 602px;
-    margin-top: 58px   ;
+    justify-content: center;
+    border-radius: 20px;    
 }
-.frame-1 h1{
-    font-family: 'Rufina';
-    color: #000;
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 21.12px;
-    margin-left: 208px;
-    margin-top: 84px;
-}
-.frame-1 hr{
-    width: 291px;
-    height: 2px;
-    margin-top: 10px;
-    margin-left: 208px;
-    background: #000;
+div.form{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 140px;
+    margin-left: 450px;
     
- }
- .frame-1 h3{
-    font-family: 'Raleway';
-    letter-spacing: 5.52px;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 200;
-    margin-left: 230px;
- }
- .frame-2{
-    margin-left: 159px;
-   
- }
- .form-floating{
-    width: 391px;
-    height: 53px;
-    flex-shrink: 0;
-    margin-top: 41px;
-    font-family: 'Raleway';
-    letter-spacing: 4.6px;
- }
- .regis{
-    margin-top: 43px;
-    margin-left: 10px;
 }
-.regis h6{
-    color: #000;
-    font-family: 'Raleway';     
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-} 
-.regis a{
-    font-family: 'Raleway';
-    font-weight: 300;   
+div #name,#password{
+    width: 35%;
+    height: 50px;
+    border-radius: 8px;
+    display: block;
+    padding-left:15px;   
+    background-color: #D9D9D9;
+    border: none;
+    letter-spacing: 4px;
+    
 }
-.input{
-    margin-top: 31px;
-    margin-left: 210px;
-}
-.btn{
-    width: 171px;
-    letter-spacing: 4.6px;
-    background-color: #fff;
-    color: black;
-    font-family: 'Raleway';
-}
-.alert{
-    width: 391px;
-    height: 53px;
-    font-family: 'Raleway';
-    letter-spacing: 4.6px;
-    margin-left: 71px;
+div.button{
+    position: absolute;
+    margin-top: 0px;
+    display: flex;
+    justify-content: end;
+    width: 32% ;
 
-   
 }
+#login{
+    width: 108px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #D9D9D9;
+    border: none;
+}
+div.Logo,h1{
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 15%;
+    font-size: 40px;
+    letter-spacing: 8.5px;
+    font-family: "Gideon Roman",serif;
+    font-weight: bold;
+}
+h3 {
+  font-size: 15px;
+  margin-left: 15%;
+  margin-top: 70%;
+  font-family: "Gideon Roman",serif;
+    
+}
+div.link,a{
+    display: block;
+    color: #D9D9D9;
+    margin-bottom: 5px;
+    letter-spacing: 5px;
+    text-decoration: none;
+    font-weight: 100;
+    font-size: 12px;
+
+}
+#login:hover{
+    background-color: orangered;
+    color: white;
+}
+.form p {
+    font-size: 15px;
+    font-family: "Gideon Roman",serif;
+    
+    
+}
+.danger{
+    width: 35%;
+    position: fixed;
+    margin-left: 450px;
+    margin-top: 70px;
+    
+}
+
+
+
+

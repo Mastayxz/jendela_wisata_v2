@@ -115,7 +115,7 @@ class C_AuthAdminAko extends CI_Controller
 
             $this->db->insert('admin_ako', $admin_data);
             $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Registrasi berhasil!</div>');
-            redirect('c_authadminako/index');
+            redirect('c_/index');
         }
     }
 
