@@ -30,8 +30,6 @@ class Pemesanan extends CI_Controller
             $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
             $data['kamar'] = $this->M_akomodasi->get_all_kamar($id);
             $data['user'] = $this->m_userinfo->getDetail($id_user);
-
-            $this->load->view('templates/header');
             $data['step'] = 1;
             $this->load->view('user/pemesanan/navbar_pesanan', $data);
             $this->load->view('user/pemesanan/index', $data);
@@ -41,16 +39,9 @@ class Pemesanan extends CI_Controller
             $data['step'] = 1;
             $data['user'] = $this->m_userinfo->getDetail($id_user);
             $this->load->view('user/pemesanan/navbar_pesanan', $data);
-
             $this->load->view('user/pemesanan/detail_event', $data);
             $this->load->view('templates/footer');
         } else {
-
-            $data['event'] = $this->M_event->getDetail($id);
-            $this->load->view('templates/header');
-            $this->load->view('user/pemesanan/index', $data);
-            $this->load->view('templates/footer');
-
             $data['page_title'] = 'Detail Destinasi';
             $data['destinasi'] = $this->M_tempatWisata->getDetail($id);
             $data['step'] = 1;
