@@ -151,10 +151,10 @@ class M_akomodasi extends CI_Model
 
         return $query->result_array();
     }
-    public function get_all_kamar($id_akomodasi){
-        $this->db->where('id_akomodasi', $id_akomodasi);
-        $query = $this->db->get('kamar_akomodasi');
-        return $query->result_array();
+    public function get_all_kamar($id){
+        $this->db->where('id_akomodasi', $id);
+        $query = $this->db->get('kamar_akomodasi')->result_array();
+        return $query[0];
     }
     
     public function get_kamar_id($id_kamar){   

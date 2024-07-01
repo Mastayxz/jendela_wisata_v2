@@ -1,3 +1,13 @@
+<style>
+    /* .btn-login {
+        background-color: tomato;
+        color: yellow;
+        border-radius: 20px;
+        height: 30px;
+
+    } */
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
         <a class="navbar-brand" href="<?= base_url(); ?>">Jendela Wisata<span>Tourism Information</span></a>
@@ -29,6 +39,9 @@
                         <a href="<?= base_url('c_auth/index') ?>" class="nav-link">Login</a>
                     <?php endif; ?>
                 </li>
+                <!-- <li class="nav-item">
+                    <a href="<?= base_url('c_authadminako/index') ?>" class="nav-link btn-login">Daftar Usaha</a>
+                </li> -->
             </ul>
         </div>
     </div>

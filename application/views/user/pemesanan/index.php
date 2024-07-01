@@ -1,85 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php $this->load->view('landing/header') ?>
+<link rel="stylesheet" href="<?= base_url('public/css/pemesanan.css'); ?>">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo base_url('public/css/pemesanan.css') ?>">
-    <title>Detail Pemesanan</title>
-</head>
 
-<body>
+<?php $this->load->view('user/pemesanan/navbar_pesanan');
+?>
+<div class="container mt-5">
+    <?php if (!empty($akomodasi)) : ?>
+        <h1>Detail Pemesanan Akomodasi</h1>
+        <h2><?php echo $akomodasi['nama_akomodasi']; ?></h2> 
+        <!-- Formulir Pemesanan -->
+        <>
+            <div class="data-diri">
+            <fieldset disabled>
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Nama</label>
+                    <input type="text" id="disabledTextInput" class="form-control" placeholder="<?php echo $user['nama']?>">
+                </div>
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Email</label>
+                    <input type="text" id="disabledTextInput" class="form-control" placeholder="<?php echo $user['email']?>">
+                </div>
+            </fieldset>
+            </div>
+            <div class="chekin-checkout">
+                <div class="form-group">
+                    <label for="checkin">Tanggal Check-In</label>
+                    <input type="date" class="form-control" id="checkin" name="checkin">
+                </div>
+                <div class="form-group">
+                    <label for="checkout">Tanggal Check-Out</label>
+                    <input type="date" class="form-control" id="checkout" name="checkout">
+                </div>
+            </div>
+            <p>Total Harga: nanti disi dengan hasil dari jumlah chekin chekout <?php echo $akomodasi['harga_akomodasi']; ?></p>
+            <hr>
+            <div class="vasilitas">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Jenis Kamar</th>
+                    <th scope="col">Harga/Malam</th>
+                
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><?php echo $kamar['tipe_kamar'] ?></td>
+                        <td><?php echo $kamar['harga']?></td>
+                    </tr>   
+                </tbody>
+            </table>
+            </div>
+            <div class='detail-pemesanan'>
+                <div class="detail">
+                    <p><?php echo $akomodasi['nama_akomodasi']?></p>
+                    <p><?php echo $kamar['tipe_kamar'] ?></p>
+                    <p><?php echo $kamar['harga']?></p>
+                </div>
+                <button type="submit" class="btn btn-primary">Pesan Sekarang</button>
+            </div>
+            <p><?php echo $akomodasi['lokasi_akomodasi']; ?></p>
+        </form>
+    <?php elseif (!empty($event)) : ?>
+        <h1>Detail Event</h1>
+        <h2>Nama Event: <?php echo $event['nama_event']; ?></h2>
+        <!-- <p>Waktu: <?php echo $event['waktu']; ?></p> -->
+        <!-- Formulir Pemesanan -->
+        <form>
+            <div class="form-group">
+                <label for="nama">Nama:</label>
+                <input type="text" class="form-control" id="nama" name="nama">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="jumlah_tiket">Jumlah Tiket:</label>
+                <input type="number" class="form-control" id="jumlah_tiket" name="jumlah_tiket">
+            </div>
+            <button type="submit" class="btn btn-primary">Pesan Sekarang</button>
+        </form>
+    <?php elseif (!empty($destinasi)) : ?>
+        <h1>Detail Destinasi</h1>
+        <h2><?php echo $destinasi['nama_tempat_wisata']; ?></h2>
+        <p>Alamat: <?php echo $destinasi['alamat_tempat_wisata']; ?></p>
+        <!-- Formulir Pemesanan -->
+        <form action="<?php echo base_url('pemesanan/step2'); ?>" method="post">
+            <div class="form-group">
+                <label for="nama">Nama:</label>
+                <input type="text" class="form-control" id="nama" name="nama">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="tanggal_kunjungan">Tanggal Kunjungan:</label>
+                <input type="date" class="form-control" id="tanggal_kunjungan" name="tanggal_kunjungan">
+            </div>
+            <button type="submit" class="btn btn-primary">Pesan Sekarang</button>
+        </form>
+    <?php else : ?>
+        <p>Tidak ada detail pemesanan yang tersedia.</p>
+    <?php endif; ?>
+</div>
 
-    <!-- halaman form pemesanan -->
-    <div class="frame-pemesanan">
-        <div class="data-diri">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="nama_tamu" placeholder="name@example.com">
-                <label for="floatingInput">Nama</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
-                <label for="floatingInput">Email</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="floatingInput" name="no_tlp" placeholder="name@example.com">
-                <label for="floatingInput">Nomer Telphone</label>
-            </div>
-        </div>
-        <div class="checkin-checkout">
-            <div class="form-floating mb-3">
-                <input type="date" class="form-control" id="floatingInput" name="check_in" placeholder="name@example.com">
-                <label for="floatingInput">Check In</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="date" class="form-control" id="floatingInput" name="check_out" placeholder="name@example.com">
-                <label for="floatingInput">Check out</label>
-            </div>
-        </div>
-        <div class="harga">
-            <p>Total Harga Rp:----------</p>
-        </div>
-        <!-- Membuat detail kamar yang di pesan -->
-        <?php if (!empty($kamar)): ?>
-            <h2>Detail Kamar </h2>
-            <?php foreach($kamar as $km): ?>
-                <p>Jenis Kamar : <?php echo $km['tipe_kamar']; ?></p>
-                <p><?php echo $km['gambar'];?></p>
-                <p>Jumlah Kamar :<?php echo $km['jumlah'];?></p>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <h2>Detal Kamar</h2>
-            <p>Tidak Tersedia </p>
-        <?php endif; ?>
-        <!-- detail pemesanan -->
-        <div class="pemesanan" >
-            <p></p>
-            <p>Jumlah Kamar : </p>
-            <p>Total harga : </p>
-            <div class="input">
-            <input type="submit" name ="bayar" value="Bayar">
-            </div>
-        </div>
-
-    <!-- Detail dari akomodasi yang di pesan -->
-        <?php if (!empty($akomodasi)) : ?>
-            <h2>Detail Akomodasi</h2>
-            <p>Nama Akomodasi: <?php echo $akomodasi['nama_akomodasi']; ?></p>
-            <p>Lokasi: <?php echo $akomodasi['lokasi_akomodasi']; ?></p>
-            <p>Jenis Akomodasi: <?php echo $akomodasi['harga_akomodasi']; ?></p>
-            <!-- Tampilkan detail akomodasi lainnya sesuai kebutuhan -->
-        <?php elseif (!empty($event)) : ?>
-            <h2>Detail Event</h2>
-            <p>Nama Event: <?php echo $event['nama_event']; ?></p>
-            <!-- <p>Waktu: <?php echo $event['waktu']; ?></p> -->
-            <!-- Tampilkan detail event lainnya sesuai kebutuhan -->
-        <?php else : ?>
-            <p>Tidak ada detail pemesanan yang tersedia.</p>
-        <?php endif; ?>
-
-       
-            
-    
-    </div>
-</body>
-</html>

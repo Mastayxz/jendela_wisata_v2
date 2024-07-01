@@ -72,7 +72,7 @@ class c_auth extends CI_Controller
 
 
     public function register()
-    {
+    {   
         $this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[user.username]', array(
             'is_unique' => 'Username already exist'
         ));

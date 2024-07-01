@@ -24,6 +24,11 @@
                 <?php echo form_error('password', '<small class="text-danger p-3" >', '</small>'); ?>
                 <label for="floatingInput">PASSWORD</label>
             </div>
+            <div class="regis">
+                <h6>Don't have an account?</h6>
+                <a href="<?php echo base_url('c_authadminako/register') ?>">Create account</a><br>
+                <!-- <a href="<?php echo base_url('c_auth/forgot_pass') ?>">Forgot password?</a> -->
+            </div>
             <div class="input">
                 <button type="submit" class="btn btn-secondary">SIGN</button>
             </div>

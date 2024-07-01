@@ -65,7 +65,12 @@
                             </li>
                         <?php endif; ?>
                         <!-- Tambahkan elemen lainnya sesuai kebutuhan -->
-
+                        <li class="nav-item <?php echo ($this->uri->segment(2) == 'pesanan') ? 'menu-open' : ''; ?>">
+                            <a href="<?= base_url('admin_ako/pesanan'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'pesanan') ? 'active' : ''; ?>">
+                                <i class="fa fa-shopping-cart nav-icon"></i>
+                                <p>Pesanan</p>
+                            </a>
+                        </li>
                         <!-- (Kode lainnya, jika ada) -->
                     </ul>
 

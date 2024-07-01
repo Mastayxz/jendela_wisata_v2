@@ -6,12 +6,65 @@
     p {
         color: black;
     }
+
+    .content-section {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .price-container {
+        position: sticky;
+        top: 200px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #fff;
+    }
+
+    .map-container {
+        margin-top: 20px;
+    }
+
+    .heading-section h4,
+    .heading-section h3 {
+        font-weight: bold;
+    }
+
+    .facility-list {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        /* Adjust the gap between items */
+    }
+
+    .facility-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .facility-list li::before {
+        content: "\2713";
+        /* Unicode for check mark */
+        color: green;
+        margin-right: 10px;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+    }
+
+    .rounded {
+        border-radius: 15px;
+        /* Sesuaikan dengan keinginan Anda */
+    }
 </style>
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_2.jpg'); background-color:#F2F1EB;
-">
-
-    <div class=" overlay"></div>
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_2.jpg'); background-color:#F2F1EB;">
+    <div class="overlay"></div>
     <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi1']; ?>" alt="" class="hero-wrap hero-wrap-2 js-fullheight">
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -22,40 +75,44 @@
     </div>
 </section>
 
-<div class="container-fluid mt-5 ftco-animate">
+<div class="container ftco-animate">
     <div class="row">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="wrap mt-5">
-                        <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi1']; ?>" alt="" class="image" style="height: 80vh;">
+                    <div class="wrap mt-3">
+                        <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi1']; ?>" alt="" class="image rounded" style="height: 80vh;">
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="wrap mt-5">
-                        <div class="image-grid" style="display: flex; flex-direction: column; height: 73vh;">
+                    <div class="wrap mt-3">
+                        <div class="image-grid rounded" style="display: flex; flex-direction: column;">
                             <!-- Gambar 1 -->
-                            <img src=" <?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi2']; ?>" alt="" class="small-image " style="flex: 1; height:40vh;">
+                            <div class="image-wrapper" style="margin-bottom: 10px;">
+                                <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi2']; ?>" alt="" class="small-image rounded">
+                            </div>
                             <!-- Gambar 2 -->
-                            <img src=" <?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi3']; ?>" alt="" class="small-image" style="flex: 1; height:40vh;">
-                            <!-- Gambar 3 -->
+                            <div class="image-wrapper">
+                                <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi3']; ?>" alt="" class="small-image rounded">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
 
 <div class="cards-8 section">
     <div class="container ftco-animate">
         <div class="row">
-            <div class="col-md-9 d-flex justify-content-between">
-                <div class="mt-5 kontent">
+            <div class="col-md-9 justify-content-between">
+                <div class="mt-5 kontent content-section">
                     <ul class="kategori">
                         <li> | <?= $akomodasi['alamat_akomodasi']; ?></li>
-                        <li> | <?php foreach ($tempat_wisata_list as $tw) : ?>
+                        <li> |
+                            <?php foreach ($tempat_wisata_list as $tw) : ?>
                                 <?php if ($tw->id_tempat_wisata == $akomodasi['id_tempat_wisata']) : ?>
                                     <?= $tw->nama_tempat_wisata; ?>
                                 <?php endif; ?>
@@ -71,95 +128,74 @@
                                 <i class="fa fa-heart"></i>
                             </a>
                         </li>
-
                     </ul>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="mt-5">
-                    <div class="price-container">
-                        <div class="harga">
-                            <p class="fw-bold mb-0">Price</p>
-                            <p class="fw-bold">Rp.<?= number_format($akomodasi['harga_akomodasi']); ?></p>
-                            <a href="<?= base_url('user/pemesanan/index/' . $akomodasi['id_akomodasi']); ?>" class="btn btn-primary">Pesan</a>
-                        </div>
+                <div class="heading-section ftco-animate content-section">
+                    <h4 class="">Description</h4>
+                    <div class="">
+                        <p><?php echo $akomodasi['deskripsi_akomodasi'] ?></p>
+                    </div>
+                </div>
+                <div class="heading-section ftco-animate content-section">
+                    <h4 class="">Facility</h4>
+                    <div class="">
+                        <ul class="facility-list">
+                            <?php
+                            $facilities = explode(',', $akomodasi['fasilitas_akomodasi']);
+                            foreach ($facilities as $facility) : ?>
+                                <li><?php echo trim($facility); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <h3>Kamar</h3>
+                    <table class="table">
+                        <tr>
+                            <th>Gambar</th>
+                            <th>Tipe Kamar</th>
+                            <th>Harga</th>
+                        </tr>
+                        <?php foreach ($kamar as $k) : ?>
+                            <tr>
+                                <td><img src="<?= $k->gambar ?>" alt="<?= $k->tipe_kamar ?>" width="100"></td>
+                                <td><?= $k->tipe_kamar ?></td>
+                                <td>Rp. <?= number_format($k->harga)  ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+
+                <div class="heading-section ftco-animate content-section">
+                    <h4 class="">Location </h4>
+                    <div class="map-info">
+                        <p><?php echo $akomodasi['lokasi_akomodasi']; ?></p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 heading-section  ftco-animate ">
-                <span class="subheading">description</span>
-            </div>
-            <div class="wrapped-description">
-                <p><?php echo $akomodasi['deskripsi_akomodasi'] ?></p>
-            </div>
-            <div class="col-md-12 heading-section  ftco-animate mt-5">
-                <span class="subheading">facility</span>
-            </div>
-            <div class="wrapped-description">
-                <p><?php echo $akomodasi['fasilitas_akomodasi'] ?></p>
-            </div>
-            <div class="wrapped-description">
-                <h3>Kamar</h3>
-                <table border="1">
-                    <tr>
-                        <th>Tipe Kamar</th>
-                        <th>Gambar</th>
-                        <th>Jumlah</th>
-                        <th>Aksi</th>
-                    </tr>
-                    <?php foreach ($kamar as $k) : ?>
-                        <tr>
-                            <td><?= $k->tipe_kamar ?></td>
-                            <td><img src="<?= $k->gambar ?>" alt="<?= $k->tipe_kamar ?>" width="100"></td>
-                            <td><?= $k->jumlah ?></td>
-                            <td>
-                                <a href="<?= base_url('kamarakomodasi/detail/' . $k->id_kamar) ?>">Detail</a>
-                                <a href="<?= base_url('kamarakomodasi/edit/' . $k->id_kamar) ?>">Edit</a>
-                                <a href="<?= base_url('kamarakomodasi/delete/' . $k->id_kamar) ?>" onclick="return confirm('Yakin ingin menghapus kamar ini?')">Hapus</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </table>
-            </div>
-            <div class="col-md-12 heading-section  ftco-animate mt-5">
-                <span class="subheading"><i class="fa fa-map-marker map-icon"></i>Location </span>
-            </div>
-            <div class="map-container ">
-                <div class="map-info">
-                    <!-- <p><i class="fa fa-map-marker map-icon"></i> Lokasi:</p> -->
-                    <p><?php echo $akomodasi['lokasi_akomodasi']; ?></p>
+            <div class="col-md-3">
+                <div class="mt-5 price-container shadow">
+                    <div class="harga">
+                        <p class="fw-bold mb-0">Start From</p>
+                        <?php foreach ($kamar as $k): ?>
+                        <p class="fw-bold">Rp. <?php echo number_format($k->harga)?> </p>
+                        <?php endforeach; ?>
+                        <div class="form-group">
+                            <label for="roomType">Select Room Type</label>
+                            <select id="roomType" class="form-control">
+                                <?php foreach ($kamar as $k) : ?>
+                                    <option value="<?= $k->id_kamar ?>"><?= $k->tipe_kamar ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <a href="<?= base_url('user/pemesanan/index/' . $akomodasi['id_akomodasi']); ?>" class="btn btn-primary w-100 mt-3">Pesan</a>
+                    </div>
                 </div>
             </div>
         </div>
+
         <hr>
     </div>
 </div>
-
-
-
-
-<script>
-    $(document).ready(function() {
-        $('#formPesanTiket').submit(function(event) {
-            event.preventDefault(); // Mencegah pengiriman formulir (untuk keperluan contoh)
-            // Tambahkan logika pengiriman data formulir atau interaksi lain di sini
-            $('#pesanTiketModal').modal('hide'); // Menutup modal setelah pengiriman formulir (gantilah dengan logika sesuai kebutuhan)
-        });
-
-        // Tambahkan event click pada tombol wishlist
-        $('.btn-wishlist').click(function(event) {
-            event.preventDefault(); // Mencegah navigasi saat tombol wishlist diklik
-
-            // Tambahkan logika untuk menampilkan popup hanya jika pengguna belum login
-            <?php if (!$this->session->userdata('logged_in')) : ?>
-                alert('Anda harus login untuk menambahkan ke wishlist.');
-            <?php else : ?>
-                // Tambahkan logika untuk menambahkan ke wishlist jika pengguna sudah login
-                window.location.href = $(this).attr('href');
-            <?php endif; ?>
-        });
-    });
-</script>
-
 
 <?php $this->load->view('landing/footer') ?>

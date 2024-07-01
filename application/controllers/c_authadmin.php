@@ -65,9 +65,10 @@ class c_authadmin extends CI_Controller
                     'event' => $adminAko['event'],
                     'tempat_wisata' => $adminAko['tempat_wisata'],
                 );
-                $this->session->set_userdata($data);
+                $this->session->set_userdata('admin_data',$data);
+
                 //redirect ke halaman dashboard admin
-                redirect('c_hubungi/index');// nanti ganti banng
+                redirect('admin_ako/dashboard');// nanti ganti banng
                 
             }else{
                 //memberikan pesan kesalahan password 
@@ -80,6 +81,7 @@ class c_authadmin extends CI_Controller
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
             email dan username tidak ada</div>');
             redirect('c_authAdmin/index');
+
         }
     }
 

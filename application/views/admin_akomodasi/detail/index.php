@@ -52,20 +52,25 @@
             <table class="table">
                 <thead>
                     <tr>
-
-                        <th>ID</th>
+                        <!-- <th>ID</th> -->
                         <th>Nama</th>
                         <th>Alamat</th>
                         <th>Harga</th>
+                        <th>Lokasi</th>
+                        <th>Deskripsi</th>
+                        <th>Fasilitas</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-
-                        <td><?php echo $akomodasi['id_akomodasi']; ?></td>
+                        <!-- 
+                        <td><?php echo $akomodasi['id_akomodasi']; ?></td> -->
                         <td><?php echo $akomodasi['nama_akomodasi']; ?></td>
                         <td><?php echo $akomodasi['alamat_akomodasi']; ?></td>
                         <td>Rp. <?php echo number_format($akomodasi['harga_akomodasi']); ?></td>
+                        <td><?php echo $akomodasi['lokasi_akomodasi']; ?></td>
+                        <td><?php echo $akomodasi['deskripsi_akomodasi']; ?></td>
+                        <td><?php echo $akomodasi['fasilitas_akomodasi']; ?></td>
 
                     </tr>
                 </tbody>

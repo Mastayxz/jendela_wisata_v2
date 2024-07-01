@@ -10,7 +10,7 @@
 <div class="container-fluid">
     <a href="<?= base_url('admin_ako/kamarakomodasi/create/' . $id_akomodasi) ?>" class="btn btn-primary my-4">Tambah Kamar</a>
 
-    <div class="row shadoe-md">
+    <div class="row shadow-md">
         <table class="table">
             <thead>
                 <tr>

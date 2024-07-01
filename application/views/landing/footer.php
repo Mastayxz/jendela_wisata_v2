@@ -22,7 +22,7 @@
                             <li><span class="icon fa fa-map-marker"></span><span class="text">Jimbaran. Badung, Bali, Indonesia</span></li>
                             <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+62 878 5214 4756</span></a></li>
                             <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">jendelawisata@gmail.com</span></a></li>
-                            <li><a href="<?= base_url('admin/dashboard'); ?>"><span class="icon fa fa-address-book"></span><span class="text">Admin</span></a></li>
+                            <li><a href="<?= base_url('c_authadmin/index'); ?>"><span class="icon fa fa-address-book"></span><span class="text">Admin</span></a></li>
                         </ul>
                     </div>
                 </div>
