@@ -25,4 +25,13 @@ class M_kamar_akomodasi extends CI_Model
     {
         return $this->db->where('id_kamar', $id_kamar)->delete('kamar_akomodasi');
     }
+
+    public function getHarga($id_akomodasi)
+    {
+        $this->db->select('harga');
+        $this->db->from('kamar_akomodasi');
+        $this->db->where('id_akomodasi', $id_akomodasi);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }

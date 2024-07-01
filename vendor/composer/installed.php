@@ -3,7 +3,7 @@
         'name' => 'codeigniter/framework',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'cc0d14b1a5366bc2e04724b70967610c579b6543',
+        'reference' => '7e822db543b5ad6e701e79957156d115e64bbdab',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'codeigniter/framework' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'cc0d14b1a5366bc2e04724b70967610c579b6543',
+            'reference' => '7e822db543b5ad6e701e79957156d115e64bbdab',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -27,6 +27,17 @@
             'install_path' => __DIR__ . '/../doctrine/instantiator',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'duitkupg/duitku-php' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '983001aefdce35f2d994bfa1e84825169c1b930f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../duitkupg/duitku-php',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
         ),
         'mikey179/vfsstream' => array(
             'pretty_version' => 'v1.6.11',

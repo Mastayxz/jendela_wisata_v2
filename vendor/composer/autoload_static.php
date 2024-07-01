@@ -18,6 +18,7 @@ class ComposerStaticInit82f45071e91d5675561dbf6ffa155319
         ),
         'D' => 
         array (
+            'Duitku\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
         ),
@@ -27,6 +28,10 @@ class ComposerStaticInit82f45071e91d5675561dbf6ffa155319
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'Duitku\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/duitkupg/duitku-php/Duitku',
         ),
         'Doctrine\\Instantiator\\' => 
         array (

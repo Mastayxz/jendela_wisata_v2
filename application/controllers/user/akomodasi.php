@@ -32,6 +32,7 @@ class akomodasi extends CI_Controller
         $data['tempat_wisata_list'] = $this->M_tempatWisata->getData($id);
         $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
         $data['kamar'] = $this->M_kamar_akomodasi->getKamarByAkomodasi($id);
+
         $this->load->view('user/akomodasi/detail', $data);
     }
 }

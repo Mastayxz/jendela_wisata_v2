@@ -1,4 +1,19 @@
 <?php $this->load->view('landing/header') ?>
+<?php
+// Ambil detail pemesanan dari session
+$detail_pemesanan = $this->session->userdata('detail_pemesanan');
+
+// Tampilkan informasi pemesanan jika ada
+if (!empty($detail_pemesanan)) {
+    echo "<h3>Detail Pemesanan:</h3>";
+    echo "<p>Nama: " . $detail_pemesanan['nama'] . "</p>";
+    echo "<p>Tanggal: " . $detail_pemesanan['tanggal'] . "</p>";
+    // Tambahkan informasi lain sesuai kebutuhan
+
+    // Pastikan untuk membersihkan session setelah digunakan
+    $this->session->unset_userdata('detail_pemesanan');
+}
+?>
 <link rel="stylesheet" href="<?= base_url('public/css/design.css'); ?>">
 <?php if ($this->session->flashdata('error')) : ?>
     <div class="alert alert-danger">
@@ -18,9 +33,9 @@
 
                 <!-- Detail Destinasi dan Formulir Pemesanan -->
                 <div class="card rounded shadow-sm p-4">
-                    <h2>Detail Destinasi</h2>
-                    <p>Nama Tempat Wisata: <?= $destinasi['nama_tempat_wisata']; ?></p>
-                    <p>Alamat: <?= $destinasi['alamat_tempat_wisata']; ?></p>
+                    <h2>Detail Pemesanan</h2>
+                    <!-- <p>Nama Tempat Wisata: <?= $destinasi['nama_tempat_wisata']; ?></p> -->
+                    <!-- <p>Alamat: <?= $destinasi['alamat_tempat_wisata']; ?></p> -->
                     <!-- Formulir Pemesanan -->
                     <form id="form-pemesanan" action="<?= base_url('user/pemesanan/proses_pesan'); ?>" method="post">
                         <input type="hidden" name="id_tempat_wisata" value="<?= $destinasi['id_tempat_wisata']; ?>">
@@ -32,6 +47,10 @@
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" class="form-control" id="email" name="email" value="<?= $user['email'] ?>" readonly required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">No Telepon</label>
+                            <input type="email" class="form-control" id="email" name="email" value="<?= $user['tlp_user'] ?>" readonly required>
                         </div>
                         <div class="form-group">
                             <label for="tanggal_kunjungan">Tanggal Kunjungan:</label>

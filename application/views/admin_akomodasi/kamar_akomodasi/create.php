@@ -1,31 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Kamar</title>
-</head>
-
-<body>
+<div class="container mt-5">
     <h2>Tambah Kamar</h2>
-    <form action="<?= base_url('admin_ako/kamarakomodasi/create/' . $id_akomodasi) ?>" method="post">
+    <form action="<?= base_url('admin_ako/kamarakomodasi/create/' . $id_akomodasi) ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id_akomodasi" value="<?= $id_akomodasi ?>">
 
-        <label for="tipe_kamar">Tipe Kamar:</label>
-        <input type="text" name="tipe_kamar" id="tipe_kamar" required><br>
+        <div class="form-group">
+            <label for="tipe_kamar">Tipe Kamar:</label>
+            <input type="text" class="form-control" name="tipe_kamar" id="tipe_kamar" required>
+        </div>
 
-        <label for="gambar">Gambar:</label>
-        <input type="text" name="gambar" id="gambar" required><br>
+        <div class="form-group">
+            <label for="gambar">Gambar:</label>
+            <input type="file" class="form-control-file" name="gambar" id="gambar" required>
+        </div>
 
-        <label for="jumlah">Jumlah:</label>
-        <input type="number" name="jumlah" id="jumlah" required><br>
+        <div class="form-group">
+            <label for="jumlah">Jumlah:</label>
+            <input type="number" class="form-control" name="jumlah" id="jumlah" required>
+        </div>
 
-        <label for="harga">harga:</label>
-        <input type="number" name="harga" id="harga" required><br>
+        <div class="form-group">
+            <label for="harga">Harga:</label>
+            <input type="number" class="form-control" name="harga" id="harga" required>
+        </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-</body>
-
-</html>
+</div>

@@ -1,26 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Kamar</title>
-</head>
-
-<body>
+<div class="container mt-5">
     <h2>Edit Kamar</h2>
-    <form action="<?= base_url('kamarakomodasi/edit/' . $detail->id_kamar) ?>" method="post">
-        <label for="tipe_kamar">Tipe Kamar:</label>
-        <input type="text" name="tipe_kamar" id="tipe_kamar" value="<?= $detail->tipe_kamar ?>" required><br>
+    <form action="<?= base_url('admin_ako/kamarakomodasi/edit/' . $detail->id_kamar) ?>" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="tipe_kamar">Tipe Kamar:</label>
+            <input type="text" class="form-control" name="tipe_kamar" id="tipe_kamar" value="<?= $detail->tipe_kamar ?>" required>
+        </div>
 
-        <label for="gambar">Gambar:</label>
-        <input type="text" name="gambar" id="gambar" value="<?= $detail->gambar ?>" required><br>
+        <div class="form-group">
+            <label for="gambar">Gambar:</label>
+            <input type="file" class="form-control-file" name="gambar" id="gambar">
+            <input type="hidden" name="existing_gambar" value="<?= $detail->gambar ?>">
+            <small>Current Image: <?= $detail->gambar ?></small>
+        </div>
 
-        <label for="jumlah">Jumlah:</label>
-        <input type="number" name="jumlah" id="jumlah" value="<?= $detail->jumlah ?>" required><br>
+        <div class="form-group">
+            <label for="jumlah">Jumlah:</label>
+            <input type="number" class="form-control" name="jumlah" id="jumlah" value="<?= $detail->jumlah ?>" required>
+        </div>
 
-        <button type="submit">Update</button>
+        <div class="form-group">
+            <label for="harga">Harga:</label>
+            <input type="number" class="form-control" name="harga" id="harga" value="<?= $detail->harga ?>" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
-</body>
-
-</html>
+</div>
