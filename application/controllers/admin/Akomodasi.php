@@ -64,6 +64,7 @@ class Akomodasi extends CI_Controller
             }
         }
 
+
         $insert = array(
             'nama_akomodasi' => htmlspecialchars($this->input->post('nama_akomodasi')),
             'harga_akomodasi' => htmlspecialchars($this->input->post('harga_akomodasi')),

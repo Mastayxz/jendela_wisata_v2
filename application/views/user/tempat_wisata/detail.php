@@ -119,27 +119,32 @@
                     </div>
                     <div class="heading-section ftco-animate content-section">
                         <h4 class="">description</h4>
+                        <div class="">
+                            <p><?php echo $destinasi['deskripsi_tempat_wisata'] ?></p>
+                        </div>
                     </div>
-                    <div class="">
-                        <p><?php echo $destinasi['deskripsi_tempat_wisata'] ?></p>
 
-                    </div>
                     <div class="heading-section ftco-animate content-section">
-                        <h4 class="">facility</h4>
-                    </div>
-                    <div class="">
-
-                        <p><?php echo $destinasi['fasilitas_tempat_wisata'] ?></p>
-
+                        <h4>Facility</h4>
+                        <div class="">
+                            <ul class="facility-list">
+                                <?php
+                                $facilities = explode(',', $destinasi['fasilitas_tempat_wisata']);
+                                foreach ($facilities as $facility) : ?>
+                                    <li><?php echo trim($facility); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
                     </div>
                     <div class="heading-section ftco-animate content-section">
                         <h4 class="">Location </h4>
-                    </div>
-                    <div class="">
-                        <div class="map-info">
-                            <p><?php echo $destinasi['lokasi_tempat_wisata']; ?></p>
+                        <div class="">
+                            <div class="map-info">
+                                <p><?php echo $destinasi['lokasi_tempat_wisata']; ?></p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-md-3">
                     <div class="mt-5 price-container shadow">

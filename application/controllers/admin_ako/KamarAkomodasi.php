@@ -29,15 +29,33 @@ class KamarAkomodasi extends CI_Controller
     public function create($id_akomodasi)
     {
         if ($this->input->post()) {
-            $data = [
-                'id_akomodasi' => $id_akomodasi,
-                'tipe_kamar' => $this->input->post('tipe_kamar'),
-                'gambar' => $this->input->post('gambar'),
-                'jumlah' => $this->input->post('jumlah'),
-                'harga' => $this->input->post('harga')
-            ];
-            $this->M_kamar_akomodasi->create($data);
-            redirect('admin_ako/kamarakomodasi/index/' . $id_akomodasi);
+            // Konfigurasi upload
+            $config['upload_path'] = './upload/kamar_akomodasi/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048; // Maksimum 2MB
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('gambar')) {
+                // Jika upload gagal
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('error', $error);
+                redirect('admin_ako/kamarakomodasi/create/' . $id_akomodasi);
+            } else {
+                // Jika upload berhasil
+                $upload_data = $this->upload->data();
+
+                $data = [
+                    'id_akomodasi' => $id_akomodasi,
+                    'tipe_kamar' => $this->input->post('tipe_kamar'),
+                    'gambar' => $upload_data['file_name'],
+                    'jumlah' => $this->input->post('jumlah'),
+                    'harga' => $this->input->post('harga')
+                ];
+                $this->M_kamar_akomodasi->create($data);
+                $this->session->set_flashdata('pesan', 'Kamar berhasil ditambahkan.');
+                redirect('admin_ako/kamarakomodasi/index/' . $id_akomodasi);
+            }
         } else {
             $data['id_akomodasi'] = $id_akomodasi;
             $this->load->view('admin_akomodasi/kamar_akomodasi/create', $data);
@@ -47,15 +65,35 @@ class KamarAkomodasi extends CI_Controller
     public function edit($id_kamar)
     {
         if ($this->input->post()) {
-            $data = [
-                'tipe_kamar' => $this->input->post('tipe_kamar'),
-                'gambar' => $this->input->post('gambar'),
-                'jumlah' => $this->input->post('jumlah'),
-                'harga' => $this->input->post('harga')
-            ];
-            $this->M_kamar_akomodasi->update($id_kamar, $data);
-            $detail = $this->M_kamar_akomodasi->getDetail($id_kamar);
-            redirect('kamarakomodasi/index/' . $detail->id_akomodasi);
+            // Konfigurasi upload
+            $config['upload_path'] = './upload/kamar_akomodasi/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048; // Maksimum 2MB
+
+            $this->load->library('upload', $config);
+
+            if (!empty($_FILES['gambar']['name']) && !$this->upload->do_upload('gambar')) {
+                // Jika upload gagal
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('error', $error);
+                redirect('admin_ako/kamarakomodasi/edit/' . $id_kamar);
+            } else {
+                // Jika upload berhasil atau tidak ada file yang diupload
+                $upload_data = $this->upload->data();
+                $gambar = !empty($_FILES['gambar']['name']) ? $upload_data['file_name'] : $this->input->post('existing_gambar');
+
+                $data = [
+                    'tipe_kamar' => $this->input->post('tipe_kamar'),
+                    'gambar' => $gambar,
+                    'jumlah' => $this->input->post('jumlah'),
+                    'harga' => $this->input->post('harga')
+                ];
+
+                $this->M_kamar_akomodasi->update($id_kamar, $data);
+                $detail = $this->M_kamar_akomodasi->getDetail($id_kamar);
+                $this->session->set_flashdata('pesan', 'Kamar berhasil diupdate.');
+                redirect('admin_ako/kamarakomodasi/index/' . $detail->id_akomodasi);
+            }
         } else {
             $data['detail'] = $this->M_kamar_akomodasi->getDetail($id_kamar);
             $this->load->view('admin_akomodasi/kamar_akomodasi/edit', $data);
@@ -66,7 +104,7 @@ class KamarAkomodasi extends CI_Controller
     {
         $detail = $this->M_kamar_akomodasi->getDetail($id_kamar);
         $this->M_kamar_akomodasi->delete($id_kamar);
-        redirect('kamarakomodasi/index/' . $detail->id_akomodasi);
+        redirect('admin_ako/kamarakomodasi/index/' . $detail->id_akomodasi);
     }
 }
 

@@ -107,6 +107,9 @@ class Filter extends CI_Controller
             error_log('Error in filter_event: ' . $e->getMessage());
         }
     }
+    public function clasin()
+    {
+    }
 }
 
 /* End of file Controllername.php */

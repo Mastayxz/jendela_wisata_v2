@@ -1,90 +1,98 @@
 <!-- Meta -->
 <?php $this->load->view('template/meta', $page_title); ?>
-<!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/css/nav.css') ?>"> -->
+
 <!-- Navbar -->
 <?php $this->load->view('templates/navbar'); ?>
 
 <!-- Main Sidebar Container -->
 <?php $this->load->view('templates/sidebar', $admin_data); ?>
 
-
-<?php if (!empty($akomodasi)) : ?>
-    <div class="container-fluid">
-        <div class="row justify-content-start my-4 ">
-            <div class="col-md-3">
-                <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi1']; ?>" width="400" height="300" alt="gambar1">
-            </div>
-            <div class="col-md-3">
-                <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi2']; ?>" width="400" height="300" alt="gambar1">
-            </div>1
-            <div class="col-md-3">
-                <img src="<?= base_url() . '/upload/akomodasi/' . $akomodasi['gambar_akomodasi3']; ?>" width="400" height="300" alt="gambar1">
-            </div>
+<div class="container-fluid mt-4">
+    <?php if (!empty($akomodasi)) : ?>
+        <div class="row justify-content-start mb-4">
+            <?php if (!empty($akomodasi['gambar_akomodasi1'])) : ?>
+                <div class="col-md-4 mb-3">
+                    <img src="<?= base_url() . 'upload/akomodasi/' . $akomodasi['gambar_akomodasi1']; ?>" class="img-fluid img-thumbnail" alt="gambar1">
+                </div>
+            <?php endif; ?>
+            <?php if (!empty($akomodasi['gambar_akomodasi2'])) : ?>
+                <div class="col-md-4 mb-3">
+                    <img src="<?= base_url() . 'upload/akomodasi/' . $akomodasi['gambar_akomodasi2']; ?>" class="img-fluid img-thumbnail" alt="gambar2">
+                </div>
+            <?php endif; ?>
+            <?php if (!empty($akomodasi['gambar_akomodasi3'])) : ?>
+                <div class="col-md-4 mb-3">
+                    <img src="<?= base_url() . 'upload/akomodasi/' . $akomodasi['gambar_akomodasi3']; ?>" class="img-fluid img-thumbnail" alt="gambar3">
+                </div>
+            <?php endif; ?>
         </div>
         <div class="row mb-3 justify-content-start">
-            <div class="col-lg-9 ">
+            <div class="col-lg-9">
                 <a href="<?= base_url('admin_ako/dashboard'); ?>" class="btn btn-info"><span data-feather="arrow-left"></span> Go back</a>
-                <button class="btn btn-warning edit-btn" data-id="<?= $admin_data['akomodasi']; ?>" data-toggle="modal" data-target="#editModal">Edit</button>
+                <button class="btn btn-warning edit-btn" data-id="<?= $akomodasi['id_akomodasi']; ?>" data-toggle="modal" data-target="#editModal">Edit</button>
             </div>
-            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="editModalLabel">Edit Data Akomodasi</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Tempat untuk menampilkan formulir edit -->
-                            <div id="editFormContainer"></div>
-                        </div>
-                        <div class="modal-footer">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
-        <div class="row shadow-md">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <!-- <th>ID</th> -->
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>Harga</th>
-                        <th>Lokasi</th>
-                        <th>Deskripsi</th>
-                        <th>Fasilitas</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <!-- 
-                        <td><?php echo $akomodasi['id_akomodasi']; ?></td> -->
-                        <td><?php echo $akomodasi['nama_akomodasi']; ?></td>
-                        <td><?php echo $akomodasi['alamat_akomodasi']; ?></td>
-                        <td>Rp. <?php echo number_format($akomodasi['harga_akomodasi']); ?></td>
-                        <td><?php echo $akomodasi['lokasi_akomodasi']; ?></td>
-                        <td><?php echo $akomodasi['deskripsi_akomodasi']; ?></td>
-                        <td><?php echo $akomodasi['fasilitas_akomodasi']; ?></td>
+        <div class="row shadow-md mb-4">
+            <div class="col-12">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                            <th>Harga</th>
+                            <th>Lokasi</th>
+                            <th style="width: 20%;">Deskripsi</th>
+                            <th>Fasilitas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?php echo $akomodasi['nama_akomodasi']; ?></td>
+                            <td><?php echo $akomodasi['alamat_akomodasi']; ?></td>
+                            <td>Rp. <?php echo number_format($akomodasi['harga_akomodasi']); ?></td>
+                            <td><?php echo $akomodasi['lokasi_akomodasi']; ?></td>
+                            <td><?php echo $akomodasi['deskripsi_akomodasi']; ?></td>
+                            <td>
+                                <?php
+                                $fasilitas = explode(',', $akomodasi['fasilitas_akomodasi']);
+                                foreach ($fasilitas as $fasilitas_item) {
+                                    echo '<div><i class="fas fa-check"></i> ' . trim($fasilitas_item) . '</div>';
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <?php else : ?>
+        <div class="row">
+            <div class="col-12">
+                <p>Data akomodasi tidak ditemukan.</p>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
 
-                    </tr>
-                </tbody>
-            </table>
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Data Akomodasi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Tempat untuk menampilkan formulir edit -->
+                <div id="editFormContainer"></div>
+            </div>
+            <div class="modal-footer"></div>
         </div>
     </div>
-
-
-<?php else : ?>
-    <p>Data akomodasi tidak ditemukan.</p>
-<?php endif; ?>
-
-
-
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
@@ -92,7 +100,7 @@
     <?php if ($this->session->userdata('admin_data') && !$this->session->userdata('welcome_popup_shown')) : ?>
         // Display a welcome popup
         Swal.fire({
-            title: 'Welcome, <?= $admin_name ?>!',
+            title: 'Welcome, <?= $admin_data['nama'] ?>!',
             text: 'Here is the dashboard for Jendela Wisata.',
             icon: 'success',
             confirmButtonText: 'OK'
@@ -103,16 +111,6 @@
     <?php endif; ?>
 
     // Your existing script for other functionalities
-</script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-<!-- Periksa apakah Bootstrap dan jQuery dimuat dengan benar -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<!-- Tambahkan link Bootstrap -->
-
-
-<script>
     $(document).ready(function() {
         $('.delete-btn').on('click', function() {
             var id = $(this).data('id');
@@ -131,8 +129,7 @@
                 }
             });
         });
-    });
-    $(document).ready(function() {
+
         $('.edit-btn').on('click', function() {
             var id = $(this).data('id');
 
@@ -146,12 +143,13 @@
                     $('#editFormContainer').html(response);
                 },
                 error: function() {
-                    alert('Gagal mengambil data destinasi.');
+                    Swal.fire('Error', 'Gagal mengambil data destinasi.', 'error');
                 }
             });
         });
     });
 </script>
+
 <!-- Footer -->
 <?php $this->load->view('template/footer') ?>
 

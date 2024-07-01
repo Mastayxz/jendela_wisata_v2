@@ -165,7 +165,7 @@ class TempatWisata extends CI_Controller
         $this->session->set_flashdata('pesan', 'Data destinasi berhasil diperbarui.');
 
 
-        redirect('admin_ako/detail_destinasi');
+        redirect('admin_ako/detail_destinasi/index/' . $id_tempat_wisata);
     }
 
     public function delete($id_tempat_wisata)

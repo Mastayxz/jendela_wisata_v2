@@ -24,7 +24,7 @@ class Pesanan extends CI_Controller
         } elseif ($admin_data['event'] !== null) {
             $data['pesanan'] = $this->M_pesanan->get_pesanan_event($admin_data['event']);
         } elseif ($admin_data['tempat_wisata'] !== null) {
-            $data['pesanan'] = $this->M_pesanan->get_pesanan_destinasi($admin_data['tempat_wisata']);
+            $data['pesanan'] = $this->M_pesanan->getDetailPesananDestinasi($admin_data['tempat_wisata']);
         } else {
             $data['pesanan'] = [];
         }

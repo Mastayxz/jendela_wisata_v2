@@ -93,6 +93,21 @@ class M_event extends CI_Model
 
         return $query->result_array();
     }
+    public function kurangiStokTiket($id_event, $jumlah_orang)
+    {
+        $this->db->set('stok_tiket', 'stok_tiket - ' . (int) $jumlah_orang, FALSE);
+        $this->db->where('id_event', $id_event);
+        return $this->db->update('event');
+    }
+
+    public function getStokTiket($id_event)
+    {
+        $this->db->select('stok_tiket');
+        $this->db->from('event');
+        $this->db->where('id_event', $id_event);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }
 
 /* End of file M_event.php */
