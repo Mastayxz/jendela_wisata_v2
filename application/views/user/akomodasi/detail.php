@@ -177,16 +177,22 @@
                 <div class="mt-5 price-container shadow">
                     <div class="harga">
                         <p class="fw-bold mb-0">Start From</p>
-                        <p class="fw-bold">Rp. <?= number_format($akomodasi['harga_akomodasi']); ?></p>
+                        <?php foreach ($kamar as $k): ?>
+                        <p class="fw-bold">Rp. <?php echo number_format($k->harga)?> </p>
+                        <?php endforeach; ?>
                         <div class="form-group">
                             <label for="roomType">Select Room Type</label>
-                            <select id="roomType" class="form-control">
-                                <?php foreach ($kamar as $k) : ?>
-                                    <option value="<?= $k->id_kamar ?>"><?= $k->tipe_kamar ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                            <input type="hidden" name="id_akomodasi" value="<?= $akomodasi['id_akomodasi']; ?>">
+                            <form action="<?php echo base_url('user/Pemesanan/jenis_kamar/' . $akomodasi['id_akomodasi']); ?>" method="post" >
+                                <select id="roomType" name="id_kamar" class="form-control">
+                                    <?php foreach ($kamar as $dk) : ?>
+                                        <option value="<?= $dk->id_kamar ?>"><?= $dk->tipe_kamar ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <button type="submit">pesan</button>
+                            </form>
                         </div>
-                        <a href="<?= base_url('user/pemesanan/index/' . $akomodasi['id_akomodasi']); ?>" class="btn btn-primary w-100 mt-3">Pesan</a>
+                        <!-- <a href="<?= base_url('user/pemesanan/jenis_kamar/' . $akomodasi['id_akomodasi']); ?>" class="btn btn-primary w-100 mt-3">Pesan</a> -->
                     </div>
                 </div>
             </div>
@@ -197,3 +203,41 @@
 </div>
 
 <?php $this->load->view('landing/footer') ?>
+
+<script type="text/javascript">
+    var kamarData = <?php echo json_encode($kamar); ?>; 
+    // document.getElementById('roomType').addEventListener('change', function() {
+    //     var selectedId = this.value;
+
+    //     // Cari harga berdasarkan id_kamar yang dipilih
+    //     var selectedKamar = kamarData.find(function(kamar) {
+    //         return kamar.id_kamar == selectedId;
+    //     });
+
+    //     // Update harga di elemen HTML
+    //     if (selectedKamar) {
+    //         document.getElementById('harga').innerText = 'Rp. ' + number_format(selectedKamar.harga);
+    //     }
+    // });
+    document.getElementById('roomType').addEventListener('change', function() {
+        var selectedId = this.value;
+
+        // Cari harga berdasarkan id_kamar yang dipilih
+        var selectedKamar = kamarData.find(function(kamar) {
+            return kamar.id_kamar == selectedId;
+        });
+
+        // Update harga di elemen HTML
+        if (selectedKamar) {
+            document.getElementById('harga').innerText = 'Rp. ' + number_format(selectedKamar.harga);
+        }
+    });
+
+    // Fungsi untuk format number
+    function number_format(number, decimals = 0, dec_point = '.', thousands_sep = ',') {
+        number = number.toFixed(decimals);
+        var parts = number.split('.');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousands_sep);
+        return parts.join(dec_point);
+    }
+</script>

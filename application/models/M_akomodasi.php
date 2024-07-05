@@ -152,6 +152,15 @@ class M_akomodasi extends CI_Model
         return $query->result_array();
     }
 
-
+    public function get_id_kamar($id,$id_kamar ){
+        $this->db->select('*');
+        $this->db->from('kamar_akomodasi');
+        $this->db->where('id_akomodasi',$id);
+        $this->db->where('id_kamar', $id_kamar);
+        
+        $qeury = $this->db->get();
+        return $qeury->row();
+        
+    }
     /* End of file M_akomodasi.php */
 }
