@@ -11,6 +11,7 @@ class Pemesanan extends CI_Controller
             redirect('c_auth');
         }
         $this->load->model('M_akomodasi');
+        $this->load->model('M_kamar_akomodasi');
         $this->load->model('M_tempatWisata');
         $this->load->model('kategori_model');
         $this->load->model('M_event');
@@ -28,11 +29,13 @@ class Pemesanan extends CI_Controller
             $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi($id);
             $data['tempat_wisata_list'] = $this->M_tempatWisata->getData($id);
             $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
+            $data['kamar'] = $this->M_kamar_akomodasi->getKamarByAkomodasi($id);
             $data['kamar'] = $this->M_akomodasi->get_all_kamar($id);
             $data['user'] = $this->m_userinfo->getDetail($id_user);
             $data['step'] = 1;
+            $data['user'] = $this->m_userinfo->getDetail($id_user);
             $this->load->view('user/pemesanan/navbar_pesanan', $data);
-            $this->load->view('user/pemesanan/index', $data);
+            $this->load->view('user/pemesanan/detail_akomodasi', $data);
         } else if ($this->is_event($id)) {
             $data['page_title'] = 'Detail Event';
             $data['event'] = $this->M_event->getDetail($id);
@@ -49,6 +52,24 @@ class Pemesanan extends CI_Controller
             $this->load->view('user/pemesanan/navbar_pesanan', $data);
             $this->load->view('user/pemesanan/detail_destinasi', $data);
         }
+    }
+
+    public function jenis_kamar($id){
+        $id_user = $this->session->userdata('id_user');
+        $id_kamar = $this->input->post('id_kamar');
+
+
+        $data['page_title'] = 'Detail Akomodasi';
+        $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi($id);
+        $data['tempat_wisata_list'] = $this->M_tempatWisata->getData($id);
+        $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
+        $data['kamar'] = $this->M_akomodasi->get_id_kamar($id,$id_kamar);
+        $data['user'] = $this->m_userinfo->getDetail($id_user);
+        $data['step'] = 1;
+        $this->load->view('user/pemesanan/navbar_pesanan', $data);
+        $this->load->view('user/pemesanan/detail_akomodasi', $data);
+
+    
     }
 
     public function step1()

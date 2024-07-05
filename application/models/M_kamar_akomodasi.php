@@ -8,7 +8,7 @@ class M_kamar_akomodasi extends CI_Model
     }
     public function getDetail($id_kamar)
     {
-        return $this->db->get_where('kamar_akomodasi', ['id_kamar' => $id_kamar])->row();
+        return $this->db->get_where('kamar_akomodasi', ['id_kamar' => $id_kamar])->result_array();
     }
 
     public function create($data)
