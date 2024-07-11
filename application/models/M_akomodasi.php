@@ -166,7 +166,7 @@ class M_akomodasi extends CI_Model
     }
     
 
-    public function get_id_kamar($id,$id_kamar ){
+    public function get_id_kamar($id,$id_kamar){
         $this->db->select('*');
         $this->db->from('kamar_akomodasi');
         $this->db->where('id_akomodasi',$id);

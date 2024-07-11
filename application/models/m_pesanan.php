@@ -82,11 +82,17 @@ class M_pesanan extends CI_Model
         $query = $this->db->get('pemesanan_event');
         return $query->result_array();
     }
-
-
-
     public function get_metode_pembayaran()
     {
         return $this->db->get('metode_pembayaran')->result_array();
     }
+
+    public function simpan_pemesanan_akomodasi($data)
+    {
+        $this->db->insert('pemesanan_akomodasi', $data);
+        return $this->db->insert_id(); // Mengembalikan ID pemesanan yang baru dimasukkan
+    }
+
+
+
 }

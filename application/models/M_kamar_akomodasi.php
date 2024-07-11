@@ -40,4 +40,13 @@ class M_kamar_akomodasi extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
+    public function get_harga_kamar($id,$id_kamar){
+        $this->db->select('harga');
+        $this->db->from('kamar_akomodasi');
+        $this->db->where('id_akomodasi', $id);
+        $this->db->where('id_kamar', $id_kamar);        
+        $query = $this->db->get();
+        return $query ->row();
+           
+    }
 }

@@ -13,7 +13,7 @@
             <?php if (!empty($akomodasi)) : ?>
                 <!-- Alert Informasi dan Tombol Kembali -->
                 <div class="alert alert-info">
-                    <a href="<?= base_url('user/tempat_wisata'); ?>" class="btn btn-secondary mb-2">Kembali</a>
+                    <a href="<?= base_url('user/akomodasi'); ?>" class="btn btn-secondary mb-2">Kembali</a>
                     <strong>Info:</strong> Silakan isi formulir di bawah ini untuk melakukan pemesanan.
                 </div>
 
@@ -23,8 +23,9 @@
                     <!-- <p>Nama Tempat Wisata: <?= $akomodasi['nama_akomodasi']; ?></p> -->
                     <!-- <p>Alamat: <?= $akomodasi['alamat_akomodasi']; ?></p> -->
                     <!-- Formulir Pemesanan -->
-                    <form id="form-pemesanan" action="<?= base_url('user/pemesanan/proses_pesan'); ?>" method="post">
+                    <form id="form-pemesanan" action="<?= base_url('user/pemesanan/pemesanan_kamar'); ?>" method="post">
                         <input type="hidden" name="id_akomodasi" value="<?= $akomodasi['id_akomodasi']; ?>">
+                        <input type="hidden" name="id_kamar" value="<?= $kamar->id_kamar; ?>">
                         <input type="hidden" name="jenis_pesanan" value="akomod asi$akomodasi">
                         <div class="mb-3">
                             <label for="disabledTextInput" class="form-label">Nama</label>
@@ -41,18 +42,28 @@
                         <div class="checkin-checkout">
                             <div class="form-group">
                                 <label for="tanggal_kunjungan">Chekin:</label>
-                                <input type="date" class="form-control" id="tanggal_kunjungan" name="checkin" required>
+                                <input type="date" class="form-control" id="checkin" name="checkin" onchange="hitungTotalHarga()"required>
                             </div>
                             <div class="form-group">
                                 <label for="tanggal_kunjungan">Checkout:</label>
-                                <input type="date" class="form-control" id="tanggal_kunjungan" name="checkout" required>
+                                <input type="date" class="form-control" id="checkout" name="checkout" onchange="hitungTotalHarga()" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="jumlah_orang">Jumlah Kamar:</label>
-                            <input type="number" class="form-control" id="jumlah_kamar" name="jumlah_orang" min="1" value="1" onchange="hitungTotalHarga()" required>
+                            <label for="jumlah_kamar">Jumlah Kamar:</label>
+                            <input type="number" class="form-control" id="jumlah-kamar" name="jumlah_kamar" min="1" value="1" onchange="hitungTotalHarga()" required>
                         </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="setuju" name="setuju" onchange="checkAgreement()" required>
+                            <label class="form-check-label" for="setuju">Saya setuju dengan ketentuan yang berlaku</label>
+                        </div>
+                        <div class="total-harga">
+                            <input type="hidden" name="total-harga" id="total_Harga" onchange="hitungTotalHarga()">
+                        </div>
+                        
                     </form>
+                    <div>
+                    </div>
                     <div class="fasilitas">
                         <table class="table">
                     <thead>
@@ -95,19 +106,67 @@
                     
                     <!-- Informasi tambahan -->
                     <hr>
-                    <?php if (!empty($kamar)) : ?>
-                        <strong>Kamar Tersedia : <?= $kamar->jumlah;  ?> </strong>
-                    <?php else : ?>
-                        <strong>Kamar Tersedia : Data tidak tersedia</strong>
-                    <?php endif; ?>
-                    
+                    <p class="mb-1"> Lama Menginap :<span id="info-menginap"></span> </p>
+                    <p class="mb-1">Jumlah Kamar : <span id="info-jumlah-kamar"></span></p>
+                    <p class="mb-1">Total Harga : <span id="total-harga"></span></p>
                     <hr>
                    
                     <!-- Tombol Pemesanan dari Harga -->
-                    <button type="button" class="btn btn-primary w-100 mt-3" id="btn-harga" onclick="submitForm()" disabled>Pesan dari Harga</button>
+                    <button type="button" class="btn btn-primary w-100 mt-3" id="btn-harga" onclick="submitForm()" disabled>Pesan Kamar</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    let hargaKamar = <?= $kamar-> harga ?>;
+
+     function checkAgreement() {
+        var checkbox = document.getElementById('setuju');
+        var btnHarga = document.getElementById('btn-harga');
+
+        btnHarga.disabled = !checkbox.checked;
+    }
+
+    function hitungTotalHarga(){
+        const checkIn = document.getElementById('checkin').value;
+        const checkOut = document.getElementById('checkout').value;
+        const jumlahKamar =document.getElementById('jumlah-kamar').value;
+        if(checkIn && checkOut && jumlahKamar > 0){
+            const checkInDate = new Date(checkIn);
+            const checkOutDate = new Date(checkOut);
+            const timeDiff = checkOutDate - checkInDate;
+            const daysDiff = timeDiff / (1000 * 3600 * 24);
+            if(daysDiff > 0){
+                const totalHarga = daysDiff * hargaKamar * jumlahKamar;
+                document.getElementById('total_Harga').value = totalHarga;
+                document.getElementById('total-harga').textContent = 'Rp.'+totalHarga.toLocaleString('id-ID');
+                document.getElementById('info-menginap').textContent = daysDiff + ' Malam';
+                document.getElementById('info-jumlah-kamar').textContent =jumlahKamar;
+                document.getElementById('btn-harga') .disabled = true; 
+                
+            }else{
+                document.getElementById('total-harga').textContent = '';
+                document.getElementById('info-menginap').textContent =  '';
+                document.getElementById('info-jumlah-kamar').textContent ='';
+                document.getElementById('btn-harga') .disabled = true; 
+            }   
+        } else {
+            document.getElementById('total-harga').textContent = '';
+            document.getElementById('info-menginap').textContent =  '';
+            document.getElementById('info-jumlah-kamar').textContent ='';
+            document.getElementById('btn-harga') .disabled = true; 
+        }
+    }
+
+    function submitForm(){
+        document.getElementById('form-pemesanan').submit();
+    }
+    // function jumlahKamar(){
+    //     var jumlahKamar = document.getElementById('jumlah-kamar').value;
+    //     document.getElementById('info-jumlah-kamar').textContent =jumlahKamar;
+    // }
+
+</script>
+
 <?php $this->load->view('landing/footer') ?>
