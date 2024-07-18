@@ -17,6 +17,7 @@ class Pemesanan extends CI_Controller
         $this->load->model('M_event');
         $this->load->model('m_pesanan');
         $this->load->model('m_userinfo');
+        $this->load->model('M_transaksi');
     }
 
     public function index($id)
@@ -25,16 +26,60 @@ class Pemesanan extends CI_Controller
 
 
         if ($this->is_akomodasi($id)) {
+            $id_user = $this->session->userdata('id_user');
+            $id_kamar = $this->input->post('id_kamar');
+            var_dump($id_kamar);
+            // if ($id_kamar == null) {
+            //     // Tampilkan pesan error atau redirect ke halaman yang sesuai
+            //     show_error('ID Kamar tidak valid', 500);
+            // }
+            // $kamar = $this->M_akomodasi->get_id_kamar($id_kamar);
+
+            // if ($kamar == null) {
+            //     // Tampilkan pesan error atau redirect ke halaman yang sesuai
+            //     show_error(' Kamar tidak di temukan ', 500);
+            // }
+
+
             // $this->halaman_pemesanan($id);
             $id_kamar = $this->input->post('id_kamar');
             $data['page_title'] = 'Detail Akomodasi';
             $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi($id);
             $data['tempat_wisata_list'] = $this->M_tempatWisata->getData($id);
             $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
-            $data['kamar'] = $this->M_akomodasi->get_id_kamar($id,$id_kamar);
+            $data['kamar'] = $this->M_akomodasi->get_id_kamar($id, $id_kamar);
+            $data['kamar'] = $this->M_akomodasi->get_id_kamar($id, $id_kamar);
             $data['user'] = $this->m_userinfo->getDetail($id_user);
             $data['step'] = 1;
             $this->load->view('user/pemesanan/navbar_pesanan', $data);
+            $this->load->view('user/pemesanan/detail_akomodasi', $data);
+            echo "ID Kamar: " . $id_kamar . "<br>";
+
+            // Pastikan koneksi database terhubung
+            // Debugging: Output the id_kamar
+            echo "ID Kamar: " . $id_kamar . "<br>";
+
+            // Pastikan koneksi database terhubung
+            if ($this->db->conn_id) {
+                echo "Database connected!<br>";
+            } else {
+                echo "Failed to connect to database.<br>";
+                return;
+            }
+            $this->db->where('id_kamar', $id_kamar);
+            $query = $this->db->get('kamar_akomodasi');
+
+            // Debugging: Output query yang dijalankan
+            echo "Query yang dijalankan: " . $this->db->last_query() . "<br>";
+
+            // Debugging: Output jumlah baris yang ditemukan
+            echo "Jumlah baris yang ditemukan: " . $query->num_rows() . "<br>";
+
+            if ($query->num_rows() > 0) {
+                return $query->row();
+            } else {
+                return null;
+            }
             $this->load->view('user/pemesanan/detail_akomodasi', $data);
         } else if ($this->is_event($id)) {
             $data['page_title'] = 'Detail Event';
@@ -53,19 +98,22 @@ class Pemesanan extends CI_Controller
             $this->load->view('user/pemesanan/detail_destinasi', $data);
         }
     }
-    public function halaman_pemesanan($id){
-            $id_user = $this->session->userdata('id_user');
 
-            $id_kamar = $this->input->post('id_kamar');
-            $data['page_title'] = 'Detail Akomodasi';
-            $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi($id);
-            $data['tempat_wisata_list'] = $this->M_tempatWisata->getData($id);
-            $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
-            $data['kamar'] = $this->M_akomodasi->get_id_kamar($id,$id_kamar);
-            $data['user'] = $this->m_userinfo->getDetail($id_user);
-            $data['step'] = 1;
-            $this->load->view('user/pemesanan/navbar_pesanan', $data);
-            $this->load->view('user/pemesanan/detail_akomodasi', $data);
+
+    public function halaman_pemesanan($id)
+    {
+        $id_user = $this->session->userdata('id_user');
+
+        $id_kamar = $this->input->post('id_kamar');
+        $data['page_title'] = 'Detail Akomodasi';
+        $data['jenis_akomodasi_list'] = $this->M_akomodasi->getJenisAkomodasi($id);
+        $data['tempat_wisata_list'] = $this->M_tempatWisata->getData($id);
+        $data['akomodasi'] = $this->M_akomodasi->getDetail($id);
+        $data['kamar'] = $this->M_akomodasi->get_id_kamar($id, $id_kamar);
+        $data['user'] = $this->m_userinfo->getDetail($id_user);
+        $data['step'] = 1;
+        $this->load->view('user/pemesanan/navbar_pesanan', $data);
+        $this->load->view('user/pemesanan/detail_akomodasi', $data);
     }
     public function pemesanan_kamar()
     {
@@ -78,8 +126,8 @@ class Pemesanan extends CI_Controller
         $id_akomodasi = $this->input->post('id_akomodasi');
         $total_harga = $this->input->post('total-harga');
         // Mengambil data kamar berdasarkan id kamar dari database
-       
-        
+
+
 
         if ($kamar_id) {
             // Menyimpan data pemesanan ke database
@@ -107,7 +155,7 @@ class Pemesanan extends CI_Controller
         }
     }
 
-    
+
 
     public function step1()
     {
@@ -124,7 +172,8 @@ class Pemesanan extends CI_Controller
         $id_pemesanan_event = $this->session->userdata('id_pemesanan_event');
 
         // Debugging: Tampilkan semua session data
-        var_dump($this->session->all_userdata());
+        // var_dump($this->session->all_userdata());
+        log_message('debug', 'Session Data (step2): ' . print_r($this->session->all_userdata(), true));
 
         if (!$id_pemesanan_akomodasi && !$id_pemesanan_destinasi && !$id_pemesanan_event) {
             redirect('user/pemesanan');
@@ -136,10 +185,12 @@ class Pemesanan extends CI_Controller
         if ($id_pemesanan_akomodasi) {
             $data['pemesanan'] = $this->m_pesanan->get_pesanan_akomodasi($id_pemesanan_akomodasi);
             $data['akomodasi'] = $this->M_akomodasi->getDetail($data['pemesanan']['id_akomodasi']);
-            $data['tanggal_kunjungan'] = $data['pemesanan']['tanggal_pemesanan'];
-            $data['jumlah_orang'] = $data['pemesanan']['jumlah_orang'];
+            $data['checkin'] = $data['pemesanan']['check_in'];
+            $data['checkout'] = $data['pemesanan']['check_out'];
+            $data['jumlah_kamar'] = $data['pemesanan']['jumlah_kamar'];
             $data['total_harga'] = $data['pemesanan']['total_harga'];
             $data['jenis_pesanan'] = 'akomodasi';
+            $data['id_pesanan'] = $id_pemesanan_akomodasi;
         } elseif ($id_pemesanan_destinasi) {
             $data['pemesanan'] = $this->m_pesanan->get_pesanan_destinasi($id_pemesanan_destinasi);
             $data['destinasi'] = $this->M_tempatWisata->getDetail($data['pemesanan']['id_tempat_wisata']);
@@ -168,7 +219,29 @@ class Pemesanan extends CI_Controller
         $this->load->view('user/pemesanan/step2', $data);
     }
 
+    public function proses_pembayaran($jenis_pesanan, $id_pesanan)
+    {
+        $id_user = $this->session->userdata('id_user');
 
+        if ($jenis_pesanan == 'event') {
+            $pemesanan = $this->m_pesanan->getPemesananEventDetail($id_pesanan);
+        } elseif ($jenis_pesanan == 'akomodasi') {
+            $pemesanan = $this->m_pesanan->getPemesananAkomodasiDetail($id_pesanan);
+        } elseif ($jenis_pesanan == 'destinasi') {
+            $pemesanan = $this->m_pesanan->getPemesananDestinasiDetail($id_pesanan);
+        } else {
+            show_error('Jenis pemesanan tidak valid');
+        }
+
+        if (!$pemesanan) {
+            show_error('Detail pemesanan tidak ditemukan');
+        }
+
+        $total_harga = $pemesanan['total_harga'];
+
+        // Panggil fungsi initiate_payment
+        $this->initiate_payment($total_harga, $jenis_pesanan, $id_pesanan, $id_user);
+    }
 
 
     public function cancel($jenis_pesanan = '', $id_pesanan = '')
@@ -183,50 +256,76 @@ class Pemesanan extends CI_Controller
             show_error('ID pesanan tidak valid.');
         }
 
+        log_message('debug', 'Jenis Pesanan: ' . $jenis_pesanan . ', ID Pesanan: ' . $id_pesanan); // Debugging jenis dan ID pesanan
+
         // Simpan detail pemesanan dalam session sebelum dihapus
         switch ($jenis_pesanan) {
             case 'destinasi':
-                $detail_pemesanan = $this->m_pesanan->getDetailPesananDestinasi($id_pesanan); // Ganti dengan metode dari model sesuai kebutuhan
+                $detail_pemesanan = $this->m_pesanan->getPemesananDestinasiDetail($id_pesanan);
+                if (!$detail_pemesanan) {
+                    log_message('error', 'Pemesanan destinasi tidak ditemukan. ID: ' . $id_pesanan); // Log error jika tidak ditemukan
+                    $this->session->set_flashdata('error', 'Pemesanan destinasi tidak ditemukan.');
+                    redirect('user/pemesanan');
+                    return;
+                }
+                log_message('debug', 'Detail Pemesanan Destinasi: ' . print_r($detail_pemesanan, true)); // Debugging detail pemesanan
                 $this->session->set_userdata('detail_pemesanan', $detail_pemesanan);
                 $this->m_pesanan->cancel_pesanan_destinasi($id_pesanan);
-                // $this->session->unset_userdata('id_pemesanan_destinasi');
+
+                // Kembalikan jumlah tiket
+                if (isset($detail_pemesanan['id_tempat_wisata']) && isset($detail_pemesanan['jumlah_orang'])) {
+                    $this->m_pesanan->update_tiket_destinasi($detail_pemesanan['id_tempat_wisata'], $detail_pemesanan['jumlah_orang']);
+                }
+
+                // Redirect kembali ke halaman detail destinasi
+                redirect('user/tempat_wisata/detail/' . $detail_pemesanan['id_tempat_wisata']);
                 break;
             case 'akomodasi':
-                $detail_pemesanan = $this->m_pesanan->getDetailPesananAkomodasi($id_pesanan); // Ganti dengan metode dari model sesuai kebutuhan
+                $detail_pemesanan = $this->m_pesanan->getPemesananAkomodasiDetail($id_pesanan);
+                if (!$detail_pemesanan) {
+                    log_message('error', 'Pemesanan akomodasi tidak ditemukan. ID: ' . $id_pesanan); // Log error jika tidak ditemukan
+                    $this->session->set_flashdata('error', 'Pemesanan akomodasi tidak ditemukan.');
+                    redirect('user/pemesanan');
+                    return;
+                }
+                log_message('debug', 'Detail Pemesanan Akomodasi: ' . print_r($detail_pemesanan, true)); // Debugging detail pemesanan
                 $this->session->set_userdata('detail_pemesanan', $detail_pemesanan);
                 $this->m_pesanan->cancel_pesanan_akomodasi($id_pesanan);
-                $this->session->unset_userdata('id_pemesanan_akomodasi');
-                break;
-            case 'event':
-                $detail_pemesanan = $this->m_pesanan->getDetailPesananEvent($id_pesanan); // Ganti dengan metode dari model sesuai kebutuhan
-                $this->session->set_userdata('detail_pemesanan', $detail_pemesanan);
-                $this->m_pesanan->cancel_pesanan_event($id_pesanan);
-                $this->session->unset_userdata('id_pemesanan_event');
-                break;
-            default:
-                show_error('Jenis pesanan tidak valid.');
-                break;
-        }
 
-        // Unset jenis_pesanan dari session
-        $this->session->unset_userdata('jenis_pesanan');
+                // Kembalikan jumlah kamar
+                if (isset($detail_pemesanan['id_akomodasi']) && isset($detail_pemesanan['jumlah_kamar'])) {
+                    $this->m_pesanan->update_kamar_akomodasi($detail_pemesanan['id_akomodasi'], $detail_pemesanan['jumlah_kamar']);
+                }
 
-        // Redirect ke halaman sesuai jenis pesanan yang dibatalkan
-        switch ($jenis_pesanan) {
-            case 'destinasi':
-                redirect('user/pemesanan/index/' . $id_pesanan); // Pastikan URL sesuai dengan kebutuhan
-                break;
-            case 'akomodasi':
+                // Redirect kembali ke halaman utama pemesanan akomodasi
                 redirect('user/pemesanan');
                 break;
             case 'event':
-                redirect('user/pemesanan/index/' . $id_pesanan);
+                $detail_pemesanan = $this->m_pesanan->getPemesananEventDetail($id_pesanan);
+                if (!$detail_pemesanan) {
+                    log_message('error', 'Pemesanan destinasi tidak ditemukan. ID: ' . $id_pesanan); // Log error jika tidak ditemukan
+                    $this->session->set_flashdata('error', 'Pemesanan destinasi tidak ditemukan.');
+                    redirect('user/pemesanan');
+                    return;
+                }
+                log_message('debug', 'Detail Pemesanan Destinasi: ' . print_r($detail_pemesanan, true)); // Debugging detail pemesanan
+                $this->session->set_userdata('detail_pemesanan', $detail_pemesanan);
+                $this->m_pesanan->cancel_pesanan_event($id_pesanan);
+
+                // Kembalikan jumlah tiket
+                if (isset($detail_pemesanan['id_event']) && isset($detail_pemesanan['jumlah_orang'])) {
+                    $this->m_pesanan->update_tiket_event($detail_pemesanan['id_event'], $detail_pemesanan['jumlah_orang']);
+                }
+
+                // Redirect kembali ke halaman detail event
+                redirect('user/event/detail/' . $detail_pemesanan['id_event']);
                 break;
             default:
                 show_error('Jenis pesanan tidak valid.');
                 break;
         }
     }
+
 
 
 
@@ -249,25 +348,73 @@ class Pemesanan extends CI_Controller
         return $result;
     }
 
-    // public function pemesanan_kamar()
-    // {
-    //     //mengambil inputan pada view 
-    //     $nama_tamu = $this->input->post('nama_tamu');
-    //     $email = $this->input->post('email');
-    //     $no_tlp = $this->input->post('no_tlp');
-    //     $check_in = $this->input->post('check_in');
-    //     $check_out = $this->input->post('check_out');
-    //     $kamar_id = $this->input->post('kamar_id');
-    //     //mengambil data kamar berdasarkan id kamar dari database 
-    //     $kamar = $this->M_akomodasi->get_kamar_id($kamar_id);
+    public function pemesanan_kamar()
+    {
+        // Mengambil inputan dari view
+        $id_user = $this->session->userdata('id_user');
+        $jumlah_kamar = $this->input->post('jumlah_kamar');
+        $check_in = $this->input->post('check_in');
+        $check_out = $this->input->post('check_out');
+        $kamar_id = $this->input->post('kamar_id');
+        $id_akomodasi = $this->input->post('id_akomodasi');
 
-    //     //perhitungan tanggal 
-    //     $check_in_date =  new  DateTime($check_in);
-    //     $check_out_date =  new  DateTime($check_out);
-    //     $tempo = $check_in_date->diff($check_out_date);
-    //     $hari = $tempo->days; // mengambil jumlah hari dan nantik akan di tampilkan
-    //     //menghitung total harga 
-    //     $total_harga = $kamar['harga'] * $hari;
+        // Mengambil data kamar berdasarkan id kamar dari database
+        $kamar = $this->M_akomodasi->get_kamar_id($kamar_id);
+        // public function pemesanan_kamar()
+        // {
+        //     //mengambil inputan pada view 
+        //     $nama_tamu = $this->input->post('nama_tamu');
+        //     $email = $this->input->post('email');
+        //     $no_tlp = $this->input->post('no_tlp');
+        //     $check_in = $this->input->post('check_in');
+        //     $check_out = $this->input->post('check_out');
+        //     $kamar_id = $this->input->post('kamar_id');
+        //     //mengambil data kamar berdasarkan id kamar dari database 
+        //     $kamar = $this->M_akomodasi->get_kamar_id($kamar_id);
+
+        if ($kamar) {
+            // Perhitungan tanggal
+            $check_in_date = new DateTime($check_in);
+            $check_out_date = new DateTime($check_out);
+            $tempo = $check_in_date->diff($check_out_date);
+            $hari = $tempo->days; // Mengambil jumlah hari
+
+            // Menghitung total harga
+            $total_harga = $kamar['harga'] * $hari * $jumlah_kamar;
+            //     //perhitungan tanggal 
+            //     $check_in_date =  new  DateTime($check_in);
+            //     $check_out_date =  new  DateTime($check_out);
+            //     $tempo = $check_in_date->diff($check_out_date);
+            //     $hari = $tempo->days; // mengambil jumlah hari dan nantik akan di tampilkan
+            //     //menghitung total harga 
+            //     $total_harga = $kamar['harga'] * $hari;
+
+
+            // Menyimpan data pemesanan ke database
+            $data = array(
+                'jumlah_kamar' => $jumlah_kamar,
+                'id_kamar' => $kamar_id,
+                'total_harga' => $total_harga,
+                'check_in' => $check_in,
+                'check_out' => $check_out,
+                'id_akomodasi' => $id_akomodasi,
+                'id_user' => $id_user,
+                'status' => 0, // Status awal pemesanan
+            );
+
+            $id_pemesanan_akomodasi = $this->m_pesanan->simpan_pemesanan_akomodasi($data); // Menggunakan model untuk menyimpan data
+            $this->session->set_userdata('id_pemesanan_akomodasi', $id_pemesanan_akomodasi);
+            $this->session->unset_userdata('id_pemesanan_event');
+            $this->session->unset_userdata('id_pemesanan_destinasi');
+            // Mengarah ke pembayaran   
+            redirect('user/pemesanan/step2');
+            // $this->initiate_payment($total_harga, 'akomodasi', $id_pemesanan_akomodasi, $id_user);
+        } else {
+            // Jika kamar tidak ditemukan
+            $this->session->set_flashdata('error', 'Kamar tidak ditemukan.');
+            redirect('halaman_pemesanan');
+        }
+    }
 
     //     //inser database ke pemesanan
     //     $data = array(
@@ -315,15 +462,15 @@ class Pemesanan extends CI_Controller
             'id_tempat_wisata' => $id_destinasi,
             'total_harga' => $total_harga,
             'id_user' => $id_user,
-            'status' => 1
+            'status' => 0
         );
 
         $id_pemesanan = $this->m_pesanan->simpan_pesanan_destinasi($data_pemesanan);
         $this->session->set_userdata('id_pemesanan_destinasi', $id_pemesanan);
         $this->M_tempatWisata->kurangiStokTiket($id_destinasi, $jumlah_orang);
-
+        redirect('user/pemesanan/step2');
         // Panggil fungsi initiate_payment
-        $this->initiate_payment($total_harga, 'destinasi', $id_pemesanan, $id_user);
+        // $this->initiate_payment($total_harga, 'destinasi', $id_pemesanan, $id_user);
     }
 
     public function pesan_event()
@@ -355,7 +502,7 @@ class Pemesanan extends CI_Controller
             'id_event' => $id_event,
             'total_harga' => $total_harga,
             'id_user' => $id_user,
-            'status' => 1
+            'status' => 0
 
         );
 
@@ -366,8 +513,8 @@ class Pemesanan extends CI_Controller
         $this->M_event->kurangiStokTiket($id_event, $jumlah_orang);
 
         // Panggil fungsi initiate_payment
-        // redirect('user/pemesanan/step2');
-        $this->initiate_payment($total_harga, 'event', $id_pemesanan_event, $id_user);
+        redirect('user/pemesanan/step2');
+        // $this->initiate_payment($total_harga, 'event', $id_pemesanan_event, $id_user);
     }
 
     public function invoice($id_pesanan, $jenis_pesanan)
@@ -414,8 +561,8 @@ class Pemesanan extends CI_Controller
         $additionalParam    = '';
         $merchantUserInfo   = '';
         $customerVaName     = $user_info['nama']; // Use user's name from database
-        $callbackUrl        = 'https://fb38-36-88-105-20.ngrok-free.app/jendela_wisata/user/pemesanan/callback'; // url for callback
-        $returnUrl          = 'https://ac4c-180-254-225-83.ngrok-free.app/jendela_wisata/user/Pemesanan/return'; // url for redirect
+        $callbackUrl        = 'https://trusted-pet-lionfish.ngrok-free.app/jendelawisata/user/pemesanan/callback'; // url for callback
+        $returnUrl          = 'https://trusted-pet-lionfish.ngrok-free.app/jendelawisata/user/pemesanan/return'; // url for redirect
         $expiryPeriod       = 60;
 
         // Customer Detail
@@ -474,22 +621,28 @@ class Pemesanan extends CI_Controller
                 'id_user' => $id_user,
                 'amount' => $paymentAmount,
                 'status' => 1,
-
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ];
 
             // Menyesuaikan ID pemesanan sesuai jenis pesanan
             if ($jenis_pesanan == 'event') {
                 $insertDB['id_pemesanan_event'] = $id_pesanan;
-            } elseif ($jenis_pesanan == 'destinasi') {
+            } else if ($jenis_pesanan == 'destinasi') {
                 $insertDB['id_pemesanan_destinasi'] = $id_pesanan;
+            } else if ($jenis_pesanan == 'akomodasi') {
+                $insertDB['id_pemesanan_akomodasi'] = $id_pesanan;
             }
 
-            $this->db->insert('tbl_transaksi', $insertDB);
+            // Simpan transaksi dan dapatkan ID transaksi
+            $id_transaksi = $this->M_transaksi->simpan_transaksi($insertDB);
 
             // Panggil fungsi createInvoice dari Duitku
             $responseDuitkuApi = \Duitku\Pop::createInvoice($params, $duitkuConfig);
             $data = json_decode($responseDuitkuApi);
-            redirect($data->paymentUrl); // Redirect ke halaman pembayaran
+
+            // Redirect ke halaman pembayaran
+            redirect($data->paymentUrl);
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -500,6 +653,7 @@ class Pemesanan extends CI_Controller
         file_put_contents('callback_log.txt', "Callback received\n", FILE_APPEND);
 
         $apiKey = '4e2dec7009d4a7cfd6c702ffc8b9d6ee'; // API key anda
+
         $merchantCode = isset($_POST['merchantCode']) ? $_POST['merchantCode'] : null;
         $amount = isset($_POST['amount']) ? $_POST['amount'] : null;
         $merchantOrderId = isset($_POST['merchantOrderId']) ? $_POST['merchantOrderId'] : null;
@@ -515,28 +669,51 @@ class Pemesanan extends CI_Controller
         $settlementDate = isset($_POST['settlementDate']) ? $_POST['settlementDate'] : null;
         $issuerCode = isset($_POST['issuerCode']) ? $_POST['issuerCode'] : null;
 
-        file_put_contents('callback_log.txt', print_r($_POST, true), FILE_APPEND);
-
         if (!empty($merchantCode) && !empty($amount) && !empty($merchantOrderId) && !empty($signature)) {
             $params = $merchantCode . $amount . $merchantOrderId . $apiKey;
             $calcSignature = md5($params);
 
             if ($signature == $calcSignature) {
-                file_put_contents('callback_log.txt', "Signature verified\n", FILE_APPEND);
-
-                // Update status transaksi di database berdasarkan merchantOrderId
-                $updateStatus = array('status' => $resultCode);
-                $this->db->where('id', $merchantOrderId);
+                $status = ($resultCode == '00') ? 2 : 3; // 2: Sukses, 3: Gagal
+                $updateStatus = [
+                    'status' => $status,
+                    'payment_time' => date('Y-m-d H:i:s'),
+                    'payment_reference' => $reference
+                ];
+                $this->db->where('id', $merchantOrderId); // Pastikan ini ID dari tabel transaksi
                 $this->db->update('tbl_transaksi', $updateStatus);
 
-                file_put_contents('callback_log.txt', "Database updated\n", FILE_APPEND);
+                $data = $this->input->post();
+                file_put_contents('callback_log.txt', print_r($data, true), FILE_APPEND | LOCK_EX);
+
+                if ($status == 2) {
+                    // Redirect ke halaman bukti pembayaran jika sukses
+                    redirect('user/pemesanan/bukti/' . $merchantOrderId);
+                } else {
+                    // Redirect ke halaman error jika gagal
+                    redirect('user/pemesanan/error');
+                }
             } else {
-                file_put_contents('callback_log.txt', "* Bad Signature *\r\n", FILE_APPEND);
+                file_put_contents('callback_log.txt', "* Bad Signature *\r\n\r\n", FILE_APPEND | LOCK_EX);
                 throw new Exception('Bad Signature');
             }
         } else {
-            file_put_contents('callback_log.txt', "* Bad Parameter *\r\n", FILE_APPEND);
+            file_put_contents('callback_log.txt', "* Bad Parameter *\r\n\r\n", FILE_APPEND | LOCK_EX);
             throw new Exception('Bad Parameter');
         }
+    }
+
+    public function bukti($id_transaksi)
+    {
+        // $this->load->model('m_transaksi');
+        $transaksi = $this->M_transaksi->get_transaksi_by_id($id_transaksi);
+
+        if (!$transaksi) {
+            show_error('Transaksi tidak ditemukan');
+        }
+
+        $data['transaksi'] = $transaksi;
+
+        $this->load->view('user/bukti', $data);
     }
 }

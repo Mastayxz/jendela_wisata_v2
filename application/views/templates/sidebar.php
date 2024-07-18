@@ -71,6 +71,12 @@
                                 <p>Pesanan</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin_ako/info'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'info') ? 'active' : ''; ?>">
+                                <i class="fa fa-info-circle nav-icon"></i>
+                                <p>Info</p>
+                            </a>
+                        </li>
                         <!-- (Kode lainnya, jika ada) -->
                     </ul>
 

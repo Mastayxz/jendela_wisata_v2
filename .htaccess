@@ -3,9 +3,4 @@ RewriteEngine On
 # Kondisi untuk memastikan permintaan bukan untuk file atau direktori yang ada
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# Pengecualian untuk URL callback
-RewriteCond %{REQUEST_URI} !^/jendela_wisata/user/Pemesanan/callback$
-
-# Meneruskan semua permintaan yang tidak sesuai dengan kondisi di atas ke index.php
 RewriteRule ^(.*)$ index.php/$1 [L]

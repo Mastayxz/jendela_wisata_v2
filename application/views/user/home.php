@@ -26,7 +26,7 @@
                     <p>Bali, an island in Indonesia, is a renowned tourist destination known for its stunning natural beauty, rich culture, and warm hospitality. With its white sandy beaches, clear blue waters, and ideal waves for surfing, Bali is a tropical paradise. The island boasts majestic mountains, lush terraced rice fields, and captivating tropical forests.</p>
                     <p>Bali is also famous for its cultural heritage, featuring traditional dances, religious ceremonies, and beautiful wood carvings. Art and cultural hubs like Ubud attract tourists seeking an immersion into Bali's artistic and spiritual life.
                         Ancient temples, such as Pura Besakih, showcase the island's strong religious traditions.</p>
-                    <p><a href="<?= base_url('user/tempat_wisata'); ?>" class="custom-btn py-3 px-4">Search Destination</a></p>
+                    <p><a href="<?= base_url('user/tempat_wisata'); ?>" class="btn btn-primary py-3 px-4">Search Destination</a></p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -226,14 +226,16 @@
             <div class="col-md-12 text-center">
                 <div class="img" style="background-image: url(./assets/landing/images/bg_2.jpg);">
                     <div class="overlay"></div>
-                    <h2>We Are Pacific A Travel Agency</h2>
-                    <p>We can assist you in managing your travel plans</p>
-                    <p class="mb-0"><a href="<?= base_url('c_hubungi/index'); ?>" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
+                    <h2>Bergabunglah dengan Jendela Wisata!</h2>
+                    <p>Tingkatkan visibilitas dan penjualan usaha wisata Anda bersama kami.</p>
+                    <p>Platform terbaik untuk mempromosikan dan menjual layanan wisata Anda.</p>
+                    <p class="mb-0"><a href="<?= base_url('c_authadmin/index'); ?>" class="btn btn-primary px-4 py-3">Gabung Sekarang</a></p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 
 <?php $this->load->view('landing/footer') ?>

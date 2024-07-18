@@ -91,6 +91,11 @@
             $query = $this->db->get('admin');
             return $query->result();
         }
+
+        public function getTransaksiDestinasi()
+        {
+            $this->db->get('tbl_transaksi');
+        }
     }
 
 /* End of file m_admin.php */

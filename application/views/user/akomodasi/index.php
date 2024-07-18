@@ -85,7 +85,21 @@
     </div>
 </div>
 
-
+<section class="ftco-intro ftco-section ftco-no-pt">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <div class="img" style="background-image: url(../assets/landing/images/bg_2.jpg);">
+                    <div class="overlay"></div>
+                    <h2>Bergabunglah dengan Jendela Wisata!</h2>
+                    <p>Tingkatkan visibilitas dan penjualan usaha wisata Anda bersama kami.</p>
+                    <p>Platform terbaik untuk mempromosikan dan menjual layanan wisata Anda.</p>
+                    <p class="mb-0"><a href="<?= base_url('c_authadmin/index'); ?>" class="btn btn-primary px-4 py-3">Gabung Sekarang</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

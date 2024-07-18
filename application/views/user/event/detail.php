@@ -156,9 +156,9 @@
             <div class="col-md-3">
                 <div class="mt-5 price-container shadow">
                     <div class="harga">
-                        <img src="<?= base_url() . '/upload/event/' . $event['gambar_event1']; ?>" alt="" class="image" style="height: 10vh; width:auto;">
-                        <p class="fw-bold mb-0">Price</p>
-                        <p class="fw-bold">Rp.<?= number_format($event['biaya_event']); ?></p>
+                        <img src="<?= base_url() . '/upload/event/' . $event['gambar_event1']; ?>" alt="" class="image my-3" style="height: 10vh; width:auto;">
+                        <p class="fw-bold">Rp. <?= number_format($event['biaya_event']); ?></p>
+                        <p class="fw-bold">Tiket Tersedia : <?= $event['stok_tiket']; ?></p>
                         <a href="<?= base_url('user/pemesanan/index/' . $event['id_event']); ?>" class="btn btn-primary w-100 mt-3">Pesan</a>
                     </div>
                 </div>

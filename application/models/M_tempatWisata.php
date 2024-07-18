@@ -45,12 +45,14 @@ class M_tempatWisata extends CI_Model
         $this->db->insert('kategori_wisata', $data);
     }
 
-    public function getDetail($id_tempat_wisata)
+    public function getDetail($id)
     {
-        $this->db->where('id_tempat_wisata', $id_tempat_wisata);
-        $result = $this->db->get('tempat_wisata')->result_array();
-        return $result[0];
+        $query = $this->db->get_where('tempat_wisata', array('id_tempat_wisata' => $id));
+        $result = $query->row_array();
+        log_message('debug', 'getDetail Result: ' . print_r($result, true)); // Debugging result from database
+        return $result;
     }
+
 
 
     public function getKategoriByTempatWisataId($id_tempat_wisata)

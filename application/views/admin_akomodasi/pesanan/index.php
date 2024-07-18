@@ -18,30 +18,27 @@
                 <h3 class="card-title">Data Pesanan</h3>
             </div>
             <div class="card-body">
-                <form action="<?= base_url('admin_ako/pesanan/search'); ?>" method="post">
-                    <input type="text" name="keyword" placeholder="Cari pesanan...">
-                    <button type="submit">Cari</button>
-                </form>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nama</th>
-                            <th>Tanggal Pemesanan</th>
-                            <th>Jumlah Orang</th>
+                            <th>Tanggal Check In</th>
+                            <th>Tanggal Check Out</th>
+                            <th>Jumlah Kamar</th>
+                            <th>Tipe Kamar</th>
                             <th>Total Harga</th>
                             <th>Status</th>
-                            <th>action</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($pesanan as $order) : ?>
                             <tr>
-                                <td><?= $order['id_pemesanan']; ?></td>
-                                <td><?= $order['nama']; // Menampilkan nama user 
-                                    ?></td>
-                                <td><?= $order['tanggal_pemesanan']; ?></td>
-                                <td><?= $order['jumlah_orang']; ?></td>
+                                <td><?= $order['nama']; ?></td>
+                                <td><?= $order['check_in']; ?></td>
+                                <td><?= $order['check_out']; ?></td>
+                                <td><?= $order['jumlah_kamar']; ?></td>
+                                <td><?= $order['tipe_kamar']; ?></td>
                                 <td>Rp. <?= number_format($order['total_harga']); ?></td>
                                 <td>
                                     <?php if ($order['status'] == 0) : ?>
@@ -54,17 +51,17 @@
                                 </td>
                                 <td>
                                     <button class="btn btn-primary btn-edit" data-id="<?= $order['id_pemesanan']; ?>" data-toggle="modal" data-target="#editModal">Edit</button>
-                                    <a href="<?= base_url('admin_ako/pesanan/delete_pesanan_destinasi/' . $order['id_pemesanan']) ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data pesanan ini?')">Hapus</a>
+                                    <a href="<?= base_url('admin_ako/pesanan/delete_pesanan_akomodasi/' . $order['id_pemesanan']); ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data pesanan ini?')">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
 <!-- Modal Edit Status -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">

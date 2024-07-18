@@ -61,15 +61,6 @@
         border-radius: 15px;
         /* Sesuaikan dengan keinginan Anda */
     }
-    .pesan button{
-        background-color: orangered;
-        color:white;
-        justify-content: center;
-        border: none;
-        width: 100%;
-        margin-top: 5%;
-        border-radius: 10px;
-    }
 </style>
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../assets/landing/images/bg_2.jpg'); background-color:#F2F1EB;">
@@ -186,21 +177,22 @@
                 <div class="mt-5 price-container shadow">
                     <div class="harga">
                         <p class="fw-bold mb-0">Start From</p>
-                        <span id="harga">Rp -1</span>
+                        <?php foreach ($kamar as $k) : ?>
+                            <p class="fw-bold">Rp. <?php echo number_format($k->harga) ?> </p>
+                        <?php endforeach; ?>
                         <div class="form-group">
                             <label for="roomType">Select Room Type</label>
                             <input type="hidden" name="id_akomodasi" value="<?= $akomodasi['id_akomodasi']; ?>">
-                            <form action="<?php echo base_url('user/Pemesanan/index/' . $akomodasi['id_akomodasi']); ?>" method="post" >
+                            <form action="<?php echo base_url('user/Pemesanan/index/' . $akomodasi['id_akomodasi']); ?>" method="post">
                                 <select id="roomType" name="id_kamar" class="form-control">
                                     <?php foreach ($kamar as $dk) : ?>
                                         <option value="<?= $dk->id_kamar ?>"><?= $dk->tipe_kamar ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <div class="pesan"><button type="submit">pesan</button></div>
-                                
+                                <button type="submit" class="btn btn-primary mt-3" style="width: 100%; ">pesan</button>
                             </form>
                         </div>
-                      
+                        <!-- <a href="<?= base_url('user/pemesanan/index/' . $akomodasi['id_akomodasi']); ?>" class="btn btn-primary w-100 mt-3">Pesan</a> -->
                     </div>
                 </div>
             </div>
@@ -211,59 +203,3 @@
 </div>
 
 <?php $this->load->view('landing/footer') ?>
-
-<script type="text/javascript">
-    var kamarData = <?php echo json_encode($kamar); ?>; 
-    // document.getElementById('roomType').addEventListener('change', function() {
-    //     var selectedId = this.value;
-
-    //     // Cari harga berdasarkan id_kamar yang dipilih
-    //     var selectedKamar = kamarData.find(function(kamar) {
-    //         return kamar.id_kamar == selectedId;
-    //     });
-
-    //     // Update harga di elemen HTML
-    //     if (selectedKamar) {
-    //         document.getElementById('harga').innerText = 'Rp. ' + number_format(selectedKamar.harga);
-    //     }
-    // });
-    document.getElementById('roomType').addEventListener('change', function() {
-        var selectedId = this.value;
-
-        // Cari harga berdasarkan id_kamar yang dipilih
-        var selectedKamar = kamarData.find(function(kamar) {
-            return kamar.id_kamar == selectedId;
-        });
-
-        // Update harga di elemen HTML
-        if (selectedKamar) {
-            document.getElementById('harga').innerText = 'Rp. ' + number_format(selectedKamar.harga);
-        }
-    });
-
-    // Fungsi untuk format number
-    function number_format(number, decimals = 0, dec_point = '.', thousands_sep = ',') {
-        number = number.toFixed(decimals);
-        var parts = number.split('.');
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousands_sep);
-        return parts.join(dec_point);
-    }
-    $(document).ready(function(){
-        $('#kamar').change(function(){
-            var id = $(this).val();
-            if(id != ''){
-                $.ajax({
-                    url : "<?php echo site_url('user/akomodasi/get_harga'); ?>",
-                    method : "POST",
-                    data : {id:id,id_kamar:id_kamar},
-                    dataType : "json",
-                    success :function(data){
-                        $('harga').text(data.harga);
-                    }
-                })
-            }else{
-                $('harga').text('-')
-            }
-        })
-    })
-</script>

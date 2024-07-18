@@ -152,6 +152,8 @@
                             <img src="<?= base_url() . '/upload/destinasi/' . $destinasi['gambar1']; ?>" alt="" class="image" style="height: 10vh; width:auto;">
                             <p class="fw-bold mb-0">Price</p>
                             <p class="fw-bold">Rp.<?= number_format($destinasi['biaya_tempat_wisata']); ?></p>
+                            <p class="fw-bold">Tiket Tersedia : <?= $destinasi['stok_tiket']; ?></p>
+
                             <a href="<?= base_url('user/pemesanan/index/' . $destinasi['id_tempat_wisata']); ?>" class="btn btn-primary w-100 mt-3">Pesan</a>
                         </div>
                     </div>

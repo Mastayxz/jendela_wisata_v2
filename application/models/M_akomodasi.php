@@ -52,14 +52,13 @@ class M_akomodasi extends CI_Model
             return $this->db->affected_rows() > 0;
         }
     }
-
     public function getDetail($id)
     {
-        $this->db->where('id_akomodasi', $id);
-        $result = $this->db->get('akomodasi')->result_array();
-        return $result[0];
+        $query = $this->db->get_where('akomodasi', array('id_akomodasi' => $id));
+        $result = $query->row_array();
+        log_message('debug', 'getDetail Result: ' . print_r($result, true)); // Debugging result from database
+        return $result;
     }
-
     public function updateData($edit, $id_akomodasi)
     {
 
@@ -151,30 +150,32 @@ class M_akomodasi extends CI_Model
 
         return $query->result_array();
     }
-    public function get_all_kamar($id){
+    public function get_all_kamar($id)
+    {
         $this->db->where('id_akomodasi', $id);
         $query = $this->db->get('kamar_akomodasi')->result_array();
         return $query[0];
     }
-    
-    public function get_kamar_id($id_kamar){   
-        $query = $this->db->get_where('kamar_akomodasi', array('id_kamar'=>$id_kamar));
-        return $query -> row_array();
-    }
-    public function insert_pemesanan($data){
-        return $this->db->insert('pemesanan',$data);
-    }
-    
 
-    public function get_id_kamar($id,$id_kamar){
+    public function get_kamar_id($id_kamar)
+    {
+        $query = $this->db->get_where('kamar_akomodasi', array('id_kamar' => $id_kamar));
+        return $query->row_array();
+    }
+    public function insert_pemesanan($data)
+    {
+        return $this->db->insert('pemesanan', $data);
+    }
+
+
+    public function get_id_kamar($id, $id_kamar)
+    {
         $this->db->select('*');
         $this->db->from('kamar_akomodasi');
-        $this->db->where('id_akomodasi',$id);
+        $this->db->where('id_akomodasi', $id);
         $this->db->where('id_kamar', $id_kamar);
-        
+
         $qeury = $this->db->get();
         return $qeury->row();
-        
     }
-    /* End of file M_akomodasi.php */
 }
