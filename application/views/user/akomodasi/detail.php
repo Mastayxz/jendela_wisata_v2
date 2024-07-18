@@ -177,18 +177,22 @@
                 <div class="mt-5 price-container shadow">
                     <div class="harga">
                         <p class="fw-bold mb-0">Start From</p>
-                        <?php foreach ($kamar as $k): ?>
-                        <p class="fw-bold">Rp. <?php echo number_format($k->harga)?> </p>
+                        <?php foreach ($kamar as $k) : ?>
+                            <p class="fw-bold">Rp. <?php echo number_format($k->harga) ?> </p>
                         <?php endforeach; ?>
                         <div class="form-group">
                             <label for="roomType">Select Room Type</label>
-                            <select id="roomType" class="form-control">
-                                <?php foreach ($kamar as $k) : ?>
-                                    <option value="<?= $k->id_kamar ?>"><?= $k->tipe_kamar ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                            <input type="hidden" name="id_akomodasi" value="<?= $akomodasi['id_akomodasi']; ?>">
+                            <form action="<?php echo base_url('user/Pemesanan/index/' . $akomodasi['id_akomodasi']); ?>" method="post">
+                                <select id="roomType" name="id_kamar" class="form-control">
+                                    <?php foreach ($kamar as $dk) : ?>
+                                        <option value="<?= $dk->id_kamar ?>"><?= $dk->tipe_kamar ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <button type="submit" class="btn btn-primary mt-3" style="width: 100%; ">pesan</button>
+                            </form>
                         </div>
-                        <a href="<?= base_url('user/pemesanan/index/' . $akomodasi['id_akomodasi']); ?>" class="btn btn-primary w-100 mt-3">Pesan</a>
+                        <!-- <a href="<?= base_url('user/pemesanan/index/' . $akomodasi['id_akomodasi']); ?>" class="btn btn-primary w-100 mt-3">Pesan</a> -->
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@
     <div class="frame-judul">
       <h1>REGISTER</h1>
       <hr>
-      <h3>JENDELA DUNIA</h3>
+      <h3>JENDELA WISATA</h3>
     </div>
 
     <div class="frame-nama">

@@ -13,3 +13,263 @@ Array
 (
 )
 * Bad Parameter *
+Callback received
+Array
+(
+)
+* Bad Parameter *
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720105830
+    [productDetail] => Payment for event
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => 969712c02c701ddd10cb24863c637011
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS1949324YXB414FHM5B0TOU
+    [spUserHash] => 
+    [settlementDate] => 2024-07-06
+    [publisherOrderId] => BC243A5D7QBD4AYY1XN
+    [sourceAccount] => 
+)
+Signature verified
+Database updated
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720106553
+    [productDetail] => Payment for event
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => 03aec78582d8f3096af52a576a785b43
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS1949324VGLOUZ0CP4FH5FM
+    [spUserHash] => 
+    [settlementDate] => 2024-07-06
+    [publisherOrderId] => BC24JC6NPFBYRRTNA1B
+    [sourceAccount] => 
+)
+Signature verified
+Database updated
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720106553
+    [productDetail] => Payment for event
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => 03aec78582d8f3096af52a576a785b43
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS1949324VGLOUZ0CP4FH5FM
+    [spUserHash] => 
+)
+Signature verified
+Database updated
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720107335
+    [productDetail] => Payment for event
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => 8af475fc0a9ebdaef0f31d25128ed8f4
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS1949324ULP78W0W7LWALYN
+    [spUserHash] => 
+    [settlementDate] => 2024-07-06
+    [publisherOrderId] => BC24BMTJVBRLY3I8EZ5
+    [sourceAccount] => 
+)
+Signature verified
+Database updated
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720108063
+    [productDetail] => Payment for event
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => ed39c77a055de30ed37d4aa5f24b5a52
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS1949324XAWQE0I8DWRLMSM
+    [spUserHash] => 
+    [settlementDate] => 2024-07-06
+    [publisherOrderId] => BC24BWZFSMP6MKX81M2
+    [sourceAccount] => 
+)
+Signature verified
+Database updated
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720109181
+    [productDetail] => Payment for destinasi
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => d45a9fc8ca51388af991ed942a34ec51
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS19493242ZCWBDNK101NYFT
+    [spUserHash] => 
+    [settlementDate] => 2024-07-06
+    [publisherOrderId] => BC24ZQ3JN6IF3ZW48QV
+    [sourceAccount] => 
+)
+Signature verified
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720109181
+    [productDetail] => Payment for destinasi
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => d45a9fc8ca51388af991ed942a34ec51
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS19493242ZCWBDNK101NYFT
+    [spUserHash] => 
+    [settlementDate] => 2024-07-06
+    [publisherOrderId] => BC24ZQ3JN6IF3ZW48QV
+    [sourceAccount] => 
+)
+Signature verified
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720109181
+    [productDetail] => Payment for destinasi
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => d45a9fc8ca51388af991ed942a34ec51
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS19493242ZCWBDNK101NYFT
+    [spUserHash] => 
+    [settlementDate] => 2024-07-06
+    [publisherOrderId] => BC24ZQ3JN6IF3ZW48QV
+    [sourceAccount] => 
+)
+Signature verified
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720109181
+    [productDetail] => Payment for destinasi
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => d45a9fc8ca51388af991ed942a34ec51
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS19493242ZCWBDNK101NYFT
+    [spUserHash] => 
+    [settlementDate] => 2024-07-06
+    [publisherOrderId] => BC24ZQ3JN6IF3ZW48QV
+    [sourceAccount] => 
+)
+Signature verified
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720109181
+    [productDetail] => Payment for destinasi
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => d45a9fc8ca51388af991ed942a34ec51
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS19493242ZCWBDNK101NYFT
+    [spUserHash] => 
+)
+Signature verified
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720109181
+    [productDetail] => Payment for destinasi
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => d45a9fc8ca51388af991ed942a34ec51
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS19493242ZCWBDNK101NYFT
+    [spUserHash] => 
+)
+Signature verified
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720109181
+    [productDetail] => Payment for destinasi
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => d45a9fc8ca51388af991ed942a34ec51
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS19493242ZCWBDNK101NYFT
+    [spUserHash] => 
+)
+Callback received
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720109181
+    [productDetail] => Payment for destinasi
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => d45a9fc8ca51388af991ed942a34ec51
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS19493242ZCWBDNK101NYFT
+    [spUserHash] => 
+    [settlementDate] => 2024-07-06
+    [publisherOrderId] => BC24ZQ3JN6IF3ZW48QV
+    [sourceAccount] => 
+)
+Signature verified
+Array
+(
+    [merchantCode] => DS19493
+    [amount] => 20000
+    [merchantOrderId] => 1720109181
+    [productDetail] => Payment for destinasi
+    [additionalParam] => 
+    [resultCode] => 00
+    [signature] => d45a9fc8ca51388af991ed942a34ec51
+    [paymentCode] => BC
+    [merchantUserId] => 
+    [reference] => DS19493242ZCWBDNK101NYFT
+    [spUserHash] => 
+    [settlementDate] => 2024-07-06
+    [publisherOrderId] => BC24ZQ3JN6IF3ZW48QV
+    [sourceAccount] => 
+)

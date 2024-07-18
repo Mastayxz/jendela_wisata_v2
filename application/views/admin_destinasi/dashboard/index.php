@@ -12,7 +12,7 @@
 <?php $this->load->view('templates/sidebar', $admin_data); ?>
 
 
-// TODO : create sum data for dashboard
+
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -84,6 +84,14 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header border-0">
+                        <div class="form-group">
+                            <label for="selectYear">Select Year:</label>
+                            <select id="selectYear" class="form-control">
+                                <?php foreach ($years as $year) : ?>
+                                    <option value="<?= $year['year'] ?>"><?= $year['year'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                         <div class="d-flex justify-content-between">
                             <h3 class="card-title">Sales Charts</h3>
                             <a href="javascript:void(0);">View Report</a>
@@ -160,7 +168,7 @@
                                 <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">
                                     <i class="fas fa-bars"></i></button>
                                 <div class="dropdown-menu float-right" role="menu">
-                                    <a href="#" class="dropdown-item">Add new event</a>
+                                    <a href="#" class="dropdown-item">Add new destinasi</a>
                                     <a href="#" class="dropdown-item">Clear events</a>
                                     <div class="dropdown-divider"></div>
                                     <a href="#" class="dropdown-item">View calendar</a>
@@ -189,7 +197,7 @@
 
 
 
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -197,33 +205,68 @@
         });
         calendar.render();
     });
-</script>
+</script> -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    var salesData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
-        datasets: [{
-            label: 'Penjualan Kamar Hotel',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 2,
-            data: [65, 59, 80, 81, 56, 55, 40, 30, 20, 45, 70, 80]
-        }]
-    };
-    var ctx = document.getElementById('salesChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: salesData,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
+    var salesChart;
+    var baseUrl = "<?= base_url('admin_ako/dashboard/get_pemesanan_data_destinasi/' . $tempat_wisata['id_tempat_wisata']); ?>";
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
+        });
+        calendar.render();
+
+        var ctx = document.getElementById('salesChart').getContext('2d');
+        salesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Jumlah Pemesanan',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2,
+                    data: []
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return Number.isInteger(value) ? value : null;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        document.getElementById('selectYear').addEventListener('change', function() {
+            updateChart(this.value);
+        });
+
+        updateChart(document.getElementById('selectYear').value);
+    });
+
+    function updateChart(year) {
+        fetch(baseUrl + '/' + year)
+            .then(response => response.json())
+            .then(data => {
+                var monthlyData = new Array(12).fill(0);
+                data.forEach(item => {
+                    monthlyData[item.month - 1] = item.total;
+                });
+
+                salesChart.data.datasets[0].data = monthlyData;
+                salesChart.update();
+            });
+    }
+
     <?php if ($this->session->userdata('admin_data') && !$this->session->userdata('welcome_popup_shown')) : ?>
 
         Swal.fire({
@@ -236,7 +279,7 @@
         <?php $this->session->set_userdata('welcome_popup_shown', true); ?>
     <?php endif; ?>
 </script>
-<!-- Footer -->
+
 <?php $this->load->view('template/footer') ?>
 
 <!-- JS -->

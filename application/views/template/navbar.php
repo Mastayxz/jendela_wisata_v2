@@ -43,13 +43,13 @@
       if (result.isConfirmed) {
         // If the user confirms the logout, send an AJAX request to perform the logout
         $.ajax({
-          url: '<?= base_url('c_authadmin/logout') ?>',
+          url: '<?= base_url('c_authadminsistem/logout') ?>',
           type: 'POST',
           dataType: 'json',
           success: function(response) {
             if (response.status === 'success') {
               // Redirect to the desired page after successful logout
-              window.location.href = '<?= base_url('c_authadmin/index') ?>';
+              window.location.href = '<?= base_url('c_authadminsistem/index') ?>';
             }
           }
         });

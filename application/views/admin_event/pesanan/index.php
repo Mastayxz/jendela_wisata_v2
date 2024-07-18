@@ -54,7 +54,8 @@
                                 </td>
                                 <td>
                                     <button class="btn btn-primary btn-edit" data-id="<?= $order['id_pemesanan']; ?>" data-toggle="modal" data-target="#editModal">Edit</button>
-                                    <a href="<?= base_url('admin_ako/pesanan/delete_pesanan_destinasi/' . $order['id_pemesanan']) ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data pesanan ini?')">Hapus</a>
+
+                                    <a href="<?= base_url('admin_ako/pesanan/delete_pesanan_event/' . $order['id_pemesanan']) ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data pesanan ini?')">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -65,7 +66,6 @@
         </div>
     </div>
 </div>
-<!-- Modal Edit Status -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

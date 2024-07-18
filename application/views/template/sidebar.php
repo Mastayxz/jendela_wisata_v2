@@ -20,38 +20,45 @@
         </div>
 
         <nav class="mt-2">
-          <!-- sidebar.php -->
-
           <ul class="nav nav-pills nav-sidebar flex-column text-light" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item <?php echo ($this->uri->segment(2) == 'dashboard') ? 'menu-open' : ''; ?>">
               <a href="<?= base_url('admin/dashboard'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'dashboard') ? 'active' : ''; ?>">
-                <i class=" fas fa-tachometer-alt nav-icon"></i>
+                <i class="fas fa-tachometer-alt nav-icon"></i>
                 <p>Dashboard</p>
               </a>
             </li>
             <li class="nav-item <?php echo ($this->uri->segment(2) == 'admin') ? 'menu-open' : ''; ?>">
               <a href="<?= base_url('admin/admin'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'admin') ? 'active' : ''; ?>">
                 <i class="fa fa-user-tie nav-icon"></i>
-                <p>admin</p>
+                <p>Admin</p>
               </a>
             </li>
-            <li class="nav-item <?php echo ($this->uri->segment(2) == 'TempatWisata') ? 'menu-open' : ''; ?>">
-              <a href="<?= base_url('admin/TempatWisata'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'TempatWisata') ? 'active' : ''; ?>">
-                <i class="fa fa-home nav-icon"></i>
-                <p>Tempat Wisata</p>
+            <!-- Dropdown Wisata -->
+            <li class="nav-item has-treeview <?php echo ($this->uri->segment(2) == 'TempatWisata' || $this->uri->segment(2) == 'akomodasi' || $this->uri->segment(2) == 'event') ? 'menu-open' : ''; ?>">
+              <a href="#" class="nav-link <?php echo ($this->uri->segment(2) == 'TempatWisata' || $this->uri->segment(2) == 'akomodasi' || $this->uri->segment(2) == 'event') ? 'active' : ''; ?>">
+                <i class="fa fa-map nav-icon"></i>
+                <p>Wisata<i class="right fas fa-angle-left"></i></p>
               </a>
-            </li>
-            <li class="nav-item <?php echo ($this->uri->segment(2) == 'akomodasi') ? 'menu-open' : ''; ?>">
-              <a href="<?= base_url('admin/akomodasi'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'akomodasi') ? 'active' : ''; ?>">
-                <i class="fa fa-hotel nav-icon"></i>
-                <p>Akomodasi</p>
-              </a>
-            </li>
-            <li class="nav-item <?php echo ($this->uri->segment(2) == 'event') ? 'menu-open' : ''; ?>">
-              <a href="<?= base_url('admin/event'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'event') ? 'active' : ''; ?>">
-                <i class="fa fa-hotel nav-icon"></i>
-                <p>Event</p>
-              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?= base_url('admin/TempatWisata'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'TempatWisata') ? 'active' : ''; ?>">
+                    <i class="fa fa-home nav-icon"></i>
+                    <p>Tempat Wisata</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('admin/akomodasi'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'akomodasi') ? 'active' : ''; ?>">
+                    <i class="fa fa-hotel nav-icon"></i>
+                    <p>Akomodasi</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('admin/event'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'event') ? 'active' : ''; ?>">
+                    <i class="fa fa-calendar nav-icon"></i>
+                    <p>Event</p>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item <?php echo ($this->uri->segment(2) == 'kategori') ? 'menu-open' : ''; ?>">
               <a href="<?= base_url('admin/kategori'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'kategori') ? 'active' : ''; ?>">
@@ -65,7 +72,33 @@
                 <p>Jenis Akomodasi</p>
               </a>
             </li>
-
+            <!-- Dropdown Transaksi -->
+            <li class="nav-item has-treeview <?php echo ($this->uri->segment(2) == 'TransaksiEvent' || $this->uri->segment(2) == 'TransaksiDestinasi' || $this->uri->segment(2) == 'TransaksiAkomodasi') ? 'menu-open' : ''; ?>">
+              <a href="#" class="nav-link <?php echo ($this->uri->segment(2) == 'TransaksiEvent' || $this->uri->segment(2) == 'TransaksiDestinasi' || $this->uri->segment(2) == 'TransaksiAkomodasi') ? 'active' : ''; ?>">
+                <i class="fa fa-exchange-alt nav-icon"></i>
+                <p>Transaksi<i class="right fas fa-angle-left"></i></p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?= base_url('admin/TransaksiEvent'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'TransaksiEvent') ? 'active' : ''; ?>">
+                    <i class="fa fa-calendar-check nav-icon"></i>
+                    <p>Transaksi Event</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('admin/TransaksiDestinasi'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'TransaksiDestinasi') ? 'active' : ''; ?>">
+                    <i class="fa fa-map-marker-alt nav-icon"></i>
+                    <p>Transaksi Destinasi</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('admin/TransaksiAkomodasi'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'TransaksiAkomodasi') ? 'active' : ''; ?>">
+                    <i class="fa fa-bed nav-icon"></i>
+                    <p>Transaksi Akomodasi</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
             <li class="nav-item <?php echo ($this->uri->segment(2) == 'user') ? 'menu-open' : ''; ?>">
               <a href="<?= base_url('admin/user'); ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'user') ? 'active' : ''; ?>">
                 <i class="fa fa-user nav-icon"></i>
