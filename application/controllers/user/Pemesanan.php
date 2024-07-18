@@ -115,45 +115,45 @@ class Pemesanan extends CI_Controller
         $this->load->view('user/pemesanan/navbar_pesanan', $data);
         $this->load->view('user/pemesanan/detail_akomodasi', $data);
     }
-    public function pemesanan_kamar()
-    {
-        // Mengambil inputan dari view
-        $id_user = $this->session->userdata('id_user');
-        $jumlah_kamar = $this->input->post('jumlah_kamar');
-        $check_in = $this->input->post('checkin');
-        $check_out = $this->input->post('checkout');
-        $kamar_id = $this->input->post('id_kamar');
-        $id_akomodasi = $this->input->post('id_akomodasi');
-        $total_harga = $this->input->post('total-harga');
-        // Mengambil data kamar berdasarkan id kamar dari database
+    // public function pemesanan_kamar()
+    // {
+    //     // Mengambil inputan dari view
+    //     $id_user = $this->session->userdata('id_user');
+    //     $jumlah_kamar = $this->input->post('jumlah_kamar');
+    //     $check_in = $this->input->post('checkin');
+    //     $check_out = $this->input->post('checkout');
+    //     $kamar_id = $this->input->post('id_kamar');
+    //     $id_akomodasi = $this->input->post('id_akomodasi');
+    //     $total_harga = $this->input->post('total-harga');
+    //     // Mengambil data kamar berdasarkan id kamar dari database
 
 
 
-        if ($kamar_id) {
-            // Menyimpan data pemesanan ke database
-            $data = array(
-                'jumlah_kamar' => $jumlah_kamar,
-                'total_harga' => $total_harga,
-                'checkin' => $check_in,
-                'checkout' => $check_out,
-                'id_akomodasi' => $id_akomodasi,
-                'id_user' => $id_user,
-                'status' => 1, // Status awal pemesanan
-            );
-            var_dump($data);
-            $this->m_pesanan->simpan_pemesanan_akomodasi($data); // Menggunakan model untuk menyimpan data
-            // $this->session->set_userdata('id_pemesanan_akomodasi', $id_pemesanan_akomodasi);
-            // $this->session->unset_userdata('id_pemesanan_event');
-            // $this->session->unset_userdata('id_pemesanan_destinasi');
-            // Mengarah ke pembayaran   
-            redirect('user/pemesanan/step2');
-            // $this->initiate_payment($total_harga, 'akomodasi', $id_pemesanan_akomodasi, $id_user);
-        } else {
-            var_dump($kamar_id);
-            // Jika kamar tidak ditemukan
-            echo 'gk dapat kamar id jancok';
-        }
-    }
+    //     if ($kamar_id) {
+    //         // Menyimpan data pemesanan ke database
+    //         $data = array(
+    //             'jumlah_kamar' => $jumlah_kamar,
+    //             'total_harga' => $total_harga,
+    //             'checkin' => $check_in,
+    //             'checkout' => $check_out,
+    //             'id_akomodasi' => $id_akomodasi,
+    //             'id_user' => $id_user,
+    //             'status' => 1, // Status awal pemesanan
+    //         );
+    //         var_dump($data);
+    //         $this->m_pesanan->simpan_pemesanan_akomodasi($data); // Menggunakan model untuk menyimpan data
+    //         // $this->session->set_userdata('id_pemesanan_akomodasi', $id_pemesanan_akomodasi);
+    //         // $this->session->unset_userdata('id_pemesanan_event');
+    //         // $this->session->unset_userdata('id_pemesanan_destinasi');
+    //         // Mengarah ke pembayaran   
+    //         redirect('user/pemesanan/step2');
+    //         // $this->initiate_payment($total_harga, 'akomodasi', $id_pemesanan_akomodasi, $id_user);
+    //     } else {
+    //         var_dump($kamar_id);
+    //         // Jika kamar tidak ditemukan
+    //         echo 'gk dapat kamar id jancok';
+    //     }
+    // }
 
 
 
