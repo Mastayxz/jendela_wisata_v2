@@ -292,37 +292,27 @@ class Pemesanan extends CI_Controller
         // Mengambil inputan dari view
         $id_user = $this->session->userdata('id_user');
         $jumlah_kamar = $this->input->post('jumlah_kamar');
-        $check_in = $this->input->post('check_in');
-        $check_out = $this->input->post('check_out');
-        $kamar_id = $this->input->post('kamar_id');
+        $check_in = $this->input->post('checkin');
+        $check_out = $this->input->post('checkout');
+        $kamar_id = $this->input->post('id_kamar');
         $id_akomodasi = $this->input->post('id_akomodasi');
-
+        $total_harga = $this->input->post('total-harga');
         // Mengambil data kamar berdasarkan id kamar dari database
-        $kamar = $this->M_akomodasi->get_kamar_id($kamar_id);
-
-        if ($kamar) {
-            // Perhitungan tanggal
-            $check_in_date = new DateTime($check_in);
-            $check_out_date = new DateTime($check_out);
-            $tempo = $check_in_date->diff($check_out_date);
-            $hari = $tempo->days; // Mengambil jumlah hari
-
-            // Menghitung total harga
-            $total_harga = $kamar['harga'] * $hari * $jumlah_kamar;
 
 
+
+        if ($kamar_id) {
             // Menyimpan data pemesanan ke database
             $data = array(
                 'jumlah_kamar' => $jumlah_kamar,
-                'id_kamar' => $kamar_id,
                 'total_harga' => $total_harga,
                 'check_in' => $check_in,
                 'check_out' => $check_out,
                 'id_akomodasi' => $id_akomodasi,
                 'id_user' => $id_user,
-                'status' => 0, // Status awal pemesanan
+                'status' => 1, // Status awal pemesanan
             );
-
+            var_dump($data);
             $id_pemesanan_akomodasi = $this->m_pesanan->simpan_pemesanan_akomodasi($data); // Menggunakan model untuk menyimpan data
             $this->session->set_userdata('id_pemesanan_akomodasi', $id_pemesanan_akomodasi);
             $this->session->unset_userdata('id_pemesanan_event');
@@ -331,9 +321,9 @@ class Pemesanan extends CI_Controller
             redirect('user/pemesanan/step2');
             // $this->initiate_payment($total_harga, 'akomodasi', $id_pemesanan_akomodasi, $id_user);
         } else {
+            var_dump($kamar_id);
             // Jika kamar tidak ditemukan
-            $this->session->set_flashdata('error', 'Kamar tidak ditemukan.');
-            redirect('halaman_pemesanan');
+            echo 'gk dapat kamar id jancok';
         }
     }
 
