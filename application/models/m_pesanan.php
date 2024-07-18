@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
 class M_pesanan extends CI_Model
 {
     public function __construct()
@@ -106,6 +107,15 @@ class M_pesanan extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    // public function getDetailPesananEvent($id_event)
+    // {
+
+    //     $this->db->where('id_event', $id_event);
+    //     $query = $this->db->get('pemesanan_event');
+    //     return $query->result_array();
+    // }
+
 
     public function get_metode_pembayaran()
     {

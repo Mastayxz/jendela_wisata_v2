@@ -37,7 +37,7 @@
                     <!-- <p>Nama Tempat Wisata: <?= $destinasi['nama_tempat_wisata']; ?></p> -->
                     <!-- <p>Alamat: <?= $destinasi['alamat_tempat_wisata']; ?></p> -->
                     <!-- Formulir Pemesanan -->
-                    <form id="form-pemesanan" action="<?= base_url('user/pemesanan/pemesanan_kamar'); ?>" method="post">
+                    <form id="form-pemesanan" action="<?= base_url('user/pemesanan/proses_pesan'); ?>" method="post">
                         <input type="hidden" name="id_tempat_wisata" value="<?= $destinasi['id_tempat_wisata']; ?>">
                         <input type="hidden" name="jenis_pesanan" value="destinasi">
                         <div class="form-group">
