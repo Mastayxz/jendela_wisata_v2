@@ -78,7 +78,7 @@
                             <tbody>
                                 <tr>
                                 <tr>
-                                    <td><img src="<?= $kamar->gambar ?>" alt="<?= $kamar->tipe_kamar ?>" width="100"></td>
+                                    <td><img src="<?= base_url() . 'upload/kamar_akomodasi/' . $kamar->gambar; ?>" class="img-fluid img-thumbnail" alt="gambar1" width="100"></td>
                                     <td><?= $kamar->tipe_kamar ?></td>
                                     <td>Rp.<?= number_format($kamar->harga) ?></td>
                                     <td>Jumlah Kamar <?php echo $kamar->jumlah ?></td>

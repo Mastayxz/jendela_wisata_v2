@@ -158,7 +158,7 @@
                         </tr>
                         <?php foreach ($kamar as $k) : ?>
                             <tr>
-                                <td><img src="<?= $k->gambar ?>" alt="<?= $k->tipe_kamar ?>" width="100"></td>
+                                <td><img src="<?= base_url() . 'upload/kamar_akomodasi/' . $k->gambar; ?>" class="img-fluid img-thumbnail" alt="gambar1" width="100"></td>
                                 <td><?= $k->tipe_kamar ?></td>
                                 <td>Rp. <?= number_format($k->harga)  ?></td>
                             </tr>
