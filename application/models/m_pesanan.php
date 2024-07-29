@@ -171,12 +171,18 @@ class M_pesanan extends CI_Model
         $this->db->where('id_event', $id_event);
         $this->db->update('event');
     }
+    public function update_jumlah_kamar($id_kamar, $jumlah)
+    {
+        $this->db->set('jumlah', 'jumlah + ' . (int)$jumlah, FALSE);
+        $this->db->where('id_kamar', $id_kamar);
+        $this->db->update('kamar_akomodasi');
+
+    }
     public function simpan_pemesanan_akomodasi($data)
     {
         $this->db->insert('pemesanan_akomodasi', $data);
         return $this->db->insert_id(); // Mengembalikan ID pemesanan yang baru dimasukkan
     }
-
 
 
     public function getPemesananEventDetail($id_pemesanan_event)

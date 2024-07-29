@@ -49,4 +49,24 @@ class M_kamar_akomodasi extends CI_Model
         return $query ->row();
            
     }
+    public function getJumlahKamar($id_kamar) {
+        $this->db->select('jumlah');
+        $this->db->from('kamar_akomodasi');
+        $this->db->where('id_kamar', $id_kamar);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    public function kurangiJumlahKamar($id_kamar, $jumlah)
+    {
+        $this->db->set('jumlah', 'jumlah - ' . (int)$jumlah, FALSE);
+        $this->db->where('id_kamar', $id_kamar);
+        $this->db->update('kamar_akomodasi');
+    }
+    public function tambahJumlahKamar($id_kamar, $jumlah)
+    {
+        $this->db->set('jumlah', 'jumlah + ' . (int)$jumlah, FALSE);
+        $this->db->where('id_kamar', $id_kamar);
+        $this->db->update('kamar_akomodasi');
+    }
 }

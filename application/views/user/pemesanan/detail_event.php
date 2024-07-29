@@ -63,7 +63,7 @@
                     <p id="harga-event$event">Rp.<?= number_format($event['biaya_event']); ?></p>
                     <p class="fw-bold"><?= $event['nama_event']; ?></p>
                     <!-- <p><?= $event['alamat_event']; ?></p> -->
-                    <p>Tiket Teresia : <?= $event['stok_tiket']; ?></p>
+                    <p>Tiket Tersedia : <?= $event['stok_tiket']; ?></p>
                     <!-- Informasi tambahan -->
                     <hr>
 
