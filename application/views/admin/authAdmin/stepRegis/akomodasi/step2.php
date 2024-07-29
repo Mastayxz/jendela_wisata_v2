@@ -21,9 +21,9 @@
         <div class="frame">
                 <div class="page">
                     <div class="form">
-                        <input type="text" id="nameAko" name="nama_admin" placeholder="Name Admin">
+                        <input type="text" id="nameAko" name="nama_admin" placeholder="Name Admin" value="<?php echo set_value('nama_admin')?>">
                         <p><?php echo form_error('nama_admin','<small class="text-danger ps-1 mt-1 " >', '</small>') ?></p>
-                        <input type="text" id="nama_akomodasi" name="nama_akomodasi" placeholder="Name Akomodasi">
+                        <input type="text" id="nama_akomodasi" name="nama_akomodasi" placeholder="Name Akomodasi" value="<?php echo set_value('nama_akomodasi') ?>">
                         <p><?php echo form_error('nama_akomodasi','<small class="text-danger ps-1 mt-1 " >', '</small>') ?></p>
                         
                     </div>

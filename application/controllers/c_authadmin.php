@@ -133,7 +133,8 @@ class c_authadmin extends CI_Controller
             'required' => 'please fill this column'
         ));
         $this->form_validation->set_rules('nama_akomodasi', 'Name Akomodasi', 'trim|required',array(
-            'required' => 'please fill this column'
+            'required' => 'please fill this column',
+            
         ));
         
         
@@ -356,6 +357,21 @@ class c_authadmin extends CI_Controller
         
     }
 
+    public function back_step2(){
+        $jenis_admin = $this->session->userdata('jenisAdmin');
+        if ($jenis_admin === NULL){
+            echo "id Jenis tidak tersedia  "; 
+            exit;
+        }   
+        if($jenis_admin == 'akomodasi'){
+            redirect('c_authadmin/step2Ako');
+        }else if($jenis_admin == 'event'){
+            redirect('c_authadmin/step2Event');
+        }else{
+            redirect('c_authadmin/step2Des');
+        };
+    }
+
     public function logout()
     {
         if ($this->input->is_ajax_request()) {
@@ -367,6 +383,95 @@ class c_authadmin extends CI_Controller
 
         // If it's a regular request, show the SweetAlert confirmation
         $this->load->view('logout_confirmation');
+    }
+
+    public function forgot_password(){
+        $this->form_validation->set_rules('email', 'Email', 'trim|required');
+        
+        
+        if ($this->form_validation->run() == FALSE) {
+           $title['title'] = 'Admin Login';
+            $this->load->view('templates/header', $title);
+            $this->load->view('admin/authAdmin/forgotpass');
+            $this->load->view('templates/footer');
+        } else {
+            $email = $this->input->post('email');
+            $adminAko = $this->m_authAdmin->get_email ($email);
+
+            $link = base_url('c_authadmin/editpass');
+            $subject = 'lupa Password';
+            $message =
+                "<html>
+                <p>Silahkan klik link di bawah ini </p>
+                <a href='$link'>Ganti password</a>
+                <html>";
+
+            if ($adminAko) {
+                $this->session->set_userdata('riset', $email);
+                $this->send_email($email,$subject,$message);
+                $this->editpass();
+                if (isset($email)) {
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">    
+                    Please check your email </div>');
+                    redirect('c_authadmin/forgot_password');
+                } else {
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
+                    Please check your email </div>');
+                    redirect('c_authadmin/index');
+                }
+            } else {
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
+            Your email is not found </div>');
+                redirect('c_authadmin/forgot_password');
+            }   
+        }
+    }
+    public function editpass(){
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[3]|matches[password1]', array(
+            'min_length' => 'Password is to short',
+            'matches' => 'Password is not same'
+
+        ));
+        $this->form_validation->set_rules('password1', 'Password1', 'trim|required|min_length[3]|matches[password]', array(
+            'min_length' => 'Password is to short',
+            'matches' => 'Password is not same'
+        ));
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Change Password ';
+            $this->load->view('templates/header', $data);
+            $this->load->view('admin/authAdmin/passEdit');
+            $this->load->view('templates/footer');
+        } else {
+
+            $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+            $email = $this->session->userdata('riset');
+
+            //sql
+            $this->m_authAdmin->editPassword($email,$password);
+
+            $this->session->unset_userdata('riset');
+
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success " role="alert">
+            Your password has been changed!</div>');
+            redirect('c_authadmin/index');
+        }
+    }
+    public function send_email($to, $subject, $message)
+    {
+        $this->email->set_newline("\r\n");
+        $this->email->from('alimanbudi@gmail.com', 'Jendela Wisata');
+        $this->email->to($to);
+        $this->email->subject($subject);
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
+            // return show_error($this->email->print_debugger());
+        }
     }
     
 }

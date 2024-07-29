@@ -8,6 +8,22 @@
     
 </head>
 <body>
+    <?php 
+        $jenisAdmin = $this->session->userdata('jenisAdmin');
+        $step2_url = '';
+
+        // Menentukan URL step 2 berdasarkan jenis admin
+        if ($jenisAdmin == 'akomodasi') {
+            $step2_url = base_url('c_authadmin/step2Ako');
+        } elseif ($jenisAdmin == 'event') {
+            $step2_url = base_url('c_authadmin/step2Event');
+        } elseif ($jenisAdmin == 'destinasi') {
+            $step2_url = base_url('c_authadmin/step2Des');
+        }
+        
+    
+    ?>
+
     <div class="image">
         <img src="<?php echo base_url('public/pantaiBali.jpg') ?>" alt="Background Image">
     </div>
@@ -27,7 +43,7 @@
                         <p><?php echo form_error('username','<small class="text-danger ps-1 pt-3 " >', '</small>') ?></p>
                     </div>
                     <div class="button">
-                        <input type="button" name="Previous" value="Previous" onclick="window.location.href='<?= base_url('c_authadmin/step2Event') ?>'">
+                        <input type="button" name="Previous" value="Previous" onclick="window.location.href='<?= $step2_url ?>'">
                         <input type="submit" value="Submit" name ="submit">
                         
                     </div>

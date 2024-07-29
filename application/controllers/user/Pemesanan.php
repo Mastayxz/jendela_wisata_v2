@@ -27,7 +27,7 @@ class Pemesanan extends CI_Controller
         if ($this->is_akomodasi($id)) {
             $id_user = $this->session->userdata('id_user');
             $id_kamar = $this->input->post('id_kamar');
-            var_dump($id_kamar);
+            // var_dump($id_kamar);
             // if ($id_kamar == null) {
             //     // Tampilkan pesan error atau redirect ke halaman yang sesuai
             //     show_error('ID Kamar tidak valid', 500);
@@ -49,33 +49,33 @@ class Pemesanan extends CI_Controller
             $data['step'] = 1;
             $this->load->view('user/pemesanan/navbar_pesanan', $data);
             $this->load->view('user/pemesanan/detail_akomodasi', $data);
-            echo "ID Kamar: " . $id_kamar . "<br>";
+            // echo "ID Kamar: " . $id_kamar . "<br>";
+
+            // // Pastikan koneksi database terhubung
+            // // Debugging: Output the id_kamar
+            // echo "ID Kamar: " . $id_kamar . "<br>";
 
             // Pastikan koneksi database terhubung
-            // Debugging: Output the id_kamar
-            echo "ID Kamar: " . $id_kamar . "<br>";
+            // if ($this->db->conn_id) {
+            //     echo "Database connected!<br>";
+            // } else {
+            //     echo "Failed to connect to database.<br>";
+            //     return;
+            // }
+            // $this->db->where('id_kamar', $id_kamar);
+            // $query = $this->db->get('kamar_akomodasi');
 
-            // Pastikan koneksi database terhubung
-            if ($this->db->conn_id) {
-                echo "Database connected!<br>";
-            } else {
-                echo "Failed to connect to database.<br>";
-                return;
-            }
-            $this->db->where('id_kamar', $id_kamar);
-            $query = $this->db->get('kamar_akomodasi');
+            // // Debugging: Output query yang dijalankan
+            // echo "Query yang dijalankan: " . $this->db->last_query() . "<br>";
 
-            // Debugging: Output query yang dijalankan
-            echo "Query yang dijalankan: " . $this->db->last_query() . "<br>";
+            // // Debugging: Output jumlah baris yang ditemukan
+            // echo "Jumlah baris yang ditemukan: " . $query->num_rows() . "<br>";
 
-            // Debugging: Output jumlah baris yang ditemukan
-            echo "Jumlah baris yang ditemukan: " . $query->num_rows() . "<br>";
-
-            if ($query->num_rows() > 0) {
-                return $query->row();
-            } else {
-                return null;
-            }
+            // if ($query->num_rows() > 0) {
+            //     return $query->row();
+            // } else {
+            //     return null;
+            // }
         } else if ($this->is_event($id)) {
             $data['page_title'] = 'Detail Event';
             $data['event'] = $this->M_event->getDetail($id);
@@ -310,9 +310,10 @@ class Pemesanan extends CI_Controller
                 'check_out' => $check_out,
                 'id_akomodasi' => $id_akomodasi,
                 'id_user' => $id_user,
+                'id_kamar'=> $kamar_id,
                 'status' => 1, // Status awal pemesanan
             );
-            var_dump($data);
+            // var_dump($data);
             $id_pemesanan_akomodasi = $this->m_pesanan->simpan_pemesanan_akomodasi($data); // Menggunakan model untuk menyimpan data
             $this->session->set_userdata('id_pemesanan_akomodasi', $id_pemesanan_akomodasi);
             $this->session->unset_userdata('id_pemesanan_event');

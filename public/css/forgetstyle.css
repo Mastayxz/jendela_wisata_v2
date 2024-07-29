@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+div.gambar {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+div.gambar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+div.frameLogin {
+    position: absolute;
+    width: 45%;
+    height: 45%;
+    overflow: hidden;
+    top: 25%;
+    left: 30%;
+    right: 30%;
+    bottom: 30%;
+    background: rgba(255, 255, 255, 0.2);
+    /* Semi-transparent background */
+    backdrop-filter: blur(38px);
+    /* Blur effect */
+    z-index: 1;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+div.form {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 140px;
+    margin-left: 450px;
+
+}
+
+div #email{
+    margin-top: 3%;
+    width: 35%;
+    height: 50px;
+    border-radius: 8px;
+    display: block;
+    padding-left: 15px;
+    background-color: #D9D9D9;
+    border: none;
+    letter-spacing: 4px;
+    
+
+}
+
+div.button {
+    position: absolute;
+    margin-top: 4px;
+    display: flex;
+    justify-content: end;
+    width: 35%;
+
+}
+
+#send {
+    width: 108px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #D9D9D9;
+    border: none;
+}
+
+div.Logo,
+h1 {
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 15%;
+    font-size: 40px;
+    letter-spacing: 8.5px;
+    font-family: "Gideon Roman", serif;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 15px;
+    margin-left: 15%;
+    margin-top: 70%;
+    font-family: "Gideon Roman", serif;
+
+}
+
+div.link,
+a {
+    display: block;
+    color: #D9D9D9;
+    margin-bottom: 3px;
+    letter-spacing: 5px;
+    text-decoration: none;
+    font-weight: 100;
+    font-size: 12px;
+
+}
+
+#send:hover {
+    background-color: orangered;
+    color: white;
+}
+
+.form p {
+    font-size: 15px;
+    font-family: "Gideon Roman", serif;
+
+
+}
+
+.danger {
+    width: 35%;
+    position: fixed;
+    margin-left: 450px;
+    margin-top: 70px;
+
+}

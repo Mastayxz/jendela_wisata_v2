@@ -27,6 +27,11 @@ class m_authAdmin extends CI_Model {
         $insert = $this->db->insert('tempat_wisata',$data);
         return $insert;
     }
+    public function editPassword($email,$password){
+            $this->db->set('password',$password);
+            $this->db->where('email',$email);
+            $this->db->update('admin_ako');
+    }
 
 
 }

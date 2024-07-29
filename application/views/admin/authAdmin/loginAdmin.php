@@ -28,7 +28,7 @@
             <input id="password" type="password" name = "password" placeholder="Password" > 
             <p><?php echo form_error('password','<small class="text-danger ps-1 mb-1" >', '</small>') ?></p>
             <div class="link">
-                <a href="#">Forget Password</a>
+                <a href="<?php echo base_url('c_authadmin/forgot_password') ?>">Forget Password</a>
                 <a href="<?php echo base_url('c_authadmin/step1') ?>">Register</a>
             </div>
             <div class ="button">
